@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Artificial Intelligence">
+  <!-- Logo der Webseite Artificial Intelligence (Nicolas, 2026-10-01): kleines "ai"
+       wie auf den Folien, weiss im Kreis in der Leitfarbe. Die Buchstaben sind
+       aus Kreis und Strichen gebaut, nicht gesetzt: keine Schrift, keine Lizenz. -->
+  <circle cx="32" cy="32" r="32" fill="#ff2d8a"/>
+  <g fill="none" stroke="#ffffff" stroke-width="5.5" stroke-linecap="round">
+    <circle cx="26" cy="36" r="8"/>
+    <path d="M34 28 V44"/>
+    <path d="M46 30 V44"/>
+  </g>
+  <circle cx="46" cy="21" r="3.4" fill="#ffffff"/>
+</svg>
