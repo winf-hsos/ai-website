@@ -215,12 +215,12 @@
   {
     "objectID": "concepts/index.html",
     "href": "concepts/index.html",
-    "title": "Concepts",
+    "title": "Overview",
     "section": "",
-    "text": "One page per concept, each with its slides.\n\nA Brief History of AI: seventy-five years of artificial intelligence, compiled live by an AI agent.\nAI Agents: a language model that uses tools in a loop to reach a goal.",
+    "text": "This page will show the map of topics for this course: which concepts there are, how they build on each other, and where each one appears in the experiments. Until the map is ready, here are the concepts that already have a page of their own:\n\nA Brief History of AI: seventy-five years of artificial intelligence, compiled live by an AI agent.\nAI Agents: a language model that uses tools in a loop to reach a goal.",
     "crumbs": [
       "Concepts",
-      "Concepts"
+      "Overview"
     ]
   },
   {

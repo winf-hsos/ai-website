@@ -5,10 +5,10 @@
   --gray-light: #b6bec6;
   --gray: #7d868f;
   --gray-dark: #4a5259;
-  --blue: #009ee3;
+  --blue: #ff2d8a;
   --green: #4ade80;
   --yellow: #ffd23f;
-  --red: #ff4d6d;
+  --red: #ff3b30;
   --font: "Arial", "Helvetica Neue", Arial, sans-serif;
   --mono: "Roboto Mono", Consolas, monospace;
   --large: 80px;
@@ -27,8 +27,8 @@
   --gray-light: #4a5259;
   --gray: #7d868f;
   --gray-dark: #c5ccd3;
-  --blue: #004d6e;
+  --blue: #94004a;
   --green: #006996;
-  --yellow: #009ee3;
-  --red: #e03131;
+  --yellow: #ff2d8a;
+  --red: #d70015;
 }
