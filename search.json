@@ -228,7 +228,7 @@
     "href": "experiments/be-the-agent/be-the-agent.html",
     "title": "Be the Agent",
     "section": "",
-    "text": "An AI agent such as Claude Code gets a goal instead of a recipe. It plans its own steps, uses tools and keeps going until the job is done. In this experiment you play such an agent yourselves, with cards, a calculator and a few printed pages instead of a computer. One of you is the language model, one is everything around it, and one watches and keeps the log. By the end you will have run, by hand, the loop that every AI agent runs on.",
+    "text": "An AI agent such as Claude Code gets a goal instead of a recipe. It plans its own steps, uses tools and keeps going until the job is done. In this experiment your group plays such an agent, with cards, a calculator and a few printed pages instead of a computer. One of you is the language model, one carries the messages, four of you are the tools, and one watches and keeps the log. By the end you will have run, by hand, the loop that every AI agent runs on.",
     "crumbs": [
       "Experiments",
       "Be the Agent"
@@ -239,7 +239,7 @@
     "href": "experiments/be-the-agent/be-the-agent.html#goal",
     "title": "Be the Agent",
     "section": "Goal",
-    "text": "Goal\nFind out from the inside how an agent works: what the language model decides, what the tools do, and why everything the model knows has to be on its stack of cards.",
+    "text": "Goal\nFind out from the inside how an agent works: what the language model decides, what the tools do, who carries the messages between them, and why everything the model knows has to be on its stack of cards.",
     "crumbs": [
       "Experiments",
       "Be the Agent"
@@ -250,18 +250,18 @@
     "href": "experiments/be-the-agent/be-the-agent.html#what-you-need",
     "title": "Be the Agent",
     "section": "What you need",
-    "text": "What you need\n\nA group of three. In a group of four, two of you share the Toolbox.\nThe kit at the end of this document, printed and cut out: the system card, three task cards, the farm files, the web pages, the rules for the Toolbox and the Observer’s sheet.\nA stack of blank index cards, a pen for everyone and a calculator.\nAbout 30 minutes for the first two tasks.",
+    "text": "What you need\n\nA group of seven. With five or six of you, one person takes two roles (see the table below).\nThe cards, printed and cut out (be-the-agent-cards.pdf): the system card, three task cards, a role card for everyone, the search index, the farm files, the web pages and plenty of blank cards.\nThe Observer’s sheet at the end of this document, a pen for everyone and a calculator.\nEnough room for the tools to sit apart from the Model, ideally at their own tables.\nAbout 30 minutes for the first two tasks.",
     "crumbs": [
       "Experiments",
       "Be the Agent"
     ]
   },
   {
-    "objectID": "experiments/be-the-agent/be-the-agent.html#the-three-roles",
-    "href": "experiments/be-the-agent/be-the-agent.html#the-three-roles",
+    "objectID": "experiments/be-the-agent/be-the-agent.html#the-roles",
+    "href": "experiments/be-the-agent/be-the-agent.html#the-roles",
     "title": "Be the Agent",
-    "section": "The three roles",
-    "text": "The three roles\n\n\n\n\n\n\n\n\nRole\nWhat you do\nWhat you may look at\n\n\n\n\nModel\nYou decide what happens next and write it on a card.\nOnly the stack of cards in front of you.\n\n\nToolbox\nYou carry out exactly what a tool card says and write the result on a new card.\nThe farm files, the web pages and the calculator.\n\n\nObserver\nYou keep the log: every card in order, with a note on what happened.\nEverything, but you never help.",
+    "section": "The roles",
+    "text": "The roles\n\n\n\n\n\n\n\n\nRole\nWhat you do\nWhat you have\n\n\n\n\nModel\nYou decide what happens next and write it on a card.\nOnly the stack of cards in front of you.\n\n\nHarness\nYou take every card the Model writes. A tool card you check and carry to the right tool; the result you bring back and put on the Model’s stack.\nThe role card with the list of tools.\n\n\nSearch\nYou find web pages for a search request and return their titles.\nThe search index: titles and keywords, but not the pages themselves.\n\n\nWeb\nYou return the full text of a page.\nThe web pages.\n\n\nFiles\nYou read out and store the farm’s files.\nThe farm files and blank sheets for new ones.\n\n\nCalculator\nYou calculate exactly what is written.\nA calculator.\n\n\nObserver\nYou keep the log: every card in order, with a note on what happened.\nEverything, but you never help.\n\n\n\nWith six people, Search and Web are one person. With five, also Files and Calculator.",
     "crumbs": [
       "Experiments",
       "Be the Agent"
@@ -272,7 +272,7 @@
     "href": "experiments/be-the-agent/be-the-agent.html#the-rules",
     "title": "Be the Agent",
     "section": "The rules",
-    "text": "The rules\n\nThe Model sees only its stack. It never looks at the farm files or the web pages, and nobody talks to it. Everything it learns arrives on a card.\nEvery card the Model writes starts with one of three words:\n\nTHINK: a note to itself, for example THINK: I need the size of the field first.\nTOOL: a tool call, written exactly as on the system card, for example TOOL: read_file(\"fields\").\nANSWER: the answer to the task. This card ends the game.\n\nThe Toolbox carries out a tool card literally and writes the result on a new card that starts with RESULT:. If the tool does not exist or the call is written wrongly, the result is an error. The Toolbox never repairs a call, never guesses what the Model meant and never adds anything that was not asked for.\nEvery card goes on top of the stack in the order it was written, and it stays there.\nOne card per turn. The Model writes one card; if it is a tool card, the Toolbox answers it before the Model writes the next one.",
+    "text": "The rules\n\nThe Model sees only its stack. Nobody talks to it, and it never looks at the other tables. Everything it learns arrives on a card.\nEvery card the Model writes starts with one of three words:\n\nTHINK: a note to itself, for example THINK: I need the size of the field first.\nTOOL: a tool call, written exactly as on the system card, for example TOOL: read_file(\"fields\").\nANSWER: the answer to the task. This card ends the game.\n\nThe Harness carries every card. A THINK: card goes straight onto the stack. A TOOL: card goes to the tool it names; if no such tool exists or the call is written wrongly, the Harness writes RESULT: error, unknown tool itself and does not walk anywhere.\nA tool does exactly what the card says and writes its answer on a new card that starts with RESULT:. It never repairs a call, never guesses what the Model meant and never adds anything that was not asked for. Tools do not talk to each other.\nEvery card goes on top of the stack in the order it was written, and it stays there.\nOne card at a time. The Model writes its next card only when the result of the last one is on the stack.",
     "crumbs": [
       "Experiments",
       "Be the Agent"
@@ -283,7 +283,7 @@
     "href": "experiments/be-the-agent/be-the-agent.html#steps",
     "title": "Be the Agent",
     "section": "Steps",
-    "text": "Steps\n\nSet up. The Model’s stack starts with the system card, with the card for Task 1 on top of it. The Toolbox lays out the farm files and the web pages where the Model cannot see them. The Observer takes the log sheet.\nPlay Task 1. How many cards did it take? Did the Model write a THINK: card before its first tool call?\nSwap roles and play Task 2. Which tools did the Model use, and in which order? Did the first search find the right page? Which value did the Model choose, and how did it decide?\nCount. The Observer reads the log aloud: rounds, tool calls, errors, and how many cards lie on the stack at the end.\nPlay Task 3 if there is time. One thing in the farm files will only be noticed by a careful Model.\nCompare with a real agent. Your lecturer shows the log of a real agent session. Find the places where it thinks, calls a tool, receives a result and answers.",
+    "text": "Steps\n\nSet up. Hand out the role cards. The tools take their material and sit apart from the Model. The Model’s stack starts with the system card, with the card for Task 1 on top of it. The Observer takes the log sheet.\nPlay Task 1. How many cards did it take, and how many walks did the Harness make? Did the Model write a THINK: card before its first tool call?\nSwap roles and play Task 2. Which tools were busy, and which sat idle? Did the first search find the right page? Which value did the Model choose, and how did it decide?\nCount. The Observer reads the log aloud: rounds, tool calls per tool, errors, and how many cards lie on the stack at the end.\nPlay Task 3 if there is time. One thing in the farm files will only be noticed by a careful Model.\nCompare with a real agent. Your lecturer shows the log of a real agent session. Find the places where it thinks, calls a tool, receives a result and answers.",
     "crumbs": [
       "Experiments",
       "Be the Agent"
@@ -294,7 +294,7 @@
     "href": "experiments/be-the-agent/be-the-agent.html#what-you-just-played",
     "title": "Be the Agent",
     "section": "What you just played",
-    "text": "What you just played\n\n\n\n\n\n\n\nIn the game\nIn a real AI agent\n\n\n\n\nthe stack of cards\nthe context window: everything the model knows during a task\n\n\nthe system card\nthe system prompt: who the model is and which tools it has\n\n\nthe task card\nthe user’s prompt, the goal\n\n\na THINK: card\nthe model’s reasoning or plan\n\n\na TOOL: card\na tool call: the model only writes text, a program carries it out\n\n\nthe Toolbox\nthe harness, the program around the model that runs the tools\n\n\na RESULT: card\nthe observation: the tool’s result, added to the context\n\n\nthe Observer’s log\nthe transcript of the session\n\n\nthe ANSWER: card\nthe stop condition: the goal is reached\n\n\n\nThe loop you ran, think, act and observe until the goal is reached, is the loop inside every AI agent. The Model never opened a file and never pressed a key on the calculator; it only wrote text, and something else carried it out.",
+    "text": "What you just played\n\n\n\n\n\n\n\nIn the game\nIn a real AI agent\n\n\n\n\nthe stack of cards\nthe context window: everything the model knows during a task\n\n\nthe system card\nthe system prompt: who the model is and which tools it has\n\n\nthe task card\nthe user’s prompt, the goal\n\n\na THINK: card\nthe model’s reasoning or plan\n\n\na TOOL: card\na tool call: the model only writes text, something else carries it out\n\n\nthe Harness\nthe harness, the program around the model that checks each call, runs the right tool and adds the result to the context\n\n\nSearch, Web, Files, Calculator\nthe tools: a search engine, a web fetcher, the file system, a code runner\n\n\na RESULT: card\nthe observation: the tool’s result, added to the context\n\n\nthe Observer’s log\nthe transcript of the session\n\n\nthe ANSWER: card\nthe stop condition: the goal is reached\n\n\n\nThe loop you ran, think, act and observe until the goal is reached, is the loop inside every AI agent. The Model never opened a file, never searched the web and never pressed a key on the calculator; it only wrote text, and everyone else in the group carried it out.",
     "crumbs": [
       "Experiments",
       "Be the Agent"
@@ -305,7 +305,7 @@
     "href": "experiments/be-the-agent/be-the-agent.html#go-further",
     "title": "Be the Agent",
     "section": "Go further",
-    "text": "Go further\n\nLimited memory. The stack may now hold at most eight cards. When it is full, the Model writes a SUMMARY: card that replaces the oldest cards; the system card and the task card always stay. Play Task 3 again. What got lost, and did it matter?\nBe the tool for a chatbot. Solve Task 2 with a chatbot in your browser. Whenever it needs a file, a web page or a calculation, you have to provide it yourself. Who is the Toolbox now, and who decides the next step?\nA new tool. Invent a sixth tool, for example forecast(\"date\"), add its description to the system card and write a page for the Toolbox. Does the Model use the new tool without being told to?\nA wrong result. The Toolbox secretly returns one wrong result, for example a calculation that is off by a factor of ten. Does the Model notice? What would a real agent need in order to notice?",
+    "text": "Go further\n\nLimited memory. The stack may now hold at most eight cards. When it is full, the Model writes a SUMMARY: card that replaces the oldest cards; the system card and the task card always stay. Play Task 3 again. What got lost, and did it matter?\nTwo tools at once. The Model may now write two tool cards in one turn, and the Harness carries them in parallel. Play Task 2 again and compare the time with your first game.\nA new tool. One person becomes a new tool, for example forecast(\"date\") with its own page of information. Add the tool to the system card. Does the Model use it without being told to?\nA wrong result. One tool secretly returns one wrong result, for example the Calculator is off by a factor of ten. Does the Model notice? What would a real agent need in order to notice?\nBe the tool for a chatbot. Solve Task 2 with a chatbot in your browser. Whenever it needs a file, a web page or a calculation, you have to provide it yourself. Who is the Harness now, and who decides the next step?",
     "crumbs": [
       "Experiments",
       "Be the Agent"
@@ -316,62 +316,7 @@
     "href": "experiments/be-the-agent/be-the-agent.html#reflection",
     "title": "Be the Agent",
     "section": "Reflection",
-    "text": "Reflection\nWrite down your own answers first, then discuss them in your group.\n\nIn which round would the Model have been stuck without the Toolbox’s cards?\nWhat would have gone differently if the Model had had to give up its stack after ten cards?\nWho did the thinking, who did the acting, and which of it could the Model actually do?",
-    "crumbs": [
-      "Experiments",
-      "Be the Agent"
-    ]
-  },
-  {
-    "objectID": "experiments/be-the-agent/be-the-agent.html#system-card",
-    "href": "experiments/be-the-agent/be-the-agent.html#system-card",
-    "title": "Be the Agent",
-    "section": "System card",
-    "text": "System card\n\n\n\n\n\n\nNoteSYSTEM\n\n\n\nYou are the assistant of Greenfield Farm. You can only act by writing cards. On every turn, write exactly one card that starts with THINK:, TOOL: or ANSWER:.\nYou can use these tools:\n\nsearch(\"words\") finds pages on the web and returns their titles\nopen(\"title\") returns the full text of one web page\nread_file(\"name\") returns one of the farm’s files: fields, soil_tests, stock, weather\ncalculator(\"expression\") calculates, for example calculator(\"4.5 * 100\")\nwrite_file(\"name\", \"text\") saves a text as a new file of the farm\n\nWhen you have answered the task, write ANSWER: and stop.",
-    "crumbs": [
-      "Experiments",
-      "Be the Agent"
-    ]
-  },
-  {
-    "objectID": "experiments/be-the-agent/be-the-agent.html#task-cards",
-    "href": "experiments/be-the-agent/be-the-agent.html#task-cards",
-    "title": "Be the Agent",
-    "section": "Task cards",
-    "text": "Task cards\n\n\n\n\n\n\nNoteTASK 1\n\n\n\nHow large is the field Long Acre, and what grows on it this year?\n\n\n\n\n\n\n\n\nNoteTASK 2\n\n\n\nHow much nitrogen may we still apply to Long Acre this spring? Give the total in kg N for the whole field.\n\n\n\n\n\n\n\n\nNoteTASK 3\n\n\n\nPlan the first nitrogen application on Long Acre: how many kilograms of which fertiliser product do we need, and can we spread it on 10 February? Save the plan as the file plan.",
-    "crumbs": [
-      "Experiments",
-      "Be the Agent"
-    ]
-  },
-  {
-    "objectID": "experiments/be-the-agent/be-the-agent.html#rules-for-the-toolbox",
-    "href": "experiments/be-the-agent/be-the-agent.html#rules-for-the-toolbox",
-    "title": "Be the Agent",
-    "section": "Rules for the Toolbox",
-    "text": "Rules for the Toolbox\nCarry out each tool card exactly as written and answer with a card that starts with RESULT:.\n\n\n\n\n\n\n\n\nTool\nWhat you do\nIf it goes wrong\n\n\n\n\nsearch(\"words\")\nCompare the search words with the keyword line of every web page. Write down the titles of all pages that contain at least one of the words, one title per line.\nRESULT: no pages found\n\n\nopen(\"title\")\nCopy the whole text of the page with this title.\nRESULT: error, page not found\n\n\nread_file(\"name\")\nCopy the whole file.\nRESULT: error, file not found\n\n\ncalculator(\"expression\")\nCalculate exactly what is written and round to two decimals.\nRESULT: error, cannot calculate\n\n\nwrite_file(\"name\", \"text\")\nWrite the text on a new sheet with the name as its title and put it with the farm files.\n–\n\n\n\nA call with a tool that is not in this list, or written differently, gets RESULT: error, unknown tool.",
-    "crumbs": [
-      "Experiments",
-      "Be the Agent"
-    ]
-  },
-  {
-    "objectID": "experiments/be-the-agent/be-the-agent.html#farm-files-toolbox-only",
-    "href": "experiments/be-the-agent/be-the-agent.html#farm-files-toolbox-only",
-    "title": "Be the Agent",
-    "section": "Farm files (Toolbox only)",
-    "text": "Farm files (Toolbox only)\n\n\n\n\n\n\nTipfields\n\n\n\n\n\n\nField\nSize\nCrop 2026\n\n\n\n\nLong Acre\n4.5 ha\nwinter wheat\n\n\nMill Field\n3.2 ha\noilseed rape\n\n\nBack Meadow\n2.0 ha\ngrassland\n\n\n\n\n\n\n\n\n\n\n\nTipsoil_tests\n\n\n\n\n\n\nField\nSampled\nSoil mineral nitrogen (Nmin)\n\n\n\n\nLong Acre\n3 February 2026\n40 kg N/ha\n\n\nMill Field\n3 February 2026\n25 kg N/ha\n\n\n\n\n\n\n\n\n\n\n\nTipstock\n\n\n\n\n\n\nProduct\nNitrogen content\nIn store\n\n\n\n\nCalcium ammonium nitrate (CAN)\n27 %\n2,000 kg\n\n\nUrea\n46 %\n500 kg\n\n\n\n\n\n\n\n\n\n\n\nTipweather\n\n\n\n\n\n\nDate\nWeather\n\n\n\n\n9 February\nfrost at night, ground frozen until midday\n\n\n10 February\nfrost day and night, ground frozen all day\n\n\n11 February\nmild, ground thawed",
-    "crumbs": [
-      "Experiments",
-      "Be the Agent"
-    ]
-  },
-  {
-    "objectID": "experiments/be-the-agent/be-the-agent.html#web-pages-toolbox-only",
-    "href": "experiments/be-the-agent/be-the-agent.html#web-pages-toolbox-only",
-    "title": "Be the Agent",
-    "section": "Web pages (Toolbox only)",
-    "text": "Web pages (Toolbox only)\n\n\n\n\n\n\nTipNitrogen requirement of arable crops — teaching guide 2026\n\n\n\nKeywords: nitrogen, requirement, crops, wheat, barley, rape, maize, beet, fertiliser\nThe nitrogen requirement is the amount of nitrogen a crop needs in one season, in kg N per hectare. From it, subtract the soil mineral nitrogen (Nmin) measured in spring; the rest may be applied as fertiliser.\n\n\n\nCrop\nRequirement\n\n\n\n\nwinter wheat\n180 kg N/ha\n\n\nwinter barley\n160 kg N/ha\n\n\noilseed rape\n200 kg N/ha\n\n\ngrain maize\n170 kg N/ha\n\n\nsugar beet\n150 kg N/ha\n\n\n\n\n\n\n\n\n\n\n\nTipFertiliser recommendations 2009 (archive)\n\n\n\nKeywords: nitrogen, fertiliser, wheat, barley, recommendation, archive\nThis page is no longer updated. Recommended nitrogen for winter wheat: 210 kg N/ha; for winter barley: 190 kg N/ha.\n\n\n\n\n\n\n\n\nTipSplitting nitrogen in winter wheat\n\n\n\nKeywords: wheat, nitrogen, split, dose, timing, first\nWinter wheat gets its nitrogen in three doses: the first dose, 40 % of the total, at the start of growth in spring; the second, 40 %, when the stem starts to grow; the third, 20 %, when the ears appear.\n\n\n\n\n\n\n\n\nTipWhen may fertiliser be spread? — teaching rules\n\n\n\nKeywords: when, date, rules, ban, spreading, frozen, snow, fertiliser\nNo nitrogen fertiliser may be spread between 1 October and 31 January. At any time of year, fertiliser must never be spread on ground that is frozen, flooded or covered in snow.\n\n\n\n\n\n\n\n\nTipCalcium ammonium nitrate (CAN)\n\n\n\nKeywords: CAN, calcium, ammonium, nitrate, product, content, fertiliser\nCalcium ammonium nitrate contains 27 % nitrogen: 100 kg of product bring 27 kg of nitrogen to the field.\n\n\n\n\n\n\n\n\nTipWinter wheat varieties 2026\n\n\n\nKeywords: wheat, varieties, yield, 2026\nTwelve new varieties were tested this year. The highest yields came from varieties with good winter hardiness and resistance to yellow rust.",
+    "text": "Reflection\nWrite down your own answers first, then discuss them in your group.\n\nIn which round would the Model have been stuck without the tools, and which tool was used most?\nWhat would have gone differently if the Model had had to give up its stack after ten cards?\nWho did the thinking, who did the acting, and which of it could the Model actually do?",
     "crumbs": [
       "Experiments",
       "Be the Agent"
@@ -382,7 +327,7 @@
     "href": "experiments/be-the-agent/be-the-agent.html#observers-sheet",
     "title": "Be the Agent",
     "section": "Observer’s sheet",
-    "text": "Observer’s sheet\nTask: ______ Model: ______________ Toolbox: ______________\n\n\n\n\n\n\n\n\n\nRound\nCard\nWhat it said, in short\nNote: error, detour, good move\n\n\n\n\n1\n\n\n\n\n\n2\n\n\n\n\n\n3\n\n\n\n\n\n4\n\n\n\n\n\n5\n\n\n\n\n\n6\n\n\n\n\n\n7\n\n\n\n\n\n8\n\n\n\n\n\n9\n\n\n\n\n\n10\n\n\n\n\n\n11\n\n\n\n\n\n12\n\n\n\n\n\n13\n\n\n\n\n\n14\n\n\n\n\n\n15\n\n\n\n\n\n16\n\n\n\n\n\n\nRounds: ______ Tool calls: ______ Errors: ______ Cards on the stack at the end: ______",
+    "text": "Observer’s sheet\nTask: ______ Model: ______________ Harness: ______________\n\n\n\n\n\n\n\n\n\n\nRound\nCard\nTool\nWhat it said, in short\nNote: error, detour, good move\n\n\n\n\n1\n\n\n\n\n\n\n2\n\n\n\n\n\n\n3\n\n\n\n\n\n\n4\n\n\n\n\n\n\n5\n\n\n\n\n\n\n6\n\n\n\n\n\n\n7\n\n\n\n\n\n\n8\n\n\n\n\n\n\n9\n\n\n\n\n\n\n10\n\n\n\n\n\n\n11\n\n\n\n\n\n\n12\n\n\n\n\n\n\n13\n\n\n\n\n\n\n14\n\n\n\n\n\n\n15\n\n\n\n\n\n\n16\n\n\n\n\n\n\n\nRounds: ______ Tool calls: Search ___ Web ___ Files ___ Calculator ___ Errors: ______ Cards on the stack at the end: ______",
     "crumbs": [
       "Experiments",
       "Be the Agent"
