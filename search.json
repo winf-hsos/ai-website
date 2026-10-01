@@ -34,116 +34,21 @@
     "href": "experiments/index.html",
     "title": "Experiments",
     "section": "",
-    "text": "Every session starts with a 30-minute experiment that leads into its topic. Each one comes with written instructions: what you need, the steps, the point of it, and how to go further on your own. You can read them here or download them as a PDF.\nThe first experiments are on their way.",
+    "text": "Every session starts with a 30-minute experiment that leads into its topic. Each one comes with written instructions: what you need, the steps, how to go further on your own, and questions to reflect on at the end. You can read them here or download them as a PDF to print.\n\nBe the Agent: play an AI agent with cards and find out what the model does and what the tools do.\n\nMore experiments are on their way.",
     "crumbs": [
       "Experiments",
       "Experiments"
     ]
   },
   {
-    "objectID": "concepts/ai-agents.html",
-    "href": "concepts/ai-agents.html",
-    "title": "AI Agents",
+    "objectID": "concepts/index.html",
+    "href": "concepts/index.html",
+    "title": "Overview",
     "section": "",
-    "text": "A chatbot answers, and you take the next step yourself: you copy the code, run it, paste back the error. An agent takes those steps on its own. Under the hood it is the same language model; the difference is what is built around it. A working definition: an LLM agent runs tools in a loop to achieve a goal.\nEverything else, the plan, the instructions it loads, the sub-agents, the context it keeps in mind, is built around that loop. This page answers:\n\nWhat is the difference between a chatbot and an agent?\nWhat are the parts of an agent, and what does each one do?\nWhen is an agent the right choice, and when is a fixed workflow better?\nWhy are agents suddenly everywhere?\nWhat can go wrong when an agent acts with your permissions?",
+    "text": "This page will show the map of topics for this course: which concepts there are, how they build on each other, and where each one appears in the experiments. Until the map is ready, here are the concepts that already have a page of their own:\n\nA Brief History of AI: seventy-five years of artificial intelligence, compiled live by an AI agent.\nAI Agents: a language model that uses tools in a loop to reach a goal.",
     "crumbs": [
       "Concepts",
-      "AI Agents"
-    ]
-  },
-  {
-    "objectID": "concepts/ai-agents.html#summary",
-    "href": "concepts/ai-agents.html#summary",
-    "title": "AI Agents",
-    "section": "",
-    "text": "A chatbot answers, and you take the next step yourself: you copy the code, run it, paste back the error. An agent takes those steps on its own. Under the hood it is the same language model; the difference is what is built around it. A working definition: an LLM agent runs tools in a loop to achieve a goal.\nEverything else, the plan, the instructions it loads, the sub-agents, the context it keeps in mind, is built around that loop. This page answers:\n\nWhat is the difference between a chatbot and an agent?\nWhat are the parts of an agent, and what does each one do?\nWhen is an agent the right choice, and when is a fixed workflow better?\nWhy are agents suddenly everywhere?\nWhat can go wrong when an agent acts with your permissions?",
-    "crumbs": [
-      "Concepts",
-      "AI Agents"
-    ]
-  },
-  {
-    "objectID": "concepts/ai-agents.html#explanation",
-    "href": "concepts/ai-agents.html#explanation",
-    "title": "AI Agents",
-    "section": "Explanation",
-    "text": "Explanation\n\nThe model, the tools, the loop\nThe language model can only produce text. It cannot open a file or load a web page. What it can do is write down which tool it wants to call, and with which arguments: read a file, write a file, run a command, search the web. A program on your computer executes the call and hands the result back to the model. Then the model decides what to do next. This loop, think, act, observe, repeats until the goal is reached. In research the pattern is known as ReAct (Yao et al., 2022).\n\n\nContext, plans and sub-agents\nEverything the agent “knows” during a task sits in its context window: the goal, every tool result, every intermediate thought. When it fills up, the agent has to summarise or forget. To stay on track, agents write themselves a plan, a to-do list they tick off, and read instructions stored in text files when they need them. For big tasks they can start sub-agents: copies of themselves, each with a fresh context window, working in parallel.\n\n\nWorkflow or agent?\nNot everything with AI inside is an agent. A workflow follows predefined steps; an agent decides the next step itself. The advice from Anthropic: keep it as simple as possible, and use agents only where the task needs that freedom.\n\n\nHandle with care\nAn agent acts with your permissions. It can read every file you can read, run every command you can run, and publish to the internet. Whoever gives an agent access hands over their own keys. Asking it to show its plan before it acts is where you stay in control.",
-    "crumbs": [
-      "Concepts",
-      "AI Agents"
-    ]
-  },
-  {
-    "objectID": "concepts/ai-agents.html#slides",
-    "href": "concepts/ai-agents.html#slides",
-    "title": "AI Agents",
-    "section": "Slides",
-    "text": "Slides",
-    "crumbs": [
-      "Concepts",
-      "AI Agents"
-    ]
-  },
-  {
-    "objectID": "concepts/ai-agents.html#practice-questions",
-    "href": "concepts/ai-agents.html#practice-questions",
-    "title": "AI Agents",
-    "section": "Practice questions",
-    "text": "Practice questions\nPractice questions for this concept will follow.",
-    "crumbs": [
-      "Concepts",
-      "AI Agents"
-    ]
-  },
-  {
-    "objectID": "concepts/ai-agents.html#further-reading",
-    "href": "concepts/ai-agents.html#further-reading",
-    "title": "AI Agents",
-    "section": "Further reading",
-    "text": "Further reading\n\nSimon Willison: I think “agent” may finally have a widely enough agreed upon definition to be useful jargon now, 18 September 2025.\nAnthropic: Building effective agents, December 2024.\nShunyu Yao et al.: ReAct: Synergizing Reasoning and Acting in Language Models, 2022.\nMETR: Measuring AI Ability to Complete Long Tasks, 2025.",
-    "crumbs": [
-      "Concepts",
-      "AI Agents"
-    ]
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "This website accompanies the AI modules Applications of Artificial Intelligence and Problem Solving with AI at Hochschule Osnabrück (Osnabrück University of Applied Sciences). Here you find everything for these modules in one place: the slides, the experiments you run in class and at home, and the questions to practise with.",
-    "crumbs": [
-      "About"
-    ]
-  },
-  {
-    "objectID": "about.html#contact",
-    "href": "about.html#contact",
-    "title": "About",
-    "section": "Contact",
-    "text": "Contact\nThe module and this website are run by Nicolas Meseth. Mistakes on the site, broken links or explanations that do not make sense: please send a mail. Telling us which explanation you were missing helps just as much.",
-    "crumbs": [
-      "About"
-    ]
-  },
-  {
-    "objectID": "about.html#source-code-and-material",
-    "href": "about.html#source-code-and-material",
-    "title": "About",
-    "section": "Source code and material",
-    "text": "Source code and material\nThe website lives on GitHub: github.com/winf-hsos/ai-website. Links to code and tools are collected under Links.",
-    "crumbs": [
-      "About"
-    ]
-  },
-  {
-    "objectID": "about.html#licence-and-transparency",
-    "href": "about.html#licence-and-transparency",
-    "title": "About",
-    "section": "Licence and transparency",
-    "text": "Licence and transparency\nThe content of this website is licensed under CC BY-SA 4.0: you may share and reuse it, with attribution and under the same terms.\nPictures on the slides that were generated with AI models are marked as such in a footnote on each slide. AI assistants are also used in creating the material for this course, in the same way you use them in the course yourselves; the content is checked and answered for by the lecturer.",
-    "crumbs": [
-      "About"
+      "Overview"
     ]
   },
   {
@@ -213,14 +118,274 @@
     ]
   },
   {
-    "objectID": "concepts/index.html",
-    "href": "concepts/index.html",
-    "title": "Overview",
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
     "section": "",
-    "text": "This page will show the map of topics for this course: which concepts there are, how they build on each other, and where each one appears in the experiments. Until the map is ready, here are the concepts that already have a page of their own:\n\nA Brief History of AI: seventy-five years of artificial intelligence, compiled live by an AI agent.\nAI Agents: a language model that uses tools in a loop to reach a goal.",
+    "text": "This website accompanies the AI modules Applications of Artificial Intelligence and Problem Solving with AI at Hochschule Osnabrück (Osnabrück University of Applied Sciences). Here you find everything for these modules in one place: the slides, the experiments you run in class and at home, and the questions to practise with.",
+    "crumbs": [
+      "About"
+    ]
+  },
+  {
+    "objectID": "about.html#contact",
+    "href": "about.html#contact",
+    "title": "About",
+    "section": "Contact",
+    "text": "Contact\nThe module and this website are run by Nicolas Meseth. Mistakes on the site, broken links or explanations that do not make sense: please send a mail. Telling us which explanation you were missing helps just as much.",
+    "crumbs": [
+      "About"
+    ]
+  },
+  {
+    "objectID": "about.html#source-code-and-material",
+    "href": "about.html#source-code-and-material",
+    "title": "About",
+    "section": "Source code and material",
+    "text": "Source code and material\nThe website lives on GitHub: github.com/winf-hsos/ai-website. Links to code and tools are collected under Links.",
+    "crumbs": [
+      "About"
+    ]
+  },
+  {
+    "objectID": "about.html#licence-and-transparency",
+    "href": "about.html#licence-and-transparency",
+    "title": "About",
+    "section": "Licence and transparency",
+    "text": "Licence and transparency\nThe content of this website is licensed under CC BY-SA 4.0: you may share and reuse it, with attribution and under the same terms.\nPictures on the slides that were generated with AI models are marked as such in a footnote on each slide. AI assistants are also used in creating the material for this course, in the same way you use them in the course yourselves; the content is checked and answered for by the lecturer.",
+    "crumbs": [
+      "About"
+    ]
+  },
+  {
+    "objectID": "concepts/ai-agents.html",
+    "href": "concepts/ai-agents.html",
+    "title": "AI Agents",
+    "section": "",
+    "text": "A chatbot answers, and you take the next step yourself: you copy the code, run it, paste back the error. An agent takes those steps on its own. Under the hood it is the same language model; the difference is what is built around it. A working definition: an LLM agent runs tools in a loop to achieve a goal.\nEverything else, the plan, the instructions it loads, the sub-agents, the context it keeps in mind, is built around that loop. This page answers:\n\nWhat is the difference between a chatbot and an agent?\nWhat are the parts of an agent, and what does each one do?\nWhen is an agent the right choice, and when is a fixed workflow better?\nWhy are agents suddenly everywhere?\nWhat can go wrong when an agent acts with your permissions?",
     "crumbs": [
       "Concepts",
-      "Overview"
+      "AI Agents"
+    ]
+  },
+  {
+    "objectID": "concepts/ai-agents.html#summary",
+    "href": "concepts/ai-agents.html#summary",
+    "title": "AI Agents",
+    "section": "",
+    "text": "A chatbot answers, and you take the next step yourself: you copy the code, run it, paste back the error. An agent takes those steps on its own. Under the hood it is the same language model; the difference is what is built around it. A working definition: an LLM agent runs tools in a loop to achieve a goal.\nEverything else, the plan, the instructions it loads, the sub-agents, the context it keeps in mind, is built around that loop. This page answers:\n\nWhat is the difference between a chatbot and an agent?\nWhat are the parts of an agent, and what does each one do?\nWhen is an agent the right choice, and when is a fixed workflow better?\nWhy are agents suddenly everywhere?\nWhat can go wrong when an agent acts with your permissions?",
+    "crumbs": [
+      "Concepts",
+      "AI Agents"
+    ]
+  },
+  {
+    "objectID": "concepts/ai-agents.html#explanation",
+    "href": "concepts/ai-agents.html#explanation",
+    "title": "AI Agents",
+    "section": "Explanation",
+    "text": "Explanation\n\nThe model, the tools, the loop\nThe language model can only produce text. It cannot open a file or load a web page. What it can do is write down which tool it wants to call, and with which arguments: read a file, write a file, run a command, search the web. A program on your computer executes the call and hands the result back to the model. Then the model decides what to do next. This loop, think, act, observe, repeats until the goal is reached. In research the pattern is known as ReAct (Yao et al., 2022).\n\n\nContext, plans and sub-agents\nEverything the agent “knows” during a task sits in its context window: the goal, every tool result, every intermediate thought. When it fills up, the agent has to summarise or forget. To stay on track, agents write themselves a plan, a to-do list they tick off, and read instructions stored in text files when they need them. For big tasks they can start sub-agents: copies of themselves, each with a fresh context window, working in parallel.\n\n\nWorkflow or agent?\nNot everything with AI inside is an agent. A workflow follows predefined steps; an agent decides the next step itself. The advice from Anthropic: keep it as simple as possible, and use agents only where the task needs that freedom.\n\n\nHandle with care\nAn agent acts with your permissions. It can read every file you can read, run every command you can run, and publish to the internet. Whoever gives an agent access hands over their own keys. Asking it to show its plan before it acts is where you stay in control.",
+    "crumbs": [
+      "Concepts",
+      "AI Agents"
+    ]
+  },
+  {
+    "objectID": "concepts/ai-agents.html#slides",
+    "href": "concepts/ai-agents.html#slides",
+    "title": "AI Agents",
+    "section": "Slides",
+    "text": "Slides",
+    "crumbs": [
+      "Concepts",
+      "AI Agents"
+    ]
+  },
+  {
+    "objectID": "concepts/ai-agents.html#practice-questions",
+    "href": "concepts/ai-agents.html#practice-questions",
+    "title": "AI Agents",
+    "section": "Practice questions",
+    "text": "Practice questions\nPractice questions for this concept will follow.",
+    "crumbs": [
+      "Concepts",
+      "AI Agents"
+    ]
+  },
+  {
+    "objectID": "concepts/ai-agents.html#further-reading",
+    "href": "concepts/ai-agents.html#further-reading",
+    "title": "AI Agents",
+    "section": "Further reading",
+    "text": "Further reading\n\nSimon Willison: I think “agent” may finally have a widely enough agreed upon definition to be useful jargon now, 18 September 2025.\nAnthropic: Building effective agents, December 2024.\nShunyu Yao et al.: ReAct: Synergizing Reasoning and Acting in Language Models, 2022.\nMETR: Measuring AI Ability to Complete Long Tasks, 2025.",
+    "crumbs": [
+      "Concepts",
+      "AI Agents"
+    ]
+  },
+  {
+    "objectID": "experiments/be-the-agent/be-the-agent.html",
+    "href": "experiments/be-the-agent/be-the-agent.html",
+    "title": "Be the Agent",
+    "section": "",
+    "text": "An AI agent such as Claude Code gets a goal instead of a recipe. It plans its own steps, uses tools and keeps going until the job is done. In this experiment you play such an agent yourselves, with cards, a calculator and a few printed pages instead of a computer. One of you is the language model, one is everything around it, and one watches and keeps the log. By the end you will have run, by hand, the loop that every AI agent runs on.",
+    "crumbs": [
+      "Experiments",
+      "Be the Agent"
+    ]
+  },
+  {
+    "objectID": "experiments/be-the-agent/be-the-agent.html#goal",
+    "href": "experiments/be-the-agent/be-the-agent.html#goal",
+    "title": "Be the Agent",
+    "section": "Goal",
+    "text": "Goal\nFind out from the inside how an agent works: what the language model decides, what the tools do, and why everything the model knows has to be on its stack of cards.",
+    "crumbs": [
+      "Experiments",
+      "Be the Agent"
+    ]
+  },
+  {
+    "objectID": "experiments/be-the-agent/be-the-agent.html#what-you-need",
+    "href": "experiments/be-the-agent/be-the-agent.html#what-you-need",
+    "title": "Be the Agent",
+    "section": "What you need",
+    "text": "What you need\n\nA group of three. In a group of four, two of you share the Toolbox.\nThe kit at the end of this document, printed and cut out: the system card, three task cards, the farm files, the web pages, the rules for the Toolbox and the Observer’s sheet.\nA stack of blank index cards, a pen for everyone and a calculator.\nAbout 30 minutes for the first two tasks.",
+    "crumbs": [
+      "Experiments",
+      "Be the Agent"
+    ]
+  },
+  {
+    "objectID": "experiments/be-the-agent/be-the-agent.html#the-three-roles",
+    "href": "experiments/be-the-agent/be-the-agent.html#the-three-roles",
+    "title": "Be the Agent",
+    "section": "The three roles",
+    "text": "The three roles\n\n\n\n\n\n\n\n\nRole\nWhat you do\nWhat you may look at\n\n\n\n\nModel\nYou decide what happens next and write it on a card.\nOnly the stack of cards in front of you.\n\n\nToolbox\nYou carry out exactly what a tool card says and write the result on a new card.\nThe farm files, the web pages and the calculator.\n\n\nObserver\nYou keep the log: every card in order, with a note on what happened.\nEverything, but you never help.",
+    "crumbs": [
+      "Experiments",
+      "Be the Agent"
+    ]
+  },
+  {
+    "objectID": "experiments/be-the-agent/be-the-agent.html#the-rules",
+    "href": "experiments/be-the-agent/be-the-agent.html#the-rules",
+    "title": "Be the Agent",
+    "section": "The rules",
+    "text": "The rules\n\nThe Model sees only its stack. It never looks at the farm files or the web pages, and nobody talks to it. Everything it learns arrives on a card.\nEvery card the Model writes starts with one of three words:\n\nTHINK: a note to itself, for example THINK: I need the size of the field first.\nTOOL: a tool call, written exactly as on the system card, for example TOOL: read_file(\"fields\").\nANSWER: the answer to the task. This card ends the game.\n\nThe Toolbox carries out a tool card literally and writes the result on a new card that starts with RESULT:. If the tool does not exist or the call is written wrongly, the result is an error. The Toolbox never repairs a call, never guesses what the Model meant and never adds anything that was not asked for.\nEvery card goes on top of the stack in the order it was written, and it stays there.\nOne card per turn. The Model writes one card; if it is a tool card, the Toolbox answers it before the Model writes the next one.",
+    "crumbs": [
+      "Experiments",
+      "Be the Agent"
+    ]
+  },
+  {
+    "objectID": "experiments/be-the-agent/be-the-agent.html#steps",
+    "href": "experiments/be-the-agent/be-the-agent.html#steps",
+    "title": "Be the Agent",
+    "section": "Steps",
+    "text": "Steps\n\nSet up. The Model’s stack starts with the system card, with the card for Task 1 on top of it. The Toolbox lays out the farm files and the web pages where the Model cannot see them. The Observer takes the log sheet.\nPlay Task 1. How many cards did it take? Did the Model write a THINK: card before its first tool call?\nSwap roles and play Task 2. Which tools did the Model use, and in which order? Did the first search find the right page? Which value did the Model choose, and how did it decide?\nCount. The Observer reads the log aloud: rounds, tool calls, errors, and how many cards lie on the stack at the end.\nPlay Task 3 if there is time. One thing in the farm files will only be noticed by a careful Model.\nCompare with a real agent. Your lecturer shows the log of a real agent session. Find the places where it thinks, calls a tool, receives a result and answers.",
+    "crumbs": [
+      "Experiments",
+      "Be the Agent"
+    ]
+  },
+  {
+    "objectID": "experiments/be-the-agent/be-the-agent.html#what-you-just-played",
+    "href": "experiments/be-the-agent/be-the-agent.html#what-you-just-played",
+    "title": "Be the Agent",
+    "section": "What you just played",
+    "text": "What you just played\n\n\n\n\n\n\n\nIn the game\nIn a real AI agent\n\n\n\n\nthe stack of cards\nthe context window: everything the model knows during a task\n\n\nthe system card\nthe system prompt: who the model is and which tools it has\n\n\nthe task card\nthe user’s prompt, the goal\n\n\na THINK: card\nthe model’s reasoning or plan\n\n\na TOOL: card\na tool call: the model only writes text, a program carries it out\n\n\nthe Toolbox\nthe harness, the program around the model that runs the tools\n\n\na RESULT: card\nthe observation: the tool’s result, added to the context\n\n\nthe Observer’s log\nthe transcript of the session\n\n\nthe ANSWER: card\nthe stop condition: the goal is reached\n\n\n\nThe loop you ran, think, act and observe until the goal is reached, is the loop inside every AI agent. The Model never opened a file and never pressed a key on the calculator; it only wrote text, and something else carried it out.",
+    "crumbs": [
+      "Experiments",
+      "Be the Agent"
+    ]
+  },
+  {
+    "objectID": "experiments/be-the-agent/be-the-agent.html#go-further",
+    "href": "experiments/be-the-agent/be-the-agent.html#go-further",
+    "title": "Be the Agent",
+    "section": "Go further",
+    "text": "Go further\n\nLimited memory. The stack may now hold at most eight cards. When it is full, the Model writes a SUMMARY: card that replaces the oldest cards; the system card and the task card always stay. Play Task 3 again. What got lost, and did it matter?\nBe the tool for a chatbot. Solve Task 2 with a chatbot in your browser. Whenever it needs a file, a web page or a calculation, you have to provide it yourself. Who is the Toolbox now, and who decides the next step?\nA new tool. Invent a sixth tool, for example forecast(\"date\"), add its description to the system card and write a page for the Toolbox. Does the Model use the new tool without being told to?\nA wrong result. The Toolbox secretly returns one wrong result, for example a calculation that is off by a factor of ten. Does the Model notice? What would a real agent need in order to notice?",
+    "crumbs": [
+      "Experiments",
+      "Be the Agent"
+    ]
+  },
+  {
+    "objectID": "experiments/be-the-agent/be-the-agent.html#reflection",
+    "href": "experiments/be-the-agent/be-the-agent.html#reflection",
+    "title": "Be the Agent",
+    "section": "Reflection",
+    "text": "Reflection\nWrite down your own answers first, then discuss them in your group.\n\nIn which round would the Model have been stuck without the Toolbox’s cards?\nWhat would have gone differently if the Model had had to give up its stack after ten cards?\nWho did the thinking, who did the acting, and which of it could the Model actually do?",
+    "crumbs": [
+      "Experiments",
+      "Be the Agent"
+    ]
+  },
+  {
+    "objectID": "experiments/be-the-agent/be-the-agent.html#system-card",
+    "href": "experiments/be-the-agent/be-the-agent.html#system-card",
+    "title": "Be the Agent",
+    "section": "System card",
+    "text": "System card\n\n\n\n\n\n\nNoteSYSTEM\n\n\n\nYou are the assistant of Greenfield Farm. You can only act by writing cards. On every turn, write exactly one card that starts with THINK:, TOOL: or ANSWER:.\nYou can use these tools:\n\nsearch(\"words\") finds pages on the web and returns their titles\nopen(\"title\") returns the full text of one web page\nread_file(\"name\") returns one of the farm’s files: fields, soil_tests, stock, weather\ncalculator(\"expression\") calculates, for example calculator(\"4.5 * 100\")\nwrite_file(\"name\", \"text\") saves a text as a new file of the farm\n\nWhen you have answered the task, write ANSWER: and stop.",
+    "crumbs": [
+      "Experiments",
+      "Be the Agent"
+    ]
+  },
+  {
+    "objectID": "experiments/be-the-agent/be-the-agent.html#task-cards",
+    "href": "experiments/be-the-agent/be-the-agent.html#task-cards",
+    "title": "Be the Agent",
+    "section": "Task cards",
+    "text": "Task cards\n\n\n\n\n\n\nNoteTASK 1\n\n\n\nHow large is the field Long Acre, and what grows on it this year?\n\n\n\n\n\n\n\n\nNoteTASK 2\n\n\n\nHow much nitrogen may we still apply to Long Acre this spring? Give the total in kg N for the whole field.\n\n\n\n\n\n\n\n\nNoteTASK 3\n\n\n\nPlan the first nitrogen application on Long Acre: how many kilograms of which fertiliser product do we need, and can we spread it on 10 February? Save the plan as the file plan.",
+    "crumbs": [
+      "Experiments",
+      "Be the Agent"
+    ]
+  },
+  {
+    "objectID": "experiments/be-the-agent/be-the-agent.html#rules-for-the-toolbox",
+    "href": "experiments/be-the-agent/be-the-agent.html#rules-for-the-toolbox",
+    "title": "Be the Agent",
+    "section": "Rules for the Toolbox",
+    "text": "Rules for the Toolbox\nCarry out each tool card exactly as written and answer with a card that starts with RESULT:.\n\n\n\n\n\n\n\n\nTool\nWhat you do\nIf it goes wrong\n\n\n\n\nsearch(\"words\")\nCompare the search words with the keyword line of every web page. Write down the titles of all pages that contain at least one of the words, one title per line.\nRESULT: no pages found\n\n\nopen(\"title\")\nCopy the whole text of the page with this title.\nRESULT: error, page not found\n\n\nread_file(\"name\")\nCopy the whole file.\nRESULT: error, file not found\n\n\ncalculator(\"expression\")\nCalculate exactly what is written and round to two decimals.\nRESULT: error, cannot calculate\n\n\nwrite_file(\"name\", \"text\")\nWrite the text on a new sheet with the name as its title and put it with the farm files.\n–\n\n\n\nA call with a tool that is not in this list, or written differently, gets RESULT: error, unknown tool.",
+    "crumbs": [
+      "Experiments",
+      "Be the Agent"
+    ]
+  },
+  {
+    "objectID": "experiments/be-the-agent/be-the-agent.html#farm-files-toolbox-only",
+    "href": "experiments/be-the-agent/be-the-agent.html#farm-files-toolbox-only",
+    "title": "Be the Agent",
+    "section": "Farm files (Toolbox only)",
+    "text": "Farm files (Toolbox only)\n\n\n\n\n\n\nTipfields\n\n\n\n\n\n\nField\nSize\nCrop 2026\n\n\n\n\nLong Acre\n4.5 ha\nwinter wheat\n\n\nMill Field\n3.2 ha\noilseed rape\n\n\nBack Meadow\n2.0 ha\ngrassland\n\n\n\n\n\n\n\n\n\n\n\nTipsoil_tests\n\n\n\n\n\n\nField\nSampled\nSoil mineral nitrogen (Nmin)\n\n\n\n\nLong Acre\n3 February 2026\n40 kg N/ha\n\n\nMill Field\n3 February 2026\n25 kg N/ha\n\n\n\n\n\n\n\n\n\n\n\nTipstock\n\n\n\n\n\n\nProduct\nNitrogen content\nIn store\n\n\n\n\nCalcium ammonium nitrate (CAN)\n27 %\n2,000 kg\n\n\nUrea\n46 %\n500 kg\n\n\n\n\n\n\n\n\n\n\n\nTipweather\n\n\n\n\n\n\nDate\nWeather\n\n\n\n\n9 February\nfrost at night, ground frozen until midday\n\n\n10 February\nfrost day and night, ground frozen all day\n\n\n11 February\nmild, ground thawed",
+    "crumbs": [
+      "Experiments",
+      "Be the Agent"
+    ]
+  },
+  {
+    "objectID": "experiments/be-the-agent/be-the-agent.html#web-pages-toolbox-only",
+    "href": "experiments/be-the-agent/be-the-agent.html#web-pages-toolbox-only",
+    "title": "Be the Agent",
+    "section": "Web pages (Toolbox only)",
+    "text": "Web pages (Toolbox only)\n\n\n\n\n\n\nTipNitrogen requirement of arable crops — teaching guide 2026\n\n\n\nKeywords: nitrogen, requirement, crops, wheat, barley, rape, maize, beet, fertiliser\nThe nitrogen requirement is the amount of nitrogen a crop needs in one season, in kg N per hectare. From it, subtract the soil mineral nitrogen (Nmin) measured in spring; the rest may be applied as fertiliser.\n\n\n\nCrop\nRequirement\n\n\n\n\nwinter wheat\n180 kg N/ha\n\n\nwinter barley\n160 kg N/ha\n\n\noilseed rape\n200 kg N/ha\n\n\ngrain maize\n170 kg N/ha\n\n\nsugar beet\n150 kg N/ha\n\n\n\n\n\n\n\n\n\n\n\nTipFertiliser recommendations 2009 (archive)\n\n\n\nKeywords: nitrogen, fertiliser, wheat, barley, recommendation, archive\nThis page is no longer updated. Recommended nitrogen for winter wheat: 210 kg N/ha; for winter barley: 190 kg N/ha.\n\n\n\n\n\n\n\n\nTipSplitting nitrogen in winter wheat\n\n\n\nKeywords: wheat, nitrogen, split, dose, timing, first\nWinter wheat gets its nitrogen in three doses: the first dose, 40 % of the total, at the start of growth in spring; the second, 40 %, when the stem starts to grow; the third, 20 %, when the ears appear.\n\n\n\n\n\n\n\n\nTipWhen may fertiliser be spread? — teaching rules\n\n\n\nKeywords: when, date, rules, ban, spreading, frozen, snow, fertiliser\nNo nitrogen fertiliser may be spread between 1 October and 31 January. At any time of year, fertiliser must never be spread on ground that is frozen, flooded or covered in snow.\n\n\n\n\n\n\n\n\nTipCalcium ammonium nitrate (CAN)\n\n\n\nKeywords: CAN, calcium, ammonium, nitrate, product, content, fertiliser\nCalcium ammonium nitrate contains 27 % nitrogen: 100 kg of product bring 27 kg of nitrogen to the field.\n\n\n\n\n\n\n\n\nTipWinter wheat varieties 2026\n\n\n\nKeywords: wheat, varieties, yield, 2026\nTwelve new varieties were tested this year. The highest yields came from varieties with good winter hardiness and resistance to yellow rust.",
+    "crumbs": [
+      "Experiments",
+      "Be the Agent"
+    ]
+  },
+  {
+    "objectID": "experiments/be-the-agent/be-the-agent.html#observers-sheet",
+    "href": "experiments/be-the-agent/be-the-agent.html#observers-sheet",
+    "title": "Be the Agent",
+    "section": "Observer’s sheet",
+    "text": "Observer’s sheet\nTask: ______ Model: ______________ Toolbox: ______________\n\n\n\n\n\n\n\n\n\nRound\nCard\nWhat it said, in short\nNote: error, detour, good move\n\n\n\n\n1\n\n\n\n\n\n2\n\n\n\n\n\n3\n\n\n\n\n\n4\n\n\n\n\n\n5\n\n\n\n\n\n6\n\n\n\n\n\n7\n\n\n\n\n\n8\n\n\n\n\n\n9\n\n\n\n\n\n10\n\n\n\n\n\n11\n\n\n\n\n\n12\n\n\n\n\n\n13\n\n\n\n\n\n14\n\n\n\n\n\n15\n\n\n\n\n\n16\n\n\n\n\n\n\nRounds: ______ Tool calls: ______ Errors: ______ Cards on the stack at the end: ______",
+    "crumbs": [
+      "Experiments",
+      "Be the Agent"
     ]
   },
   {
