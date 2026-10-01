@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Experiments – Artificial Intelligence</title>
+<title>AI Agents – Artificial Intelligence</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -33,8 +33,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../concepts/index.html" rel="next">
-<link href="../index.html" rel="prev">
+<link href="../links.html" rel="next">
+<link href="../concepts/a-brief-history-of-ai.html" rel="prev">
 <link href="../logo.svg" rel="icon" type="image/svg+xml">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -102,7 +102,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../experiments/index.html">Experiments</a></li><li class="breadcrumb-item"><a href="../experiments/index.html">Experiments</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../concepts/index.html">Concepts</a></li><li class="breadcrumb-item"><a href="../concepts/ai-agents.html">AI Agents</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -122,16 +122,16 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
  <span class="menu-text">Experiments</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../experiments/index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../experiments/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Experiments</span></a>
   </div>
 </li>
@@ -139,13 +139,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">Concepts</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../concepts/index.html" class="sidebar-item-text sidebar-link">
@@ -160,7 +160,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../concepts/ai-agents.html" class="sidebar-item-text sidebar-link">
+  <a href="../concepts/ai-agents.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">AI Agents</span></a>
   </div>
 </li>
@@ -183,15 +183,32 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#summary" id="toc-summary" class="nav-link active" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#explanation" id="toc-explanation" class="nav-link" data-scroll-target="#explanation">Explanation</a>
+  <ul class="collapse">
+  <li><a href="#the-model-the-tools-the-loop" id="toc-the-model-the-tools-the-loop" class="nav-link" data-scroll-target="#the-model-the-tools-the-loop">The model, the tools, the loop</a></li>
+  <li><a href="#context-plans-and-sub-agents" id="toc-context-plans-and-sub-agents" class="nav-link" data-scroll-target="#context-plans-and-sub-agents">Context, plans and sub-agents</a></li>
+  <li><a href="#workflow-or-agent" id="toc-workflow-or-agent" class="nav-link" data-scroll-target="#workflow-or-agent">Workflow or agent?</a></li>
+  <li><a href="#handle-with-care" id="toc-handle-with-care" class="nav-link" data-scroll-target="#handle-with-care">Handle with care</a></li>
+  </ul></li>
+  <li><a href="#slides" id="toc-slides" class="nav-link" data-scroll-target="#slides">Slides</a></li>
+  <li><a href="#practice-questions" id="toc-practice-questions" class="nav-link" data-scroll-target="#practice-questions">Practice questions</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further reading</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../experiments/index.html">Experiments</a></li><li class="breadcrumb-item"><a href="../experiments/index.html">Experiments</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../concepts/index.html">Concepts</a></li><li class="breadcrumb-item"><a href="../concepts/ai-agents.html">AI Agents</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Experiments</h1>
+<h1 class="title">AI Agents</h1>
+<p class="subtitle lead">A language model that uses tools in a loop to reach a goal</p>
 </div>
 
 
@@ -208,10 +225,58 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Every session starts with a 30-minute experiment that leads into its topic. Each one comes with written instructions: what you need, the steps, the point of it, and how to go further on your own. You can read them here or download them as a PDF.</p>
-<p>The first experiments are on their way.</p>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>A chatbot answers, and you take the next step yourself: you copy the code, run it, paste back the error. An agent takes those steps on its own. Under the hood it is the same language model; the difference is what is built around it. A working definition: <em>an LLM agent runs tools in a loop to achieve a goal.</em></p>
+<p>Everything else, the plan, the instructions it loads, the sub-agents, the context it keeps in mind, is built around that loop. This page answers:</p>
+<ul>
+<li>What is the difference between a chatbot and an agent?</li>
+<li>What are the parts of an agent, and what does each one do?</li>
+<li>When is an agent the right choice, and when is a fixed workflow better?</li>
+<li>Why are agents suddenly everywhere?</li>
+<li>What can go wrong when an agent acts with your permissions?</li>
+</ul>
+</section>
+<section id="explanation" class="level2">
+<h2 class="anchored" data-anchor-id="explanation">Explanation</h2>
+<section id="the-model-the-tools-the-loop" class="level3">
+<h3 class="anchored" data-anchor-id="the-model-the-tools-the-loop">The model, the tools, the loop</h3>
+<p>The <strong>language model</strong> can only produce text. It cannot open a file or load a web page. What it can do is write down which <strong>tool</strong> it wants to call, and with which arguments: read a file, write a file, run a command, search the web. A program on your computer executes the call and hands the result back to the model. Then the model decides what to do next. This <strong>loop</strong>, think, act, observe, repeats until the goal is reached. In research the pattern is known as ReAct (Yao et al., 2022).</p>
+</section>
+<section id="context-plans-and-sub-agents" class="level3">
+<h3 class="anchored" data-anchor-id="context-plans-and-sub-agents">Context, plans and sub-agents</h3>
+<p>Everything the agent “knows” during a task sits in its <strong>context window</strong>: the goal, every tool result, every intermediate thought. When it fills up, the agent has to summarise or forget. To stay on track, agents write themselves a <strong>plan</strong>, a to-do list they tick off, and read <strong>instructions</strong> stored in text files when they need them. For big tasks they can start <strong>sub-agents</strong>: copies of themselves, each with a fresh context window, working in parallel.</p>
+</section>
+<section id="workflow-or-agent" class="level3">
+<h3 class="anchored" data-anchor-id="workflow-or-agent">Workflow or agent?</h3>
+<p>Not everything with AI inside is an agent. A <strong>workflow</strong> follows predefined steps; an <strong>agent</strong> decides the next step itself. The advice from Anthropic: keep it as simple as possible, and use agents only where the task needs that freedom.</p>
+</section>
+<section id="handle-with-care" class="level3">
+<h3 class="anchored" data-anchor-id="handle-with-care">Handle with care</h3>
+<p>An agent acts with your permissions. It can read every file you can read, run every command you can run, and publish to the internet. Whoever gives an agent access hands over their own keys. Asking it to show its plan before it acts is where you stay in control.</p>
+</section>
+</section>
+<section id="slides" class="level2">
+<h2 class="anchored" data-anchor-id="slides">Slides</h2>
+<div class="deck-embed">
+  <iframe src="../assets/decks/ai-agents/ai-agents.html?bar=1&amp;pdf=../ai-agents.pdf" title="AI Agents" allowfullscreen="" loading="lazy"></iframe>
+</div>
+</section>
+<section id="practice-questions" class="level2">
+<h2 class="anchored" data-anchor-id="practice-questions">Practice questions</h2>
+<p>Practice questions for this concept will follow.</p>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further reading</h2>
+<ul>
+<li>Simon Willison: <a href="https://simonwillison.net/2025/Sep/18/agents/">I think “agent” may finally have a widely enough agreed upon definition to be useful jargon now</a>, 18 September 2025.</li>
+<li>Anthropic: <a href="https://www.anthropic.com/research/building-effective-agents">Building effective agents</a>, December 2024.</li>
+<li>Shunyu Yao et al.: <a href="https://arxiv.org/abs/2210.03629">ReAct: Synergizing Reasoning and Acting in Language Models</a>, 2022.</li>
+<li>METR: <a href="https://arxiv.org/abs/2503.14499">Measuring AI Ability to Complete Long Tasks</a>, 2025.</li>
+</ul>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -621,13 +686,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../index.html" class="pagination-link" aria-label="Artificial Intelligence">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Artificial Intelligence</span>
+      <a href="../concepts/a-brief-history-of-ai.html" class="pagination-link" aria-label="A Brief History of AI">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">A Brief History of AI</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../concepts/index.html" class="pagination-link" aria-label="Concepts">
-        <span class="nav-page-text">Concepts</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../links.html" class="pagination-link" aria-label="Links">
+        <span class="nav-page-text">Links</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -41,14 +41,69 @@
     ]
   },
   {
-    "objectID": "concepts/index.html",
-    "href": "concepts/index.html",
-    "title": "Concepts",
+    "objectID": "concepts/ai-agents.html",
+    "href": "concepts/ai-agents.html",
+    "title": "AI Agents",
     "section": "",
-    "text": "One page per concept, each with its slides.\n\nA Brief History of AI: seventy-five years of artificial intelligence, compiled live by an AI agent.\nWhat Is an AI Agent?: a language model that uses tools in a loop to reach a goal.",
+    "text": "A chatbot answers, and you take the next step yourself: you copy the code, run it, paste back the error. An agent takes those steps on its own. Under the hood it is the same language model; the difference is what is built around it. A working definition: an LLM agent runs tools in a loop to achieve a goal.\nEverything else, the plan, the instructions it loads, the sub-agents, the context it keeps in mind, is built around that loop. This page answers:\n\nWhat is the difference between a chatbot and an agent?\nWhat are the parts of an agent, and what does each one do?\nWhen is an agent the right choice, and when is a fixed workflow better?\nWhy are agents suddenly everywhere?\nWhat can go wrong when an agent acts with your permissions?",
     "crumbs": [
       "Concepts",
-      "Concepts"
+      "AI Agents"
+    ]
+  },
+  {
+    "objectID": "concepts/ai-agents.html#summary",
+    "href": "concepts/ai-agents.html#summary",
+    "title": "AI Agents",
+    "section": "",
+    "text": "A chatbot answers, and you take the next step yourself: you copy the code, run it, paste back the error. An agent takes those steps on its own. Under the hood it is the same language model; the difference is what is built around it. A working definition: an LLM agent runs tools in a loop to achieve a goal.\nEverything else, the plan, the instructions it loads, the sub-agents, the context it keeps in mind, is built around that loop. This page answers:\n\nWhat is the difference between a chatbot and an agent?\nWhat are the parts of an agent, and what does each one do?\nWhen is an agent the right choice, and when is a fixed workflow better?\nWhy are agents suddenly everywhere?\nWhat can go wrong when an agent acts with your permissions?",
+    "crumbs": [
+      "Concepts",
+      "AI Agents"
+    ]
+  },
+  {
+    "objectID": "concepts/ai-agents.html#explanation",
+    "href": "concepts/ai-agents.html#explanation",
+    "title": "AI Agents",
+    "section": "Explanation",
+    "text": "Explanation\n\nThe model, the tools, the loop\nThe language model can only produce text. It cannot open a file or load a web page. What it can do is write down which tool it wants to call, and with which arguments: read a file, write a file, run a command, search the web. A program on your computer executes the call and hands the result back to the model. Then the model decides what to do next. This loop, think, act, observe, repeats until the goal is reached. In research the pattern is known as ReAct (Yao et al., 2022).\n\n\nContext, plans and sub-agents\nEverything the agent “knows” during a task sits in its context window: the goal, every tool result, every intermediate thought. When it fills up, the agent has to summarise or forget. To stay on track, agents write themselves a plan, a to-do list they tick off, and read instructions stored in text files when they need them. For big tasks they can start sub-agents: copies of themselves, each with a fresh context window, working in parallel.\n\n\nWorkflow or agent?\nNot everything with AI inside is an agent. A workflow follows predefined steps; an agent decides the next step itself. The advice from Anthropic: keep it as simple as possible, and use agents only where the task needs that freedom.\n\n\nHandle with care\nAn agent acts with your permissions. It can read every file you can read, run every command you can run, and publish to the internet. Whoever gives an agent access hands over their own keys. Asking it to show its plan before it acts is where you stay in control.",
+    "crumbs": [
+      "Concepts",
+      "AI Agents"
+    ]
+  },
+  {
+    "objectID": "concepts/ai-agents.html#slides",
+    "href": "concepts/ai-agents.html#slides",
+    "title": "AI Agents",
+    "section": "Slides",
+    "text": "Slides",
+    "crumbs": [
+      "Concepts",
+      "AI Agents"
+    ]
+  },
+  {
+    "objectID": "concepts/ai-agents.html#practice-questions",
+    "href": "concepts/ai-agents.html#practice-questions",
+    "title": "AI Agents",
+    "section": "Practice questions",
+    "text": "Practice questions\nPractice questions for this concept will follow.",
+    "crumbs": [
+      "Concepts",
+      "AI Agents"
+    ]
+  },
+  {
+    "objectID": "concepts/ai-agents.html#further-reading",
+    "href": "concepts/ai-agents.html#further-reading",
+    "title": "AI Agents",
+    "section": "Further reading",
+    "text": "Further reading\n\nSimon Willison: I think “agent” may finally have a widely enough agreed upon definition to be useful jargon now, 18 September 2025.\nAnthropic: Building effective agents, December 2024.\nShunyu Yao et al.: ReAct: Synergizing Reasoning and Acting in Language Models, 2022.\nMETR: Measuring AI Ability to Complete Long Tasks, 2025.",
+    "crumbs": [
+      "Concepts",
+      "AI Agents"
     ]
   },
   {
@@ -158,69 +213,14 @@
     ]
   },
   {
-    "objectID": "concepts/what-is-an-ai-agent.html",
-    "href": "concepts/what-is-an-ai-agent.html",
-    "title": "What Is an AI Agent?",
+    "objectID": "concepts/index.html",
+    "href": "concepts/index.html",
+    "title": "Concepts",
     "section": "",
-    "text": "A chatbot answers, and you take the next step yourself: you copy the code, run it, paste back the error. An agent takes those steps on its own. Under the hood it is the same language model; the difference is what is built around it. A working definition: an LLM agent runs tools in a loop to achieve a goal.\nEverything else, the plan, the instructions it loads, the sub-agents, the context it keeps in mind, is built around that loop. This page answers:\n\nWhat is the difference between a chatbot and an agent?\nWhat are the parts of an agent, and what does each one do?\nWhen is an agent the right choice, and when is a fixed workflow better?\nWhy are agents suddenly everywhere?\nWhat can go wrong when an agent acts with your permissions?",
+    "text": "One page per concept, each with its slides.\n\nA Brief History of AI: seventy-five years of artificial intelligence, compiled live by an AI agent.\nAI Agents: a language model that uses tools in a loop to reach a goal.",
     "crumbs": [
       "Concepts",
-      "What Is an AI Agent?"
-    ]
-  },
-  {
-    "objectID": "concepts/what-is-an-ai-agent.html#summary",
-    "href": "concepts/what-is-an-ai-agent.html#summary",
-    "title": "What Is an AI Agent?",
-    "section": "",
-    "text": "A chatbot answers, and you take the next step yourself: you copy the code, run it, paste back the error. An agent takes those steps on its own. Under the hood it is the same language model; the difference is what is built around it. A working definition: an LLM agent runs tools in a loop to achieve a goal.\nEverything else, the plan, the instructions it loads, the sub-agents, the context it keeps in mind, is built around that loop. This page answers:\n\nWhat is the difference between a chatbot and an agent?\nWhat are the parts of an agent, and what does each one do?\nWhen is an agent the right choice, and when is a fixed workflow better?\nWhy are agents suddenly everywhere?\nWhat can go wrong when an agent acts with your permissions?",
-    "crumbs": [
-      "Concepts",
-      "What Is an AI Agent?"
-    ]
-  },
-  {
-    "objectID": "concepts/what-is-an-ai-agent.html#explanation",
-    "href": "concepts/what-is-an-ai-agent.html#explanation",
-    "title": "What Is an AI Agent?",
-    "section": "Explanation",
-    "text": "Explanation\n\nThe model, the tools, the loop\nThe language model can only produce text. It cannot open a file or load a web page. What it can do is write down which tool it wants to call, and with which arguments: read a file, write a file, run a command, search the web. A program on your computer executes the call and hands the result back to the model. Then the model decides what to do next. This loop, think, act, observe, repeats until the goal is reached. In research the pattern is known as ReAct (Yao et al., 2022).\n\n\nContext, plans and sub-agents\nEverything the agent “knows” during a task sits in its context window: the goal, every tool result, every intermediate thought. When it fills up, the agent has to summarise or forget. To stay on track, agents write themselves a plan, a to-do list they tick off, and read instructions stored in text files when they need them. For big tasks they can start sub-agents: copies of themselves, each with a fresh context window, working in parallel.\n\n\nWorkflow or agent?\nNot everything with AI inside is an agent. A workflow follows predefined steps; an agent decides the next step itself. The advice from Anthropic: keep it as simple as possible, and use agents only where the task needs that freedom.\n\n\nHandle with care\nAn agent acts with your permissions. It can read every file you can read, run every command you can run, and publish to the internet. Whoever gives an agent access hands over their own keys. Asking it to show its plan before it acts is where you stay in control.",
-    "crumbs": [
-      "Concepts",
-      "What Is an AI Agent?"
-    ]
-  },
-  {
-    "objectID": "concepts/what-is-an-ai-agent.html#slides",
-    "href": "concepts/what-is-an-ai-agent.html#slides",
-    "title": "What Is an AI Agent?",
-    "section": "Slides",
-    "text": "Slides",
-    "crumbs": [
-      "Concepts",
-      "What Is an AI Agent?"
-    ]
-  },
-  {
-    "objectID": "concepts/what-is-an-ai-agent.html#practice-questions",
-    "href": "concepts/what-is-an-ai-agent.html#practice-questions",
-    "title": "What Is an AI Agent?",
-    "section": "Practice questions",
-    "text": "Practice questions\nPractice questions for this concept will follow.",
-    "crumbs": [
-      "Concepts",
-      "What Is an AI Agent?"
-    ]
-  },
-  {
-    "objectID": "concepts/what-is-an-ai-agent.html#further-reading",
-    "href": "concepts/what-is-an-ai-agent.html#further-reading",
-    "title": "What Is an AI Agent?",
-    "section": "Further reading",
-    "text": "Further reading\n\nSimon Willison: I think “agent” may finally have a widely enough agreed upon definition to be useful jargon now, 18 September 2025.\nAnthropic: Building effective agents, December 2024.\nShunyu Yao et al.: ReAct: Synergizing Reasoning and Acting in Language Models, 2022.\nMETR: Measuring AI Ability to Complete Long Tasks, 2025.",
-    "crumbs": [
-      "Concepts",
-      "What Is an AI Agent?"
+      "Concepts"
     ]
   },
   {

@@ -1,4 +1,4 @@
-/* Zeichnungen des Decks "What Is an AI Agent?" (Sitzung 2, WS 2026/27).
+/* Zeichnungen des Decks "AI Agents" (bis 01.10.2026 "What Is an AI Agent?") (Sitzung 2, WS 2026/27).
  *
  * Erlaubte Schriftgroessen: 20, 32, 48, 80. Keine anderen Werte.
  * Leitungen zuerst, dann Kaesten, dann Beschriftungen (d.layers).
