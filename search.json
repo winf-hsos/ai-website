@@ -1,0 +1,246 @@
+[
+  {
+    "objectID": "links.html",
+    "href": "links.html",
+    "title": "Links",
+    "section": "",
+    "text": "The important places for this course, in one list. Bigger targets are shown as a card with a preview.",
+    "crumbs": [
+      "Links"
+    ]
+  },
+  {
+    "objectID": "links.html#course",
+    "href": "links.html#course",
+    "title": "Links",
+    "section": "Course",
+    "text": "Course\nhttps://github.com/winf-hsos/ai-websitegithub.com",
+    "crumbs": [
+      "Links"
+    ]
+  },
+  {
+    "objectID": "links.html#tools",
+    "href": "links.html#tools",
+    "title": "Links",
+    "section": "Tools",
+    "text": "Tools\n\nLM Studio: run open language models on your own laptop\nGoogle Colab: run prepared Python notebooks in the browser, nothing to install\nTiktokenizer: see how a language model splits text into tokens\nTransformer Explainer: look inside a small language model while it predicts the next token\nTensorFlow Playground: train a small neural network in the browser\nTeachable Machine: train an image or sound classifier with your webcam or microphone",
+    "crumbs": [
+      "Links"
+    ]
+  },
+  {
+    "objectID": "experiments/index.html",
+    "href": "experiments/index.html",
+    "title": "Experiments",
+    "section": "",
+    "text": "Every session starts with a 30-minute experiment that leads into its topic. Each one comes with written instructions: what you need, the steps, the point of it, and how to go further on your own. You can read them here or download them as a PDF.\nThe first experiments are on their way.",
+    "crumbs": [
+      "Experiments",
+      "Experiments"
+    ]
+  },
+  {
+    "objectID": "concepts/index.html",
+    "href": "concepts/index.html",
+    "title": "Concepts",
+    "section": "",
+    "text": "One page per concept, each with its slides.\n\nA Brief History of AI: seventy-five years of artificial intelligence, compiled live by an AI agent.\nWhat Is an AI Agent?: a language model that uses tools in a loop to reach a goal.",
+    "crumbs": [
+      "Concepts",
+      "Concepts"
+    ]
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "This website accompanies the AI modules Applications of Artificial Intelligence and Problem Solving with AI at Hochschule Osnabrück (Osnabrück University of Applied Sciences). Here you find everything for these modules in one place: the slides, the experiments you run in class and at home, and the questions to practise with.",
+    "crumbs": [
+      "About"
+    ]
+  },
+  {
+    "objectID": "about.html#contact",
+    "href": "about.html#contact",
+    "title": "About",
+    "section": "Contact",
+    "text": "Contact\nThe module and this website are run by Nicolas Meseth. Mistakes on the site, broken links or explanations that do not make sense: please send a mail. Telling us which explanation you were missing helps just as much.",
+    "crumbs": [
+      "About"
+    ]
+  },
+  {
+    "objectID": "about.html#source-code-and-material",
+    "href": "about.html#source-code-and-material",
+    "title": "About",
+    "section": "Source code and material",
+    "text": "Source code and material\nThe website lives on GitHub: github.com/winf-hsos/ai-website. Links to code and tools are collected under Links.",
+    "crumbs": [
+      "About"
+    ]
+  },
+  {
+    "objectID": "about.html#licence-and-transparency",
+    "href": "about.html#licence-and-transparency",
+    "title": "About",
+    "section": "Licence and transparency",
+    "text": "Licence and transparency\nThe content of this website is licensed under CC BY-SA 4.0: you may share and reuse it, with attribution and under the same terms.\nPictures on the slides that were generated with AI models are marked as such in a footnote on each slide. AI assistants are also used in creating the material for this course, in the same way you use them in the course yourselves; the content is checked and answered for by the lecturer.",
+    "crumbs": [
+      "About"
+    ]
+  },
+  {
+    "objectID": "concepts/a-brief-history-of-ai.html",
+    "href": "concepts/a-brief-history-of-ai.html",
+    "title": "A Brief History of AI",
+    "section": "",
+    "text": "When did artificial intelligence begin: in 1950 with Alan Turing, in 1956 at a workshop in Dartmouth, or in 2022 with ChatGPT? Instead of answering from a slide, we collect what you already know on a pinboard and hand it to an AI agent. The agent researches every milestone, reads the sources, checks last year’s list for errors, and turns the result into an interactive timeline with a quiz.\nWhat the agent does along the way is the programme of this course:\n\nHow can a model read a photo of handwriting?\nHow does a language model write a plan, code and text?\nWhy does it use tools, and when are rules better than learning?\nCan we trust facts an AI has checked?\nWhat happens when an agent splits its work among sub-agents, or publishes on its own?",
+    "crumbs": [
+      "Concepts",
+      "A Brief History of AI"
+    ]
+  },
+  {
+    "objectID": "concepts/a-brief-history-of-ai.html#summary",
+    "href": "concepts/a-brief-history-of-ai.html#summary",
+    "title": "A Brief History of AI",
+    "section": "",
+    "text": "When did artificial intelligence begin: in 1950 with Alan Turing, in 1956 at a workshop in Dartmouth, or in 2022 with ChatGPT? Instead of answering from a slide, we collect what you already know on a pinboard and hand it to an AI agent. The agent researches every milestone, reads the sources, checks last year’s list for errors, and turns the result into an interactive timeline with a quiz.\nWhat the agent does along the way is the programme of this course:\n\nHow can a model read a photo of handwriting?\nHow does a language model write a plan, code and text?\nWhy does it use tools, and when are rules better than learning?\nCan we trust facts an AI has checked?\nWhat happens when an agent splits its work among sub-agents, or publishes on its own?",
+    "crumbs": [
+      "Concepts",
+      "A Brief History of AI"
+    ]
+  },
+  {
+    "objectID": "concepts/a-brief-history-of-ai.html#explanation",
+    "href": "concepts/a-brief-history-of-ai.html#explanation",
+    "title": "A Brief History of AI",
+    "section": "Explanation",
+    "text": "Explanation\nThe explanation of this concept is on its way. Until then, the slides tell the story.",
+    "crumbs": [
+      "Concepts",
+      "A Brief History of AI"
+    ]
+  },
+  {
+    "objectID": "concepts/a-brief-history-of-ai.html#slides",
+    "href": "concepts/a-brief-history-of-ai.html#slides",
+    "title": "A Brief History of AI",
+    "section": "Slides",
+    "text": "Slides",
+    "crumbs": [
+      "Concepts",
+      "A Brief History of AI"
+    ]
+  },
+  {
+    "objectID": "concepts/a-brief-history-of-ai.html#practice-questions",
+    "href": "concepts/a-brief-history-of-ai.html#practice-questions",
+    "title": "A Brief History of AI",
+    "section": "Practice questions",
+    "text": "Practice questions\nPractice questions for this concept will follow.",
+    "crumbs": [
+      "Concepts",
+      "A Brief History of AI"
+    ]
+  },
+  {
+    "objectID": "concepts/a-brief-history-of-ai.html#further-reading",
+    "href": "concepts/a-brief-history-of-ai.html#further-reading",
+    "title": "A Brief History of AI",
+    "section": "Further reading",
+    "text": "Further reading\n\nAlan M. Turing: Computing Machinery and Intelligence, Mind 59 (1950), 433–460.\nRich Sutton: The Bitter Lesson, 2019.",
+    "crumbs": [
+      "Concepts",
+      "A Brief History of AI"
+    ]
+  },
+  {
+    "objectID": "concepts/what-is-an-ai-agent.html",
+    "href": "concepts/what-is-an-ai-agent.html",
+    "title": "What Is an AI Agent?",
+    "section": "",
+    "text": "A chatbot answers, and you take the next step yourself: you copy the code, run it, paste back the error. An agent takes those steps on its own. Under the hood it is the same language model; the difference is what is built around it. A working definition: an LLM agent runs tools in a loop to achieve a goal.\nEverything else, the plan, the instructions it loads, the sub-agents, the context it keeps in mind, is built around that loop. This page answers:\n\nWhat is the difference between a chatbot and an agent?\nWhat are the parts of an agent, and what does each one do?\nWhen is an agent the right choice, and when is a fixed workflow better?\nWhy are agents suddenly everywhere?\nWhat can go wrong when an agent acts with your permissions?",
+    "crumbs": [
+      "Concepts",
+      "What Is an AI Agent?"
+    ]
+  },
+  {
+    "objectID": "concepts/what-is-an-ai-agent.html#summary",
+    "href": "concepts/what-is-an-ai-agent.html#summary",
+    "title": "What Is an AI Agent?",
+    "section": "",
+    "text": "A chatbot answers, and you take the next step yourself: you copy the code, run it, paste back the error. An agent takes those steps on its own. Under the hood it is the same language model; the difference is what is built around it. A working definition: an LLM agent runs tools in a loop to achieve a goal.\nEverything else, the plan, the instructions it loads, the sub-agents, the context it keeps in mind, is built around that loop. This page answers:\n\nWhat is the difference between a chatbot and an agent?\nWhat are the parts of an agent, and what does each one do?\nWhen is an agent the right choice, and when is a fixed workflow better?\nWhy are agents suddenly everywhere?\nWhat can go wrong when an agent acts with your permissions?",
+    "crumbs": [
+      "Concepts",
+      "What Is an AI Agent?"
+    ]
+  },
+  {
+    "objectID": "concepts/what-is-an-ai-agent.html#explanation",
+    "href": "concepts/what-is-an-ai-agent.html#explanation",
+    "title": "What Is an AI Agent?",
+    "section": "Explanation",
+    "text": "Explanation\n\nThe model, the tools, the loop\nThe language model can only produce text. It cannot open a file or load a web page. What it can do is write down which tool it wants to call, and with which arguments: read a file, write a file, run a command, search the web. A program on your computer executes the call and hands the result back to the model. Then the model decides what to do next. This loop, think, act, observe, repeats until the goal is reached. In research the pattern is known as ReAct (Yao et al., 2022).\n\n\nContext, plans and sub-agents\nEverything the agent “knows” during a task sits in its context window: the goal, every tool result, every intermediate thought. When it fills up, the agent has to summarise or forget. To stay on track, agents write themselves a plan, a to-do list they tick off, and read instructions stored in text files when they need them. For big tasks they can start sub-agents: copies of themselves, each with a fresh context window, working in parallel.\n\n\nWorkflow or agent?\nNot everything with AI inside is an agent. A workflow follows predefined steps; an agent decides the next step itself. The advice from Anthropic: keep it as simple as possible, and use agents only where the task needs that freedom.\n\n\nHandle with care\nAn agent acts with your permissions. It can read every file you can read, run every command you can run, and publish to the internet. Whoever gives an agent access hands over their own keys. Asking it to show its plan before it acts is where you stay in control.",
+    "crumbs": [
+      "Concepts",
+      "What Is an AI Agent?"
+    ]
+  },
+  {
+    "objectID": "concepts/what-is-an-ai-agent.html#slides",
+    "href": "concepts/what-is-an-ai-agent.html#slides",
+    "title": "What Is an AI Agent?",
+    "section": "Slides",
+    "text": "Slides",
+    "crumbs": [
+      "Concepts",
+      "What Is an AI Agent?"
+    ]
+  },
+  {
+    "objectID": "concepts/what-is-an-ai-agent.html#practice-questions",
+    "href": "concepts/what-is-an-ai-agent.html#practice-questions",
+    "title": "What Is an AI Agent?",
+    "section": "Practice questions",
+    "text": "Practice questions\nPractice questions for this concept will follow.",
+    "crumbs": [
+      "Concepts",
+      "What Is an AI Agent?"
+    ]
+  },
+  {
+    "objectID": "concepts/what-is-an-ai-agent.html#further-reading",
+    "href": "concepts/what-is-an-ai-agent.html#further-reading",
+    "title": "What Is an AI Agent?",
+    "section": "Further reading",
+    "text": "Further reading\n\nSimon Willison: I think “agent” may finally have a widely enough agreed upon definition to be useful jargon now, 18 September 2025.\nAnthropic: Building effective agents, December 2024.\nShunyu Yao et al.: ReAct: Synergizing Reasoning and Acting in Language Models, 2022.\nMETR: Measuring AI Ability to Complete Long Tasks, 2025.",
+    "crumbs": [
+      "Concepts",
+      "What Is an AI Agent?"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Artificial Intelligence",
+    "section": "",
+    "text": "Everybody talks about AI agents: programs that get a goal instead of a recipe, plan their own steps, use tools, and keep going until the job is done. You will watch one at work, try one yourself, and then open it up, layer by layer.\nWe start at the top, with the agent you have just seen in action, and work our way down: to the language model inside it, to how that model represents text and meaning, to how it was trained, and finally to the simple idea of learning from data. Then we climb back up and ask what all this means for your field and for the rest of us.\nEvery session starts with an experiment. You do something first and understand it afterwards, often with pen, paper and a table before any computer comes in. All experiments can be repeated at home. Where there is code to write, you don’t type it yourself: you tell an AI agent what you need and check what it builds.",
+    "crumbs": [
+      "Artificial Intelligence"
+    ]
+  },
+  {
+    "objectID": "index.html#what-you-find-here",
+    "href": "index.html#what-you-find-here",
+    "title": "Artificial Intelligence",
+    "section": "What you find here",
+    "text": "What you find here\nThe concepts come with their slides. The experiments come with step-by-step instructions, as a web page and as a PDF to download. Everything you need for the course is on this site.",
+    "crumbs": [
+      "Artificial Intelligence"
+    ]
+  }
+]

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>What Is an AI Agent?</title>
+  <link rel="stylesheet" href="theme.css?v=20260930m">
+  <link rel="stylesheet" href="../stagekit/stagekit.css?v=20260930t">
+  <style>
+    /* Zeilen, die nacheinander erscheinen: grosszuegiger Abstand */
+    .lines.spaced > div { margin-bottom: 36px; }
+    /* "what we saw" unter der Zeichnung von inside the loop */
+    .saw { position: absolute; left: var(--margin); right: var(--margin); bottom: 70px; font-size: var(--small); color: var(--yellow); }
+    .saw .k { color: var(--gray); }
+  </style>
+</head>
+<body>
+<div class="deck"
+     data-title="what is an <span class='keep-case'>AI</span> agent?"
+     data-subtitle="applications of artificial intelligence · prof. dr. nicolas meseth"
+     data-parts='["quick quiz", "what is an agent?", "inside an agent", "agents and their models", "power and responsibility"]'
+     data-part-colors='{"quick quiz": "#7fd4f2", "what is an agent?": "#33b5e9", "inside an agent": "#009ee3", "agents and their models": "#0088c7", "power and responsibility": "#0077aa"}'
+     data-live-url="https://lifi.uber.space"
+     data-live-series="what-is-an-ai-agent"
+     data-live-module="aai">
+
+  <section class="slide title"></section>
+  <section class="slide agenda"></section>
+
+  <!-- ==================== 1 · quick quiz ==================== -->
+  <section class="slide part" data-part="quick quiz">
+    <aside class="notes">Vier Fragen zu dem, was wir eben gesehen haben: Claude Code als Agent, nicht die Geschichte der KI. Anonym, zählt nicht. Vorher am Vortragsrechner: Taste L (Admin-Schlüssel), dann C für eine neue Sitzung.</aside>
+  </section>
+
+  <section class="slide poll" data-poll="what-we-gave">
+    <div class="poll-q">what did we give the agent to start the research?</div>
+    <ol class="poll-opts">
+      <li>step-by-step instructions</li>
+      <li data-correct>a goal, a photo, a text file</li>
+      <li>a list of websites to visit</li>
+      <li>a program we wrote</li>
+    </ol>
+    <aside class="notes">Kein Rezept, sondern ein Ziel und zwei Eingaben. Den Weg hat der Agent selbst gefunden.</aside>
+  </section>
+
+  <section class="slide poll" data-poll="where-it-worked">
+    <div class="poll-q">where did the agent do its work?</div>
+    <ol class="poll-opts">
+      <li>all of it on the laptop</li>
+      <li data-correct>files here, model in the cloud</li>
+      <li>in the browser, like chatgpt</li>
+      <li>on a university server</li>
+    </ol>
+    <aside class="notes">Die Dateien erschienen im Ordner auf meinem Rechner. Das Modell selbst ist viel zu groß dafür, es läuft im Rechenzentrum. Die erste Antwort ist genau das, was man leicht glaubt.</aside>
+  </section>
+
+  <section class="slide poll" data-poll="who-split-the-work">
+    <div class="poll-q">8 sub-agents researched at once. who decided that?</div>
+    <ol class="poll-opts">
+      <li>our prompt told it to</li>
+      <li data-correct>the agent itself</li>
+      <li>a setting in the app</li>
+      <li>it always works that way</li>
+    </ol>
+    <aside class="notes">Stand nirgends im Prompt. Der Aha-Moment von letzter Woche.</aside>
+  </section>
+
+  <section class="slide poll" data-poll="asked-back">
+    <div class="poll-q">the agent asked us which file held the milestones. what does that show?</div>
+    <ol class="poll-opts">
+      <li>it could not read the file</li>
+      <li data-correct>it noticed a mismatch</li>
+      <li>it asks before every step</li>
+      <li>it had forgotten the prompt</li>
+    </ol>
+    <aside class="notes">Der Export hieß nicht milestones.md. Der Agent hat den Auftrag mit dem abgeglichen, was er im Ordner fand, den Widerspruch bemerkt und nachgefragt, statt zu raten. Das ist die Schleife in Aktion: handeln (Ordner lesen), beobachten, entscheiden. Ob er fragt oder rät, hängt aber vom Modell und vom Harness ab, darauf ist kein Verlass.</aside>
+  </section>
+
+  <!-- ==================== 2 · what is an agent? ==================== -->
+  <section class="slide part" data-part="what is an agent?">
+    <img class="photo" src="img/desk-agent.jpg" alt="">
+    <div class="photo-text"><div>
+      <div class="part-n">part 2</div>
+      <div class="part-text">what is an agent?</div>
+      <div class="sidenote" data-step="1" style="margin-top: 40px">who did the work while we watched?</div>
+    </div></div>
+    <div class="footnote">image: ai-generated (gpt-image-2.5-flare)</div>
+    <aside class="notes">Zurück zu eben: Wir haben ein paar Sätze getippt und ein paarmal „yes“ gesagt. Wer hat die Quellen gefunden, heruntergeladen, gelesen, die App gebaut? Wer genau hinsieht, entdeckt im Dunkeln die leuchtenden Augen.</aside>
+  </section>
+
+  <section class="slide has-punch" data-on-show="showChatAgent" data-on-step="showChatAgent">
+    <h2>chatbot vs. agent</h2>
+    <div class="figure" id="fig-chat-agent"></div>
+    <div class="punch" data-step="1">a chatbot only answers, while an agent acts on its own.</div>
+    <aside class="notes">Oben: Prompt, Antwort, und der nächste Schritt liegt bei mir. Unten: Ich gebe ein Ziel, und das Modell ruft selbst Werkzeuge auf, sieht das Ergebnis an und macht weiter, bis das Ziel erreicht ist. Unter der Haube dasselbe Sprachmodell; der Unterschied ist, was drumherum gebaut ist.</aside>
+  </section>
+
+  <section class="slide">
+    <h2>a working definition</h2>
+    <div class="content">
+      <div class="statement">an <span class="keep-case">AI</span> agent runs tools in a loop<br>to achieve a goal.</div>
+    </div>
+    <div class="footnote"><a href="https://simonwillison.net/2025/Sep/18/agents/" target="_blank" rel="noopener">after simon willison, september 2025</a> · <a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener">anthropic: agents are "<span class="keep-case">LLM</span>s using tools based on environmental feedback in a loop"</a></div>
+    <aside class="notes">Drei Teile, die wir gleich einzeln ansehen: das Sprachmodell, die Werkzeuge, die Schleife. „Goal“ heißt: Die Schleife hört auf, wenn das Ziel erreicht ist.</aside>
+  </section>
+
+  <section class="slide">
+    <h2>workflow or agent?</h2>
+    <div class="figure" id="fig-workflow"></div>
+    <div class="footnote"><a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener">anthropic, building effective agents (2024)</a></div>
+    <aside class="notes">Nicht alles, wo KI drinsteckt, ist ein Agent. Beide Beispiele kommen aus dem Einkauf: Auch im Workflow arbeitet ein Sprachmodell (es liest die Rechnung), aber die Schritte stehen fest. Beim Agenten weiß vorher niemand, welche Lieferanten er findet, welche Angebote er einholt und wie oft er nachsehen muss. Ein Workflow folgt festen Schritten, die jemand vorher festgelegt hat; ein Agent entscheidet selbst. Anthropics Rat: so einfach wie möglich, Agenten nur, wo es nötig ist.</aside>
+  </section>
+
+  <!-- ==================== 3 · inside an agent ==================== -->
+  <section class="slide part" data-part="inside an agent"></section>
+
+  <section class="slide has-punch" data-on-show="showAnatomy">
+    <h2>the goal and the model</h2>
+    <div class="figure" data-stage="0"></div>
+    <div class="saw"><span class="k">what we saw:</span> a few sentences, a photo, a text file.</div>
+    <aside class="notes">Das Modell allein kann nur Text erzeugen. Es kann keine Datei öffnen und keine Webseite laden.</aside>
+  </section>
+
+  <section class="slide has-punch" data-on-show="showAnatomy">
+    <h2>tools</h2>
+    <div class="figure" data-stage="1"></div>
+    <div class="saw"><span class="k">what we saw:</span> it listed the folder, downloaded papers, wrote files.</div>
+    <aside class="notes">Das Modell schreibt nur auf, welches Werkzeug es mit welchen Angaben aufrufen will. Ausgeführt wird das vom Programm auf meinem Rechner. Werkzeuge sind die Hände des Agenten.</aside>
+  </section>
+
+  <section class="slide has-punch" data-on-show="showAnatomy">
+    <h2>the loop</h2>
+    <div class="figure" data-stage="2"></div>
+    <div class="saw"><span class="k">what we saw:</span> it read a source, then decided what to do next.</div>
+    <aside class="notes">Das Muster heißt in der Forschung ReAct (Yao u. a., 2022): denken, handeln, Ergebnis ansehen, weiter. Der Kern jedes Agenten.</aside>
+  </section>
+
+  <section class="slide has-punch" data-on-show="showAnatomy">
+    <h2>context window</h2>
+    <div class="figure" data-stage="3"></div>
+    <div class="saw"><span class="k">what we saw:</span> "context 14 %" in the corner of the app.</div>
+    <aside class="notes">Alles, was der Agent „weiß“, steht in diesem Fenster: die Aufgabe, jede Werkzeugantwort, jede Zwischenüberlegung. Ist es voll, muss er zusammenfassen oder vergessen. Thema einer späteren Sitzung.</aside>
+  </section>
+
+  <section class="slide has-punch" data-on-show="showAnatomy" data-on-step="showAnatomy">
+    <h2>plan and instructions</h2>
+    <div class="figure" data-stage="4"></div>
+    <span data-step="1"></span>
+    <div class="saw" data-saw1="&lt;span class=&quot;k&quot;&gt;instructions:&lt;/span&gt; skills and agents.md are text files the agent loads when it needs them."><span class="k">what we saw:</span> "show me your plan. wait for my go."</div>
+    <aside class="notes">Der Plan ist ein Werkzeug wie jedes andere: Der Agent schreibt sich eine Liste und hakt ab. Skills und agents.md sind Anweisungen in Textdateien, die er bei Bedarf liest. So arbeiten auch meine Agenten für die Lehre.</aside>
+  </section>
+
+  <section class="slide has-punch" data-on-show="showAnatomy">
+    <h2>sub-agents</h2>
+    <div class="figure" data-stage="6"></div>
+    <div class="saw"><span class="k">what we saw:</span> "research by 8 agents", and nobody asked for that.</div>
+    <aside class="notes">Der Aha-Moment von letzter Woche: Wir haben es nicht verlangt. Parallel geht schneller, und jede Kopie hat ein frisches Kontextfenster.</aside>
+  </section>
+
+  <section class="slide has-punch" data-on-show="showAnatomy">
+    <h2>all of it together</h2>
+    <div class="figure" data-stage="7"></div>
+    <div class="punch">the model decides, the tools carry it out, and the loop keeps running until the goal is reached.</div>
+    <aside class="notes">Alles zusammen. Wenn ihr euch eine Sache merkt, dann die gelbe Schleife.</aside>
+  </section>
+
+  <section class="slide has-punch">
+    <h2>the harness</h2>
+    <div class="figure" id="fig-harness"></div>
+    <div class="punch">the same model in a different harness is a different agent.</div>
+    <aside class="notes">Alles, was wir eben um das Modell herum gezeichnet haben, heißt Harness, wörtlich das Geschirr, mit dem man ein Pferd vor den Wagen spannt. Das Modell liefert die Kraft, der Harness lenkt sie. Claude Code, Codex und OpenCode sind Harnesses; das Modell darin lässt sich oft austauschen. Wie gut ein Agent ist, hängt deshalb nicht nur vom Modell ab, sondern auch davon, welche Werkzeuge, welchen Kontext und welche Regeln der Harness ihm gibt.</aside>
+  </section>
+
+  <!-- ==================== 4 · agents and their models ==================== -->
+  <section class="slide part" data-part="agents and their models"></section>
+
+  <section class="slide">
+    <h2>models and apps</h2>
+    <div class="figure" id="fig-landscape"></div>
+    <aside class="notes">Ein Modell steckt in vielen Produkten. Die Grenzen verschwimmen: Auch ChatGPT kann inzwischen suchen, Code ausführen, Dateien erzeugen. Modellnummern lassen wir weg, sie veralten im Monat. OpenClaw läuft rund um die Uhr auf einem eigenen Rechner und wird über Messenger gesteuert.</aside>
+  </section>
+
+  <section class="slide" data-on-show="showWhere" data-on-step="showWhere">
+    <h2>where does it run?</h2>
+    <div class="figure" id="fig-where"></div>
+    <div class="saw" data-step="1"><span class="k">next week:</span> an <span class="keep-case">LLM</span> on your own laptop.</div>
+    <aside class="notes">Der Agent läuft bei mir, das Modell in einem Rechenzentrum; dazwischen geht nur Text hin und her. Nächste Woche holen wir ein Modell auf den eigenen Rechner; das Werkzeug dafür noch nicht nennen.</aside>
+  </section>
+
+  <!-- ==================== 5 · power and responsibility ==================== -->
+  <section class="slide part" data-part="power and responsibility"></section>
+
+  <section class="slide has-punch" data-on-show="showMetr" data-on-step="showMetr">
+    <h2>why now?</h2>
+    <span data-step="1"></span><span data-step="2"></span>
+    <div class="figure" id="fig-metr"></div>
+    <div class="punch" data-step="3">the length of tasks agents can finish doubles every few months.</div>
+    <div class="footnote"><a href="https://metr.org/time-horizons/" target="_blank" rel="noopener">METR, time horizons</a> · <a href="https://arxiv.org/abs/2503.14499" target="_blank" rel="noopener">kwa et al. 2025</a> · software tasks</div>
+    <aside class="notes">Zwischen 2019 und 2024 verdoppelte sich die Länge etwa alle sieben Monate, seit 2023 eher alle vier (METR, Januar 2026). Es sind Programmieraufgaben; ob das auf andere Arbeit übertragbar ist, ist offen. Genau das diskutieren wir in „agents and work“. Achse linear in Stunden.</aside>
+  </section>
+
+  <section class="slide">
+    <img class="photo" src="img/keys.jpg?v=2" alt="">
+    <div class="photo-text"><div>
+      <div class="header" style="margin-bottom: 40px">an agent acts with your permissions</div>
+      <div class="lines spaced">
+        <div>it can read every file you can read.</div>
+        <div data-step="1">it can run every command you can run.</div>
+        <div data-step="2">it can publish to the internet.</div>
+      </div>
+    </div></div>
+    <div class="footnote">image: ai-generated (gpt-image-2.5-flare)</div>
+    <aside class="notes">Wer einem Agenten Zugriff gibt, gibt ihm die eigenen Schlüssel. Letzte Woche hätte er ohne Rückfrage veröffentlicht, weil wir es verlangt hatten. Rückbezug auf das Video von Hannah Fry, das wir vorhin gesehen haben (Agenten unter Druck). Die Frage für das Semester: Was lassen wir zu, und wer ist verantwortlich?</aside>
+  </section>
+
+  <section class="slide">
+    <img class="photo" src="img/student-desk.jpg" alt="">
+    <div class="photo-text"><div>
+      <div class="statement">this semester, we open the loop.</div>
+      <div class="sidenote" style="margin-top: 40px">layer by layer, down to the model and back.</div>
+    </div></div>
+    <div class="footnote">image: ai-generated (gpt-image-2.5-flare)</div>
+    <aside class="notes">Überleitung zum Semesterplan.</aside>
+  </section>
+
+</div>
+<!-- Reihenfolge ist Pflicht: deck.js VOR stagekit.js -->
+<script src="../stagekit/draw.js?v=20260930m"></script>
+<script src="deck.js?v=20260930z"></script>
+<script src="../stagekit/stagekit.js?v=20260930u"></script>
+</body>
+</html>

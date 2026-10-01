@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>A Brief History of AI</title>
+  <link rel="stylesheet" href="theme.css?v=20260923">
+  <link rel="stylesheet" href="../stagekit/stagekit.css?v=20260930t">
+  <style>
+    /* Prompt zum Herauskopieren: Codeblock in der kleinen Groesse, Knopf oben rechts */
+    .prompt { position: absolute; left: var(--margin); right: var(--margin); top: calc(var(--margin) * 1.1); }
+    .prompt .code { font-size: var(--small); line-height: 1.25; color: var(--gray-light); }
+    /* Fragen fuers Semester: eine Frage je Zeile, grosszuegiger Abstand */
+    .lines.qs > div { margin-bottom: 28px; }
+    .prompt .code .kw { color: var(--white); }
+    /* URL der veroeffentlichten Seite, live eingefuegt */
+    .url-input { width: 100%; font-family: var(--mono); font-size: var(--normal); color: var(--yellow); background: transparent;
+                 border: 0; border-bottom: 2px solid var(--gray-dark); padding: 12px 0; text-transform: none; }
+    .url-input::placeholder { color: var(--gray-dark); }
+    /* Zweispaltige Zuordnung: was der Agent tat -> Thema im Semester */
+    .pairs { display: grid; grid-template-columns: 1fr auto 1fr; gap: 26px 40px; font-size: var(--normal); align-items: baseline; }
+    .pairs .did { color: var(--white); }
+    .pairs .to { color: var(--gray); }
+    .pairs .topic { color: var(--blue); }
+    /* Claude-Code-Logo: Pixelgrafik, scharf skaliert */
+    .logo { display: block; height: 300px; margin: 0 auto 50px; image-rendering: pixelated; }
+    /* YouTube von der Festplatte (file://): Vorschaubild mit Link statt Fehler 153 */
+    .yt-fallback { display: block; position: relative; width: 100%; height: 100%; border-radius: 12px; overflow: hidden; border: 1px solid var(--gray-dark); }
+    .yt-fallback img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; }
+    .yt-fallback span { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); font-size: var(--normal); color: var(--white);
+                        background: var(--bg); border: 2px solid var(--white); border-radius: 12px; padding: 16px 32px; }
+  </style>
+</head>
+<body>
+<div class="deck"
+     data-title="a brief history of <span class='keep-case'>AI</span>"
+     data-subtitle="applications of artificial intelligence · prof. dr. nicolas meseth"
+     data-parts='["what do you know?", "what your peers knew", "let&apos;s compile the knowledge", "what&apos;s next"]'
+     data-part-colors='{"what do you know?": "#7fd4f2", "what your peers knew": "#33b5e9", "let&apos;s compile the knowledge": "#009ee3", "what&apos;s next": "#0077aa"}'>
+
+  <!-- ==================== Welcome (liegt auf, bevor es losgeht) ==================== -->
+  <section class="slide">
+    <div class="content center">
+      <!-- Bootstrap Icons "stars" 1.11.3 (MIT, (c) The Bootstrap Authors) -->
+      <svg viewBox="0 0 16 16" width="110" height="110" fill="currentColor" style="display: block; margin: 0 auto 60px; color: var(--blue)" aria-hidden="true"><path d="M7.657 6.247c.11-.33.576-.33.686 0l.645 1.937a2.89 2.89 0 0 0 1.829 1.828l1.936.645c.33.11.33.576 0 .686l-1.937.645a2.89 2.89 0 0 0-1.828 1.829l-.645 1.936a.361.361 0 0 1-.686 0l-.645-1.937a2.89 2.89 0 0 0-1.828-1.828l-1.937-.645a.361.361 0 0 1 0-.686l1.937-.645a2.89 2.89 0 0 0 1.828-1.828zM3.794 1.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387A1.73 1.73 0 0 0 4.593 5.69l-.387 1.162a.217.217 0 0 1-.412 0L3.407 5.69A1.73 1.73 0 0 0 2.31 4.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387A1.73 1.73 0 0 0 3.407 2.31zM10.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.16 1.16 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.16 1.16 0 0 0-.732-.732L9.1 2.137a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732z"/></svg>
+      <div class="header">welcome to</div>
+      <div class="statement">applications of<br>artificial intelligence</div>
+      <div class="sidenote" style="margin-top: 40px">prof. dr. nicolas meseth</div>
+    </div>
+    <aside class="notes">Liegt auf, während die Studierenden ankommen. Es geht erst mit der nächsten Folie los.</aside>
+  </section>
+
+  <!-- ==================== Opening ==================== -->
+  <section class="slide">
+    <img class="photo" src="img/opening.jpg" alt="">
+    <div class="photo-text"><div>
+      <div class="header" style="margin-bottom: 30px">a brief history of <span class="keep-case">AI</span></div>
+      when did<br><span class="keep-case">AI</span> begin?
+    </div></div>
+    <div class="footnote">image: ai-generated (gpt-image-2.5-flare)</div>
+    <aside class="notes">Willkommen. Die Frage in den Raum stellen und ein paar Antworten sammeln — 1950? 1956? 2022, mit ChatGPT? Nicht auflösen, das ist das Thema der nächsten 90 Minuten. Heute gibt es keine Folien über Organisation, Ablauf oder Prüfung — das kommt nächste Woche. Den Agenten noch nicht erwähnen, er ist die Überraschung.</aside>
+  </section>
+
+  <section class="slide agenda">
+    <aside class="notes">Vier Schritte, ohne zu verraten, was passiert: Was wisst ihr? Was wussten eure Vorgänger? Dann tragen wir das Wissen zusammen — wie, bleibt die Überraschung. Zum Schluss der Ausblick.</aside>
+  </section>
+
+  <!-- ==================== Part 1: what do you know? ==================== -->
+  <section class="slide part" data-part="what do you know?"></section>
+
+  <section class="slide">
+    <img class="photo" src="img/pinboard.jpg" alt="">
+    <div class="photo-text"><div>
+      what do you know<br>about the history<br>of <span class="keep-case">AI</span>?
+      <div class="lines" style="margin-top: 60px">
+        <div>one card = one milestone</div>
+        <div>the year, if you know it</div>
+        <div>block letters, big</div>
+        <div>pin it on the board</div>
+      </div>
+      <div class="sidenote" style="margin-top: 40px">10 minutes · in pairs · there are no wrong cards</div>
+    </div></div>
+    <div class="footnote">image: ai-generated (gpt-image-2.5-flare)</div>
+    <aside class="notes">LIVE-MOMENT, 10 Minuten. Karten und dicke Stifte austeilen, zu zweit arbeiten lassen. Alles zählt: ChatGPT, Schachcomputer, Filme, der Mähroboter zuhause. Grob nach Zeit auf der Pinnwand sortieren. Es gibt keine falschen Karten.</aside>
+  </section>
+
+  <!-- ==================== Part 2: what your peers knew ==================== -->
+  <section class="slide part" data-part="what your peers knew"></section>
+
+  <section class="slide">
+    <div class="content center">
+      <img class="logo" src="img/google-docs.svg" alt="Google Docs" style="height: 240px; image-rendering: auto">
+      <div class="header">last year</div>
+      <div class="statement">what your peers knew</div>
+      <div class="sidenote">last year's group wrote a report together: “a brief history of artificial intelligence”</div>
+    </div>
+    <aside class="notes">Das Google Doc aus dem WS 25/26 zeigen und kurz durchscrollen: Welche Meilensteine kamen dort vor, die heute auf der Pinnwand fehlen — und umgekehrt? Noch nicht verraten, dass in dem Dokument Fehler stecken („Sharkey“, „Vasani“, Deep Blue ohne Ergebnis) — die soll der Agent gleich selbst finden.</aside>
+  </section>
+
+  <!-- ==================== Part 3: let's compile the knowledge ==================== -->
+  <section class="slide part" data-part="let's compile the knowledge"></section>
+
+  <section class="slide">
+    <div class="content center">
+      <div class="header">this year</div>
+      <div class="statement">let's do it properly.</div>
+      <div class="lines" style="margin-top: 40px">
+        <div>every milestone checked</div>
+        <div>every source read</div>
+        <div>every fact written down</div>
+      </div>
+    </div>
+    <aside class="notes">Die Studierenden sollen denken: Jetzt kommt gründliche, mühsame Literaturarbeit. Letztes Jahr ein Bericht — dieses Jahr machen wir es richtig: jeder Meilenstein geprüft, jede Quelle gelesen, jeder Fakt festgehalten. Kurze Pause lassen. Dann: Das schaffen wir nicht allein in 90 Minuten …</aside>
+  </section>
+
+  <section class="slide">
+    <h2>let an <span class="keep-case">AI</span> agent help</h2>
+    <div class="content center">
+      <div style="font-size: var(--tiny); color: var(--gray); margin-bottom: -20px">do you know who this is?</div>
+      <img class="logo" src="img/claude-code.png" alt="">
+      <div class="statement">let's ask for help.</div>
+      <div class="sidenote">two inputs, a photo and a text file · one task</div>
+    </div>
+    <aside class="notes">Hier ist die Überraschung. Erst raten lassen, wer das ist — Auflösung: Claude Code, ein KI-Agent von Anthropic, der auf dem eigenen Rechner arbeitet. LIVE-MOMENT: Pinnwand fotografieren, per Remote Control vom Handy direkt an Claude Code. Kurz gemeinsam draufschauen: Was hätte ein Mensch Mühe zu lesen? Daran erinnern wir uns bei Frage 4.</aside>
+  </section>
+
+  <section class="slide">
+    <h2>step 1 · research</h2>
+    <div class="prompt">
+<div class="code" id="prompt-research"><span class="kw">We are the master's module "Applications of Artificial Intelligence".
+Help us build a knowledge base on the history of AI.</span>
+
+Inputs:
+- a photo of our pinboard: milestones the students of this course know
+- milestones.md: AI milestones that students of this course collected a year ago
+
+Tasks:
+- find reliable sources for every milestone, and research further
+  important milestones yourself
+- download every source and save it
+- read each source and extract the key facts:
+  what? who? where? when? — and so what?
+- store them in a structured knowledge base as Markdown, one file per
+  milestone, with its source and its origin: last semester, today's
+  students, or agent
+- write all errors you find in milestones.md to an Excel list
+- pinboard cards you cannot verify go to a list "still to check"
+
+<span class="kw">First read everything and show me your plan. Wait for my go.</span></div>
+    </div>
+    <aside class="notes">Knopf klicken, in Claude Code einfügen, das Foto hängt schon an. Vorher: das Google Doc aus dem WS 25/26 live als Markdown exportieren, als milestones.md in einen leeren Ordner legen und Claude Code dort starten. Das ist alles, was wir ihm sagen. Den Rest entscheidet er — welche Dateien, welcher Aufbau, welche Werkzeuge. Den Plan laut vorlesen, dann mit „go“ freigeben. Danach Claude Code auf den Beamer und laut mitlesen, was er tut: Er liest die Datei, sieht das Foto an, sucht Quellen, lädt sie herunter, liest sie und legt die Wissensbasis an. Nicht verraten: dass er die Quellen parallel mit Subagenten bearbeiten kann und dass wir am Ende veröffentlichen. Zeit im Blick behalten: Dauert es zu lange, per Zuruf auf die wichtigsten Meilensteine begrenzen. Zwischendurch einen Blick in die Wissensbasis werfen: Wie sieht eine Datei aus?</aside>
+  </section>
+
+  <section class="slide">
+    <img class="photo" src="img/library.jpg" alt="">
+    <div class="photo-text"><div>libraries are boring,<br>so let's build<br>something<br>interactive.</div></div>
+    <div class="footnote">image: ai-generated (gpt-image-2.5-flare)</div>
+    <aside class="notes">Die Wende, wenn die Wissensbasis steht. Die Studierenden haben einen Agenten bei gründlicher Literaturarbeit gesehen — jetzt machen wir daraus etwas, das man erkunden will: eine interaktive Web-App mit Zeitleiste.</aside>
+  </section>
+
+  <section class="slide">
+    <h2>step 2 · build</h2>
+    <div class="prompt">
+<div class="code" id="prompt-build"><span class="kw">Now build a visually compelling, interactive web app "A Brief History
+of AI" for the students of this module. It guides visitors through the
+history of AI on a timeline.</span>
+
+- use only the knowledge base — no new facts
+- every entry shows what, who, where, when and so what,
+  and links to its source
+- show where each entry came from: last semester, today's students, agent
+- a static site (HTML, CSS, JavaScript, no build step), in English
+- must work on phones and on the projector; do not include the photo
+
+<span class="kw">Show me your plan first. Wait for my go.</span></div>
+    </div>
+    <aside class="notes">Zweiter Prompt. Der Agent baut jetzt nur noch auf dem, was er in Schritt 1 gesammelt hat — keine neuen Fakten. Wieder laut mitlesen: Er legt Dateien an, öffnet den Browser, sieht sich an, was er gebaut hat, und bessert nach. Wünsche aus dem Publikum direkt eintippen.</aside>
+  </section>
+
+  <section class="slide">
+    <h2>while the agent builds</h2>
+    <div class="embed">
+      <iframe src="https://www.youtube-nocookie.com/embed/WnzR5aOElvw?rel=0"
+              title="Hannah Fry: Why AI agents are either the best or worst thing we've ever built"
+              allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen
+              referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </div>
+    <div class="footnote">video: <a href="https://www.youtube.com/watch?v=WnzR5aOElvw" target="_blank" rel="noopener">hannah fry, why <span class="keep-case">AI</span> agents are either the best or worst thing we've ever built (youtube)</a></div>
+    <aside class="notes">Erst den Plan für Schritt 2 freigeben, dann das Video starten, während der Agent baut. Danach zurück zum Agenten. Nach einem Klick ins Video hat YouTube die Tastatur: einmal neben das Video klicken, dann blättern die Pfeiltasten wieder. Zeigt der Rahmen „Fehler 153“, das Deck über einen lokalen Server öffnen statt per Doppelklick, oder den Link in der Fußnote nehmen.</aside>
+  </section>
+
+  <section class="slide">
+    <h2>test it</h2>
+    <div class="content">
+      <div class="statement">trust, but check.</div>
+      <div class="lines">
+        <div>which errors did the agent find in last year's list?</div>
+        <div>which of our cards made it, which are “still to check”?</div>
+        <div>what did the agent add on its own?</div>
+        <div>click a source: does it say what the app says?</div>
+      </div>
+    </div>
+    <aside class="notes">LIVE-MOMENT. Der Agent startet die App lokal, du klickst durch. Zuerst die Excel-Liste mit den Fehlern im Dokument vom letzten Jahr öffnen: Was hat er gefunden? (Zur Kontrolle: acht Fehler sind bekannt, siehe milestones.md im Sitzungsordner, Abschnitt „Corrections“.) Dann „still to check“ vorlesen und zeigen, welche Einträge der Agent selbst recherchiert hat. Eine Quelle gemeinsam öffnen. Fehler oder Wünsche direkt an den Agenten geben.</aside>
+  </section>
+
+  <section class="slide">
+    <img class="photo" src="img/exam.jpg?v=3" alt="">
+    <div class="photo-text"><div>time for<br>assessment.</div></div>
+    <div class="footnote">image: ai-generated (gpt-image-2.5-flare)</div>
+    <aside class="notes">Kurzer Schreckmoment — keine Sorge, heute prüfen wir nicht euch. Wer eine Zeitleiste durchgeklickt hat, soll sich auch testen können: Der Agent baut dafür ein Quiz.</aside>
+  </section>
+
+  <section class="slide">
+    <h2>step 3 · quiz</h2>
+    <div class="prompt">
+<div class="code" id="prompt-quiz"><span class="kw">Add a quiz to the app, so visitors can test what they learned
+about the history of AI.</span>
+
+- 50 interesting questions, based only on the knowledge base
+- 4 answer options per question, exactly one of them correct
+- the wrong options must be plausible, not silly
+- after each answer: right or wrong, the correct answer,
+  and a link to the matching entry on the timeline
+- questions in random order, a score at the end
+- same design as the timeline; must work on phones
+
+<span class="kw">Show me three example questions first. Wait for my go.</span></div>
+    </div>
+    <aside class="notes">LIVE-MOMENT. Dritter Prompt. Drei Beispielfragen vorlesen und die Studierenden raten lassen — sind sie gut? Zu leicht? Dann „go“. Wenn das Quiz steht: am Beamer eine Runde gemeinsam spielen. Die richtigen Antworten kommen aus der Wissensbasis; die falschen hat das Modell erfunden — plausibel falsch zu sein ist eine eigene Fähigkeit.</aside>
+  </section>
+
+  <section class="slide">
+    <h2>bonus · guided mode</h2>
+    <div class="prompt">
+<div class="code" id="prompt-guided"><span class="kw">Add a guided mode to the app: a narrator tells the history of AI,
+and the app follows along.</span>
+
+- write an engaging story from the milestones, based only on the knowledge base
+- choose a fitting narrator voice from the OpenAI text-to-speech API;
+  the API key is in the environment variable OPENAI_API_KEY
+- create the audio in advance — the app itself never calls the API
+- while the narrator speaks, the app opens the matching milestone
+  on the timeline by itself, no clicks needed
+- the user can pause, skip and leave the guided mode at any time
+- say in the app that the voice is AI-generated
+- never write the API key into the app or into any file
+
+<span class="kw">Show me the outline of the story and the voice you chose first.
+Wait for my go.</span></div>
+    </div>
+    <aside class="notes">BONUS, nur wenn die Zeit reicht. Den API-Schlüssel VOR der Sitzung als Umgebungsvariable OPENAI_API_KEY setzen, bevor Claude Code startet — nie live eintippen, nie die Variable anzeigen lassen, solange der Beamer läuft. Die Stimme erzeugt der Agent einmal vorab als Audiodateien; die App selbst braucht keinen Schlüssel, deshalb kann sie später öffentlich sein. Gliederung und Stimmwahl vorlesen, dann „go“. Danach den Guided Mode am Beamer abspielen. Anknüpfungspunkt: Text, Stimme, Timing — drei Modelle bzw. Werkzeuge in einer Schleife. Die Kennzeichnung als KI-Stimme ist keine Kür: Der EU AI Act verlangt sie für künstlich erzeugte Inhalte.</aside>
+  </section>
+
+  <section class="slide">
+    <h2>publish</h2>
+    <div class="prompt">
+<div class="code" id="prompt-publish"><span class="kw">Create a public GitHub repository "brief-history-of-ai" and publish
+the app with GitHub Pages. Give me the URL.</span>
+
+Publish only the app, its audio and the knowledge base — not the
+downloaded sources, not the Excel list, not the photo.
+
+Then make a QR code for the URL and open it in the browser,
+so everybody in the room can scan it.</div>
+    </div>
+    <aside class="notes">LIVE-MOMENT. Der Agent legt das Repository an, pusht, schaltet Pages ein. Die heruntergeladenen Quellen gehören nicht ins öffentliche Repository — das sind fremde Texte (Urheberrecht). Während Pages baut (1–2 Minuten): Rückblick, wie viele Schritte der Agent bis hierher gebraucht hat und bei welchen er Werkzeuge benutzt hat. Der QR-Code ist ein weiterer kleiner Auftrag — ein Werkzeug, das er sich selbst holt.</aside>
+  </section>
+
+  <section class="slide">
+    <h2>it's live</h2>
+    <div class="content">
+      <input class="url-input" type="text" placeholder="paste the url here" aria-label="URL of the published app" data-no-advance>
+      <div class="sidenote">90 minutes ago, this page did not exist.</div>
+    </div>
+    <aside class="notes">URL aus Claude Code kopieren und hier ins Feld einfügen (das Feld nimmt die Pfeiltasten nicht — danach einmal neben das Feld klicken). QR-Code im Browserfenster zeigen. Alle öffnen die Seite auf dem Handy.</aside>
+  </section>
+
+  <!-- ==================== Part 4: what's next ==================== -->
+  <section class="slide part" data-part="what's next"></section>
+
+  <section class="slide">
+    <h2>what the agent did today, and what we'll unpack</h2>
+    <div class="content">
+      <div class="pairs">
+        <div class="did">read a photo of handwriting</div><div class="to">→</div><div class="topic">how computers see images</div>
+        <div class="did" data-step="1">wrote a plan</div><div class="to" data-step="1">→</div><div class="topic" data-step="1">reasoning</div>
+        <div class="did" data-step="2">generated text and code</div><div class="to" data-step="2">→</div><div class="topic" data-step="2">how <span class="keep-case">LLMs</span> &amp; neural networks work</div>
+        <div class="did" data-step="3">knew how to build a web app</div><div class="to" data-step="3">→</div><div class="topic" data-step="3">how an <span class="keep-case">LLM</span> is trained</div>
+        <div class="did" data-step="4">used tools: files, browser, web</div><div class="to" data-step="4">→</div><div class="topic" data-step="4">rules vs. learning · tool use</div>
+        <div class="did" data-step="5">got something wrong</div><div class="to" data-step="5">→</div><div class="topic" data-step="5">hallucination</div>
+        <div class="did" data-step="6">checked facts against sources</div><div class="to" data-step="6">→</div><div class="topic" data-step="6">trust and verification</div>
+        <div class="did" data-step="7">split the work among sub-agents</div><div class="to" data-step="7">→</div><div class="topic" data-step="7">multi-agent systems</div>
+        <div class="did" data-step="8">published to the web on its own</div><div class="to" data-step="8">→</div><div class="topic" data-step="8">autonomy, safety, responsibility</div>
+      </div>
+    </div>
+    <aside class="notes">Rückblick auf die 90 Minuten: Alles, was der Agent heute getan hat, ist ein Thema des Semesters. Zeile für Zeile aufdecken und je einen Satz sagen. Bei „got something wrong“ ein konkretes Beispiel von heute nennen — einen Fehler des Agenten oder einen aus der Liste vom letzten Jahr. Hat der Agent keine Subagenten eingesetzt, die Zeile als Frage stellen: Hätte er die Quellen auch parallel prüfen können?</aside>
+  </section>
+
+  <section class="slide">
+    <h2>how do these systems work?</h2>
+    <div class="content">
+      <div class="lines qs">
+        <div>what's the difference between <span class="keep-case">ChatGPT</span> and <span class="keep-case">Claude Code</span>?</div>
+        <div>how does a language model represent text, and meaning?</div>
+        <div>why does it give a different answer every time?</div>
+        <div>how much can it keep in mind at once?</div>
+        <div>can <span class="keep-case">I</span> run an <span class="keep-case">AI</span> on my own laptop?</div>
+        <div>why do the models keep getting better?</div>
+      </div>
+    </div>
+    <aside class="notes">Fragen zur Technik, die über heute hinausgehen. Nicht beantworten, nur stehen lassen. Hintergrund: Chatbot vs. Agent, Tokens und Embeddings, Sampling und Temperatur, Kontextfenster, offene Modelle lokal mit LM Studio vs. Cloud, Skalierung (Daten, Rechenleistung — „The Bitter Lesson“). Mehrere davon werden Experimente auf dem eigenen Rechner.</aside>
+  </section>
+
+  <section class="slide">
+    <h2>what does it mean for us?</h2>
+    <div class="content">
+      <div class="lines qs">
+        <div>where is <span class="keep-case">AI</span> already at work in our domains?</div>
+        <div>the machine predicts, who decides?</div>
+        <div>how should we use <span class="keep-case">AI</span> in our studies and in research?</div>
+        <div>how much energy does an answer cost?</div>
+        <div>which jobs will change?</div>
+        <div>what does <span class="keep-case">AI</span> mean for the economy?</div>
+        <div>whose data is it?</div>
+        <div>how do we regulate <span class="keep-case">AI</span>, and where is all this going?</div>
+      </div>
+    </div>
+    <aside class="notes">Fragen zu Anwendung und Folgen. Hintergrund: Anwendungsfälle aus Agrar und Lebensmittel (See &amp; Spray, Krankheitserkennung, Qualitätskontrolle), Vorhersage vs. Urteil (Prediction Machines), KI im Studium und beim wissenschaftlichen Schreiben, Energie und Umwelt, Arbeit und Wirtschaft, Daten und Urheberrecht, EU AI Act, AGI und Alignment.</aside>
+  </section>
+
+  <section class="slide">
+    <h2>your homework</h2>
+    <div class="content">
+      <div class="statement">think about whether you want answers<br>to these questions.</div>
+      <div class="lines" style="margin-top: 50px">
+        <div>then come back next week.</div>
+      </div>
+    </div>
+    <aside class="notes">Keine Aufgabe zum Abarbeiten, sondern eine Entscheidung: Wollt ihr Antworten auf diese Fragen? Dann seid ihr hier richtig. Nächste Woche entscheidet sich, wer bleibt.</aside>
+  </section>
+
+  <section class="slide">
+    <img class="photo" src="img/laptop.jpg" alt="">
+    <div class="photo-text"><div>
+      <!-- Kalender-Symbol: Bootstrap Icons "calendar-week" (MIT, (c) The Bootstrap Authors); dezent wie die Ueberschrift -->
+      <div class="header" style="display: flex; align-items: center; gap: 16px; margin-bottom: 30px"><svg viewBox="0 0 16 16" width="30" height="30" fill="currentColor" aria-hidden="true"><path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm-3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm-5 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5z"/><path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"/></svg><span>next week</span></div>
+      more details<br>for this course.
+    </div></div>
+    <div class="footnote">image: ai-generated (gpt-image-2.5-flare)</div>
+    <aside class="notes">Kurz ankündigen: Nächste Woche Organisation, Prüfung, Ablauf. Bitte Laptop mitbringen.</aside>
+  </section>
+
+  <section class="slide">
+    <img class="photo" src="img/closing.jpg" alt="">
+    <div class="photo-text">the next milestone<br>is still blank.</div>
+    <div class="footnote">image: ai-generated (gpt-image-2.5-flare)</div>
+    <aside class="notes">Schluss. Die Geschichte wird gerade weitergeschrieben — und in diesem Semester schauen wir uns an, wie.</aside>
+  </section>
+
+</div>
+<script>
+  // Von der Festplatte geoeffnet, verweigert YouTube das Einbetten (Fehler 153).
+  // Dann ein Vorschaubild mit Link statt des Players; ueber "Vortrag starten.cmd" laeuft das Video im Deck.
+  if (location.protocol === "file:") {
+    document.querySelectorAll('iframe[src*="youtube"]').forEach((f) => {
+      const id = (f.src.match(/embed\/([^?]+)/) || [])[1];
+      if (!id) return;
+      const a = document.createElement("a");
+      a.href = "https://www.youtube.com/watch?v=" + id; a.target = "_blank"; a.rel = "noopener"; a.className = "yt-fallback";
+      a.innerHTML = `<img src="https://i.ytimg.com/vi/${id}/maxresdefault.jpg" alt=""><span>watch on youtube</span>`;
+      f.replaceWith(a);
+    });
+  }
+</script>
+<script src="../stagekit/draw.js?v=20260923"></script>
+<script src="deck.js?v=20260923"></script>
+<script src="../stagekit/stagekit.js?v=20261001"></script>
+</body>
+</html>
