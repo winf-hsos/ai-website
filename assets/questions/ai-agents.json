@@ -1,0 +1,727 @@
+{
+ "konzept": "ai-agents",
+ "fragen": [
+  {
+   "id": "ag-001",
+   "niveau": "verstehen",
+   "frage": {
+    "de": "Du bittest einen Chatbot, ein Skript zu reparieren, das mit einem Fehler abbricht. Er schlägt eine Änderung vor, du führst das Skript selbst aus und kopierst die neue Fehlermeldung zurück. Was ändert sich, wenn du dieselbe Aufgabe einem Agenten gibst?",
+    "en": "You ask a chatbot to fix a script that stops with an error. It suggests a change, you run the script yourself and paste the new error message back. What changes if you give the same task to an agent?"
+   },
+   "typ": "sc",
+   "richtig": [
+    "b"
+   ],
+   "optionen": [
+    {
+     "kennung": "a",
+     "text": {
+      "de": "Er nutzt ein größeres Sprachmodell, das beim Programmieren weniger Fehler macht.",
+      "en": "It uses a larger language model that makes fewer mistakes when programming."
+     },
+     "begruendung": {
+      "de": "Chatbot und Agent können auf demselben Modell laufen. Der Unterschied liegt nicht im Modell, sondern darin, was um das Modell herum gebaut ist.",
+      "en": "A chatbot and an agent can run on the same model. The difference is not the model but what is built around it."
+     }
+    },
+    {
+     "kennung": "b",
+     "text": {
+      "de": "Er führt das Skript selbst aus, liest den Fehler und entscheidet über die nächste Änderung, bis das Skript läuft.",
+      "en": "It runs the script itself, reads the error and decides on the next change until the script works."
+     },
+     "begruendung": {
+      "de": "Richtig: Der Agent übernimmt die Schritte, die beim Chatbot du machst. Er ruft Werkzeuge auf, beobachtet das Ergebnis und macht weiter, bis das Ziel erreicht ist.",
+      "en": "Correct: the agent takes over the steps you take with a chatbot. It calls tools, observes the result and carries on until the goal is reached."
+     }
+    },
+    {
+     "kennung": "c",
+     "text": {
+      "de": "Er löst die Aufgabe in einem Schritt, weil er die ganze Lösung plant, bevor er etwas schreibt.",
+      "en": "It solves the task in one step, because it plans the whole solution before writing anything."
+     },
+     "begruendung": {
+      "de": "Ein Agent arbeitet gerade nicht in einem Schritt, sondern in einer Schleife: Er handelt, sieht sich das Ergebnis an und entscheidet dann neu. Ein Plan hilft ihm, ersetzt aber die Schleife nicht.",
+      "en": "An agent does not work in one step but in a loop: it acts, looks at the result and then decides again. A plan helps it but does not replace the loop."
+     }
+    },
+    {
+     "kennung": "d",
+     "text": {
+      "de": "Er fragt vor jedem Vorschlag um Erlaubnis, arbeitet sonst aber wie der Chatbot.",
+      "en": "It asks for permission before each suggestion but otherwise works like the chatbot."
+     },
+     "begruendung": {
+      "de": "Um Erlaubnis fragen kann ein Agent, aber das ist nicht der Unterschied zum Chatbot. Entscheidend ist, dass er die Schritte selbst ausführt, statt sie dir zu überlassen.",
+      "en": "An agent may ask for permission, but that is not what sets it apart from a chatbot. What matters is that it carries out the steps itself instead of leaving them to you."
+     }
+    }
+   ]
+  },
+  {
+   "id": "ag-002",
+   "niveau": "verstehen",
+   "frage": {
+    "de": "Ein Agent liest die Datei `fields.csv`. Was genau trägt das Sprachmodell zu diesem Schritt bei?",
+    "en": "An agent reads the file `fields.csv`. What exactly does the language model contribute to this step?"
+   },
+   "typ": "sc",
+   "richtig": [
+    "b"
+   ],
+   "optionen": [
+    {
+     "kennung": "a",
+     "text": {
+      "de": "Es öffnet die Datei auf der Festplatte und lädt ihren Inhalt in seinen Speicher.",
+      "en": "It opens the file on the disk and loads its content into its memory."
+     },
+     "begruendung": {
+      "de": "Ein Sprachmodell kann keine Datei öffnen. Es erzeugt nur Text; alles, was in der Welt passiert, führt ein Programm um das Modell herum aus.",
+      "en": "A language model cannot open a file. It only produces text; everything that happens in the world is carried out by a program around the model."
+     }
+    },
+    {
+     "kennung": "b",
+     "text": {
+      "de": "Es schreibt einen Text, der das Werkzeug und seine Argumente nennt; ein Programm drumherum liest die Datei und gibt den Inhalt zurück.",
+      "en": "It writes text that names the tool and its arguments; a program around it reads the file and returns the content."
+     },
+     "begruendung": {
+      "de": "Richtig: Der Werkzeugaufruf ist nur Text, wie die TOOL-Karte im Spiel. Der Harness führt ihn aus und legt das Ergebnis in den Kontext.",
+      "en": "Correct: the tool call is just text, like the TOOL card in the game. The harness carries it out and puts the result into the context."
+     }
+    },
+    {
+     "kennung": "c",
+     "text": {
+      "de": "Es schickt eine Anfrage an das Betriebssystem, das die Rechte prüft und die Datei liefert.",
+      "en": "It sends a request to the operating system, which checks the permissions and delivers the file."
+     },
+     "begruendung": {
+      "de": "Das Modell spricht nicht mit dem Betriebssystem. Diese Anfrage stellt der Harness, nachdem er den Text des Modells als Werkzeugaufruf erkannt hat.",
+      "en": "The model does not talk to the operating system. The harness makes that request after it has recognised the model's text as a tool call."
+     }
+    },
+    {
+     "kennung": "d",
+     "text": {
+      "de": "Es erinnert sich aus dem Training an die Datei, weil solche Tabellen dort häufig vorkommen.",
+      "en": "It recalls the file from training, because tables like this occur there frequently."
+     },
+     "begruendung": {
+      "de": "Eine Datei auf deinem Rechner kann nicht im Training vorgekommen sein. Was das Modell über sie weiß, steht nur dann im Kontext, wenn ein Werkzeug sie gelesen hat.",
+      "en": "A file on your computer cannot have been part of the training. Whatever the model knows about it is in the context only if a tool has read it."
+     }
+    }
+   ]
+  },
+  {
+   "id": "ag-003",
+   "niveau": "anwenden",
+   "frage": {
+    "de": "Welche dieser Aufgaben löst man besser mit einem festen Workflow als mit einem Agenten?",
+    "en": "Which of these tasks is better solved with a fixed workflow than with an agent?"
+   },
+   "typ": "sc",
+   "richtig": [
+    "a"
+   ],
+   "optionen": [
+    {
+     "kennung": "a",
+     "text": {
+      "de": "Jeden Morgen liest ein LLM die neuen Lieferscheine, ein Programm gleicht sie mit den Bestellungen ab und markiert Abweichungen.",
+      "en": "Every morning an LLM reads the new delivery notes, a program matches them with the orders and flags differences."
+     },
+     "begruendung": {
+      "de": "Richtig: Die Schritte sind jedes Mal dieselben und lassen sich vorab festlegen. Dass ein LLM einen davon übernimmt, macht daraus noch keinen Agenten.",
+      "en": "Correct: the steps are the same every time and can be fixed in advance. That an LLM does one of them does not make it an agent."
+     }
+    },
+    {
+     "kennung": "b",
+     "text": {
+      "de": "Der Hauptlieferant einer Molkerei für Verpackungen ist insolvent; finde Alternativen, vergleiche Angebote und entwirf eine Empfehlung.",
+      "en": "A dairy's main supplier of packaging has gone bankrupt; find alternatives, compare offers and draft a recommendation."
+     },
+     "begruendung": {
+      "de": "Hier weiß niemand vorher, welche Schritte nötig sind: welche Quellen, welche Anbieter, welche Rückfragen. Genau dafür ist ein Agent gedacht.",
+      "en": "Nobody knows the necessary steps in advance here: which sources, which suppliers, which follow-up questions. This is exactly what an agent is for."
+     }
+    },
+    {
+     "kennung": "c",
+     "text": {
+      "de": "Finde heraus, warum der Ertrag auf einem Schlag im letzten Jahr eingebrochen ist, mit allen Daten und Quellen, die verfügbar sind.",
+      "en": "Find out why the yield on one field dropped last year, using all data and sources available."
+     },
+     "begruendung": {
+      "de": "Eine Ursachensuche verzweigt sich mit jedem Befund neu; welcher Schritt folgt, hängt vom Ergebnis des vorigen ab. Das spricht für einen Agenten.",
+      "en": "A search for causes branches with every finding; which step comes next depends on the result of the previous one. That points to an agent."
+     }
+    },
+    {
+     "kennung": "d",
+     "text": {
+      "de": "Baue nach einer kurzen Beschreibung eine kleine Web-App, die die Buchungen der Landmaschinen zeigt.",
+      "en": "Build a small web app showing the bookings of the farm machinery, from a short description."
+     },
+     "begruendung": {
+      "de": "Beim Bauen einer App entscheidet sich der nächste Schritt aus dem letzten: Fehler lesen, Code ändern, erneut testen. Das ist die Schleife eines Agenten.",
+      "en": "When building an app, the next step follows from the last one: read the error, change the code, test again. That is an agent's loop."
+     }
+    }
+   ]
+  },
+  {
+   "id": "ag-004",
+   "niveau": "verstehen",
+   "frage": {
+    "de": "Welche dieser Aufgaben übernimmt der Harness und nicht das Sprachmodell? (Mehrere richtige Antworten möglich.)",
+    "en": "Which of these jobs does the harness do rather than the language model? (Several answers may be correct.)"
+   },
+   "typ": "mc",
+   "richtig": [
+    "a",
+    "c",
+    "d"
+   ],
+   "optionen": [
+    {
+     "kennung": "a",
+     "text": {
+      "de": "die Werkzeugaufrufe ausführen und die Ergebnisse zurückgeben",
+      "en": "carry out the tool calls and return the results"
+     },
+     "begruendung": {
+      "de": "Richtig: Das Modell schreibt den Aufruf nur auf; ausgeführt wird er vom Harness, wie im Spiel, wo der Harness jede Karte zum Werkzeug trägt.",
+      "en": "Correct: the model only writes the call down; the harness carries it out, as in the game, where the Harness carries every card to the tool."
+     }
+    },
+    {
+     "kennung": "b",
+     "text": {
+      "de": "entscheiden, welches Werkzeug als Nächstes aufgerufen wird",
+      "en": "decide which tool to call next"
+     },
+     "begruendung": {
+      "de": "Diese Entscheidung trifft das Modell. Der Harness prüft und führt aus, was das Modell schreibt, aber er wählt den nächsten Schritt nicht.",
+      "en": "The model makes this decision. The harness checks and carries out what the model writes, but it does not choose the next step."
+     }
+    },
+    {
+     "kennung": "c",
+     "text": {
+      "de": "vor einem Befehl beim Nutzer um Erlaubnis fragen",
+      "en": "ask the user for permission before a command runs"
+     },
+     "begruendung": {
+      "de": "Richtig: Die Rückfrage ist eine Regel im Programm um das Modell herum; das Modell kann sie weder auslösen noch umgehen.",
+      "en": "Correct: asking is a rule in the program around the model; the model can neither trigger nor bypass it."
+     }
+    },
+    {
+     "kennung": "d",
+     "text": {
+      "de": "das Kontextfenster verwalten, etwa zusammenfassen, wenn es voll wird",
+      "en": "manage the context window, for example by summarising when it fills up"
+     },
+     "begruendung": {
+      "de": "Richtig: Was ins Kontextfenster kommt und was bei Platzmangel gekürzt wird, entscheidet der Harness; das Modell sieht nur das Ergebnis.",
+      "en": "Correct: the harness decides what goes into the context window and what gets shortened when space runs out; the model only sees the result."
+     }
+    },
+    {
+     "kennung": "e",
+     "text": {
+      "de": "den Plan für die Aufgabe schreiben",
+      "en": "write the plan for the task"
+     },
+     "begruendung": {
+      "de": "Den Plan schreibt das Modell, über ein Werkzeug wie jedes andere. Der Harness speichert ihn und legt ihn wieder vor, aber der Inhalt kommt vom Modell.",
+      "en": "The model writes the plan, through a tool like any other. The harness stores it and shows it again, but the content comes from the model."
+     }
+    }
+   ]
+  },
+  {
+   "id": "ag-005",
+   "niveau": "verstehen",
+   "frage": {
+    "de": "Nach zwei Stunden Arbeit wiederholt ein Agent plötzlich einen Schritt, den er längst erledigt hatte. Welche Erklärung passt am besten?",
+    "en": "After two hours of work an agent suddenly repeats a step it had finished long ago. Which explanation fits best?"
+   },
+   "typ": "sc",
+   "richtig": [
+    "b"
+   ],
+   "optionen": [
+    {
+     "kennung": "a",
+     "text": {
+      "de": "Das Modell hat aus den bisherigen Schritten gelernt und seine Gewichte angepasst, wodurch das frühere Ergebnis überschrieben wurde.",
+      "en": "The model learned from the previous steps and adjusted its weights, which overwrote the earlier result."
+     },
+     "begruendung": {
+      "de": "Während der Nutzung ändern sich die Gewichte eines Modells nicht. Was es während einer Aufgabe weiß, steht ausschließlich im Kontextfenster.",
+      "en": "A model's weights do not change while it is being used. Whatever it knows during a task sits only in its context window."
+     }
+    },
+    {
+     "kennung": "b",
+     "text": {
+      "de": "Das Kontextfenster war voll; frühere Ergebnisse wurden zusammengefasst oder entfernt, sodass der Schritt nicht mehr darin steht.",
+      "en": "The context window was full; earlier results were summarised or removed, so the step is no longer in it."
+     },
+     "begruendung": {
+      "de": "Richtig: Was nicht mehr im Kontext steht, weiß das Modell nicht. Deshalb schreiben Agenten Pläne und Notizen in Dateien, die sie wieder lesen können.",
+      "en": "Correct: what is no longer in the context, the model does not know. This is why agents write plans and notes into files they can read again."
+     }
+    },
+    {
+     "kennung": "c",
+     "text": {
+      "de": "Ein Werkzeug hat einen Fehler gemeldet, und der Harness wiederholt fehlgeschlagene Aufrufe selbstständig.",
+      "en": "A tool reported an error, and the harness repeats failed calls on its own."
+     },
+     "begruendung": {
+      "de": "Ein Fehler käme als Ergebnis zurück, und das Modell würde darauf reagieren. Einen längst erledigten Schritt wiederholt der Harness nicht von sich aus.",
+      "en": "An error would come back as a result, and the model would react to it. The harness does not repeat a step that was finished long ago on its own."
+     }
+    },
+    {
+     "kennung": "d",
+     "text": {
+      "de": "Das Sprachmodell behält immer nur das letzte Werkzeugergebnis, deshalb geht jeder frühere Schritt nach einer Runde verloren.",
+      "en": "The language model only ever keeps the last tool result, so every earlier step is lost after one round."
+     },
+     "begruendung": {
+      "de": "Dann hätte der Agent schon nach wenigen Minuten nicht mehr arbeiten können. Das Kontextfenster hält alle Schritte, bis es voll ist.",
+      "en": "Then the agent could not have worked for more than a few minutes. The context window holds every step until it is full."
+     }
+    }
+   ]
+  },
+  {
+   "id": "ag-006",
+   "niveau": "anwenden",
+   "frage": {
+    "de": "Ein Agent soll 40 Meilensteine der KI-Geschichte recherchieren und startet dafür acht Sub-Agenten. Was ist der wichtigste Vorteil?",
+    "en": "An agent is asked to research 40 milestones in the history of AI and starts eight sub-agents for it. What is the main advantage?"
+   },
+   "typ": "sc",
+   "richtig": [
+    "a"
+   ],
+   "optionen": [
+    {
+     "kennung": "a",
+     "text": {
+      "de": "Jeder Sub-Agent hat ein frisches Kontextfenster, sodass die vielen Quellen den Kontext des Hauptagenten nicht füllen, und sie arbeiten gleichzeitig.",
+      "en": "Each sub-agent has a fresh context window, so the many sources do not fill the main agent's context, and they work at the same time."
+     },
+     "begruendung": {
+      "de": "Richtig: Der Hauptagent bekommt nur die Ergebnisse zurück, nicht jede gelesene Seite. So bleibt sein Kontext frei für die eigentliche Aufgabe.",
+      "en": "Correct: the main agent only receives the results, not every page that was read. Its context stays free for the actual task."
+     }
+    },
+    {
+     "kennung": "b",
+     "text": {
+      "de": "Sub-Agenten nutzen ein kleineres Modell, das auf die Websuche spezialisiert ist.",
+      "en": "Sub-agents use a smaller model that specialises in searching the web."
+     },
+     "begruendung": {
+      "de": "Ein Sub-Agent kann ein anderes Modell nutzen, muss es aber nicht; meist ist es dasselbe. Der Vorteil liegt im getrennten Kontext und in der Parallelität.",
+      "en": "A sub-agent may use a different model, but it does not have to and usually uses the same one. The advantage lies in the separate context and in working in parallel."
+     }
+    },
+    {
+     "kennung": "c",
+     "text": {
+      "de": "Sub-Agenten dürfen auf Dateien zugreifen, für die der Hauptagent keine Rechte hat.",
+      "en": "Sub-agents may access files the main agent has no permission for."
+     },
+     "begruendung": {
+      "de": "Sub-Agenten laufen im selben Harness mit denselben oder engeren Rechten. Mehr dürfen sie nicht als der Agent, der sie startet.",
+      "en": "Sub-agents run in the same harness with the same or narrower permissions. They may not do more than the agent that starts them."
+     }
+    },
+    {
+     "kennung": "d",
+     "text": {
+      "de": "Mehrere Sub-Agenten stimmen über jede Antwort ab, wodurch erfundene Angaben ausgeschlossen sind.",
+      "en": "Several sub-agents vote on every answer, which rules out invented facts."
+     },
+     "begruendung": {
+      "de": "Jeder Sub-Agent recherchiert einen eigenen Teil; eine Abstimmung findet nicht statt. Erfundene Angaben bleiben möglich und müssen geprüft werden.",
+      "en": "Each sub-agent researches a part of its own; there is no vote. Invented facts remain possible and have to be checked."
+     }
+    }
+   ]
+  },
+  {
+   "id": "ag-007",
+   "niveau": "verstehen",
+   "frage": {
+    "de": "Du nutzt Claude Code auf deinem Laptop, und es legt Dateien in deinem Projektordner an. Wo läuft das Sprachmodell?",
+    "en": "You use Claude Code on your laptop, and it creates files in your project folder. Where does the language model run?"
+   },
+   "typ": "sc",
+   "richtig": [
+    "b"
+   ],
+   "optionen": [
+    {
+     "kennung": "a",
+     "text": {
+      "de": "Auf deinem Laptop, im Programm, das du installiert hast.",
+      "en": "On your laptop, inside the program you installed."
+     },
+     "begruendung": {
+      "de": "Auf dem Laptop läuft der Harness, nicht das Modell; ein Modell dieser Größe passt nicht auf einen Laptop.",
+      "en": "The harness runs on the laptop, not the model; a model of this size does not fit on a laptop."
+     }
+    },
+    {
+     "kennung": "b",
+     "text": {
+      "de": "Auf einem Server des Anbieters; hin und her geht nur Text, während Harness und Dateien auf deinem Laptop bleiben.",
+      "en": "On a server of the provider; only text travels back and forth, while the harness and the files stay on your laptop."
+     },
+     "begruendung": {
+      "de": "Richtig: Der Harness schickt den Kontext an das Modell in der Cloud und führt dessen Werkzeugaufrufe lokal aus. Deshalb entstehen die Dateien bei dir.",
+      "en": "Correct: the harness sends the context to the model in the cloud and carries out its tool calls locally. That is why the files appear on your machine."
+     }
+    },
+    {
+     "kennung": "c",
+     "text": {
+      "de": "Teils auf dem Laptop, teils in der Cloud: kleine Schritte lokal, große auf dem Server.",
+      "en": "Partly on the laptop and partly in the cloud: small steps locally, large ones on the server."
+     },
+     "begruendung": {
+      "de": "Das Modell wird nicht nach Schrittgröße aufgeteilt. Jede Entscheidung trifft dasselbe Modell auf dem Server; lokal laufen nur die Werkzeuge.",
+      "en": "The model is not split by the size of a step. Every decision is made by the same model on the server; only the tools run locally."
+     }
+    },
+    {
+     "kennung": "d",
+     "text": {
+      "de": "Im Browser, der das Modell zu Beginn der Sitzung herunterlädt.",
+      "en": "In the browser, which downloads the model at the start of the session."
+     },
+     "begruendung": {
+      "de": "Claude Code läuft nicht im Browser, und das Modell wird nicht heruntergeladen. Ein Modell lokal zu betreiben ist möglich, aber eine eigene Entscheidung mit kleineren Modellen.",
+      "en": "Claude Code does not run in the browser, and the model is not downloaded. Running a model locally is possible, but it is a separate choice with smaller models."
+     }
+    }
+   ]
+  },
+  {
+   "id": "ag-008",
+   "niveau": "anwenden",
+   "frage": {
+    "de": "Dein Agent arbeitet mit deinem Benutzerkonto, und du hast ihm erlaubt, Befehle ohne Rückfrage auszuführen. Was kann er tun? (Mehrere richtige Antworten möglich.)",
+    "en": "Your agent works with your user account, and you have allowed it to run commands without asking. What can it do? (Several answers may be correct.)"
+   },
+   "typ": "mc",
+   "richtig": [
+    "a",
+    "b",
+    "d"
+   ],
+   "optionen": [
+    {
+     "kennung": "a",
+     "text": {
+      "de": "Dateien in deinem persönlichen Ordner löschen",
+      "en": "delete files in your personal folder"
+     },
+     "begruendung": {
+      "de": "Richtig: Alles, was dein Konto darf, darf der Agent auch, Löschen eingeschlossen.",
+      "en": "Correct: anything your account may do, the agent may do as well, deleting included."
+     }
+    },
+    {
+     "kennung": "b",
+     "text": {
+      "de": "eine Webseite über dein GitHub-Konto veröffentlichen",
+      "en": "publish a website through your GitHub account"
+     },
+     "begruendung": {
+      "de": "Richtig: Ist dein Konto auf dem Rechner angemeldet, kann ein Befehl des Agenten in deinem Namen veröffentlichen.",
+      "en": "Correct: if your account is signed in on the computer, a command from the agent can publish in your name."
+     }
+    },
+    {
+     "kennung": "c",
+     "text": {
+      "de": "Dateien auf dem Laptop einer Kollegin im selben Netz lesen, auf die dein Konto keinen Zugriff hat",
+      "en": "read files on a colleague's laptop on the same network that your account has no access to"
+     },
+     "begruendung": {
+      "de": "Der Agent hat genau deine Rechte, nicht mehr. Was dein Konto nicht erreicht, erreicht auch er nicht.",
+      "en": "The agent has exactly your permissions, no more. What your account cannot reach, the agent cannot reach either."
+     }
+    },
+    {
+     "kennung": "d",
+     "text": {
+      "de": "jede Datei lesen, die dein Konto lesen kann, auch private Dokumente",
+      "en": "read every file your account can read, private documents included"
+     },
+     "begruendung": {
+      "de": "Richtig: Der Agent unterscheidet nicht zwischen Projektdateien und privaten Dokumenten; er hat Zugriff auf alles, was du hast.",
+      "en": "Correct: the agent does not distinguish between project files and private documents; it can access everything you can."
+     }
+    },
+    {
+     "kennung": "e",
+     "text": {
+      "de": "die Gewichte des Modells ändern, damit es sich nächste Woche an dein Projekt erinnert",
+      "en": "change the model's weights so that it remembers your project next week"
+     },
+     "begruendung": {
+      "de": "Die Gewichte liegen beim Anbieter und ändern sich durch die Nutzung nicht. Erinnern kann sich ein Agent nur über Dateien, die er wieder liest.",
+      "en": "The weights belong to the provider and do not change through use. An agent can only remember through files it reads again."
+     }
+    }
+   ]
+  },
+  {
+   "id": "ag-009",
+   "niveau": "verstehen",
+   "frage": {
+    "de": "Zwei Agenten nutzen genau dasselbe Sprachmodell, aber verschiedene Harnesses. Welche Aussage stimmt?",
+    "en": "Two agents use exactly the same language model but different harnesses. Which statement is correct?"
+   },
+   "typ": "sc",
+   "richtig": [
+    "b"
+   ],
+   "optionen": [
+    {
+     "kennung": "a",
+     "text": {
+      "de": "Sie verhalten sich gleich, weil alle Entscheidungen im Modell fallen.",
+      "en": "They behave the same, because all decisions are made in the model."
+     },
+     "begruendung": {
+      "de": "Das Modell entscheidet, aber nur über das, was ihm der Harness vorlegt. Andere Werkzeuge, Anweisungen und Rechte führen zu anderen Entscheidungen.",
+      "en": "The model decides, but only about what the harness puts in front of it. Other tools, instructions and permissions lead to other decisions."
+     }
+    },
+    {
+     "kennung": "b",
+     "text": {
+      "de": "Sie können sich verschieden verhalten, weil der Harness bestimmt, welche Werkzeuge, Anweisungen, Rechte und welchen Kontext das Modell bekommt.",
+      "en": "They can behave differently, because the harness determines which tools, instructions, permissions and context the model gets."
+     },
+     "begruendung": {
+      "de": "Richtig: Ein Agent ist ein LLM plus ein Harness. Dasselbe Modell in einem anderen Harness ist ein anderer Agent.",
+      "en": "Correct: an agent is an LLM plus a harness. The same model in a different harness is a different agent."
+     }
+    },
+    {
+     "kennung": "c",
+     "text": {
+      "de": "Sie unterscheiden sich nur in der Geschwindigkeit, weil der Harness festlegt, wie schnell das Modell rechnet.",
+      "en": "They differ only in speed, because the harness sets how fast the model computes."
+     },
+     "begruendung": {
+      "de": "Wie schnell das Modell rechnet, bestimmt der Server des Anbieters. Der Harness ändert, was das Modell sieht und tun darf, und damit das Verhalten.",
+      "en": "How fast the model computes is determined by the provider's server. The harness changes what the model sees and may do, and with it the behaviour."
+     }
+    },
+    {
+     "kennung": "d",
+     "text": {
+      "de": "Sie geben dieselben Antworten in anderer Gestaltung, weil der Harness nur die Ausgabe formatiert.",
+      "en": "They give the same answers in a different layout, because the harness only formats the output."
+     },
+     "begruendung": {
+      "de": "Der Harness formatiert nicht nur; er führt die Schleife, die Werkzeuge und den Kontext. Davon hängt ab, welche Antworten überhaupt entstehen.",
+      "en": "The harness does more than format; it runs the loop, the tools and the context. Which answers come about at all depends on that."
+     }
+    }
+   ]
+  },
+  {
+   "id": "ag-010",
+   "niveau": "anwenden",
+   "frage": {
+    "de": "Im Spiel „Be the Agent“ liefert die Suche eine aktuelle Seite und eine archivierte Seite von 2009 mit einem anderen Stickstoffbedarf. Das Model rechnet mit dem Wert von 2009. Was zeigt das über echte Agenten?",
+    "en": "In the game \"Be the Agent\" the search returns a current page and an archived page from 2009 with a different nitrogen requirement. The Model calculates with the 2009 value. What does this show about real agents?"
+   },
+   "typ": "sc",
+   "richtig": [
+    "b"
+   ],
+   "optionen": [
+    {
+     "kennung": "a",
+     "text": {
+      "de": "Das Suchwerkzeug hat einen Fehler gemacht; ein besseres würde nur aktuelle Seiten liefern.",
+      "en": "The search tool made a mistake; a better one would only return current pages."
+     },
+     "begruendung": {
+      "de": "Die Suche hat getan, was verlangt war: passende Seiten gefunden. Alte Quellen stehen auch im echten Netz, und ein Agent muss mit ihnen umgehen.",
+      "en": "The search did what it was asked: it found matching pages. Old sources exist on the real web too, and an agent has to deal with them."
+     }
+    },
+    {
+     "kennung": "b",
+     "text": {
+      "de": "Das Modell arbeitet nur mit dem, was auf seinem Stapel liegt; ob es eine veraltete Quelle bemerkt, hängt davon ab, ob es das Ergebnis sorgfältig liest und prüft.",
+      "en": "The model works only with what is on its stack; whether it notices an outdated source depends on whether it reads and checks the result carefully."
+     },
+     "begruendung": {
+      "de": "Richtig: Die Jahreszahl stand auf der Karte. Ein Agent ist nur so gut wie die Ergebnisse, die ihn erreichen, und wie sein Umgang damit.",
+      "en": "Correct: the year was on the card. An agent is only as good as the results that reach it and the way it handles them."
+     }
+    },
+    {
+     "kennung": "c",
+     "text": {
+      "de": "Der Harness hätte die alte Seite aussortieren müssen, weil er jedes Ergebnis auf Richtigkeit prüft.",
+      "en": "The harness should have filtered out the old page, because it checks every result for correctness."
+     },
+     "begruendung": {
+      "de": "Der Harness prüft, ob ein Aufruf gültig ist, nicht, ob ein Ergebnis inhaltlich stimmt. Das zu beurteilen bleibt Sache des Modells.",
+      "en": "The harness checks whether a call is valid, not whether a result is correct in substance. Judging that remains the model's job."
+     }
+    },
+    {
+     "kennung": "d",
+     "text": {
+      "de": "Ein echtes Modell hätte den aktuellen Wert aus dem Training gekannt, deshalb tritt der Fehler nur im Papierspiel auf.",
+      "en": "A real model would have known the current value from training, so the mistake only happens in the paper game."
+     },
+     "begruendung": {
+      "de": "Trainingswissen hat einen Stichtag und kann selbst veraltet sein. Gerade deshalb sucht ein Agent nach Quellen und muss deren Alter beurteilen.",
+      "en": "Training knowledge has a cut-off date and may itself be outdated. That is exactly why an agent searches for sources and has to judge how old they are."
+     }
+    }
+   ]
+  },
+  {
+   "id": "ag-011",
+   "niveau": "erinnern",
+   "frage": {
+    "de": "Welche Abfolge beschreibt die Schleife, die den Kern jedes Agenten bildet?",
+    "en": "Which sequence describes the loop at the core of every agent?"
+   },
+   "typ": "sc",
+   "richtig": [
+    "c"
+   ],
+   "optionen": [
+    {
+     "kennung": "a",
+     "text": {
+      "de": "planen, alle Schritte ausführen, Bericht abgeben",
+      "en": "plan, carry out all steps, deliver a report"
+     },
+     "begruendung": {
+      "de": "Hier fehlt das Beobachten zwischen den Schritten. Ein Agent schaut sich jedes Ergebnis an, bevor er den nächsten Schritt wählt.",
+      "en": "This lacks the observing between steps. An agent looks at every result before it chooses the next step."
+     }
+    },
+    {
+     "kennung": "b",
+     "text": {
+      "de": "Prompt, Antwort, Rückmeldung des Nutzers, neuer Prompt",
+      "en": "prompt, answer, user feedback, new prompt"
+     },
+     "begruendung": {
+      "de": "Das ist das Gespräch mit einem Chatbot: Den nächsten Schritt macht der Mensch. Beim Agenten schließt sich die Schleife ohne ihn.",
+      "en": "That is a conversation with a chatbot: the human takes the next step. With an agent the loop closes without the human."
+     }
+    },
+    {
+     "kennung": "c",
+     "text": {
+      "de": "denken, handeln, beobachten, und wieder von vorn, bis das Ziel erreicht ist",
+      "en": "think, act, observe, and again until the goal is reached"
+     },
+     "begruendung": {
+      "de": "Richtig: In der Forschung heißt dieses Muster ReAct (Yao et al., 2022); im Spiel sind es die Karten THINK, TOOL und RESULT.",
+      "en": "Correct: in research this pattern is called ReAct (Yao et al., 2022); in the game it is the THINK, TOOL and RESULT cards."
+     }
+    },
+    {
+     "kennung": "d",
+     "text": {
+      "de": "suchen, lesen, zusammenfassen, und nach einer Antwort aufhören",
+      "en": "search, read, summarise, and stop after one answer"
+     },
+     "begruendung": {
+      "de": "Das ist eine feste Abfolge mit einem einzigen Durchgang. Einem Agenten ist die Zahl der Durchgänge nicht vorgegeben; er hört auf, wenn das Ziel erreicht ist.",
+      "en": "This is a fixed sequence with a single pass. An agent has no fixed number of passes; it stops when the goal is reached."
+     }
+    }
+   ]
+  },
+  {
+   "id": "ag-012",
+   "niveau": "verstehen",
+   "frage": {
+    "de": "METR berichtet für aktuelle Modelle einen „Zeithorizont“ von mehreren Stunden. Was misst er?",
+    "en": "METR reports a \"time horizon\" of several hours for current models. What does it measure?"
+   },
+   "typ": "sc",
+   "richtig": [
+    "b"
+   ],
+   "optionen": [
+    {
+     "kennung": "a",
+     "text": {
+      "de": "Wie lange ein Modell arbeiten kann, bis sein Kontextfenster voll ist.",
+      "en": "How long a model can work before its context window is full."
+     },
+     "begruendung": {
+      "de": "Mit dem Kontextfenster hat das Maß nichts zu tun. Es misst die Länge von Aufgaben, nicht die Laufzeit des Modells.",
+      "en": "The measure has nothing to do with the context window. It measures the length of tasks, not how long the model runs."
+     }
+    },
+    {
+     "kennung": "b",
+     "text": {
+      "de": "Die Länge von Aufgaben, gemessen in der Zeit, die ein Mensch braucht, die ein Modell in der Hälfte der Fälle allein schafft.",
+      "en": "The length of tasks, measured in the time a human needs, that a model completes on its own in half of the cases."
+     },
+     "begruendung": {
+      "de": "Richtig: Ein Horizont von vier Stunden heißt, dass Aufgaben, für die ein Mensch vier Stunden braucht, in etwa der Hälfte der Fälle gelingen.",
+      "en": "Correct: a horizon of four hours means that tasks a human needs four hours for succeed in about half of the cases."
+     }
+    },
+    {
+     "kennung": "c",
+     "text": {
+      "de": "Wie viele Stunden menschlicher Arbeit ein Modell im Durchschnitt pro Tag einspart.",
+      "en": "How many hours of human work a model saves on average per day."
+     },
+     "begruendung": {
+      "de": "Eingesparte Arbeitszeit misst METR nicht. Ob sich der Zeithorizont in Einsparungen übersetzt, ist eine eigene, offene Frage.",
+      "en": "METR does not measure saved working time. Whether the time horizon translates into savings is a separate, open question."
+     }
+    },
+    {
+     "kennung": "d",
+     "text": {
+      "de": "Wie lange das Modell für eine Aufgabe braucht, die ein Mensch in einer Stunde erledigt.",
+      "en": "How long the model needs for a task that a human completes in one hour."
+     },
+     "begruendung": {
+      "de": "Gemessen wird nicht die Rechenzeit des Modells, sondern wie lange die Aufgaben sein dürfen, die es noch schafft.",
+      "en": "What is measured is not the model's computing time but how long the tasks it still manages may be."
+     }
+    }
+   ]
+  }
+ ]
+}

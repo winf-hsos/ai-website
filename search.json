@@ -41,14 +41,175 @@
     ]
   },
   {
-    "objectID": "concepts/index.html",
-    "href": "concepts/index.html",
-    "title": "Overview",
+    "objectID": "concepts/the-harness.html",
+    "href": "concepts/the-harness.html",
+    "title": "The Harness",
     "section": "",
-    "text": "This page will show the map of topics for this course: which concepts there are, how they build on each other, and where each one appears in the experiments. Until the map is ready, here are the concepts that already have a page of their own:\n\nA Brief History of AI: seventy-five years of artificial intelligence, compiled live by an AI agent.\nAI Agents: a language model that uses tools in a loop to reach a goal.",
+    "text": "A language model on its own can only write text. Everything that turns this text into action, running the loop, carrying out the tool calls, deciding what the model gets to see and what it is allowed to do, is done by a program around the model: the harness. Claude Code, Codex and OpenCode are harnesses, and the same model in a different harness becomes a different agent. This page answers:\n\nWhat does the harness do, and what does the model do?\nWhy can the same model behave differently in two agents?\nWhere are the limits of what an agent may do, and who sets them?\n\nYou meet this concept in the experiment Be the Agent, where one of you plays the harness and carries every card between the Model and the tools.",
     "crumbs": [
       "Concepts",
-      "Overview"
+      "The Harness"
+    ]
+  },
+  {
+    "objectID": "concepts/the-harness.html#summary",
+    "href": "concepts/the-harness.html#summary",
+    "title": "The Harness",
+    "section": "",
+    "text": "A language model on its own can only write text. Everything that turns this text into action, running the loop, carrying out the tool calls, deciding what the model gets to see and what it is allowed to do, is done by a program around the model: the harness. Claude Code, Codex and OpenCode are harnesses, and the same model in a different harness becomes a different agent. This page answers:\n\nWhat does the harness do, and what does the model do?\nWhy can the same model behave differently in two agents?\nWhere are the limits of what an agent may do, and who sets them?\n\nYou meet this concept in the experiment Be the Agent, where one of you plays the harness and carries every card between the Model and the tools.",
+    "crumbs": [
+      "Concepts",
+      "The Harness"
+    ]
+  },
+  {
+    "objectID": "concepts/the-harness.html#explanation",
+    "href": "concepts/the-harness.html#explanation",
+    "title": "The Harness",
+    "section": "Explanation",
+    "text": "Explanation\n\nWhere the name comes from\nA harness hitches a horse to a cart. The horse provides the power, and the harness decides where that power goes. In an agent, the language model provides the decisions, and the harness connects them to the world: to files, commands, web pages and to you. An AI agent is therefore an LLM plus a harness.\n\n\nWhat the harness does\nThe harness runs the loop. It sends the context to the model, reads what comes back and, if the answer is a tool call, carries it out and adds the result to the context before it asks the model again. When the model writes a final answer instead of a tool call, the harness stops.\nThe harness assembles the context. It decides what the model sees at each step: the system prompt with the list of tools, instructions from files such as agents.md, the skills it loads when they are needed, the plan, and every result so far. When the context window fills up, it summarises or drops older parts.\nThe harness sets the limits. It decides which tools exist at all, asks you for permission before a command runs, and can confine the agent to one folder. The model cannot bypass these rules, because it never touches anything itself.\n\n\nSame model, different agent\nBecause the harness decides what the model sees and may do, two agents with the same model can behave very differently. One gets a web search and the other does not; one reads a project’s instructions and the other starts blank; one asks before every command and the other just acts. Comparing agents therefore means comparing harnesses as much as models.",
+    "crumbs": [
+      "Concepts",
+      "The Harness"
+    ]
+  },
+  {
+    "objectID": "concepts/the-harness.html#slides",
+    "href": "concepts/the-harness.html#slides",
+    "title": "The Harness",
+    "section": "Slides",
+    "text": "Slides\nSlides for this concept will follow.",
+    "crumbs": [
+      "Concepts",
+      "The Harness"
+    ]
+  },
+  {
+    "objectID": "concepts/the-harness.html#practice-questions",
+    "href": "concepts/the-harness.html#practice-questions",
+    "title": "The Harness",
+    "section": "Practice questions",
+    "text": "Practice questions\nPractice questions for this concept will follow.",
+    "crumbs": [
+      "Concepts",
+      "The Harness"
+    ]
+  },
+  {
+    "objectID": "concepts/the-harness.html#further-reading",
+    "href": "concepts/the-harness.html#further-reading",
+    "title": "The Harness",
+    "section": "Further reading",
+    "text": "Further reading\n\nAnthropic: Building effective agents, December 2024.\nSimon Willison: I think “agent” may finally have a widely enough agreed upon definition to be useful jargon now, 18 September 2025.",
+    "crumbs": [
+      "Concepts",
+      "The Harness"
+    ]
+  },
+  {
+    "objectID": "concepts/ai-agents.html",
+    "href": "concepts/ai-agents.html",
+    "title": "AI Agents",
+    "section": "",
+    "text": "A chatbot answers, and you take the next step yourself: you copy the code, run it, paste back the error. An agent takes those steps on its own. Under the hood it is the same language model; the difference is what is built around it. A working definition: an LLM agent runs tools in a loop to achieve a goal.\nEverything else, the plan, the instructions it loads, the sub-agents, the context it keeps in mind, is built around that loop. This page answers:\n\nWhat is the difference between a chatbot and an agent?\nWhat are the parts of an agent, and what does each one do?\nWhen is an agent the right choice, and when is a fixed workflow better?\nWhy are agents suddenly everywhere?\nWhat can go wrong when an agent acts with your permissions?\n\nYou play an agent yourself in the experiment Be the Agent, and the program around the model has a page of its own: The Harness.",
+    "crumbs": [
+      "Concepts",
+      "AI Agents"
+    ]
+  },
+  {
+    "objectID": "concepts/ai-agents.html#summary",
+    "href": "concepts/ai-agents.html#summary",
+    "title": "AI Agents",
+    "section": "",
+    "text": "A chatbot answers, and you take the next step yourself: you copy the code, run it, paste back the error. An agent takes those steps on its own. Under the hood it is the same language model; the difference is what is built around it. A working definition: an LLM agent runs tools in a loop to achieve a goal.\nEverything else, the plan, the instructions it loads, the sub-agents, the context it keeps in mind, is built around that loop. This page answers:\n\nWhat is the difference between a chatbot and an agent?\nWhat are the parts of an agent, and what does each one do?\nWhen is an agent the right choice, and when is a fixed workflow better?\nWhy are agents suddenly everywhere?\nWhat can go wrong when an agent acts with your permissions?\n\nYou play an agent yourself in the experiment Be the Agent, and the program around the model has a page of its own: The Harness.",
+    "crumbs": [
+      "Concepts",
+      "AI Agents"
+    ]
+  },
+  {
+    "objectID": "concepts/ai-agents.html#explanation",
+    "href": "concepts/ai-agents.html#explanation",
+    "title": "AI Agents",
+    "section": "Explanation",
+    "text": "Explanation\n\nThe model, the tools, the loop\nThe language model can only produce text. It cannot open a file or load a web page. What it can do is write down which tool it wants to call, and with which arguments: read a file, write a file, run a command, search the web. A program on your computer, the harness, executes the call and hands the result back to the model. Then the model decides what to do next. This loop, think, act, observe, repeats until the goal is reached. In research the pattern is known as ReAct (Yao et al., 2022).\n\n\nContext, plans and sub-agents\nEverything the agent “knows” during a task sits in its context window: the goal, every tool result, every intermediate thought. When it fills up, the agent has to summarise or forget. To stay on track, agents write themselves a plan, a to-do list they tick off, and read instructions stored in text files when they need them. For big tasks they can start sub-agents: copies of themselves, each with a fresh context window, working in parallel.\n\n\nWorkflow or agent?\nNot everything with AI inside is an agent. A workflow follows predefined steps; an agent decides the next step itself. The advice from Anthropic: keep it as simple as possible, and use agents only where the task needs that freedom.\n\n\nHandle with care\nAn agent acts with your permissions. It can read every file you can read, run every command you can run, and publish to the internet. Whoever gives an agent access hands over their own keys. Asking it to show its plan before it acts is where you stay in control.",
+    "crumbs": [
+      "Concepts",
+      "AI Agents"
+    ]
+  },
+  {
+    "objectID": "concepts/ai-agents.html#slides",
+    "href": "concepts/ai-agents.html#slides",
+    "title": "AI Agents",
+    "section": "Slides",
+    "text": "Slides",
+    "crumbs": [
+      "Concepts",
+      "AI Agents"
+    ]
+  },
+  {
+    "objectID": "concepts/ai-agents.html#practice-questions",
+    "href": "concepts/ai-agents.html#practice-questions",
+    "title": "AI Agents",
+    "section": "Practice questions",
+    "text": "Practice questions\nTry questions in the exam format here, with the answer and its reasoning shown right away.",
+    "crumbs": [
+      "Concepts",
+      "AI Agents"
+    ]
+  },
+  {
+    "objectID": "concepts/ai-agents.html#further-reading",
+    "href": "concepts/ai-agents.html#further-reading",
+    "title": "AI Agents",
+    "section": "Further reading",
+    "text": "Further reading\n\nSimon Willison: I think “agent” may finally have a widely enough agreed upon definition to be useful jargon now, 18 September 2025.\nAnthropic: Building effective agents, December 2024.\nShunyu Yao et al.: ReAct: Synergizing Reasoning and Acting in Language Models, 2022.\nMETR: Measuring AI Ability to Complete Long Tasks, 2025.",
+    "crumbs": [
+      "Concepts",
+      "AI Agents"
+    ]
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "This website accompanies the AI modules Applications of Artificial Intelligence and Problem Solving with AI at Hochschule Osnabrück (Osnabrück University of Applied Sciences). Here you find everything for these modules in one place: the slides, the experiments you run in class and at home, and the questions to practise with.",
+    "crumbs": [
+      "About"
+    ]
+  },
+  {
+    "objectID": "about.html#contact",
+    "href": "about.html#contact",
+    "title": "About",
+    "section": "Contact",
+    "text": "Contact\nThe module and this website are run by Nicolas Meseth. Mistakes on the site, broken links or explanations that do not make sense: please send a mail. Telling us which explanation you were missing helps just as much.",
+    "crumbs": [
+      "About"
+    ]
+  },
+  {
+    "objectID": "about.html#source-code-and-material",
+    "href": "about.html#source-code-and-material",
+    "title": "About",
+    "section": "Source code and material",
+    "text": "Source code and material\nThe website lives on GitHub: github.com/winf-hsos/ai-website. Links to code and tools are collected under Links.",
+    "crumbs": [
+      "About"
+    ]
+  },
+  {
+    "objectID": "about.html#licence-and-transparency",
+    "href": "about.html#licence-and-transparency",
+    "title": "About",
+    "section": "Licence and transparency",
+    "text": "Licence and transparency\nThe content of this website is licensed under CC BY-SA 4.0: you may share and reuse it, with attribution and under the same terms.\nPictures on the slides that were generated with AI models are marked as such in a footnote on each slide. AI assistants are also used in creating the material for this course, in the same way you use them in the course yourselves; the content is checked and answered for by the lecturer.",
+    "crumbs": [
+      "About"
     ]
   },
   {
@@ -118,109 +279,14 @@
     ]
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
+    "objectID": "concepts/index.html",
+    "href": "concepts/index.html",
+    "title": "Overview",
     "section": "",
-    "text": "This website accompanies the AI modules Applications of Artificial Intelligence and Problem Solving with AI at Hochschule Osnabrück (Osnabrück University of Applied Sciences). Here you find everything for these modules in one place: the slides, the experiments you run in class and at home, and the questions to practise with.",
-    "crumbs": [
-      "About"
-    ]
-  },
-  {
-    "objectID": "about.html#contact",
-    "href": "about.html#contact",
-    "title": "About",
-    "section": "Contact",
-    "text": "Contact\nThe module and this website are run by Nicolas Meseth. Mistakes on the site, broken links or explanations that do not make sense: please send a mail. Telling us which explanation you were missing helps just as much.",
-    "crumbs": [
-      "About"
-    ]
-  },
-  {
-    "objectID": "about.html#source-code-and-material",
-    "href": "about.html#source-code-and-material",
-    "title": "About",
-    "section": "Source code and material",
-    "text": "Source code and material\nThe website lives on GitHub: github.com/winf-hsos/ai-website. Links to code and tools are collected under Links.",
-    "crumbs": [
-      "About"
-    ]
-  },
-  {
-    "objectID": "about.html#licence-and-transparency",
-    "href": "about.html#licence-and-transparency",
-    "title": "About",
-    "section": "Licence and transparency",
-    "text": "Licence and transparency\nThe content of this website is licensed under CC BY-SA 4.0: you may share and reuse it, with attribution and under the same terms.\nPictures on the slides that were generated with AI models are marked as such in a footnote on each slide. AI assistants are also used in creating the material for this course, in the same way you use them in the course yourselves; the content is checked and answered for by the lecturer.",
-    "crumbs": [
-      "About"
-    ]
-  },
-  {
-    "objectID": "concepts/ai-agents.html",
-    "href": "concepts/ai-agents.html",
-    "title": "AI Agents",
-    "section": "",
-    "text": "A chatbot answers, and you take the next step yourself: you copy the code, run it, paste back the error. An agent takes those steps on its own. Under the hood it is the same language model; the difference is what is built around it. A working definition: an LLM agent runs tools in a loop to achieve a goal.\nEverything else, the plan, the instructions it loads, the sub-agents, the context it keeps in mind, is built around that loop. This page answers:\n\nWhat is the difference between a chatbot and an agent?\nWhat are the parts of an agent, and what does each one do?\nWhen is an agent the right choice, and when is a fixed workflow better?\nWhy are agents suddenly everywhere?\nWhat can go wrong when an agent acts with your permissions?",
+    "text": "This page will show the map of topics for this course: which concepts there are, how they build on each other, and where each one appears in the experiments. Until the map is ready, here are the concepts that already have a page of their own:\n\nA Brief History of AI: seventy-five years of artificial intelligence, compiled live by an AI agent.\nAI Agents: a language model that uses tools in a loop to reach a goal.\nThe Harness: the program around a language model that turns it into an agent.",
     "crumbs": [
       "Concepts",
-      "AI Agents"
-    ]
-  },
-  {
-    "objectID": "concepts/ai-agents.html#summary",
-    "href": "concepts/ai-agents.html#summary",
-    "title": "AI Agents",
-    "section": "",
-    "text": "A chatbot answers, and you take the next step yourself: you copy the code, run it, paste back the error. An agent takes those steps on its own. Under the hood it is the same language model; the difference is what is built around it. A working definition: an LLM agent runs tools in a loop to achieve a goal.\nEverything else, the plan, the instructions it loads, the sub-agents, the context it keeps in mind, is built around that loop. This page answers:\n\nWhat is the difference between a chatbot and an agent?\nWhat are the parts of an agent, and what does each one do?\nWhen is an agent the right choice, and when is a fixed workflow better?\nWhy are agents suddenly everywhere?\nWhat can go wrong when an agent acts with your permissions?",
-    "crumbs": [
-      "Concepts",
-      "AI Agents"
-    ]
-  },
-  {
-    "objectID": "concepts/ai-agents.html#explanation",
-    "href": "concepts/ai-agents.html#explanation",
-    "title": "AI Agents",
-    "section": "Explanation",
-    "text": "Explanation\n\nThe model, the tools, the loop\nThe language model can only produce text. It cannot open a file or load a web page. What it can do is write down which tool it wants to call, and with which arguments: read a file, write a file, run a command, search the web. A program on your computer executes the call and hands the result back to the model. Then the model decides what to do next. This loop, think, act, observe, repeats until the goal is reached. In research the pattern is known as ReAct (Yao et al., 2022).\n\n\nContext, plans and sub-agents\nEverything the agent “knows” during a task sits in its context window: the goal, every tool result, every intermediate thought. When it fills up, the agent has to summarise or forget. To stay on track, agents write themselves a plan, a to-do list they tick off, and read instructions stored in text files when they need them. For big tasks they can start sub-agents: copies of themselves, each with a fresh context window, working in parallel.\n\n\nWorkflow or agent?\nNot everything with AI inside is an agent. A workflow follows predefined steps; an agent decides the next step itself. The advice from Anthropic: keep it as simple as possible, and use agents only where the task needs that freedom.\n\n\nHandle with care\nAn agent acts with your permissions. It can read every file you can read, run every command you can run, and publish to the internet. Whoever gives an agent access hands over their own keys. Asking it to show its plan before it acts is where you stay in control.",
-    "crumbs": [
-      "Concepts",
-      "AI Agents"
-    ]
-  },
-  {
-    "objectID": "concepts/ai-agents.html#slides",
-    "href": "concepts/ai-agents.html#slides",
-    "title": "AI Agents",
-    "section": "Slides",
-    "text": "Slides",
-    "crumbs": [
-      "Concepts",
-      "AI Agents"
-    ]
-  },
-  {
-    "objectID": "concepts/ai-agents.html#practice-questions",
-    "href": "concepts/ai-agents.html#practice-questions",
-    "title": "AI Agents",
-    "section": "Practice questions",
-    "text": "Practice questions\nPractice questions for this concept will follow.",
-    "crumbs": [
-      "Concepts",
-      "AI Agents"
-    ]
-  },
-  {
-    "objectID": "concepts/ai-agents.html#further-reading",
-    "href": "concepts/ai-agents.html#further-reading",
-    "title": "AI Agents",
-    "section": "Further reading",
-    "text": "Further reading\n\nSimon Willison: I think “agent” may finally have a widely enough agreed upon definition to be useful jargon now, 18 September 2025.\nAnthropic: Building effective agents, December 2024.\nShunyu Yao et al.: ReAct: Synergizing Reasoning and Acting in Language Models, 2022.\nMETR: Measuring AI Ability to Complete Long Tasks, 2025.",
-    "crumbs": [
-      "Concepts",
-      "AI Agents"
+      "Overview"
     ]
   },
   {
@@ -262,6 +328,17 @@
     "title": "Be the Agent",
     "section": "Discussion",
     "text": "Discussion\nWrite down your own answers first, then discuss them in your group.\n\nIn which round would the Model have been stuck without the tools, and which tool was used most?\nWhat would have gone differently if the Model had had to give up its stack after ten cards?\nWho did the thinking, who did the acting, and which of it could the Model actually do?",
+    "crumbs": [
+      "Experiments",
+      "Be the Agent"
+    ]
+  },
+  {
+    "objectID": "experiments/be-the-agent/be-the-agent.html#concepts",
+    "href": "experiments/be-the-agent/be-the-agent.html#concepts",
+    "title": "Be the Agent",
+    "section": "Concepts",
+    "text": "Concepts\n\nAI Agents: the loop of thinking, acting and observing that you just ran by hand.\nThe Harness: the program around the model, which you played as the Harness.",
     "crumbs": [
       "Experiments",
       "Be the Agent"
