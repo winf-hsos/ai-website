@@ -1,1 +1,1 @@
-Sitemap: https://winf-hsos.github.io/ai-website/sitemap.xml
+Sitemap: https://ai.hands-on-computer-science.de/sitemap.xml
