@@ -250,7 +250,7 @@
     "href": "experiments/be-the-agent/be-the-agent.html#what-you-need",
     "title": "Be the Agent",
     "section": "What you need",
-    "text": "What you need\n\nA group of seven. With five or six of you, one person takes two roles (see the table below).\nThe cards, printed and cut out (be-the-agent-cards.pdf): the system card, three task cards, a role card for everyone, the search index, the farm files, the web pages and plenty of blank cards.\nThe Observer’s sheet at the end of this document, a pen for everyone and a calculator.\nEnough room for the tools to sit apart from the Model, ideally at their own tables.\nAbout 30 minutes for the first two tasks.",
+    "text": "What you need\n\nA group of seven. With five or six of you, one person takes two roles (see the table below).\nThe cards, printed and cut out (be-the-agent-cards.pdf): the system card, three task cards, a role card for everyone, the search index, the farm files, the web pages and plenty of blank cards.\nThe Observer’s sheet (be-the-agent-observer.pdf), a pen for everyone and a calculator.\nEnough room for the tools to sit apart from the Model, ideally at their own tables.\nAbout 30 minutes for the first two tasks.",
     "crumbs": [
       "Experiments",
       "Be the Agent"
@@ -338,7 +338,7 @@
     "href": "experiments/be-the-agent/be-the-agent.html#observers-sheet",
     "title": "Be the Agent",
     "section": "Observer’s sheet",
-    "text": "Observer’s sheet\nTask: ______ Model: ______________ Harness: ______________\n\n\n\n\n\n\n\n\n\n\nRound\nCard\nTool\nWhat it said, in short\nNote: error, detour, good move\n\n\n\n\n1\n\n\n\n\n\n\n2\n\n\n\n\n\n\n3\n\n\n\n\n\n\n4\n\n\n\n\n\n\n5\n\n\n\n\n\n\n6\n\n\n\n\n\n\n7\n\n\n\n\n\n\n8\n\n\n\n\n\n\n9\n\n\n\n\n\n\n10\n\n\n\n\n\n\n11\n\n\n\n\n\n\n12\n\n\n\n\n\n\n13\n\n\n\n\n\n\n14\n\n\n\n\n\n\n15\n\n\n\n\n\n\n16\n\n\n\n\n\n\n\nRounds: ______ Tool calls: Search ___ Web ___ Files ___ Calculator ___ Errors: ______ Cards on the stack at the end: ______",
+    "text": "Observer’s sheet\nThe Observer keeps the log on a sheet of its own: be-the-agent-observer.pdf, one A4 page with room for 22 rounds and a box to count rounds, errors and the calls to each tool. Print one per group and task.",
     "crumbs": [
       "Experiments",
       "Be the Agent"
