@@ -228,18 +228,18 @@
     "href": "experiments/be-the-agent/be-the-agent.html",
     "title": "Be the Agent",
     "section": "",
-    "text": "An AI agent such as Claude Code gets a goal instead of a recipe. It plans its own steps, uses tools and keeps going until the job is done. In this experiment your group plays such an agent, with cards, a calculator and a few printed pages instead of a computer. One of you is the language model, one carries the messages, four of you are the tools, and one watches and keeps the log. By the end you will have run, by hand, the loop that every AI agent runs on.",
+    "text": "Your group plays an AI agent with cards instead of a computer: one of you is the language model, one carries the messages, four of you are the tools, and one keeps the log. By the end you will have run by hand the loop that every AI agent runs on.",
     "crumbs": [
       "Experiments",
       "Be the Agent"
     ]
   },
   {
-    "objectID": "experiments/be-the-agent/be-the-agent.html#goal",
-    "href": "experiments/be-the-agent/be-the-agent.html#goal",
+    "objectID": "experiments/be-the-agent/be-the-agent.html#slides",
+    "href": "experiments/be-the-agent/be-the-agent.html#slides",
     "title": "Be the Agent",
-    "section": "Goal",
-    "text": "Goal\nFind out from the inside how an agent works: what the language model decides, what the tools do, who carries the messages between them, and why everything the model knows has to be on its stack of cards.",
+    "section": "Slides",
+    "text": "Slides\nThe slides lead through the game: the roles, the cards, the rules, the three tasks and what you just played.",
     "crumbs": [
       "Experiments",
       "Be the Agent"
@@ -250,18 +250,7 @@
     "href": "experiments/be-the-agent/be-the-agent.html#what-you-need",
     "title": "Be the Agent",
     "section": "What you need",
-    "text": "What you need\n\nA group of seven. With five or six of you, one person takes two roles (see the table below).\nThe cards, printed and cut out (be-the-agent-cards.pdf): the system card, three task cards, a role card for everyone, the search index, the farm files, the web pages and plenty of blank cards.\nThe Observer’s sheet (be-the-agent-observer.pdf), a pen for everyone and a calculator.\nEnough room for the tools to sit apart from the Model, ideally at their own tables.\nAbout 30 minutes for the first two tasks.",
-    "crumbs": [
-      "Experiments",
-      "Be the Agent"
-    ]
-  },
-  {
-    "objectID": "experiments/be-the-agent/be-the-agent.html#the-roles",
-    "href": "experiments/be-the-agent/be-the-agent.html#the-roles",
-    "title": "Be the Agent",
-    "section": "The roles",
-    "text": "The roles\n\n\n\n\n\n\n\n\nRole\nWhat you do\nWhat you have\n\n\n\n\nModel\nYou decide what happens next and write it on a card.\nOnly the stack of cards in front of you.\n\n\nHarness\nYou take every card the Model writes. A tool card you check and carry to the right tool; the result you bring back and put on the Model’s stack.\nThe role card with the list of tools.\n\n\nSearch\nYou find web pages for a search request and return their titles.\nThe search index: titles and keywords, but not the pages themselves.\n\n\nWeb\nYou return the full text of a page.\nThe web pages.\n\n\nFiles\nYou read out and store the farm’s files.\nThe farm files and blank sheets for new ones.\n\n\nCalculator\nYou calculate exactly what is written.\nA calculator.\n\n\nObserver\nYou keep the log: every card in order, with a note on what happened.\nEverything, but you never help.\n\n\n\nWith six people, Search and Web are one person. With five, also Files and Calculator.",
+    "text": "What you need\n\nA group of seven; with five or six, one person takes two roles.\nThe cards, printed and cut out, and the Observer’s sheet.\nA pen for everyone, a calculator and room for the tools to sit apart from the Model.",
     "crumbs": [
       "Experiments",
       "Be the Agent"
@@ -272,7 +261,7 @@
     "href": "experiments/be-the-agent/be-the-agent.html#the-rules",
     "title": "Be the Agent",
     "section": "The rules",
-    "text": "The rules\n\nThe Model sees only its stack. Nobody talks to it, and it never looks at the other tables. Everything it learns arrives on a card.\nEvery card the Model writes starts with one of three words:\n\nTHINK: a note to itself, for example THINK: I need the size of the field first.\nTOOL: a tool call, written exactly as on the system card, for example TOOL: read_file(\"fields\").\nANSWER: the answer to the task. This card ends the game.\n\nThe Harness carries every card. A THINK: card goes straight onto the stack. A TOOL: card goes to the tool it names; if no such tool exists or the call is written wrongly, the Harness writes RESULT: error, unknown tool itself and does not walk anywhere.\nA tool does exactly what the card says and writes its answer on a new card that starts with RESULT:. It never repairs a call, never guesses what the Model meant and never adds anything that was not asked for. Tools do not talk to each other.\nEvery card goes on top of the stack in the order it was written, and it stays there.\nOne card at a time. The Model writes its next card only when the result of the last one is on the stack.",
+    "text": "The rules\n\nThe Model sees only its stack of cards, and nobody talks to it.\nIt writes one card at a time, starting with THINK:, TOOL: or ANSWER:.\nThe Harness carries every TOOL: card to the right tool and brings back the RESULT: card.\nA tool does exactly what the card says, nothing more, and never guesses what was meant.",
     "crumbs": [
       "Experiments",
       "Be the Agent"
@@ -283,18 +272,7 @@
     "href": "experiments/be-the-agent/be-the-agent.html#steps",
     "title": "Be the Agent",
     "section": "Steps",
-    "text": "Steps\n\nSet up. Hand out the role cards. The tools take their material and sit apart from the Model. The Model’s stack starts with the system card, with the card for Task 1 on top of it. The Observer takes the log sheet.\nPlay Task 1. How many cards did it take, and how many walks did the Harness make? Did the Model write a THINK: card before its first tool call?\nSwap roles and play Task 2. Which tools were busy, and which sat idle? Did the first search find the right page? Which value did the Model choose, and how did it decide?\nCount. The Observer reads the log aloud: rounds, tool calls per tool, errors, and how many cards lie on the stack at the end.\nPlay Task 3 if there is time. One thing in the farm files will only be noticed by a careful Model.\nCompare with a real agent. Your lecturer shows the log of a real agent session. Find the places where it thinks, calls a tool, receives a result and answers.",
-    "crumbs": [
-      "Experiments",
-      "Be the Agent"
-    ]
-  },
-  {
-    "objectID": "experiments/be-the-agent/be-the-agent.html#what-you-just-played",
-    "href": "experiments/be-the-agent/be-the-agent.html#what-you-just-played",
-    "title": "Be the Agent",
-    "section": "What you just played",
-    "text": "What you just played\n\n\n\n\n\n\n\nIn the game\nIn a real AI agent\n\n\n\n\nthe stack of cards\nthe context window: everything the model knows during a task\n\n\nthe system card\nthe system prompt: who the model is and which tools it has\n\n\nthe task card\nthe user’s prompt, the goal\n\n\na THINK: card\nthe model’s reasoning or plan\n\n\na TOOL: card\na tool call: the model only writes text, something else carries it out\n\n\nthe Harness\nthe harness, the program around the model that checks each call, runs the right tool and adds the result to the context\n\n\nSearch, Web, Files, Calculator\nthe tools: a search engine, a web fetcher, the file system, a code runner\n\n\na RESULT: card\nthe observation: the tool’s result, added to the context\n\n\nthe Observer’s log\nthe transcript of the session\n\n\nthe ANSWER: card\nthe stop condition: the goal is reached\n\n\n\nThe loop you ran, think, act and observe until the goal is reached, is the loop inside every AI agent. The Model never opened a file, never searched the web and never pressed a key on the calculator; it only wrote text, and everyone else in the group carried it out.",
+    "text": "Steps\n\nHand out the role cards; the Model’s stack starts with the system card and Task 1 on top.\nPlay Task 1, then swap roles and play Task 2.\nThe Observer reads the log aloud: rounds, tool calls per tool, errors and cards on the stack.\nPlay Task 3 if there is time, then compare your log with the log of a real agent.",
     "crumbs": [
       "Experiments",
       "Be the Agent"
@@ -316,7 +294,7 @@
     "href": "experiments/be-the-agent/be-the-agent.html#go-further",
     "title": "Be the Agent",
     "section": "Go further",
-    "text": "Go further\n\nLimited memory. The stack may now hold at most eight cards. When it is full, the Model writes a SUMMARY: card that replaces the oldest cards; the system card and the task card always stay. Play Task 3 again. What got lost, and did it matter?\nTwo tools at once. The Model may now write two tool cards in one turn, and the Harness carries them in parallel. Play Task 2 again and compare the time with your first game.\nA new tool. One person becomes a new tool, for example forecast(\"date\") with its own page of information. Add the tool to the system card. Does the Model use it without being told to?\nA wrong result. One tool secretly returns one wrong result, for example the Calculator is off by a factor of ten. Does the Model notice? What would a real agent need in order to notice?\nBe the tool for a chatbot. Solve Task 2 with a chatbot in your browser. Whenever it needs a file, a web page or a calculation, you have to provide it yourself. Who is the Harness now, and who decides the next step?",
+    "text": "Go further\n\nLimited memory: the stack holds at most eight cards, and a SUMMARY: card replaces the oldest ones when it is full.\nTwo tools at once: the Model may write two tool cards per turn, which the Harness carries in parallel.\nA new tool: someone becomes forecast(\"date\"), added to the system card, and you watch whether the Model uses it unprompted.\nA wrong result: one tool secretly returns a wrong value, and you find out whether the Model notices.\nBe the tool for a chatbot: solve Task 2 with a chatbot in your browser, supplying every file, page and calculation yourself.",
     "crumbs": [
       "Experiments",
       "Be the Agent"
@@ -338,7 +316,7 @@
     "href": "experiments/be-the-agent/be-the-agent.html#observers-sheet",
     "title": "Be the Agent",
     "section": "Observer’s sheet",
-    "text": "Observer’s sheet\nThe Observer keeps the log on a sheet of its own: be-the-agent-observer.pdf, one A4 page with room for 22 rounds and a box to count rounds, errors and the calls to each tool. Print one per group and task.",
+    "text": "Observer’s sheet\nOne A4 sheet per group and task, with room for 22 rounds and the counts at the end.",
     "crumbs": [
       "Experiments",
       "Be the Agent"

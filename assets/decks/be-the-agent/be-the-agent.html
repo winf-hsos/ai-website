@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Be the Agent</title>
+  <link rel="stylesheet" href="theme.css?v=20261002a">
+  <link rel="stylesheet" href="../stagekit/stagekit.css?v=20261002a">
+  <style>
+    /* Zeilen, die nacheinander erscheinen: grosszuegiger Abstand */
+    .lines.spaced > div { margin-bottom: 36px; }
+    /* Spiel und echter Agent: drei Spalten, links das Spiel, rechts der Fachbegriff */
+    .map { display: grid; grid-template-columns: auto auto 1fr; gap: 22px 40px; font-size: var(--small); align-items: baseline; }
+    .map .spiel { color: var(--gray-light); }
+    .map .pfeil { color: var(--gray); }
+    .map .echt { color: var(--white); }
+    .map .echt b { color: var(--blue); font-weight: normal; }
+    /* Ausschnitt aus einem echten Agentenprotokoll */
+    .log { display: grid; grid-template-columns: 200px 1fr; gap: 26px 32px; font-size: var(--small); align-items: start; }
+    .log .art { font-family: var(--mono); font-size: var(--tiny); padding: 6px 12px; border-radius: 6px; color: var(--bg); text-align: center; }
+    .log .art.modell { background: var(--blue); }
+    .log .art.werkzeug { background: var(--gray); }
+    .log .text { color: var(--white); }
+    .log .text code { font-family: var(--mono); font-size: var(--tiny); color: var(--gray-light); }
+    .mono { font-family: var(--mono); }
+    /* die Werkzeuge der Systemkarte: Aufruf links in Codeschrift, Beschreibung rechts */
+    .werkzeuge { display: grid; grid-template-columns: auto 1fr; gap: 26px 60px; font-size: var(--small); align-items: baseline; }
+    .werkzeuge .aufruf { font-family: var(--mono); color: var(--blue); }
+    /* Aufgabe gross */
+    .aufgabe { font-size: var(--normal); line-height: 1.35; max-width: 1500px; }
+  </style>
+</head>
+<body>
+<div class="deck"
+     data-title="be the agent"
+     data-subtitle="artificial intelligence · prof. dr. nicolas meseth"
+     data-parts='["the game", "play", "what you just played"]'
+     data-part-colors='{"the game": "#ff62a7", "play": "#ff2d8a", "what you just played": "#d92675"}'>
+
+  <section class="slide title"></section>
+  <section class="slide agenda"></section>
+
+  <!-- Eroeffnung -->
+  <section class="slide">
+    <img class="photo" src="img/opening.jpg" alt="">
+    <div class="photo-text"><div>today, you<br>are the agent,<br>and the computer<br>is your group.</div></div>
+    <div class="footnote">image: ai-generated (gpt-image-2.5-flare)</div>
+    <aside class="notes">Letzte Woche haben wir einem Agenten zugesehen. Heute spielen wir einen nach, ohne Rechner, damit sichtbar wird, wer eigentlich was tut: das Sprachmodell, die Werkzeuge und das Programm dazwischen.</aside>
+  </section>
+
+  <!-- ==================== 1 · the game ==================== -->
+  <section class="slide part" data-part="the game"></section>
+
+  <section class="slide" data-on-show="showRoles" data-on-step="showRoles">
+    <h2>seven roles</h2>
+    <div class="figure" id="fig-roles"></div>
+    <span data-step="1"></span><span data-step="2"></span><span data-step="3"></span>
+    <aside class="notes">Gruppen zu sieben; bei sechs übernimmt eine Person Search und Web, bei fünf zusätzlich eine Person Files und Calculator. Rollenkarten austeilen. Das Model sitzt mit dem Stapel in der Mitte, die vier Werkzeuge an eigenen Tischen, der Harness läuft hin und her, der Observer schreibt mit.</aside>
+  </section>
+
+  <section class="slide" data-on-show="showCards" data-on-step="showCards">
+    <h2>four kinds of cards</h2>
+    <div class="figure" id="fig-cards"></div>
+    <span data-step="1"></span><span data-step="2"></span><span data-step="3"></span>
+    <aside class="notes">Das Model schreibt nur drei Sorten Karten: Überlegungen, Werkzeugaufrufe und am Ende die Antwort. Die vierte Sorte, das Ergebnis, kommt immer von einem Werkzeug. Pink ist alles, was vom Model kommt, grau alles, was ein Werkzeug zurückgibt.</aside>
+  </section>
+
+  <section class="slide">
+    <h2>the rules</h2>
+    <div class="content">
+      <div class="lines spaced">
+        <div>the model sees only its stack, and nobody talks to it.</div>
+        <div data-step="1">the harness carries every card to the right tool and brings the result back.</div>
+        <div data-step="2">a tool does exactly what the card says, nothing more.</div>
+        <div data-step="3">one card at a time, until the model writes <span class="keep-case mono">ANSWER:</span>.</div>
+      </div>
+    </div>
+    <aside class="notes">Die Regeln stehen auch auf den Rollenkarten. Wichtig ist die dritte: Ein Werkzeug repariert nie einen Aufruf und rät nie, was gemeint war, auch wenn es offensichtlich ist.</aside>
+  </section>
+
+  <section class="slide">
+    <h2>the system card</h2>
+    <div class="content" style="top: 150px">
+      <div class="werkzeuge">
+        <div class="aufruf keep-case">search("words")</div><div>finds web pages and returns their titles</div>
+        <div class="aufruf keep-case">open("title")</div><div>returns the full text of one web page</div>
+        <div class="aufruf keep-case">read_file("name")</div><div>returns a farm file: <span class="mono keep-case">fields</span>, <span class="mono keep-case">soil_tests</span>, <span class="mono keep-case">stock</span>, <span class="mono keep-case">weather</span></div>
+        <div class="aufruf keep-case">calculator("expression")</div><div>calculates, e.g. <span class="mono keep-case">calculator("4.5 * 100")</span></div>
+        <div class="aufruf keep-case">write_file("name", "text")</div><div>saves a text as a new farm file</div>
+      </div>
+      <div class="sidenote" style="margin-top: 60px">this is everything the model knows about its tools.</div>
+    </div>
+    <aside class="notes">Das ist alles, was das Model über seine Werkzeuge weiß. Steht etwas nicht auf dieser Karte, gibt es das für das Model nicht. Die Wetterdatei steht hier, aber keine Aufgabe sagt, dass man sie braucht.</aside>
+  </section>
+
+  <!-- ==================== 2 · play ==================== -->
+  <section class="slide part" data-part="play"></section>
+
+  <section class="slide">
+    <h2>task 1 · about 5 minutes</h2>
+    <div class="content">
+      <div class="aufgabe">how large is the field long acre, and what grows on it this year?</div>
+    </div>
+    <aside class="notes">Aufwärmrunde, nur ein Werkzeugaufruf nötig. Danach fragen: Hat ein Model zuerst gesucht, statt die Datei zu lesen?</aside>
+  </section>
+
+  <section class="slide">
+    <h2>task 2 · swap roles · about 12 minutes</h2>
+    <div class="content">
+      <div class="aufgabe">how much nitrogen may we still apply to long acre this spring? give the total in kg <span class="keep-case">N</span> for the whole field.</div>
+    </div>
+    <aside class="notes">Vorher Rollen tauschen. Lösung 630 kg N: Bedarf 180 aus dem Leitfaden 2026 minus Nmin 40, mal 4,5 ha. Die Suche liefert auch das Archiv von 2009 mit 210.</aside>
+  </section>
+
+  <section class="slide">
+    <h2>task 2 · compare</h2>
+    <div class="content">
+      <div class="statement">which nitrogen requirement did your model use, and where did it come from?</div>
+    </div>
+    <aside class="notes">Frage in die Runde, jede Gruppe nennt ihren Wert. 210 stammt aus dem Archiv von 2009. Woran hätte das Model das erkennen können? Genau dieses Problem haben echte Agenten mit veralteten Quellen.</aside>
+  </section>
+
+  <section class="slide">
+    <h2>task 3 · if there is time</h2>
+    <div class="content">
+      <div class="aufgabe">plan the first nitrogen application on long acre: how much of which product do we need, and can we spread it on 10 february?</div>
+    </div>
+    <aside class="notes">Die Falle steckt in der Wetterdatei: Am 10. Februar ist der Boden den ganzen Tag gefroren, frühestens am 11. Harnstoff reicht nicht, im Lager sind nur 500 kg. Lösung: 252 kg N in der ersten Gabe, gut 933 kg Kalkammonsalpeter.</aside>
+  </section>
+
+  <!-- ==================== 3 · what you just played ==================== -->
+  <section class="slide part" data-part="what you just played"></section>
+
+  <section class="slide">
+    <h2>from the game to a real agent</h2>
+    <div class="content" style="top: 150px">
+      <div class="map">
+        <div class="spiel">the stack of cards</div><div class="pfeil">→</div><div class="echt"><b>context window</b>: everything the model knows</div>
+        <div class="spiel" data-step="1">the system card</div><div class="pfeil" data-step="1">→</div><div class="echt" data-step="1"><b>system prompt</b>: who it is, which tools it has</div>
+        <div class="spiel" data-step="2"><span class="keep-case mono">THINK:</span></div><div class="pfeil" data-step="2">→</div><div class="echt" data-step="2"><b>reasoning</b>, the plan</div>
+        <div class="spiel" data-step="3"><span class="keep-case mono">TOOL:</span></div><div class="pfeil" data-step="3">→</div><div class="echt" data-step="3"><b>tool call</b>, written as text</div>
+        <div class="spiel" data-step="4">the harness</div><div class="pfeil" data-step="4">→</div><div class="echt" data-step="4"><b>harness</b>: the program that runs the tools</div>
+        <div class="spiel" data-step="5"><span class="keep-case mono">RESULT:</span></div><div class="pfeil" data-step="5">→</div><div class="echt" data-step="5"><b>observation</b>, added to the context</div>
+        <div class="spiel" data-step="6"><span class="keep-case mono">ANSWER:</span></div><div class="pfeil" data-step="6">→</div><div class="echt" data-step="6"><b>stop</b>: the goal is reached</div>
+      </div>
+    </div>
+    <aside class="notes">Zeile für Zeile aufdecken und je einmal fragen: Wo habt ihr das eben erlebt? Search, Web, Files und Calculator entsprechen Websuche, Abruf einer Seite, Dateisystem und einem Programm, das rechnet.</aside>
+  </section>
+
+  <section class="slide">
+    <h2>the same, in a real agent</h2>
+    <div class="content" style="top: 150px">
+      <div class="log">
+        <div class="art modell keep-case">TOOL</div><div class="text">list the files in the folder <code class="keep-case">Get-ChildItem -Recurse</code></div>
+        <div class="art werkzeug keep-case">RESULT</div><div class="text">one file: <code class="keep-case">WS 26_27 - Applications of Artificial Intelligence.md</code></div>
+        <div class="art modell keep-case">TOOL</div><div class="text">read that file <code class="keep-case">Read("WS 26_27 - … .md")</code></div>
+        <div class="art werkzeug keep-case">RESULT</div><div class="text">“a brief history of artificial intelligence … 1950: alan turing …”</div>
+        <div class="art modell keep-case">THINK</div><div class="text">“before the plan, two things are missing: there's no pinboard photo, and there's no file called milestones.md.”</div>
+        <div class="art modell keep-case">TOOL</div><div class="text">start eight sub-agents <code class="keep-case">Agent("G1 foundations 1943–1969")</code> …</div>
+      </div>
+    </div>
+    <div class="footnote">from the agent's log of session 1, “a brief history of <span class="keep-case">AI</span>”; shortened</div>
+    <aside class="notes">Das sind echte Schritte aus der ersten Sitzung, nur gekürzt. Gemeinsam die Kartenarten zuordnen: Wo schreibt das Modell, wo antwortet ein Werkzeug? Die Überlegung in Zeile fünf ist der Moment, in dem es merkt, dass etwas fehlt, und nachfragt statt zu raten.</aside>
+  </section>
+
+  <section class="slide">
+    <h2>key takeaway</h2>
+    <div class="content">
+      <div class="statement">an <span class="keep-case">AI</span> agent is a language model that can only write text; everything it does in the world happens through tools that the harness runs for it.</div>
+    </div>
+    <aside class="notes">Das Model hat keine Datei geöffnet und nichts gerechnet; es hat nur geschrieben, und alle anderen haben es ausgeführt. Deshalb weiß es nur, was auf seinem Stapel liegt.</aside>
+  </section>
+
+  <section class="slide">
+    <h2>reflect</h2>
+    <div class="content">
+      <div class="lines spaced">
+        <div>in which round would the model have been stuck without the tools?</div>
+        <div data-step="1">what would have changed if the model had to give up its stack after ten cards?</div>
+        <div data-step="2">who did the thinking, who did the acting, and which of it could the model actually do?</div>
+      </div>
+    </div>
+    <aside class="notes">Erst jede und jeder für sich schriftlich auf dem Reflexionsblatt, dann in der Gruppe.</aside>
+  </section>
+
+</div>
+<!-- Reihenfolge ist Pflicht: deck.js VOR stagekit.js -->
+<script src="../stagekit/draw.js?v=20261002a"></script>
+<script src="deck.js?v=20261002a"></script>
+<script src="../stagekit/stagekit.js?v=20261002a"></script>
+</body>
+</html>

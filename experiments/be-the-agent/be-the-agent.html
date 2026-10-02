@@ -197,12 +197,10 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#goal" id="toc-goal" class="nav-link active" data-scroll-target="#goal">Goal</a></li>
+  <li><a href="#slides" id="toc-slides" class="nav-link active" data-scroll-target="#slides">Slides</a></li>
   <li><a href="#what-you-need" id="toc-what-you-need" class="nav-link" data-scroll-target="#what-you-need">What you need</a></li>
-  <li><a href="#the-roles" id="toc-the-roles" class="nav-link" data-scroll-target="#the-roles">The roles</a></li>
   <li><a href="#the-rules" id="toc-the-rules" class="nav-link" data-scroll-target="#the-rules">The rules</a></li>
   <li><a href="#steps" id="toc-steps" class="nav-link" data-scroll-target="#steps">Steps</a></li>
-  <li><a href="#what-you-just-played" id="toc-what-you-just-played" class="nav-link" data-scroll-target="#what-you-just-played">What you just played</a></li>
   <li><a href="#key-takeaway" id="toc-key-takeaway" class="nav-link" data-scroll-target="#key-takeaway">Key takeaway</a></li>
   <li><a href="#go-further" id="toc-go-further" class="nav-link" data-scroll-target="#go-further">Go further</a></li>
   <li><a href="#reflection" id="toc-reflection" class="nav-link" data-scroll-target="#reflection">Reflection</a></li>
@@ -236,7 +234,7 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>An AI agent such as Claude Code gets a goal instead of a recipe. It plans its own steps, uses tools and keeps going until the job is done. In this experiment your group plays such an agent, with cards, a calculator and a few printed pages instead of a computer. One of you is the language model, one carries the messages, four of you are the tools, and one watches and keeps the log. By the end you will have run, by hand, the loop that every AI agent runs on.</p>
+<p>Your group plays an AI agent with cards instead of a computer: one of you is the language model, one carries the messages, four of you are the tools, and one keeps the log. By the end you will have run by hand the loop that every AI agent runs on.</p>
 <div class="callout callout-style-simple callout-note no-icon">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
@@ -247,159 +245,38 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<section id="goal" class="level2">
-<h2 class="anchored" data-anchor-id="goal">Goal</h2>
-<p>Find out from the inside how an agent works: what the language model decides, what the tools do, who carries the messages between them, and why everything the model knows has to be on its stack of cards.</p>
+<section id="slides" class="level2">
+<h2 class="anchored" data-anchor-id="slides">Slides</h2>
+<p>The slides lead through the game: the roles, the cards, the rules, the three tasks and what you just played.</p>
+<div class="deck-embed">
+  <iframe src="../../assets/decks/be-the-agent/be-the-agent.html?bar=1&amp;pdf=../be-the-agent.pdf" title="Be the Agent" allowfullscreen="" loading="lazy"></iframe>
+</div>
 </section>
 <section id="what-you-need" class="level2">
 <h2 class="anchored" data-anchor-id="what-you-need">What you need</h2>
 <ul>
-<li>A group of seven. With five or six of you, one person takes two roles (see the table below).</li>
-<li>The cards, printed and cut out (<a href="be-the-agent-cards.pdf">be-the-agent-cards.pdf</a>): the system card, three task cards, a role card for everyone, the search index, the farm files, the web pages and plenty of blank cards.</li>
-<li>The Observer’s sheet (<a href="be-the-agent-observer.pdf">be-the-agent-observer.pdf</a>), a pen for everyone and a calculator.</li>
-<li>Enough room for the tools to sit apart from the Model, ideally at their own tables.</li>
-<li>About 30 minutes for the first two tasks.</li>
+<li>A group of seven; with five or six, one person takes two roles.</li>
+<li>The cards, printed and cut out, and the Observer’s sheet.</li>
+<li>A pen for everyone, a calculator and room for the tools to sit apart from the Model.</li>
 </ul>
-</section>
-<section id="the-roles" class="level2">
-<h2 class="anchored" data-anchor-id="the-roles">The roles</h2>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Role</th>
-<th>What you do</th>
-<th>What you have</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>Model</strong></td>
-<td>You decide what happens next and write it on a card.</td>
-<td>Only the stack of cards in front of you.</td>
-</tr>
-<tr class="even">
-<td><strong>Harness</strong></td>
-<td>You take every card the Model writes. A tool card you check and carry to the right tool; the result you bring back and put on the Model’s stack.</td>
-<td>The role card with the list of tools.</td>
-</tr>
-<tr class="odd">
-<td><strong>Search</strong></td>
-<td>You find web pages for a search request and return their titles.</td>
-<td>The search index: titles and keywords, but not the pages themselves.</td>
-</tr>
-<tr class="even">
-<td><strong>Web</strong></td>
-<td>You return the full text of a page.</td>
-<td>The web pages.</td>
-</tr>
-<tr class="odd">
-<td><strong>Files</strong></td>
-<td>You read out and store the farm’s files.</td>
-<td>The farm files and blank sheets for new ones.</td>
-</tr>
-<tr class="even">
-<td><strong>Calculator</strong></td>
-<td>You calculate exactly what is written.</td>
-<td>A calculator.</td>
-</tr>
-<tr class="odd">
-<td><strong>Observer</strong></td>
-<td>You keep the log: every card in order, with a note on what happened.</td>
-<td>Everything, but you never help.</td>
-</tr>
-</tbody>
-</table>
-<p>With six people, Search and Web are one person. With five, also Files and Calculator.</p>
 </section>
 <section id="the-rules" class="level2">
 <h2 class="anchored" data-anchor-id="the-rules">The rules</h2>
 <ol type="1">
-<li><strong>The Model sees only its stack.</strong> Nobody talks to it, and it never looks at the other tables. Everything it learns arrives on a card.</li>
-<li><strong>Every card the Model writes starts with one of three words:</strong>
-<ul>
-<li><code>THINK:</code> a note to itself, for example <code>THINK: I need the size of the field first.</code></li>
-<li><code>TOOL:</code> a tool call, written exactly as on the system card, for example <code>TOOL: read_file("fields")</code>.</li>
-<li><code>ANSWER:</code> the answer to the task. This card ends the game.</li>
-</ul></li>
-<li><strong>The Harness carries every card.</strong> A <code>THINK:</code> card goes straight onto the stack. A <code>TOOL:</code> card goes to the tool it names; if no such tool exists or the call is written wrongly, the Harness writes <code>RESULT: error, unknown tool</code> itself and does not walk anywhere.</li>
-<li><strong>A tool does exactly what the card says</strong> and writes its answer on a new card that starts with <code>RESULT:</code>. It never repairs a call, never guesses what the Model meant and never adds anything that was not asked for. Tools do not talk to each other.</li>
-<li><strong>Every card goes on top of the stack</strong> in the order it was written, and it stays there.</li>
-<li><strong>One card at a time.</strong> The Model writes its next card only when the result of the last one is on the stack.</li>
+<li>The Model sees only its stack of cards, and nobody talks to it.</li>
+<li>It writes one card at a time, starting with <code>THINK:</code>, <code>TOOL:</code> or <code>ANSWER:</code>.</li>
+<li>The Harness carries every <code>TOOL:</code> card to the right tool and brings back the <code>RESULT:</code> card.</li>
+<li>A tool does exactly what the card says, nothing more, and never guesses what was meant.</li>
 </ol>
 </section>
 <section id="steps" class="level2">
 <h2 class="anchored" data-anchor-id="steps">Steps</h2>
 <ol type="1">
-<li><strong>Set up.</strong> Hand out the role cards. The tools take their material and sit apart from the Model. The Model’s stack starts with the system card, with the card for Task 1 on top of it. The Observer takes the log sheet.</li>
-<li><strong>Play Task 1.</strong> How many cards did it take, and how many walks did the Harness make? Did the Model write a <code>THINK:</code> card before its first tool call?</li>
-<li><strong>Swap roles and play Task 2.</strong> Which tools were busy, and which sat idle? Did the first search find the right page? Which value did the Model choose, and how did it decide?</li>
-<li><strong>Count.</strong> The Observer reads the log aloud: rounds, tool calls per tool, errors, and how many cards lie on the stack at the end.</li>
-<li><strong>Play Task 3 if there is time.</strong> One thing in the farm files will only be noticed by a careful Model.</li>
-<li><strong>Compare with a real agent.</strong> Your lecturer shows the log of a real agent session. Find the places where it thinks, calls a tool, receives a result and answers.</li>
+<li>Hand out the role cards; the Model’s stack starts with the system card and Task 1 on top.</li>
+<li>Play Task 1, then swap roles and play Task 2.</li>
+<li>The Observer reads the log aloud: rounds, tool calls per tool, errors and cards on the stack.</li>
+<li>Play Task 3 if there is time, then compare your log with the log of a real agent.</li>
 </ol>
-</section>
-<section id="what-you-just-played" class="level2">
-<h2 class="anchored" data-anchor-id="what-you-just-played">What you just played</h2>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>In the game</th>
-<th>In a real AI agent</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>the stack of cards</td>
-<td>the <strong>context window</strong>: everything the model knows during a task</td>
-</tr>
-<tr class="even">
-<td>the system card</td>
-<td>the <strong>system prompt</strong>: who the model is and which tools it has</td>
-</tr>
-<tr class="odd">
-<td>the task card</td>
-<td>the <strong>user’s prompt</strong>, the goal</td>
-</tr>
-<tr class="even">
-<td>a <code>THINK:</code> card</td>
-<td>the model’s <strong>reasoning</strong> or <strong>plan</strong></td>
-</tr>
-<tr class="odd">
-<td>a <code>TOOL:</code> card</td>
-<td>a <strong>tool call</strong>: the model only writes text, something else carries it out</td>
-</tr>
-<tr class="even">
-<td>the Harness</td>
-<td>the <strong>harness</strong>, the program around the model that checks each call, runs the right tool and adds the result to the context</td>
-</tr>
-<tr class="odd">
-<td>Search, Web, Files, Calculator</td>
-<td>the <strong>tools</strong>: a search engine, a web fetcher, the file system, a code runner</td>
-</tr>
-<tr class="even">
-<td>a <code>RESULT:</code> card</td>
-<td>the <strong>observation</strong>: the tool’s result, added to the context</td>
-</tr>
-<tr class="odd">
-<td>the Observer’s log</td>
-<td>the <strong>transcript</strong> of the session</td>
-</tr>
-<tr class="even">
-<td>the <code>ANSWER:</code> card</td>
-<td>the <strong>stop condition</strong>: the goal is reached</td>
-</tr>
-</tbody>
-</table>
-<p>The loop you ran, think, act and observe until the goal is reached, is the loop inside every AI agent. The Model never opened a file, never searched the web and never pressed a key on the calculator; it only wrote text, and everyone else in the group carried it out.</p>
 </section>
 <section id="key-takeaway" class="level2">
 <h2 class="anchored" data-anchor-id="key-takeaway">Key takeaway</h2>
@@ -410,11 +287,11 @@ ul.task-list li input[type="checkbox"] {
 <section id="go-further" class="level2">
 <h2 class="anchored" data-anchor-id="go-further">Go further</h2>
 <ol type="1">
-<li><strong>Limited memory.</strong> The stack may now hold at most eight cards. When it is full, the Model writes a <code>SUMMARY:</code> card that replaces the oldest cards; the system card and the task card always stay. Play Task 3 again. What got lost, and did it matter?</li>
-<li><strong>Two tools at once.</strong> The Model may now write two tool cards in one turn, and the Harness carries them in parallel. Play Task 2 again and compare the time with your first game.</li>
-<li><strong>A new tool.</strong> One person becomes a new tool, for example <code>forecast("date")</code> with its own page of information. Add the tool to the system card. Does the Model use it without being told to?</li>
-<li><strong>A wrong result.</strong> One tool secretly returns one wrong result, for example the Calculator is off by a factor of ten. Does the Model notice? What would a real agent need in order to notice?</li>
-<li><strong>Be the tool for a chatbot.</strong> Solve Task 2 with a chatbot in your browser. Whenever it needs a file, a web page or a calculation, you have to provide it yourself. Who is the Harness now, and who decides the next step?</li>
+<li><strong>Limited memory:</strong> the stack holds at most eight cards, and a <code>SUMMARY:</code> card replaces the oldest ones when it is full.</li>
+<li><strong>Two tools at once:</strong> the Model may write two tool cards per turn, which the Harness carries in parallel.</li>
+<li><strong>A new tool:</strong> someone becomes <code>forecast("date")</code>, added to the system card, and you watch whether the Model uses it unprompted.</li>
+<li><strong>A wrong result:</strong> one tool secretly returns a wrong value, and you find out whether the Model notices.</li>
+<li><strong>Be the tool for a chatbot:</strong> solve Task 2 with a chatbot in your browser, supplying every file, page and calculation yourself.</li>
 </ol>
 <div style="page-break-after: always;"></div>
 </section>
@@ -430,9 +307,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="the-kit" class="level1">
 <h1>The kit</h1>
-<p>The cards are a separate PDF: <a href="be-the-agent-cards.pdf">be-the-agent-cards.pdf</a>. Print it on A4 and cut along the dashed lines; every sheet holds four cards the size of an index card. Pink cards belong to the Model (the system card, the three tasks and the blank cards it writes on), dark cards are the role cards, one for each player, and grey cards are the material of the tools: the search index, the farm files and the web pages. Print the last sheet with blank cards several times, because a game uses twenty or more.</p>
-<p>All farm data and all values on the web pages are invented for this game. They are simplified teaching values and not advice for real fertilisation.</p>
-<p>Browse through the cards with the arrows, the arrow keys or a swipe; a click on a card shows it large.</p>
+<p>Print <a href="be-the-agent-cards.pdf">the cards</a> on A4 and cut along the dashed lines; print the sheet with blank cards several times, because a game uses twenty or more. All farm data and web pages are invented for this game and are not advice for real fertilisation.</p>
 <div class="kartenkarussell">
 <div class="kartengruppe kartengalerie" data-titel="The Model's cards">
 <p><a href="be-the-agent-cards/card-02.svg" class="lightbox" data-gallery="karten"><img src="be-the-agent-cards/card-02.svg" class="img-fluid" alt="System card"></a></p>
@@ -471,7 +346,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../assets/karussell.js"></script>
 <section id="observers-sheet" class="level2">
 <h2 class="anchored" data-anchor-id="observers-sheet">Observer’s sheet</h2>
-<p>The Observer keeps the log on a sheet of its own: <a href="be-the-agent-observer.pdf">be-the-agent-observer.pdf</a>, one A4 page with room for 22 rounds and a box to count rounds, errors and the calls to each tool. Print one per group and task.</p>
+<p>One <a href="be-the-agent-observer.pdf">A4 sheet</a> per group and task, with room for 22 rounds and the counts at the end.</p>
 <div class="blattvorschau">
 <p><a href="be-the-agent-observer.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-28"><img src="be-the-agent-observer.svg" class="img-fluid" alt="The Observer's sheet: a table with the columns round, card, tool, what it said and note, and a box for the counts at the end"></a></p>
 </div>
