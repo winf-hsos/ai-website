@@ -228,40 +228,18 @@
     "href": "experiments/be-the-agent/be-the-agent.html",
     "title": "Be the Agent",
     "section": "",
-    "text": "Your group plays an AI agent with cards instead of a computer: one of you is the language model, one carries the messages, four of you are the tools, and one keeps the log. By the end you will have run by hand the loop that every AI agent runs on.",
+    "text": "An AI agent is a large language model (LLM) that can only write text: everything it does in the world happens through tools, which a program around it, the harness, runs on its behalf. The model knows only what is in its context, so its work can only be as good as the results that reach it.",
     "crumbs": [
       "Experiments",
       "Be the Agent"
     ]
   },
   {
-    "objectID": "experiments/be-the-agent/be-the-agent.html#slides",
-    "href": "experiments/be-the-agent/be-the-agent.html#slides",
+    "objectID": "experiments/be-the-agent/be-the-agent.html#short-description",
+    "href": "experiments/be-the-agent/be-the-agent.html#short-description",
     "title": "Be the Agent",
-    "section": "Slides",
-    "text": "Slides\nThe slides lead through the game: the roles, the cards, the rules, the three tasks and what you just played.",
-    "crumbs": [
-      "Experiments",
-      "Be the Agent"
-    ]
-  },
-  {
-    "objectID": "experiments/be-the-agent/be-the-agent.html#what-you-need",
-    "href": "experiments/be-the-agent/be-the-agent.html#what-you-need",
-    "title": "Be the Agent",
-    "section": "What you need",
-    "text": "What you need\n\nA group of seven; with five or six, one person takes two roles.\nThe cards, printed and cut out, and the Observer’s sheet.\nA pen for everyone, a calculator and room for the tools to sit apart from the Model.",
-    "crumbs": [
-      "Experiments",
-      "Be the Agent"
-    ]
-  },
-  {
-    "objectID": "experiments/be-the-agent/be-the-agent.html#the-rules",
-    "href": "experiments/be-the-agent/be-the-agent.html#the-rules",
-    "title": "Be the Agent",
-    "section": "The rules",
-    "text": "The rules\n\nThe Model sees only its stack of cards, and nobody talks to it.\nIt writes one card at a time, starting with THINK:, TOOL: or ANSWER:.\nThe Harness carries every TOOL: card to the right tool and brings back the RESULT: card.\nA tool does exactly what the card says, nothing more, and never guesses what was meant.",
+    "section": "Short description",
+    "text": "Short description\nYour group plays an AI agent with cards instead of a computer: one of you is the language model, one carries the messages, four of you are the tools, and one keeps the log. By the end you will have run by hand the loop that every AI agent runs on.\nThe slides lead through the game: the roles, the cards, the rules, the three tasks and what you just played.",
     "crumbs": [
       "Experiments",
       "Be the Agent"
@@ -272,18 +250,7 @@
     "href": "experiments/be-the-agent/be-the-agent.html#steps",
     "title": "Be the Agent",
     "section": "Steps",
-    "text": "Steps\n\nHand out the role cards; the Model’s stack starts with the system card and Task 1 on top.\nPlay Task 1, then swap roles and play Task 2.\nThe Observer reads the log aloud: rounds, tool calls per tool, errors and cards on the stack.\nPlay Task 3 if there is time, then compare your log with the log of a real agent.",
-    "crumbs": [
-      "Experiments",
-      "Be the Agent"
-    ]
-  },
-  {
-    "objectID": "experiments/be-the-agent/be-the-agent.html#key-takeaway",
-    "href": "experiments/be-the-agent/be-the-agent.html#key-takeaway",
-    "title": "Be the Agent",
-    "section": "Key takeaway",
-    "text": "Key takeaway\n\nAn AI agent is a large language model (LLM) that can only write text: everything it does in the world happens through tools, which a program around it, the harness, runs on its behalf. The model knows only what is in its context, so its work can only be as good as the results that reach it.",
+    "text": "Steps\n\nHand out the role cards; the Model’s stack starts with the system card and Task 1 on top.\nPlay Task 1, then swap roles and play Task 2.\nThe Observer reads the log aloud: rounds, tool calls per tool, errors and cards on the stack.\nPlay Task 3 if there is time, then compare your log with the log of a real agent.\n\nWhile you play, four rules apply:\n\nThe Model sees only its stack of cards, and nobody talks to it.\nIt writes one card at a time, starting with THINK:, TOOL: or ANSWER:.\nThe Harness carries every TOOL: card to the right tool and brings back the RESULT: card.\nA tool does exactly what the card says, nothing more, and never guesses what was meant.",
     "crumbs": [
       "Experiments",
       "Be the Agent"
@@ -301,22 +268,22 @@
     ]
   },
   {
-    "objectID": "experiments/be-the-agent/be-the-agent.html#reflection",
-    "href": "experiments/be-the-agent/be-the-agent.html#reflection",
+    "objectID": "experiments/be-the-agent/be-the-agent.html#discussion",
+    "href": "experiments/be-the-agent/be-the-agent.html#discussion",
     "title": "Be the Agent",
-    "section": "Reflection",
-    "text": "Reflection\nWrite down your own answers first, then discuss them in your group.\n\nIn which round would the Model have been stuck without the tools, and which tool was used most?\nWhat would have gone differently if the Model had had to give up its stack after ten cards?\nWho did the thinking, who did the acting, and which of it could the Model actually do?",
+    "section": "Discussion",
+    "text": "Discussion\nWrite down your own answers first, then discuss them in your group.\n\nIn which round would the Model have been stuck without the tools, and which tool was used most?\nWhat would have gone differently if the Model had had to give up its stack after ten cards?\nWho did the thinking, who did the acting, and which of it could the Model actually do?",
     "crumbs": [
       "Experiments",
       "Be the Agent"
     ]
   },
   {
-    "objectID": "experiments/be-the-agent/be-the-agent.html#observers-sheet",
-    "href": "experiments/be-the-agent/be-the-agent.html#observers-sheet",
+    "objectID": "experiments/be-the-agent/be-the-agent.html#material",
+    "href": "experiments/be-the-agent/be-the-agent.html#material",
     "title": "Be the Agent",
-    "section": "Observer’s sheet",
-    "text": "Observer’s sheet\nOne A4 sheet per group and task, with room for 22 rounds and the counts at the end.",
+    "section": "Material",
+    "text": "Material\n\nA group of seven; with five or six, one person takes two roles.\nThe cards, seven A4 sheets to cut along the dashed lines; print the sheet with blank cards several times, because a game uses twenty or more.\nThe Observer’s sheet, one per group and task.\nA pen for everyone, a calculator and room for the tools to sit apart from the Model. All farm data and web pages are invented for this game and are not advice for real fertilisation.\n\nThese instructions are also available as a PDF, with a page for the discussion.\n\nCards\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nObserver’s sheet\nOne A4 sheet per group and task, with room for 22 rounds and the counts at the end.",
     "crumbs": [
       "Experiments",
       "Be the Agent"

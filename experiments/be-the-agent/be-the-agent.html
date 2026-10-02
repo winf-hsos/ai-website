@@ -197,15 +197,13 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#slides" id="toc-slides" class="nav-link active" data-scroll-target="#slides">Slides</a></li>
-  <li><a href="#what-you-need" id="toc-what-you-need" class="nav-link" data-scroll-target="#what-you-need">What you need</a></li>
-  <li><a href="#the-rules" id="toc-the-rules" class="nav-link" data-scroll-target="#the-rules">The rules</a></li>
+  <li><a href="#short-description" id="toc-short-description" class="nav-link active" data-scroll-target="#short-description">Short description</a></li>
   <li><a href="#steps" id="toc-steps" class="nav-link" data-scroll-target="#steps">Steps</a></li>
-  <li><a href="#key-takeaway" id="toc-key-takeaway" class="nav-link" data-scroll-target="#key-takeaway">Key takeaway</a></li>
   <li><a href="#go-further" id="toc-go-further" class="nav-link" data-scroll-target="#go-further">Go further</a></li>
-  <li><a href="#reflection" id="toc-reflection" class="nav-link" data-scroll-target="#reflection">Reflection</a></li>
-  <li><a href="#the-kit" id="toc-the-kit" class="nav-link" data-scroll-target="#the-kit">The kit</a>
+  <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion">Discussion</a></li>
+  <li><a href="#material" id="toc-material" class="nav-link" data-scroll-target="#material">Material</a>
   <ul class="collapse">
+  <li><a href="#cards" id="toc-cards" class="nav-link" data-scroll-target="#cards">Cards</a></li>
   <li><a href="#observers-sheet" id="toc-observers-sheet" class="nav-link" data-scroll-target="#observers-sheet">Observer’s sheet</a></li>
   </ul></li>
   </ul>
@@ -234,40 +232,16 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<div class="key-takeaway">
+<p>An AI agent is a large language model (LLM) that can only write text: everything it does in the world happens through tools, which a program around it, the harness, runs on its behalf. The model knows only what is in its context, so its work can only be as good as the results that reach it.</p>
+</div>
+<section id="short-description" class="level2">
+<h2 class="anchored" data-anchor-id="short-description">Short description</h2>
 <p>Your group plays an AI agent with cards instead of a computer: one of you is the language model, one carries the messages, four of you are the tools, and one keeps the log. By the end you will have run by hand the loop that every AI agent runs on.</p>
-<div class="callout callout-style-simple callout-note no-icon">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-body-container">
-<p><strong>To print:</strong> <a href="be-the-agent-cards.pdf">the cards</a>, seven A4 sheets to cut into index cards, <a href="be-the-agent-observer.pdf">the Observer’s sheet</a>, one per group and task, and <a href="be-the-agent.pdf">these instructions</a> with the reflection sheet.</p>
-</div>
-</div>
-</div>
-<section id="slides" class="level2">
-<h2 class="anchored" data-anchor-id="slides">Slides</h2>
 <p>The slides lead through the game: the roles, the cards, the rules, the three tasks and what you just played.</p>
 <div class="deck-embed">
   <iframe src="../../assets/decks/be-the-agent/be-the-agent.html?bar=1&amp;pdf=../be-the-agent.pdf" title="Be the Agent" allowfullscreen="" loading="lazy"></iframe>
 </div>
-</section>
-<section id="what-you-need" class="level2">
-<h2 class="anchored" data-anchor-id="what-you-need">What you need</h2>
-<ul>
-<li>A group of seven; with five or six, one person takes two roles.</li>
-<li>The cards, printed and cut out, and the Observer’s sheet.</li>
-<li>A pen for everyone, a calculator and room for the tools to sit apart from the Model.</li>
-</ul>
-</section>
-<section id="the-rules" class="level2">
-<h2 class="anchored" data-anchor-id="the-rules">The rules</h2>
-<ol type="1">
-<li>The Model sees only its stack of cards, and nobody talks to it.</li>
-<li>It writes one card at a time, starting with <code>THINK:</code>, <code>TOOL:</code> or <code>ANSWER:</code>.</li>
-<li>The Harness carries every <code>TOOL:</code> card to the right tool and brings back the <code>RESULT:</code> card.</li>
-<li>A tool does exactly what the card says, nothing more, and never guesses what was meant.</li>
-</ol>
 </section>
 <section id="steps" class="level2">
 <h2 class="anchored" data-anchor-id="steps">Steps</h2>
@@ -277,12 +251,13 @@ ul.task-list li input[type="checkbox"] {
 <li>The Observer reads the log aloud: rounds, tool calls per tool, errors and cards on the stack.</li>
 <li>Play Task 3 if there is time, then compare your log with the log of a real agent.</li>
 </ol>
-</section>
-<section id="key-takeaway" class="level2">
-<h2 class="anchored" data-anchor-id="key-takeaway">Key takeaway</h2>
-<div class="key-takeaway">
-<p>An AI agent is a large language model (LLM) that can only write text: everything it does in the world happens through tools, which a program around it, the harness, runs on its behalf. The model knows only what is in its context, so its work can only be as good as the results that reach it.</p>
-</div>
+<p>While you play, four rules apply:</p>
+<ul>
+<li>The Model sees only its stack of cards, and nobody talks to it.</li>
+<li>It writes one card at a time, starting with <code>THINK:</code>, <code>TOOL:</code> or <code>ANSWER:</code>.</li>
+<li>The Harness carries every <code>TOOL:</code> card to the right tool and brings back the <code>RESULT:</code> card.</li>
+<li>A tool does exactly what the card says, nothing more, and never guesses what was meant.</li>
+</ul>
 </section>
 <section id="go-further" class="level2">
 <h2 class="anchored" data-anchor-id="go-further">Go further</h2>
@@ -295,8 +270,8 @@ ul.task-list li input[type="checkbox"] {
 </ol>
 <div style="page-break-after: always;"></div>
 </section>
-<section id="reflection" class="level2">
-<h2 class="anchored" data-anchor-id="reflection">Reflection</h2>
+<section id="discussion" class="level2">
+<h2 class="anchored" data-anchor-id="discussion">Discussion</h2>
 <p>Write down your own answers first, then discuss them in your group.</p>
 <ol type="1">
 <li>In which round would the Model have been stuck without the tools, and which tool was used most?</li>
@@ -305,9 +280,17 @@ ul.task-list li input[type="checkbox"] {
 </ol>
 <div style="page-break-after: always;"></div>
 </section>
-<section id="the-kit" class="level1">
-<h1>The kit</h1>
-<p>Print <a href="be-the-agent-cards.pdf">the cards</a> on A4 and cut along the dashed lines; print the sheet with blank cards several times, because a game uses twenty or more. All farm data and web pages are invented for this game and are not advice for real fertilisation.</p>
+<section id="material" class="level2">
+<h2 class="anchored" data-anchor-id="material">Material</h2>
+<ul>
+<li>A group of seven; with five or six, one person takes two roles.</li>
+<li><a href="be-the-agent-cards.pdf">The cards</a>, seven A4 sheets to cut along the dashed lines; print the sheet with blank cards several times, because a game uses twenty or more.</li>
+<li><a href="be-the-agent-observer.pdf">The Observer’s sheet</a>, one per group and task.</li>
+<li>A pen for everyone, a calculator and room for the tools to sit apart from the Model. All farm data and web pages are invented for this game and are not advice for real fertilisation.</li>
+</ul>
+<p>These instructions are also available <a href="be-the-agent.pdf">as a PDF</a>, with a page for the discussion.</p>
+<section id="cards" class="level3">
+<h3 class="anchored" data-anchor-id="cards">Cards</h3>
 <div class="kartenkarussell">
 <div class="kartengruppe kartengalerie" data-titel="The Model's cards">
 <p><a href="be-the-agent-cards/card-02.svg" class="lightbox" data-gallery="karten"><img src="be-the-agent-cards/card-02.svg" class="img-fluid" alt="System card"></a></p>
@@ -344,8 +327,9 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <script src="../../assets/karussell.js"></script>
-<section id="observers-sheet" class="level2">
-<h2 class="anchored" data-anchor-id="observers-sheet">Observer’s sheet</h2>
+</section>
+<section id="observers-sheet" class="level3">
+<h3 class="anchored" data-anchor-id="observers-sheet">Observer’s sheet</h3>
 <p>One <a href="be-the-agent-observer.pdf">A4 sheet</a> per group and task, with room for 22 rounds and the counts at the end.</p>
 <div class="blattvorschau">
 <p><a href="be-the-agent-observer.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-28"><img src="be-the-agent-observer.svg" class="img-fluid" alt="The Observer's sheet: a table with the columns round, card, tool, what it said and note, and a box for the counts at the end"></a></p>
