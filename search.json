@@ -301,6 +301,17 @@
     ]
   },
   {
+    "objectID": "experiments/be-the-agent/be-the-agent.html#key-takeaway",
+    "href": "experiments/be-the-agent/be-the-agent.html#key-takeaway",
+    "title": "Be the Agent",
+    "section": "Key takeaway",
+    "text": "Key takeaway\n\nAn AI agent is a language model that can only write text: everything it does in the world happens through tools, which a program around it, the harness, runs on its behalf. The model knows only what is in its context, so its work can only be as good as the results that reach it.",
+    "crumbs": [
+      "Experiments",
+      "Be the Agent"
+    ]
+  },
+  {
     "objectID": "experiments/be-the-agent/be-the-agent.html#go-further",
     "href": "experiments/be-the-agent/be-the-agent.html#go-further",
     "title": "Be the Agent",
