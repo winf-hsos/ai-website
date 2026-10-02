@@ -198,8 +198,11 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#short-description" id="toc-short-description" class="nav-link active" data-scroll-target="#short-description">Short description</a></li>
-  <li><a href="#steps" id="toc-steps" class="nav-link" data-scroll-target="#steps">Steps</a></li>
-  <li><a href="#go-further" id="toc-go-further" class="nav-link" data-scroll-target="#go-further">Go further</a></li>
+  <li><a href="#steps" id="toc-steps" class="nav-link" data-scroll-target="#steps">Steps</a>
+  <ul class="collapse">
+  <li><a href="#basic-experiment" id="toc-basic-experiment" class="nav-link" data-scroll-target="#basic-experiment">Basic experiment</a></li>
+  <li><a href="#extensions" id="toc-extensions" class="nav-link" data-scroll-target="#extensions">Extensions</a></li>
+  </ul></li>
   <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion">Discussion</a></li>
   <li><a href="#material" id="toc-material" class="nav-link" data-scroll-target="#material">Material</a>
   <ul class="collapse">
@@ -245,6 +248,8 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="steps" class="level2">
 <h2 class="anchored" data-anchor-id="steps">Steps</h2>
+<section id="basic-experiment" class="level3">
+<h3 class="anchored" data-anchor-id="basic-experiment">Basic experiment</h3>
 <ol type="1">
 <li>Hand out the role cards; the Model’s stack starts with the system card and Task 1 on top.</li>
 <li>Play Task 1, then swap roles and play Task 2.</li>
@@ -259,8 +264,9 @@ ul.task-list li input[type="checkbox"] {
 <li>A tool does exactly what the card says, nothing more, and never guesses what was meant.</li>
 </ul>
 </section>
-<section id="go-further" class="level2">
-<h2 class="anchored" data-anchor-id="go-further">Go further</h2>
+<section id="extensions" class="level3">
+<h3 class="anchored" data-anchor-id="extensions">Extensions</h3>
+<p>Each extension changes the game in one respect, so that you can compare the result with your first round.</p>
 <ol type="1">
 <li><strong>Limited memory:</strong> the stack holds at most eight cards, and a <code>SUMMARY:</code> card replaces the oldest ones when it is full.</li>
 <li><strong>Two tools at once:</strong> the Model may write two tool cards per turn, which the Harness carries in parallel.</li>
@@ -269,6 +275,7 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Be the tool for a chatbot:</strong> solve Task 2 with a chatbot in your browser, supplying every file, page and calculation yourself.</li>
 </ol>
 <div style="page-break-after: always;"></div>
+</section>
 </section>
 <section id="discussion" class="level2">
 <h2 class="anchored" data-anchor-id="discussion">Discussion</h2>

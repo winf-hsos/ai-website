@@ -250,18 +250,7 @@
     "href": "experiments/be-the-agent/be-the-agent.html#steps",
     "title": "Be the Agent",
     "section": "Steps",
-    "text": "Steps\n\nHand out the role cards; the Model’s stack starts with the system card and Task 1 on top.\nPlay Task 1, then swap roles and play Task 2.\nThe Observer reads the log aloud: rounds, tool calls per tool, errors and cards on the stack.\nPlay Task 3 if there is time, then compare your log with the log of a real agent.\n\nWhile you play, four rules apply:\n\nThe Model sees only its stack of cards, and nobody talks to it.\nIt writes one card at a time, starting with THINK:, TOOL: or ANSWER:.\nThe Harness carries every TOOL: card to the right tool and brings back the RESULT: card.\nA tool does exactly what the card says, nothing more, and never guesses what was meant.",
-    "crumbs": [
-      "Experiments",
-      "Be the Agent"
-    ]
-  },
-  {
-    "objectID": "experiments/be-the-agent/be-the-agent.html#go-further",
-    "href": "experiments/be-the-agent/be-the-agent.html#go-further",
-    "title": "Be the Agent",
-    "section": "Go further",
-    "text": "Go further\n\nLimited memory: the stack holds at most eight cards, and a SUMMARY: card replaces the oldest ones when it is full.\nTwo tools at once: the Model may write two tool cards per turn, which the Harness carries in parallel.\nA new tool: someone becomes forecast(\"date\"), added to the system card, and you watch whether the Model uses it unprompted.\nA wrong result: one tool secretly returns a wrong value, and you find out whether the Model notices.\nBe the tool for a chatbot: solve Task 2 with a chatbot in your browser, supplying every file, page and calculation yourself.",
+    "text": "Steps\n\nBasic experiment\n\nHand out the role cards; the Model’s stack starts with the system card and Task 1 on top.\nPlay Task 1, then swap roles and play Task 2.\nThe Observer reads the log aloud: rounds, tool calls per tool, errors and cards on the stack.\nPlay Task 3 if there is time, then compare your log with the log of a real agent.\n\nWhile you play, four rules apply:\n\nThe Model sees only its stack of cards, and nobody talks to it.\nIt writes one card at a time, starting with THINK:, TOOL: or ANSWER:.\nThe Harness carries every TOOL: card to the right tool and brings back the RESULT: card.\nA tool does exactly what the card says, nothing more, and never guesses what was meant.\n\n\n\nExtensions\nEach extension changes the game in one respect, so that you can compare the result with your first round.\n\nLimited memory: the stack holds at most eight cards, and a SUMMARY: card replaces the oldest ones when it is full.\nTwo tools at once: the Model may write two tool cards per turn, which the Harness carries in parallel.\nA new tool: someone becomes forecast(\"date\"), added to the system card, and you watch whether the Model uses it unprompted.\nA wrong result: one tool secretly returns a wrong value, and you find out whether the Model notices.\nBe the tool for a chatbot: solve Task 2 with a chatbot in your browser, supplying every file, page and calculation yourself.",
     "crumbs": [
       "Experiments",
       "Be the Agent"
