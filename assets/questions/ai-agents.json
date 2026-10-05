@@ -179,8 +179,8 @@
    "id": "ag-004",
    "niveau": "verstehen",
    "frage": {
-    "de": "Welche dieser Aufgaben übernimmt der Harness und nicht das Sprachmodell? (Mehrere richtige Antworten möglich.)",
-    "en": "Which of these jobs does the harness do rather than the language model? (Several answers may be correct.)"
+    "de": "Welche dieser Aufgaben übernimmt der Harness und nicht das Sprachmodell?",
+    "en": "Which of these jobs does the harness do rather than the language model?"
    },
    "typ": "mc",
    "richtig": [
@@ -424,8 +424,8 @@
    "id": "ag-008",
    "niveau": "anwenden",
    "frage": {
-    "de": "Dein Agent arbeitet mit deinem Benutzerkonto, und du hast ihm erlaubt, Befehle ohne Rückfrage auszuführen. Was kann er tun? (Mehrere richtige Antworten möglich.)",
-    "en": "Your agent works with your user account, and you have allowed it to run commands without asking. What can it do? (Several answers may be correct.)"
+    "de": "Dein Agent arbeitet mit deinem Benutzerkonto, und du hast ihm erlaubt, Befehle ohne Rückfrage auszuführen. Was kann er tun?",
+    "en": "Your agent works with your user account, and you have allowed it to run commands without asking. What can it do?"
    },
    "typ": "mc",
    "richtig": [
@@ -553,8 +553,8 @@
    "id": "ag-010",
    "niveau": "anwenden",
    "frage": {
-    "de": "Im Spiel „Be the Agent“ liefert die Suche eine aktuelle Seite und eine archivierte Seite von 2009 mit einem anderen Stickstoffbedarf. Das Model rechnet mit dem Wert von 2009. Was zeigt das über echte Agenten?",
-    "en": "In the game \"Be the Agent\" the search returns a current page and an archived page from 2009 with a different nitrogen requirement. The Model calculates with the 2009 value. What does this show about real agents?"
+    "de": "Ein Agent soll ausrechnen, wie viel Stickstoff auf einem Feld noch gedüngt werden darf. Seine Websuche liefert eine aktuelle Seite und eine archivierte Seite von 2009 mit einem anderen Bedarfswert, und er rechnet mit dem Wert von 2009. Was zeigt das?",
+    "en": "An agent is asked to work out how much nitrogen may still be applied to a field. Its web search returns a current page and an archived page from 2009 with a different requirement, and it calculates with the 2009 value. What does this show?"
    },
    "typ": "sc",
    "richtig": [
@@ -575,12 +575,12 @@
     {
      "kennung": "b",
      "text": {
-      "de": "Das Modell arbeitet nur mit dem, was auf seinem Stapel liegt; ob es eine veraltete Quelle bemerkt, hängt davon ab, ob es das Ergebnis sorgfältig liest und prüft.",
-      "en": "The model works only with what is on its stack; whether it notices an outdated source depends on whether it reads and checks the result carefully."
+      "de": "Das Modell arbeitet nur mit dem, was in seinem Kontext steht; ob es eine veraltete Quelle bemerkt, hängt davon ab, ob es das Ergebnis sorgfältig liest und prüft.",
+      "en": "The model works only with what is in its context; whether it notices an outdated source depends on whether it reads and checks the result carefully."
      },
      "begruendung": {
-      "de": "Richtig: Die Jahreszahl stand auf der Karte. Ein Agent ist nur so gut wie die Ergebnisse, die ihn erreichen, und wie sein Umgang damit.",
-      "en": "Correct: the year was on the card. An agent is only as good as the results that reach it and the way it handles them."
+      "de": "Richtig: Die Jahreszahl stand im Suchergebnis. Ein Agent ist nur so gut wie die Ergebnisse, die ihn erreichen, und wie sein Umgang damit; im Spiel „Be the Agent“ ist genau das die Falle von Aufgabe 2.",
+      "en": "Correct: the year was in the search result. An agent is only as good as the results that reach it and the way it handles them; in the game \"Be the Agent\" this is exactly the trap of Task 2."
      }
     },
     {
@@ -597,8 +597,8 @@
     {
      "kennung": "d",
      "text": {
-      "de": "Ein echtes Modell hätte den aktuellen Wert aus dem Training gekannt, deshalb tritt der Fehler nur im Papierspiel auf.",
-      "en": "A real model would have known the current value from training, so the mistake only happens in the paper game."
+      "de": "Ein größeres Modell hätte den aktuellen Wert aus dem Training gekannt, deshalb liegt der Fehler allein an der Modellgröße.",
+      "en": "A larger model would have known the current value from training, so the mistake is down to the size of the model alone."
      },
      "begruendung": {
       "de": "Trainingswissen hat einen Stichtag und kann selbst veraltet sein. Gerade deshalb sucht ein Agent nach Quellen und muss deren Alter beurteilen.",

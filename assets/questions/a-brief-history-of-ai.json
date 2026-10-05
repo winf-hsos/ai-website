@@ -1,0 +1,366 @@
+{
+ "konzept": "a-brief-history-of-ai",
+ "fragen": [
+  {
+   "id": "bh-001",
+   "niveau": "verstehen",
+   "frage": {
+    "de": "Ein Agent baut eine Quiz-App zur Geschichte der KI mit der Vorgabe, nur die zuvor erstellte Wissensbasis zu verwenden. Was ist der wichtigste Zweck dieser Vorgabe?",
+    "en": "An agent builds a quiz app on the history of AI with the instruction to use only the knowledge base it created before. What is the main purpose of this instruction?"
+   },
+   "typ": "sc",
+   "richtig": [
+    "a"
+   ],
+   "optionen": [
+    {
+     "kennung": "a",
+     "text": {
+      "de": "Jede Frage lässt sich auf einen geprüften Eintrag mit Quelle zurückführen, statt auf das, was das Modell zu wissen glaubt.",
+      "en": "Every question can be traced back to a checked entry with a source, instead of to what the model believes it knows."
+     },
+     "begruendung": {
+      "de": "Richtig: Die Wissensbasis wurde gegen Quellen geprüft; das allgemeine Wissen des Modells nicht.",
+      "en": "Correct: the knowledge base was checked against sources; the model's general knowledge was not."
+     }
+    },
+    {
+     "kennung": "b",
+     "text": {
+      "de": "Die App läuft schneller, weil sie keine Verbindung zum Internet braucht.",
+      "en": "The app runs faster, because it does not need a connection to the internet."
+     },
+     "begruendung": {
+      "de": "Mit der Geschwindigkeit der App hat die Vorgabe nichts zu tun; sie betrifft, woher die Inhalte stammen.",
+      "en": "The instruction has nothing to do with the app's speed; it concerns where the content comes from."
+     }
+    },
+    {
+     "kennung": "c",
+     "text": {
+      "de": "Das Modell kann keine Fehler mehr machen, weil die Wissensbasis stimmt.",
+      "en": "The model can no longer make mistakes, because the knowledge base is correct."
+     },
+     "begruendung": {
+      "de": "Die Vorgabe senkt das Risiko, schließt Fehler aber nicht aus: Das Modell kann auch eine gute Quelle falsch wiedergeben.",
+      "en": "The instruction lowers the risk but does not rule out mistakes: the model can misrepresent a good source too."
+     }
+    },
+    {
+     "kennung": "d",
+     "text": {
+      "de": "Das Urheberrecht bleibt gewahrt, weil die Wissensbasis nur Fakten enthält.",
+      "en": "Copyright is respected, because the knowledge base contains only facts."
+     },
+     "begruendung": {
+      "de": "Das mag nebenbei gelten, ist aber nicht der Zweck der Vorgabe. Es geht darum, dass jede Aussage überprüfbar bleibt.",
+      "en": "That may hold on the side, but it is not the purpose of the instruction. The point is that every statement stays checkable."
+     }
+    }
+   ]
+  },
+  {
+   "id": "bh-002",
+   "niveau": "anwenden",
+   "frage": {
+    "de": "Die Zeitleiste eines Agenten datiert einen Meilenstein auf 1957 und verlinkt eine Quelle. Wie prüfst du die Angabe am verlässlichsten?",
+    "en": "An agent's timeline dates a milestone to 1957 and links a source. What is the most reliable way to check this?"
+   },
+   "typ": "sc",
+   "richtig": [
+    "b"
+   ],
+   "optionen": [
+    {
+     "kennung": "a",
+     "text": {
+      "de": "Den Agenten fragen, ob er sich bei der Jahreszahl sicher ist.",
+      "en": "Ask the agent whether it is sure about the year."
+     },
+     "begruendung": {
+      "de": "Die Antwort des Agenten ist wieder ein erzeugter Text und keine unabhängige Prüfung.",
+      "en": "The agent's answer is again generated text and not an independent check."
+     }
+    },
+    {
+     "kennung": "b",
+     "text": {
+      "de": "Die verlinkte Quelle öffnen und nachsehen, ob sie für dasselbe Ereignis dasselbe Jahr nennt.",
+      "en": "Open the linked source and see whether it gives the same year for the same event."
+     },
+     "begruendung": {
+      "de": "Richtig: Vertrauen, aber prüfen heißt, die Aussage mit der Quelle abzugleichen, auf die sie sich beruft.",
+      "en": "Correct: trust, but check means comparing the statement with the source it relies on."
+     }
+    },
+    {
+     "kennung": "c",
+     "text": {
+      "de": "Einen zweiten Chatbot nach dem Jahr fragen und die Angabe übernehmen, wenn beide übereinstimmen.",
+      "en": "Ask a second chatbot for the year and accept it if both agree."
+     },
+     "begruendung": {
+      "de": "Zwei Modelle können denselben Fehler machen, etwa weil er in ihren Trainingsdaten steht. Übereinstimmung ersetzt keine Quelle.",
+      "en": "Two models can make the same mistake, for example because it is in their training data. Agreement does not replace a source."
+     }
+    },
+    {
+     "kennung": "d",
+     "text": {
+      "de": "Prüfen, ob das Jahr im Vergleich zu den benachbarten Meilensteinen plausibel wirkt.",
+      "en": "Check whether the year looks plausible compared with the neighbouring milestones."
+     },
+     "begruendung": {
+      "de": "Plausibilität fängt grobe Fehler, aber nicht einen um ein Jahr verschobenen. Dafür braucht es die Quelle.",
+      "en": "Plausibility catches gross errors but not one that is off by a year. That needs the source."
+     }
+    }
+   ]
+  },
+  {
+   "id": "bh-003",
+   "niveau": "verstehen",
+   "frage": {
+    "de": "Rich Sutton zieht in „The Bitter Lesson“ (2019) eine Bilanz aus siebzig Jahren KI-Forschung. Welche?",
+    "en": "In \"The Bitter Lesson\" (2019) Rich Sutton draws a conclusion from seventy years of AI research. Which?"
+   },
+   "typ": "sc",
+   "richtig": [
+    "a"
+   ],
+   "optionen": [
+    {
+     "kennung": "a",
+     "text": {
+      "de": "Allgemeine Verfahren, die mit mehr Rechenleistung besser werden, wie Lernen und Suche, haben auf lange Sicht Ansätze überholt, die auf menschlichem Wissen aufbauen.",
+      "en": "General methods that get better with more computation, such as learning and search, have in the long run overtaken approaches built on human knowledge."
+     },
+     "begruendung": {
+      "de": "Richtig: Das ist die bittere Lehre, weil Forschende ihr eigenes Wissen immer wieder einbauen wollten und dabei auf lange Sicht verloren.",
+      "en": "Correct: this is the bitter lesson, because researchers kept wanting to build in their own knowledge and lost out in the long run."
+     }
+    },
+    {
+     "kennung": "b",
+     "text": {
+      "de": "Systeme mit von Fachleuten geschriebenen Regeln bleiben verlässlicher als gelernte Systeme und werden diese ablösen.",
+      "en": "Systems with rules written by experts remain more reliable than learned systems and will replace them."
+     },
+     "begruendung": {
+      "de": "Sutton kommt zum umgekehrten Schluss: Handgeschriebenes Wissen half kurzfristig und wurde langfristig überholt.",
+      "en": "Sutton reaches the opposite conclusion: hand-written knowledge helped in the short run and was overtaken in the long run."
+     }
+    },
+    {
+     "kennung": "c",
+     "text": {
+      "de": "Der Fortschritt der KI kam vor allem von besseren Programmiersprachen und Entwicklungswerkzeugen.",
+      "en": "Progress in AI came mainly from better programming languages and development tools."
+     },
+     "begruendung": {
+      "de": "Werkzeuge der Softwareentwicklung sind nicht Suttons Thema. Er vergleicht Wissen, das Menschen einbauen, mit Rechenleistung.",
+      "en": "Software development tools are not Sutton's subject. He compares knowledge that humans build in with computation."
+     }
+    },
+    {
+     "kennung": "d",
+     "text": {
+      "de": "Die KI-Forschung ist wiederholt gescheitert, weil Rechner nie genug Speicher für allgemeine Intelligenz haben werden.",
+      "en": "AI research has failed repeatedly because computers will never have enough memory for general intelligence."
+     },
+     "begruendung": {
+      "de": "Sutton argumentiert gerade, dass wachsende Rechenleistung der Treiber des Fortschritts war.",
+      "en": "Sutton argues precisely that growing computation has been the driver of progress."
+     }
+    }
+   ]
+  },
+  {
+   "id": "bh-004",
+   "niveau": "erinnern",
+   "frage": {
+    "de": "Was schlug Alan Turing 1950 in „Computing Machinery and Intelligence“ vor?",
+    "en": "What did Alan Turing propose in \"Computing Machinery and Intelligence\" in 1950?"
+   },
+   "typ": "sc",
+   "richtig": [
+    "a"
+   ],
+   "optionen": [
+    {
+     "kennung": "a",
+     "text": {
+      "de": "die Frage „Können Maschinen denken?“ durch einen Test zu ersetzen, in dem eine Maschine im schriftlichen Gespräch als Mensch durchgehen muss",
+      "en": "to replace the question \"Can machines think?\" with a test in which a machine has to pass as a human in a written conversation"
+     },
+     "begruendung": {
+      "de": "Richtig: Turing nannte es das Imitationsspiel; heute heißt es Turing-Test.",
+      "en": "Correct: Turing called it the imitation game; today it is known as the Turing test."
+     }
+    },
+    {
+     "kennung": "b",
+     "text": {
+      "de": "das erste künstliche neuronale Netz, ein Modell eines Neurons, das aus Beispielen lernt",
+      "en": "the first artificial neural network, a model of a neuron that learns from examples"
+     },
+     "begruendung": {
+      "de": "Lernende Neuronenmodelle kamen später, etwa Rosenblatts Perzeptron von 1958.",
+      "en": "Learning neuron models came later, for example Rosenblatt's perceptron of 1958."
+     }
+    },
+    {
+     "kennung": "c",
+     "text": {
+      "de": "den Begriff „künstliche Intelligenz“ für einen Sommer-Workshop in Dartmouth",
+      "en": "the term \"artificial intelligence\" for a summer workshop at Dartmouth"
+     },
+     "begruendung": {
+      "de": "Der Begriff stammt aus dem Antrag von 1955 für den Dartmouth-Workshop im Jahr darauf, nicht von Turing.",
+      "en": "The term comes from the 1955 proposal for the Dartmouth workshop held the following year, not from Turing."
+     }
+    },
+    {
+     "kennung": "d",
+     "text": {
+      "de": "ein Programm, das den Schachweltmeister besiegt",
+      "en": "a program that beats the world chess champion"
+     },
+     "begruendung": {
+      "de": "Das gelang erst 1997 mit Deep Blue gegen Garri Kasparow.",
+      "en": "That only happened in 1997, with Deep Blue against Garry Kasparov."
+     }
+    }
+   ]
+  },
+  {
+   "id": "bh-005",
+   "niveau": "erinnern",
+   "frage": {
+    "de": "Warum wird 1956 oft als Geburtsjahr der KI genannt?",
+    "en": "Why is 1956 often named as the year AI was born?"
+   },
+   "typ": "sc",
+   "richtig": [
+    "a"
+   ],
+   "optionen": [
+    {
+     "kennung": "a",
+     "text": {
+      "de": "Bei einem Workshop am Dartmouth College bekam das Forschungsfeld seinen Namen „artificial intelligence“.",
+      "en": "At a workshop at Dartmouth College the field of research got its name, \"artificial intelligence\"."
+     },
+     "begruendung": {
+      "de": "Richtig: Der Antrag für den Workshop prägte den Begriff, und mit dem Treffen beginnt die KI als eigenes Fach.",
+      "en": "Correct: the proposal for the workshop coined the term, and with the meeting AI begins as a field of its own."
+     }
+    },
+    {
+     "kennung": "b",
+     "text": {
+      "de": "In diesem Jahr wurde der erste Computer kommerziell verkauft, was KI-Forschung erst möglich machte.",
+      "en": "In that year the first computer was sold commercially, which made AI research possible in the first place."
+     },
+     "begruendung": {
+      "de": "Kommerzielle Rechner gab es schon Anfang der 1950er-Jahre; mit dem Namen des Fachs hat das nichts zu tun.",
+      "en": "Commercial computers existed from the early 1950s; this has nothing to do with the name of the field."
+     }
+    },
+    {
+     "kennung": "c",
+     "text": {
+      "de": "Turing veröffentlichte den nach ihm benannten Test.",
+      "en": "Turing published the test named after him."
+     },
+     "begruendung": {
+      "de": "Turings Aufsatz erschien 1950, sechs Jahre früher.",
+      "en": "Turing's paper appeared in 1950, six years earlier."
+     }
+    },
+    {
+     "kennung": "d",
+     "text": {
+      "de": "Zum ersten Mal wurde ein neuronales Netz auf einem Rechner trainiert.",
+      "en": "A neural network was trained on a computer for the first time."
+     },
+     "begruendung": {
+      "de": "Das Perzeptron wurde 1958 vorgestellt; 1956 steht für den Namen und die Gründung des Fachs.",
+      "en": "The perceptron was presented in 1958; 1956 stands for the name and the founding of the field."
+     }
+    }
+   ]
+  },
+  {
+   "id": "bh-006",
+   "niveau": "anwenden",
+   "frage": {
+    "de": "Ein Agent soll eine selbst gebaute App zur Geschichte der KI veröffentlichen. In seinem Ordner liegen auch die heruntergeladenen Quellen. Was gehört nicht in die Veröffentlichung?",
+    "en": "An agent is asked to publish an app on the history of AI that it built itself. Its folder also contains the downloaded sources. What does not belong in the publication?"
+   },
+   "typ": "mc",
+   "richtig": [
+    "a",
+    "b",
+    "d"
+   ],
+   "optionen": [
+    {
+     "kennung": "a",
+     "text": {
+      "de": "die Volltexte der heruntergeladenen Quellen",
+      "en": "the full texts of the downloaded sources"
+     },
+     "begruendung": {
+      "de": "Richtig: Die Rechte an den Texten liegen bei Verlagen und Autoren; veröffentlicht wird der Link, nicht die Kopie.",
+      "en": "Correct: the rights to the texts belong to publishers and authors; what gets published is the link, not the copy."
+     }
+    },
+    {
+     "kennung": "b",
+     "text": {
+      "de": "der API-Schlüssel, mit dem die Sprecherstimme erzeugt wurde",
+      "en": "the API key used to generate the narrator's voice"
+     },
+     "begruendung": {
+      "de": "Richtig: Ein veröffentlichter Schlüssel kann von jedem benutzt werden, auf Kosten des Kontoinhabers.",
+      "en": "Correct: a published key can be used by anyone, at the account holder's expense."
+     }
+    },
+    {
+     "kennung": "c",
+     "text": {
+      "de": "die Wissensbasis mit den Fakten und den Links zu den Quellen",
+      "en": "the knowledge base with the facts and the links to the sources"
+     },
+     "begruendung": {
+      "de": "Sie darf hinein und macht die App überprüfbar: Jeder kann den Weg vom Eintrag zur Quelle gehen.",
+      "en": "It may be included and makes the app checkable: anyone can follow the path from the entry to the source."
+     }
+    },
+    {
+     "kennung": "d",
+     "text": {
+      "de": "das Foto der Pinnwand mit der Handschrift der Studierenden",
+      "en": "the photo of the pinboard with the students' handwriting"
+     },
+     "begruendung": {
+      "de": "Richtig: Handschriften sind personenbezogen; ohne Einwilligung gehören sie nicht ins Netz.",
+      "en": "Correct: handwriting is personal data; without consent it does not belong on the web."
+     }
+    },
+    {
+     "kennung": "e",
+     "text": {
+      "de": "der Code der App",
+      "en": "the app's code"
+     },
+     "begruendung": {
+      "de": "Der Code darf veröffentlicht werden; er ist das Werk, um das es geht.",
+      "en": "The code may be published; it is the work in question."
+     }
+    }
+   ]
+  }
+ ]
+}
