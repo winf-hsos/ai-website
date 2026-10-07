@@ -62,7 +62,7 @@ function figQuant(step) {
   const stufen = (n) => Array.from({ length: n }, (_, k) => -1 + 2 * k / (n - 1));
   const runden = (n) => stufen(n).reduce((a, b) => (Math.abs(b - gewicht) < Math.abs(a - gewicht) ? b : a));
   const zeilen = [
-    { name: "16 bits", n: 65536, wert: "0.8710" },
+    { name: "16 bits", n: 65536, wert: "0.8711" },
     { name: "4 bits", n: 16, wert: "0.867" },
     { name: "3 values", n: 3, wert: "1" },
     { name: "1 bit", n: 2, wert: "1" },
@@ -94,6 +94,63 @@ function figQuant(step) {
   return d.svg(W, H, ...d.layers(wires, marks, labels));
 }
 function showQuant(slide, step) { if ($("fig-quant")) $("fig-quant").innerHTML = figQuant(step || 0); }
+
+/* ------------------------------------------------------------------ */
+/* rounding costs less than shrinking: Perplexitaet gegen Dateigroesse  */
+/* Messwerte aus dem README von llama.cpp, Stand Mai 2023 (Commit       */
+/* cdd5350), LLaMA 7B und 13B, Perplexitaet auf wikitext-2.             */
+/* 0 nur 7B · 1 dazu 13B · 2 Pfeil 7B 16 Bit -> 13B 4 Bit               */
+/* ------------------------------------------------------------------ */
+const MESSUNG = {
+  "7b":  [["16", 13.0, 5.9066], ["8", 7.1, 5.9069], ["5", 4.8, 5.9481], ["5", 4.4, 5.9862], ["4", 4.0, 6.1565]],
+  "13b": [["16", 25.0, 5.2543], ["8", 14.0, 5.2548], ["5", 9.1, 5.2706], ["5", 8.4, 5.2856], ["4", 7.6, 5.3860]],
+};
+function figEvidence(step) {
+  const c = C();
+  const wires = [], marks = [], labels = [];
+  const W = 1680, H = 680;
+  const gx = (gb) => 200 + gb * 52;               // 0 GB bei 200, 26 GB bei 1552
+  const gy = (p) => 560 - (p - 5.2) * 460;        // 5.2 unten bei 560, 6.2 oben bei 100
+
+  // Achsen
+  wires.push(d.line(200, 600, 1560, 600, { color: c.gray, width: 2 }));
+  wires.push(d.line(200, 80, 200, 600, { color: c.gray, width: 2 }));
+  [0, 5, 10, 15, 20, 25].forEach((gb) => {
+    wires.push(d.line(gx(gb), 600, gx(gb), 612, { color: c.gray, width: 2 }));
+    labels.push(d.label(gx(gb), 0, String(gb), { size: 20, color: c.gray, anchor: "middle", mono: true, centerY: 636 }));
+  });
+  labels.push(d.label(1560, 0, "file size in GB", { size: 20, color: c.gray, anchor: "end", keepCase: true, centerY: 670 }));
+  [5.3, 5.6, 5.9, 6.2].forEach((p) => {
+    wires.push(d.line(188, gy(p), 200, gy(p), { color: c.gray, width: 2 }));
+    labels.push(d.label(176, 0, p.toFixed(1), { size: 20, color: c.gray, anchor: "end", mono: true, centerY: gy(p) }));
+  });
+  labels.push(d.label(230, 0, "error (perplexity), lower is better", { size: 20, color: c.gray, centerY: 70 }));
+
+  const reihe = (name, farbe) => {
+    const pts = MESSUNG[name];
+    for (let i = 0; i < pts.length - 1; i++) {
+      wires.push(d.line(gx(pts[i][1]), gy(pts[i][2]), gx(pts[i + 1][1]), gy(pts[i + 1][2]), { color: farbe, width: 3 }));
+    }
+    pts.forEach(([bits, gb, p]) => marks.push(`<circle cx="${gx(gb)}" cy="${gy(p)}" r="10" fill="${farbe}" />`));
+    const [, gb16, p16] = pts[0], [, gb4, p4] = pts[pts.length - 1];
+    // 13b · 16 bits liegt bei 25 GB am rechten Rand: Beschriftung dort links ueber den Punkt
+    const rechts = name === "13b";
+    labels.push(d.label(gx(gb16) + (rechts ? 0 : 24), 0, `${name} · 16 bits`, { size: 32, color: farbe, anchor: rechts ? "end" : "start", centerY: gy(p16) - 34 }));
+    labels.push(d.label(gx(gb4) - 24, 0, `${name} · 4 bits`, { size: 32, color: farbe, anchor: "end", centerY: gy(p4) - (name === "7b" ? 0 : 34) }));
+  };
+  reihe("7b", c.blue);
+  if (step >= 1) reihe("13b", c.light);
+
+  if (step >= 2) {
+    // vom 7B-Modell mit 16 Bit zum 13B-Modell mit 4 Bit: kleiner und besser
+    const a = MESSUNG["7b"][0], b = MESSUNG["13b"][4];
+    wires.push(d.arrow(gx(a[1]) - 14, gy(a[2]) + 14, gx(b[1]) + 18, gy(b[2]) - 18, { color: c.white, width: 3 }));
+    // "smaller file, better model": 26 Zeichen, 26 × 32 × 0,6 = 499, rechts neben dem Pfeil
+    labels.push(d.label(gx(9.5) + 40, 0, "smaller file, better model", { size: 32, color: c.white, centerY: gy(5.6) }));
+  }
+  return d.svg(W, H, ...d.layers(wires, marks, labels));
+}
+function showEvidence(slide, step) { if ($("fig-evidence")) $("fig-evidence").innerHTML = figEvidence(step || 0); }
 
 /* ------------------------------------------------------------------ */
 /* what happens when you press enter: 0 Datei · 1 laden · 2 je Token    */

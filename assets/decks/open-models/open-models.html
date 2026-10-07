@@ -25,7 +25,7 @@
     .bits .pfeil { color: var(--gray); font-family: var(--font); }
     .bits .wert { color: var(--blue); }
     /* vier Gewichte, gerundet: Spalten erscheinen in Schritten */
-    .gerundet { display: grid; grid-template-columns: 300px 300px 300px; gap: 28px 60px; font-family: var(--mono); font-size: var(--normal); text-align: right; }
+    .gerundet { display: grid; grid-template-columns: 300px 300px 300px 300px; gap: 28px 60px; font-family: var(--mono); font-size: var(--normal); text-align: right; }
     .gerundet .kopf { font-family: var(--font); font-size: var(--small); color: var(--gray-light); text-align: right; }
     /* offen und geschlossen: zwei gleich breite Spalten */
     .zwei { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
@@ -148,9 +148,9 @@
       <li>about 5 gigabytes</li>
       <li>about 50 gigabytes</li>
       <li>about 500 gigabytes</li>
-      <li>several terabytes</li>
+      <li data-correct>several terabytes</li>
     </ol>
-    <aside class="notes">Umfrage ohne richtige Antwort, denn OpenAI veröffentlicht die Größe nicht. Schätzen lässt sie sich an offenen Modellen derselben Klasse: DeepSeek V4 Pro hat rund 1,6 Billionen Parameter, mit 4 Bit je Zahl wären das etwa 0,8 TB, mit 16 Bit gut 3 TB. Ein solches Modell passt also auf keinen Laptop, weder auf die Festplatte noch erst recht in den Arbeitsspeicher. Auflösen bei „how big is big?“.</aside>
+    <aside class="notes">OpenAI veröffentlicht die Größe nicht, die richtige Antwort ist deshalb eine Schätzung an offenen Modellen derselben Klasse: DeepSeek V4 Pro hat rund 1,6 Billionen Parameter, mit 8 Bit je Zahl sind das etwa 1,6 TB, mit 16 Bit gut 3 TB; selbst mit 4 Bit wären es noch rund 0,8 TB. Ein solches Modell passt also auf keinen Laptop, weder auf die Festplatte noch erst recht in den Arbeitsspeicher. Mehr dazu bei „how big is big?“.</aside>
   </section>
 
   <!-- ==================== 3 · what a model is ==================== -->
@@ -189,15 +189,15 @@
     <h2>four weights, rounded</h2>
     <div class="content">
       <div class="gerundet">
-        <div class="kopf">original</div><div class="kopf" data-step="1">4 bits</div><div class="kopf" data-step="2">3 values</div>
-        <div>0.0213</div><div data-step="1">0.067</div><div data-step="2">0</div>
-        <div>−0.7745</div><div data-step="1">−0.733</div><div data-step="2">−1</div>
-        <div>0.3302</div><div data-step="1">0.333</div><div data-step="2">0</div>
-        <div>0.8710</div><div data-step="1">0.867</div><div data-step="2">1</div>
+        <div class="kopf">16 bits</div><div class="kopf" data-step="1">4 bits</div><div class="kopf" data-step="2">3 values</div><div class="kopf" data-step="3">binary</div>
+        <div>0.0213</div><div data-step="1">0.067</div><div data-step="2">0</div><div data-step="3">1</div>
+        <div>−0.7744</div><div data-step="1">−0.733</div><div data-step="2">−1</div><div data-step="3">−1</div>
+        <div>0.3301</div><div data-step="1">0.333</div><div data-step="2">0</div><div data-step="3">1</div>
+        <div>0.8711</div><div data-step="1">0.867</div><div data-step="2">1</div><div data-step="3">1</div>
       </div>
-      <div class="sidenote" data-step="3" style="margin-top: 50px">the coarser the rounding, the smaller the file, and the further the model drifts from what it learned.</div>
+      <div class="sidenote" data-step="4" style="margin-top: 50px">the coarser the rounding, the smaller the file, and the further the model drifts from what it learned.</div>
     </div>
-    <aside class="notes">Mit 4 Bit bleiben die Gewichte nahe am Original, das Modell verhält sich fast wie vorher. Mit drei Werten werden zwei der vier Gewichte zu null; ein Modell, das nachträglich so grob gerundet wird, verliert viel. Deshalb ist 4 Bit für Modelle auf dem Laptop ein verbreiteter Kompromiss.</aside>
+    <aside class="notes">Die linke Spalte zeigt, was 16 Bit von den gelernten Gewichten speichern, auf vier Stellen gerundet. Die 4-Bit-Spalte folgt dem vereinfachten Schema von der Folie davor: 16 gleichmäßig verteilte Werte von −1 bis +1 im Abstand 2/15, also ±0,067, ±0,2, ±0,333 und so weiter; eine genaue Null gibt es darin nicht. Echte Verfahren wie Q4 skalieren die Werte je Block von 32 Gewichten, das Prinzip ist dasselbe. Mit 4 Bit bleiben die Gewichte nahe am Original, das Modell verhält sich fast wie vorher. Mit drei Werten werden zwei der vier Gewichte zu null. Binär, mit einem Bit, bleibt nur das Vorzeichen: Aus 0,0213 und 0,8710 wird dieselbe 1, der Unterschied zwischen fast nichts und viel ist weg. Ein Modell, das nachträglich so grob gerundet wird, verliert viel. Deshalb ist 4 Bit für Modelle auf dem Laptop ein verbreiteter Kompromiss.</aside>
   </section>
 
   <section class="slide">
@@ -210,6 +210,14 @@
       <div class="sidenote" data-step="2" style="margin-top: 50px">fewer bits per number: quantization.</div>
     </div>
     <aside class="notes">Die Zahlen werden gerundet gespeichert, damit das Modell in den Arbeitsspeicher passt. Das kostet etwas Qualität und spart viel Platz. Im Dateinamen steht, wie stark gerundet wurde, etwa Q4 für rund vier Bit je Zahl.</aside>
+  </section>
+
+  <section class="slide" data-on-show="showEvidence" data-on-step="showEvidence">
+    <h2>rounding costs less than shrinking</h2>
+    <div class="figure" id="fig-evidence"></div>
+    <span data-step="1"></span><span data-step="2"></span>
+    <div class="footnote">measured on <span class="keep-case">LLaMA</span> 7B and 13B: <a href="https://github.com/ggml-org/llama.cpp/blob/cdd5350892b1d4e521e930c77341f858fcfcd433/README.md" target="_blank" rel="noopener">llama.cpp, 2023</a> · see also <a href="https://arxiv.org/abs/2212.09720" target="_blank" rel="noopener">dettmers &amp; zettlemoyer, the case for 4-bit precision, 2023</a></div>
+    <aside class="notes">Gemessen ist die Perplexität auf Wikipedia-Texten: wie überrascht das Modell vom tatsächlich nächsten Wort ist, niedriger ist besser. Erst die Linie des 7B-Modells: von 16 auf 8 Bit ändert sich praktisch nichts (5,9066 zu 5,9069), erst bei 4 Bit steigt der Fehler etwas. Dann das 13B-Modell, das ganze Stück tiefer. Der Pfeil: Das 13B-Modell mit 4 Bit ist mit 7,6 GB kleiner als das 7B-Modell mit 16 Bit (13 GB) und trotzdem besser. Dettmers und Zettlemoyer haben das für viele Modelle systematisch gemessen: Bei gleichem Speicher ist 4 Bit fast immer die beste Wahl. Lieber ein großes Modell grob runden als ein kleines fein speichern.</aside>
   </section>
 
   <section class="slide has-punch" data-on-show="showInference" data-on-step="showInference">

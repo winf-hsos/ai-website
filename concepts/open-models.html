@@ -271,6 +271,7 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="why-the-file-has-the-size-it-has">Why the file has the size it has</h3>
 <p>Each number needs some bits of storage, and the number of bits decides how many different values a number can take: one bit allows two values, four bits sixteen, sixteen bits 65,536. With 16 bits per number, four billion parameters take 8 GB. To make models fit into the memory of a laptop, the numbers are rounded to fewer allowed values and stored with fewer bits, often around four. This is called <strong>quantization</strong>.</p>
 <p>Take a weight of 0.8710. With 16 bits it is stored almost exactly. With 4 bits, and in a simplified picture with 16 evenly spaced values between −1 and +1, it becomes 0.867, close enough that the model behaves almost as before. With only three values, −1, 0 and +1, it becomes 1, and a weight of 0.3302 becomes 0. The coarser the rounding, the smaller the file and the further the model drifts from what it learned. Gemma 3 4B with about four bits per number shrinks from 8 GB to about 2.4 GB. The name of a model file usually says how strongly it was rounded, for example <code>Q4</code> for about four bits per number.</p>
+<p>Surprisingly, rounding costs much less than shrinking. Measurements with LLaMA show that going from 16 to 8 bits changes practically nothing, and that a 13-billion-parameter model rounded to 4 bits (7.6 GB) is better than a 7-billion-parameter model stored with 16 bits (13 GB). For the same amount of memory, a larger model with 4 bits is almost always the better choice.</p>
 </section>
 <section id="what-happens-when-you-press-enter" class="level3">
 <h3 class="anchored" data-anchor-id="what-happens-when-you-press-enter">What happens when you press enter</h3>
@@ -301,6 +302,7 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li><a href="https://lmstudio.ai">LM Studio</a>: the free program used in the experiment, with a catalogue of open models and their sizes.</li>
 <li>Google: <a href="https://lmstudio.ai/models/gemma-3">Gemma 3</a> in the LM Studio catalogue, with all sizes from 270 million to 27 billion parameters.</li>
+<li>Tim Dettmers and Luke Zettlemoyer: <a href="https://arxiv.org/abs/2212.09720">The case for 4-bit precision: k-bit Inference Scaling Laws</a>, ICML 2023.</li>
 <li>Rich Sutton: <a href="http://www.incompleteideas.net/IncIdeas/BitterLesson.html">The Bitter Lesson</a>, 2019, on why models keep growing.</li>
 </ul>
 
