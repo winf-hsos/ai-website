@@ -1,0 +1,366 @@
+{
+ "konzept": "open-models",
+ "fragen": [
+  {
+   "id": "om-001",
+   "niveau": "verstehen",
+   "frage": {
+    "de": "Du schaltest das WLAN ab, und das Modell in LM Studio antwortet trotzdem. Was folgt daraus?",
+    "en": "You turn off wi-fi, and the model in LM Studio still answers. What follows from this?"
+   },
+   "typ": "sc",
+   "richtig": [
+    "a"
+   ],
+   "optionen": [
+    {
+     "kennung": "a",
+     "text": {
+      "de": "Das ganze Modell liegt als Datei auf dem Laptop und wird von dessen Prozessor oder Grafikkarte gerechnet.",
+      "en": "The whole model is stored on the laptop as a file and is computed by its processor or graphics card."
+     },
+     "begruendung": {
+      "de": "Richtig: Alles, was das Modell kann, steckt in der Datei mit den Parametern; mehr braucht es zum Antworten nicht.",
+      "en": "Correct: everything the model can do lies in the file with its parameters; nothing else is needed to answer."
+     }
+    },
+    {
+     "kennung": "b",
+     "text": {
+      "de": "LM Studio speichert frühere Antworten aus dem Internet zwischen und spielt sie offline wieder ab.",
+      "en": "LM Studio caches earlier answers from the internet and replays them while offline."
+     },
+     "begruendung": {
+      "de": "Das Modell erzeugt jede Antwort neu, Token für Token; auch Fragen, die nie zuvor gestellt wurden, beantwortet es offline.",
+      "en": "The model generates every answer anew, token by token; it also answers questions offline that were never asked before."
+     }
+    },
+    {
+     "kennung": "c",
+     "text": {
+      "de": "Das Modell antwortet aus einer kleinen Textdatenbank, die mit LM Studio installiert wurde.",
+      "en": "The model answers from a small database of texts that was installed with LM Studio."
+     },
+     "begruendung": {
+      "de": "Ein Sprachmodell enthält keine Texte zum Nachschlagen, sondern Zahlen, aus denen es neue Texte erzeugt.",
+      "en": "A language model holds no texts to look up, but numbers from which it generates new text."
+     }
+    },
+    {
+     "kennung": "d",
+     "text": {
+      "de": "Das Modell schickt die Fragen nach, sobald die Verbindung zurück ist, und zeigt bis dahin vorläufige Antworten.",
+      "en": "The model sends the questions once the connection is back and shows provisional answers until then."
+     },
+     "begruendung": {
+      "de": "Ein lokales Modell schickt nichts weg; die Antwort, die es offline gibt, ist bereits die endgültige.",
+      "en": "A local model sends nothing anywhere; the answer it gives offline is already the final one."
+     }
+    }
+   ]
+  },
+  {
+   "id": "om-002",
+   "niveau": "anwenden",
+   "frage": {
+    "de": "Ein Modell hat 8 Milliarden Parameter, jeder mit 4 Bit gespeichert. Wie groß ist die Datei ungefähr?",
+    "en": "A model has 8 billion parameters, each stored with 4 bits. About how big is the file?"
+   },
+   "typ": "sc",
+   "richtig": [
+    "a"
+   ],
+   "optionen": [
+    {
+     "kennung": "a",
+     "text": {
+      "de": "4 GB",
+      "en": "4 GB"
+     },
+     "begruendung": {
+      "de": "Richtig: 8 Milliarden mal 4 Bit sind 32 Milliarden Bit, also 4 Milliarden Byte.",
+      "en": "Correct: 8 billion times 4 bits is 32 billion bits, which is 4 billion bytes."
+     }
+    },
+    {
+     "kennung": "b",
+     "text": {
+      "de": "8 GB",
+      "en": "8 GB"
+     },
+     "begruendung": {
+      "de": "Das wären 8 Bit, also ein Byte je Parameter. Bei 4 Bit braucht jeder Parameter nur ein halbes Byte.",
+      "en": "That would be 8 bits, one byte per parameter. With 4 bits each parameter needs only half a byte."
+     }
+    },
+    {
+     "kennung": "c",
+     "text": {
+      "de": "32 GB",
+      "en": "32 GB"
+     },
+     "begruendung": {
+      "de": "Hier wurden Bit und Byte verwechselt: 32 Milliarden Bit sind 4 Milliarden Byte, nicht 32.",
+      "en": "This confuses bits and bytes: 32 billion bits are 4 billion bytes, not 32."
+     }
+    },
+    {
+     "kennung": "d",
+     "text": {
+      "de": "16 GB",
+      "en": "16 GB"
+     },
+     "begruendung": {
+      "de": "Das entspräche 16 Bit je Parameter, der ungerundeten Speicherung; quantisiert mit 4 Bit ist es ein Viertel davon.",
+      "en": "That corresponds to 16 bits per parameter, the unrounded storage; quantized to 4 bits it is a quarter of that."
+     }
+    }
+   ]
+  },
+  {
+   "id": "om-003",
+   "niveau": "verstehen",
+   "frage": {
+    "de": "Gemma 3 4B antwortet auf demselben Laptop deutlich langsamer als Gemma 3 1B. Warum?",
+    "en": "On the same laptop, Gemma 3 4B answers noticeably more slowly than Gemma 3 1B. Why?"
+   },
+   "typ": "sc",
+   "richtig": [
+    "a"
+   ],
+   "optionen": [
+    {
+     "kennung": "a",
+     "text": {
+      "de": "Jedes Token durchläuft alle Parameter, und das 4B-Modell hat viermal so viele.",
+      "en": "Every token passes through all parameters, and the 4B model has four times as many."
+     },
+     "begruendung": {
+      "de": "Richtig: Mehr Zahlen je Token bedeuten mehr Rechenarbeit je Token und damit weniger Tokens pro Sekunde.",
+      "en": "Correct: more numbers per token mean more computation per token and therefore fewer tokens per second."
+     }
+    },
+    {
+     "kennung": "b",
+     "text": {
+      "de": "Das größere Modell durchsucht für jede Antwort eine größere Textdatenbank.",
+      "en": "The larger model searches a larger database of texts for every answer."
+     },
+     "begruendung": {
+      "de": "Ein Modell sucht nicht in gespeicherten Texten; es rechnet jedes Token aus seinen Parametern.",
+      "en": "A model does not search stored texts; it computes every token from its parameters."
+     }
+    },
+    {
+     "kennung": "c",
+     "text": {
+      "de": "Das größere Modell schreibt längere Antworten, weil es mehr weiß.",
+      "en": "The larger model writes longer answers because it knows more."
+     },
+     "begruendung": {
+      "de": "Längere Antworten dauern insgesamt länger, ändern aber nicht die Tokens pro Sekunde, und die sind beim größeren Modell niedriger.",
+      "en": "Longer answers take longer in total but do not change the tokens per second, and those are lower for the larger model."
+     }
+    },
+    {
+     "kennung": "d",
+     "text": {
+      "de": "Das größere Modell prüft jede Antwort im Internet, bevor es sie zeigt.",
+      "en": "The larger model checks every answer on the internet before showing it."
+     },
+     "begruendung": {
+      "de": "Beide Modelle laufen offline; keines prüft etwas im Internet.",
+      "en": "Both models run offline; neither checks anything on the internet."
+     }
+    }
+   ]
+  },
+  {
+   "id": "om-004",
+   "niveau": "verstehen",
+   "frage": {
+    "de": "Welche Aussagen über offene Modelle treffen zu?",
+    "en": "Which statements about open models are correct?"
+   },
+   "typ": "mc",
+   "richtig": [
+    "a",
+    "c",
+    "d"
+   ],
+   "optionen": [
+    {
+     "kennung": "a",
+     "text": {
+      "de": "Ihre Gewichte lassen sich herunterladen und auf eigener Hardware betreiben.",
+      "en": "Their weights can be downloaded and run on your own hardware."
+     },
+     "begruendung": {
+      "de": "Richtig: Genau das macht ein Modell offen.",
+      "en": "Correct: this is exactly what makes a model open."
+     }
+    },
+    {
+     "kennung": "b",
+     "text": {
+      "de": "Ihre Trainingsdaten werden stets mit den Gewichten veröffentlicht.",
+      "en": "Their training data is always published along with the weights."
+     },
+     "begruendung": {
+      "de": "Offene Gewichte sind nicht Open Source; die Trainingsdaten bleiben meist geheim, nur wenige Modelle wie Olmo legen sie offen.",
+      "en": "Open weights are not open source; the training data usually stays secret, and only a few models such as Olmo publish it."
+     }
+    },
+    {
+     "kennung": "c",
+     "text": {
+      "de": "Man kann sie anpassen, etwa mit eigenen Daten nachtrainieren.",
+      "en": "They can be adapted, for example fine-tuned on your own data."
+     },
+     "begruendung": {
+      "de": "Richtig: Wer die Gewichte hat, kann sie weiter verändern.",
+      "en": "Correct: whoever has the weights can change them further."
+     }
+    },
+    {
+     "kennung": "d",
+     "text": {
+      "de": "Für sie können Lizenzen gelten, die manche Nutzungen einschränken.",
+      "en": "They may come with licences that restrict some uses."
+     },
+     "begruendung": {
+      "de": "Richtig: Offen heißt nicht ohne Bedingungen; manche Lizenzen begrenzen etwa die kommerzielle Nutzung.",
+      "en": "Correct: open does not mean without conditions; some licences limit commercial use, for example."
+     }
+    },
+    {
+     "kennung": "e",
+     "text": {
+      "de": "Man kann sie nicht in einem Agenten einsetzen.",
+      "en": "They cannot be used inside an agent."
+     },
+     "begruendung": {
+      "de": "Ein Harness kann jedes Modell ansprechen, auch ein lokales offenes.",
+      "en": "A harness can talk to any model, including a local open one."
+     }
+    }
+   ]
+  },
+  {
+   "id": "om-005",
+   "niveau": "anwenden",
+   "frage": {
+    "de": "In welcher Lage ist ein lokales offenes Modell die sinnvollste Wahl?",
+    "en": "In which situation is a local open model the most sensible choice?"
+   },
+   "typ": "sc",
+   "richtig": [
+    "a"
+   ],
+   "optionen": [
+    {
+     "kennung": "a",
+     "text": {
+      "de": "Eine Tierarztpraxis will Behandlungsnotizen zusammenfassen, die die Praxis nicht verlassen dürfen.",
+      "en": "A veterinary practice wants to summarise treatment notes that must not leave the practice."
+     },
+     "begruendung": {
+      "de": "Richtig: Wenn die Daten das Haus nicht verlassen dürfen, ist ein lokales Modell oft der einzige Weg.",
+      "en": "Correct: when the data must not leave the building, a local model is often the only way."
+     }
+    },
+    {
+     "kennung": "b",
+     "text": {
+      "de": "Eine Studentin will auf einem langsamen Laptop die bestmögliche Antwort auf eine schwierige Forschungsfrage.",
+      "en": "A student wants the best possible answer to a difficult research question on a slow laptop."
+     },
+     "begruendung": {
+      "de": "Ein Modell, das auf einem langsamen Laptop läuft, ist klein; für die bestmögliche Antwort ist ein großes Modell in der Cloud besser.",
+      "en": "A model that runs on a slow laptop is small; for the best possible answer a large model in the cloud does better."
+     }
+    },
+    {
+     "kennung": "c",
+     "text": {
+      "de": "Ein Start-up will viele verschiedene Modelle schnell ausprobieren, ohne Hardware zu kaufen.",
+      "en": "A start-up wants to try out many different models quickly without buying hardware."
+     },
+     "begruendung": {
+      "de": "Ohne eigene Hardware fehlt die Grundlage für den lokalen Betrieb; Cloud-Dienste sind hier einfacher.",
+      "en": "Without hardware of its own there is nothing to run models on locally; cloud services are simpler here."
+     }
+    },
+    {
+     "kennung": "d",
+     "text": {
+      "de": "Ein Marketingteam braucht aktuelle Preise der Konkurrenz aus dem Netz.",
+      "en": "A marketing team needs current competitor prices from the web."
+     },
+     "begruendung": {
+      "de": "Ein lokales Modell weiß nur, was in seinen Parametern steckt; aktuelle Preise braucht eine Websuche.",
+      "en": "A local model only knows what lies in its parameters; current prices need a web search."
+     }
+    }
+   ]
+  },
+  {
+   "id": "om-006",
+   "niveau": "erinnern",
+   "frage": {
+    "de": "Was bedeutet es, ein Modell zu quantisieren?",
+    "en": "What does it mean to quantize a model?"
+   },
+   "typ": "sc",
+   "richtig": [
+    "a"
+   ],
+   "optionen": [
+    {
+     "kennung": "a",
+     "text": {
+      "de": "Die Parameter mit weniger Bit speichern, wodurch die Datei kleiner wird und etwas Qualität verloren geht.",
+      "en": "Storing the parameters with fewer bits, which makes the file smaller and costs a little quality."
+     },
+     "begruendung": {
+      "de": "Richtig: Die Zahlen werden gerundet, damit das Modell in den Speicher passt.",
+      "en": "Correct: the numbers are rounded so that the model fits into memory."
+     }
+    },
+    {
+     "kennung": "b",
+     "text": {
+      "de": "Selten gebrauchte Wörter aus dem Wortschatz entfernen, damit das Modell schneller wird.",
+      "en": "Removing rarely used words from the vocabulary so that the model gets faster."
+     },
+     "begruendung": {
+      "de": "Der Wortschatz bleibt gleich; quantisiert werden die Zahlen, nicht die Wörter.",
+      "en": "The vocabulary stays the same; it is the numbers that are quantized, not the words."
+     }
+    },
+    {
+     "kennung": "c",
+     "text": {
+      "de": "Das Modell in Teile zerlegen, die auf mehreren Rechnern laufen.",
+      "en": "Splitting the model into parts that run on several computers."
+     },
+     "begruendung": {
+      "de": "Das wäre eine Verteilung des Modells; die Zahl der Bits je Parameter bliebe dabei gleich.",
+      "en": "That would be distributing the model; the number of bits per parameter would stay the same."
+     }
+    },
+    {
+     "kennung": "d",
+     "text": {
+      "de": "Das Modell ein zweites Mal mit weniger Daten trainieren.",
+      "en": "Training the model a second time on less data."
+     },
+     "begruendung": {
+      "de": "Quantisieren verändert ein fertiges Modell, ohne es neu zu trainieren.",
+      "en": "Quantization changes a finished model without training it again."
+     }
+    }
+   ]
+  }
+ ]
+}

@@ -30,80 +30,201 @@
     ]
   },
   {
-    "objectID": "experiments/index.html",
-    "href": "experiments/index.html",
-    "title": "Experiments",
+    "objectID": "experiments/open-models/open-models.html",
+    "href": "experiments/open-models/open-models.html",
+    "title": "An AI on Your Laptop",
     "section": "",
-    "text": "Every session starts with a 30-minute experiment that leads into its topic. Each one comes with written instructions: what you need, the steps, how to go further on your own, and questions to reflect on at the end. You can read them here or download them as a PDF to print.\n\nBe the Agent: play an AI agent with cards and find out what the model does and what the tools do.\n\nMore experiments are on their way.",
+    "text": "A language model is a file full of numbers that runs on your own laptop without the internet; its size decides how good, how fast and how hungry it is.",
     "crumbs": [
       "Experiments",
-      "Experiments"
+      "An AI on Your Laptop"
     ]
   },
   {
-    "objectID": "concepts/the-harness.html",
-    "href": "concepts/the-harness.html",
-    "title": "The Harness",
+    "objectID": "experiments/open-models/open-models.html#short-description",
+    "href": "experiments/open-models/open-models.html#short-description",
+    "title": "An AI on Your Laptop",
+    "section": "Short description",
+    "text": "Short description\nYou switch off the internet and still get answers from a language model on your own laptop. Then you look at the file that holds the whole model and compare a small and a larger version of the same model on the same three questions.\nThe slides lead through the experiment and what it shows: the file, the numbers inside it, why bigger models are slower, and the difference between open and closed models.",
+    "crumbs": [
+      "Experiments",
+      "An AI on Your Laptop"
+    ]
+  },
+  {
+    "objectID": "experiments/open-models/open-models.html#steps",
+    "href": "experiments/open-models/open-models.html#steps",
+    "title": "An AI on Your Laptop",
+    "section": "Steps",
+    "text": "Steps\n\nBasic experiment\nWork in pairs and write your observations on the notes sheet.\n\nTurn off wi-fi, load Gemma 3 1B in LM Studio and ask it what nitrogen fertiliser does for a wheat plant, in two sentences.\nFind the model file (LM Studio → My Models → show in folder) and note its size and its name.\nAsk both models, Gemma 3 1B and then Gemma 3 4B, the same three questions and note the tokens per second shown below each answer:\n\nA field of 4.5 ha needs 140 kg of nitrogen per ha. How much is that in total?\nWhat is the capital of Lower Saxony, and what is it known for?\nTranslate into German: “The harvest was delayed by rain.”\n\nCompare: which model was faster, and which answers held?\n\n\n\nExtensions\nEach extension changes one thing, so that you can compare the result with the basic experiment.\n\nRounding: download Gemma 3 4B in a second quantization (for example 8 bit instead of 4 bit) and compare size, speed and answers.\nAnother family: ask Qwen3 4B (qwen/qwen3-4b-2507, 2.3 GB) the same questions and compare it with Gemma 3 4B of the same size.\nCloud against laptop: ask a cloud chatbot the same questions and fill in a table with quality, speed, cost and where your data goes.\nYour own document: give the local model a text that must not leave your laptop, such as a draft of your thesis, and ask it for a summary.\nWatch the machine: open the task manager while the model answers and watch memory, processor and graphics card.\nOn your phone: install Google’s app AI Edge Gallery (Android and iOS), load a small Gemma model and ask it the same questions in flight mode.",
+    "crumbs": [
+      "Experiments",
+      "An AI on Your Laptop"
+    ]
+  },
+  {
+    "objectID": "experiments/open-models/open-models.html#discussion",
+    "href": "experiments/open-models/open-models.html#discussion",
+    "title": "An AI on Your Laptop",
+    "section": "Discussion",
+    "text": "Discussion\nWrite down your own answers first, then discuss them in your group.\n\nWhat surprised you about the size, speed or quality of the local model?\nWhich data would you trust a local model with, but not a cloud service?\nWhen should a farm or a food company run its own model instead of renting one?",
+    "crumbs": [
+      "Experiments",
+      "An AI on Your Laptop"
+    ]
+  },
+  {
+    "objectID": "experiments/open-models/open-models.html#concepts",
+    "href": "experiments/open-models/open-models.html#concepts",
+    "title": "An AI on Your Laptop",
+    "section": "Concepts",
+    "text": "Concepts\n\nOpen Models: what a model is, why its size matters, and the difference between open and closed weights.\nAI Agents: an agent can use a model on your laptop instead of one in the cloud.",
+    "crumbs": [
+      "Experiments",
+      "An AI on Your Laptop"
+    ]
+  },
+  {
+    "objectID": "experiments/open-models/open-models.html#material",
+    "href": "experiments/open-models/open-models.html#material",
+    "title": "An AI on Your Laptop",
+    "section": "Material",
+    "text": "Material\n\nA laptop with at least 8 GB of memory, charged, and LM Studio installed (free, for Windows, macOS and Linux).\nTwo models from the same family, downloaded before the session, not in the room: Gemma 3 1B (google/gemma-3-1b, about 0.75 GB) and Gemma 3 4B (google/gemma-3-4b, about 2.4 GB).\nThe notes sheet, one per pair.\n\nThe file sizes are those listed on lmstudio.ai and can differ slightly with the version you download.\nThese instructions are also available as a PDF, with a page for the discussion.",
+    "crumbs": [
+      "Experiments",
+      "An AI on Your Laptop"
+    ]
+  },
+  {
+    "objectID": "experiments/be-the-agent/be-the-agent.html",
+    "href": "experiments/be-the-agent/be-the-agent.html",
+    "title": "Be the Agent",
     "section": "",
-    "text": "A language model on its own can only write text. Everything that turns this text into action, running the loop, carrying out the tool calls, deciding what the model gets to see and what it is allowed to do, is done by a program around the model: the harness. Claude Code, Codex and OpenCode are harnesses, and the same model in a different harness becomes a different agent. This page answers:\n\nWhat does the harness do, and what does the model do?\nWhy can the same model behave differently in two agents?\nWhere are the limits of what an agent may do, and who sets them?\n\nYou meet this concept in the experiment Be the Agent, where one of you plays the harness and carries every card between the Model and the tools.",
+    "text": "An AI agent is a large language model (LLM) that can only write text: everything it does in the world happens through tools, which a program around it, the harness, runs on its behalf. The model knows only what is in its context, so its work can only be as good as the results that reach it.",
+    "crumbs": [
+      "Experiments",
+      "Be the Agent"
+    ]
+  },
+  {
+    "objectID": "experiments/be-the-agent/be-the-agent.html#short-description",
+    "href": "experiments/be-the-agent/be-the-agent.html#short-description",
+    "title": "Be the Agent",
+    "section": "Short description",
+    "text": "Short description\nYour group plays an AI agent with cards instead of a computer: one of you is the language model, one carries the messages, four of you are the tools, and one keeps the log. By the end you will have run by hand the loop that every AI agent runs on.\nThe slides lead through the game: the roles, the cards, the rules, the three tasks and what you just played.",
+    "crumbs": [
+      "Experiments",
+      "Be the Agent"
+    ]
+  },
+  {
+    "objectID": "experiments/be-the-agent/be-the-agent.html#steps",
+    "href": "experiments/be-the-agent/be-the-agent.html#steps",
+    "title": "Be the Agent",
+    "section": "Steps",
+    "text": "Steps\n\nBasic experiment\n\nHand out the role cards; the Model’s stack starts with the system card and Task 1 on top.\nPlay Task 1, then swap roles and play Task 2.\nThe Observer reads the log aloud: rounds, tool calls per tool, errors and cards on the stack.\nPlay Task 3 if there is time, then compare your log with the log of a real agent.\n\nWhile you play, four rules apply:\n\nThe Model sees only its stack of cards, and nobody talks to it.\nIt writes one card at a time, starting with THINK:, TOOL: or ANSWER:.\nThe Harness carries every TOOL: card to the right tool and brings back the RESULT: card.\nA tool does exactly what the card says, nothing more, and never guesses what was meant.\n\n\n\nExtensions\nEach extension changes the game in one respect, so that you can compare the result with your first round.\n\nLimited memory: the stack holds at most eight cards, and a SUMMARY: card replaces the oldest ones when it is full.\nTwo tools at once: the Model may write two tool cards per turn, which the Harness carries in parallel.\nA new tool: someone becomes forecast(\"date\"), added to the system card, and you watch whether the Model uses it unprompted.\nA wrong result: one tool secretly returns a wrong value, and you find out whether the Model notices.\nBe the tool for a chatbot: solve Task 2 with a chatbot in your browser, supplying every file, page and calculation yourself.",
+    "crumbs": [
+      "Experiments",
+      "Be the Agent"
+    ]
+  },
+  {
+    "objectID": "experiments/be-the-agent/be-the-agent.html#discussion",
+    "href": "experiments/be-the-agent/be-the-agent.html#discussion",
+    "title": "Be the Agent",
+    "section": "Discussion",
+    "text": "Discussion\nWrite down your own answers first, then discuss them in your group.\n\nIn which round would the Model have been stuck without the tools, and which tool was used most?\nWhat would have gone differently if the Model had had to give up its stack after ten cards?\nWho did the thinking, who did the acting, and which of it could the Model actually do?",
+    "crumbs": [
+      "Experiments",
+      "Be the Agent"
+    ]
+  },
+  {
+    "objectID": "experiments/be-the-agent/be-the-agent.html#concepts",
+    "href": "experiments/be-the-agent/be-the-agent.html#concepts",
+    "title": "Be the Agent",
+    "section": "Concepts",
+    "text": "Concepts\n\nAI Agents: the loop of thinking, acting and observing that you just ran by hand.\nThe Harness: the program around the model, which you played as the Harness.",
+    "crumbs": [
+      "Experiments",
+      "Be the Agent"
+    ]
+  },
+  {
+    "objectID": "experiments/be-the-agent/be-the-agent.html#material",
+    "href": "experiments/be-the-agent/be-the-agent.html#material",
+    "title": "Be the Agent",
+    "section": "Material",
+    "text": "Material\n\nA group of seven; with five or six, one person takes two roles.\nThe cards, seven A4 sheets to cut along the dashed lines; print the sheet with blank cards several times, because a game uses twenty or more.\nThe Observer’s sheet, one per group and task.\nA pen for everyone, a calculator and room for the tools to sit apart from the Model.\n\nAll farm data and web pages are invented for this game and are not advice for real fertilisation.\nThese instructions are also available as a PDF, with a page for the discussion.\n\nCards\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nObserver’s sheet\nOne A4 sheet per group and task, with room for 22 rounds and the counts at the end.",
+    "crumbs": [
+      "Experiments",
+      "Be the Agent"
+    ]
+  },
+  {
+    "objectID": "concepts/open-models.html",
+    "href": "concepts/open-models.html",
+    "title": "Open Models",
+    "section": "",
+    "text": "The model behind a chatbot is not a program with rules and not a database of texts, but a file with billions of numbers. Some providers publish these files, and with a free program such as LM Studio they run on an ordinary laptop, even without the internet. How big the file is decides how good the model is, how fast it answers and how much memory it needs. This page answers:\n\nWhat is inside a language model, and why is it so big?\nWhat happens on your computer when a local model answers?\nWhat is the difference between an open and a closed model?\nWhen is it worth running a model yourself instead of using one in the cloud?\n\nYou meet this concept in the experiment An AI on Your Laptop, where you switch off the internet and compare a small and a larger version of the same model.",
     "crumbs": [
       "Concepts",
-      "The Harness"
+      "Open Models"
     ]
   },
   {
-    "objectID": "concepts/the-harness.html#summary",
-    "href": "concepts/the-harness.html#summary",
-    "title": "The Harness",
+    "objectID": "concepts/open-models.html#summary",
+    "href": "concepts/open-models.html#summary",
+    "title": "Open Models",
     "section": "",
-    "text": "A language model on its own can only write text. Everything that turns this text into action, running the loop, carrying out the tool calls, deciding what the model gets to see and what it is allowed to do, is done by a program around the model: the harness. Claude Code, Codex and OpenCode are harnesses, and the same model in a different harness becomes a different agent. This page answers:\n\nWhat does the harness do, and what does the model do?\nWhy can the same model behave differently in two agents?\nWhere are the limits of what an agent may do, and who sets them?\n\nYou meet this concept in the experiment Be the Agent, where one of you plays the harness and carries every card between the Model and the tools.",
+    "text": "The model behind a chatbot is not a program with rules and not a database of texts, but a file with billions of numbers. Some providers publish these files, and with a free program such as LM Studio they run on an ordinary laptop, even without the internet. How big the file is decides how good the model is, how fast it answers and how much memory it needs. This page answers:\n\nWhat is inside a language model, and why is it so big?\nWhat happens on your computer when a local model answers?\nWhat is the difference between an open and a closed model?\nWhen is it worth running a model yourself instead of using one in the cloud?\n\nYou meet this concept in the experiment An AI on Your Laptop, where you switch off the internet and compare a small and a larger version of the same model.",
     "crumbs": [
       "Concepts",
-      "The Harness"
+      "Open Models"
     ]
   },
   {
-    "objectID": "concepts/the-harness.html#explanation",
-    "href": "concepts/the-harness.html#explanation",
-    "title": "The Harness",
+    "objectID": "concepts/open-models.html#explanation",
+    "href": "concepts/open-models.html#explanation",
+    "title": "Open Models",
     "section": "Explanation",
-    "text": "Explanation\n\nWhere the name comes from\nA harness hitches a horse to a cart. The horse provides the power, and the harness decides where that power goes. In an agent, the language model provides the decisions, and the harness connects them to the world: to files, commands, web pages and to you. An AI agent is therefore an LLM plus a harness.\n\n\nWhat the harness does\nThe harness runs the loop. It sends the context to the model, reads what comes back and, if the answer is a tool call, carries it out and adds the result to the context before it asks the model again. When the model writes a final answer instead of a tool call, the harness stops.\nThe harness assembles the context. It decides what the model sees at each step: the system prompt with the list of tools, instructions from files such as agents.md, the skills it loads when they are needed, the plan, and every result so far. When the context window fills up, it summarises or drops older parts.\nThe harness sets the limits. It decides which tools exist at all, asks you for permission before a command runs, and can confine the agent to one folder. The model cannot bypass these rules, because it never touches anything itself.\n\n\nSame model, different agent\nBecause the harness decides what the model sees and may do, two agents with the same model can behave very differently. One gets a web search and the other does not; one reads a project’s instructions and the other starts blank; one asks before every command and the other just acts. Comparing agents therefore means comparing harnesses as much as models.",
+    "text": "Explanation\n\nA file full of numbers\nA language model consists of a very long list of numbers called parameters or weights. Gemma 3 4B has about four billion of them, and the largest open models have well over a thousand billion. The numbers are the result of training: they encode, in a form no human can read directly, what the model has picked up about language and the world. Everything the model can do lies in these numbers, and nothing else is needed to run it.\n\n\nWhy the file has the size it has\nEach number needs some bits of storage, and the number of bits decides how many different values a number can take: one bit allows two values, four bits sixteen, sixteen bits 65,536. With 16 bits per number, four billion parameters take 8 GB. To make models fit into the memory of a laptop, the numbers are rounded to fewer allowed values and stored with fewer bits, often around four. This is called quantization.\nTake a weight of 0.8710. With 16 bits it is stored almost exactly. With 4 bits, and in a simplified picture with 16 evenly spaced values between −1 and +1, it becomes 0.867, close enough that the model behaves almost as before. With only three values, −1, 0 and +1, it becomes 1, and a weight of 0.3302 becomes 0. The coarser the rounding, the smaller the file and the further the model drifts from what it learned. Gemma 3 4B with about four bits per number shrinks from 8 GB to about 2.4 GB. The name of a model file usually says how strongly it was rounded, for example Q4 for about four bits per number.\n\n\nWhat happens when you press enter\nRunning a model is called inference, as opposed to training it. The program loads the file once into memory, into the RAM or into the memory of the graphics card. Then it produces the answer token by token, and every new token requires one pass through all the parameters. That is why a bigger model is slower: every token passes through more numbers. How many tokens per second you get depends on the size of the model and on your hardware, and a graphics card or a recent Apple chip makes a large difference.\n\n\nOpen and closed\nAn open model is one whose weights you can download, run and change, such as Gemma, Qwen, Llama, Mistral, DeepSeek or gpt-oss. A closed model such as GPT, Claude or Gemini can only be used as a service over the internet; its weights stay with the provider, and so does its size. Open weights are not the same as open source: the training data and the code used for training usually stay secret, and only a few fully open models, such as Olmo, publish them as well. Open models also come with licences that differ in what they allow, for example for commercial use.\n\n\nWhen local makes sense\nA model on your own computer keeps your data with you, works offline and costs nothing per token. In return, it is much smaller than the top models in the cloud, it is slower on ordinary hardware, and you have to keep hardware and model up to date yourself. Running a model locally is therefore worth it when the data must not leave the building, when there is no reliable connection, or when a model is used so often that the cost of a service adds up. Small models even run on a phone: Google’s app AI Edge Gallery runs small Gemma models offline on Android and iOS. The same agent can work with either: the harness sends its context to whichever model it is connected to.",
     "crumbs": [
       "Concepts",
-      "The Harness"
+      "Open Models"
     ]
   },
   {
-    "objectID": "concepts/the-harness.html#slides",
-    "href": "concepts/the-harness.html#slides",
-    "title": "The Harness",
+    "objectID": "concepts/open-models.html#slides",
+    "href": "concepts/open-models.html#slides",
+    "title": "Open Models",
     "section": "Slides",
-    "text": "Slides\nSlides for this concept will follow.",
+    "text": "Slides",
     "crumbs": [
       "Concepts",
-      "The Harness"
+      "Open Models"
     ]
   },
   {
-    "objectID": "concepts/the-harness.html#practice-questions",
-    "href": "concepts/the-harness.html#practice-questions",
-    "title": "The Harness",
+    "objectID": "concepts/open-models.html#practice-questions",
+    "href": "concepts/open-models.html#practice-questions",
+    "title": "Open Models",
     "section": "Practice questions",
-    "text": "Practice questions\nPractice questions for this concept will follow.",
+    "text": "Practice questions\nThe practice questions for this concept are on the course’s practice platform, in the same format as the exam and with the reasoning behind every answer.",
     "crumbs": [
       "Concepts",
-      "The Harness"
+      "Open Models"
     ]
   },
   {
-    "objectID": "concepts/the-harness.html#further-reading",
-    "href": "concepts/the-harness.html#further-reading",
-    "title": "The Harness",
+    "objectID": "concepts/open-models.html#further-reading",
+    "href": "concepts/open-models.html#further-reading",
+    "title": "Open Models",
     "section": "Further reading",
-    "text": "Further reading\n\nAnthropic: Building effective agents, December 2024.\nSimon Willison: I think “agent” may finally have a widely enough agreed upon definition to be useful jargon now, 18 September 2025.",
+    "text": "Further reading\n\nLM Studio: the free program used in the experiment, with a catalogue of open models and their sizes.\nGoogle: Gemma 3 in the LM Studio catalogue, with all sizes from 270 million to 27 billion parameters.\nRich Sutton: The Bitter Lesson, 2019, on why models keep growing.",
     "crumbs": [
       "Concepts",
-      "The Harness"
+      "Open Models"
     ]
   },
   {
@@ -283,76 +404,87 @@
     "href": "concepts/index.html",
     "title": "Overview",
     "section": "",
-    "text": "This page will show the map of topics for this course: which concepts there are, how they build on each other, and where each one appears in the experiments. Until the map is ready, here are the concepts that already have a page of their own:\n\nA Brief History of AI: seventy-five years of artificial intelligence, compiled live by an AI agent.\nAI Agents: a language model that uses tools in a loop to reach a goal.\nThe Harness: the program around a language model that turns it into an agent.",
+    "text": "This page will show the map of topics for this course: which concepts there are, how they build on each other, and where each one appears in the experiments. Until the map is ready, here are the concepts that already have a page of their own:\n\nA Brief History of AI: seventy-five years of artificial intelligence, compiled live by an AI agent.\nAI Agents: a language model that uses tools in a loop to reach a goal.\nThe Harness: the program around a language model that turns it into an agent.\nOpen Models: a language model is a file full of numbers, and some of these files you can download.",
     "crumbs": [
       "Concepts",
       "Overview"
     ]
   },
   {
-    "objectID": "experiments/be-the-agent/be-the-agent.html",
-    "href": "experiments/be-the-agent/be-the-agent.html",
-    "title": "Be the Agent",
+    "objectID": "concepts/the-harness.html",
+    "href": "concepts/the-harness.html",
+    "title": "The Harness",
     "section": "",
-    "text": "An AI agent is a large language model (LLM) that can only write text: everything it does in the world happens through tools, which a program around it, the harness, runs on its behalf. The model knows only what is in its context, so its work can only be as good as the results that reach it.",
+    "text": "A language model on its own can only write text. Everything that turns this text into action, running the loop, carrying out the tool calls, deciding what the model gets to see and what it is allowed to do, is done by a program around the model: the harness. Claude Code, Codex and OpenCode are harnesses, and the same model in a different harness becomes a different agent. This page answers:\n\nWhat does the harness do, and what does the model do?\nWhy can the same model behave differently in two agents?\nWhere are the limits of what an agent may do, and who sets them?\n\nYou meet this concept in the experiment Be the Agent, where one of you plays the harness and carries every card between the Model and the tools.",
     "crumbs": [
-      "Experiments",
-      "Be the Agent"
+      "Concepts",
+      "The Harness"
     ]
   },
   {
-    "objectID": "experiments/be-the-agent/be-the-agent.html#short-description",
-    "href": "experiments/be-the-agent/be-the-agent.html#short-description",
-    "title": "Be the Agent",
-    "section": "Short description",
-    "text": "Short description\nYour group plays an AI agent with cards instead of a computer: one of you is the language model, one carries the messages, four of you are the tools, and one keeps the log. By the end you will have run by hand the loop that every AI agent runs on.\nThe slides lead through the game: the roles, the cards, the rules, the three tasks and what you just played.",
+    "objectID": "concepts/the-harness.html#summary",
+    "href": "concepts/the-harness.html#summary",
+    "title": "The Harness",
+    "section": "",
+    "text": "A language model on its own can only write text. Everything that turns this text into action, running the loop, carrying out the tool calls, deciding what the model gets to see and what it is allowed to do, is done by a program around the model: the harness. Claude Code, Codex and OpenCode are harnesses, and the same model in a different harness becomes a different agent. This page answers:\n\nWhat does the harness do, and what does the model do?\nWhy can the same model behave differently in two agents?\nWhere are the limits of what an agent may do, and who sets them?\n\nYou meet this concept in the experiment Be the Agent, where one of you plays the harness and carries every card between the Model and the tools.",
     "crumbs": [
-      "Experiments",
-      "Be the Agent"
+      "Concepts",
+      "The Harness"
     ]
   },
   {
-    "objectID": "experiments/be-the-agent/be-the-agent.html#steps",
-    "href": "experiments/be-the-agent/be-the-agent.html#steps",
-    "title": "Be the Agent",
-    "section": "Steps",
-    "text": "Steps\n\nBasic experiment\n\nHand out the role cards; the Model’s stack starts with the system card and Task 1 on top.\nPlay Task 1, then swap roles and play Task 2.\nThe Observer reads the log aloud: rounds, tool calls per tool, errors and cards on the stack.\nPlay Task 3 if there is time, then compare your log with the log of a real agent.\n\nWhile you play, four rules apply:\n\nThe Model sees only its stack of cards, and nobody talks to it.\nIt writes one card at a time, starting with THINK:, TOOL: or ANSWER:.\nThe Harness carries every TOOL: card to the right tool and brings back the RESULT: card.\nA tool does exactly what the card says, nothing more, and never guesses what was meant.\n\n\n\nExtensions\nEach extension changes the game in one respect, so that you can compare the result with your first round.\n\nLimited memory: the stack holds at most eight cards, and a SUMMARY: card replaces the oldest ones when it is full.\nTwo tools at once: the Model may write two tool cards per turn, which the Harness carries in parallel.\nA new tool: someone becomes forecast(\"date\"), added to the system card, and you watch whether the Model uses it unprompted.\nA wrong result: one tool secretly returns a wrong value, and you find out whether the Model notices.\nBe the tool for a chatbot: solve Task 2 with a chatbot in your browser, supplying every file, page and calculation yourself.",
+    "objectID": "concepts/the-harness.html#explanation",
+    "href": "concepts/the-harness.html#explanation",
+    "title": "The Harness",
+    "section": "Explanation",
+    "text": "Explanation\n\nWhere the name comes from\nA harness hitches a horse to a cart. The horse provides the power, and the harness decides where that power goes. In an agent, the language model provides the decisions, and the harness connects them to the world: to files, commands, web pages and to you. An AI agent is therefore an LLM plus a harness.\n\n\nWhat the harness does\nThe harness runs the loop. It sends the context to the model, reads what comes back and, if the answer is a tool call, carries it out and adds the result to the context before it asks the model again. When the model writes a final answer instead of a tool call, the harness stops.\nThe harness assembles the context. It decides what the model sees at each step: the system prompt with the list of tools, instructions from files such as agents.md, the skills it loads when they are needed, the plan, and every result so far. When the context window fills up, it summarises or drops older parts.\nThe harness sets the limits. It decides which tools exist at all, asks you for permission before a command runs, and can confine the agent to one folder. The model cannot bypass these rules, because it never touches anything itself.\n\n\nSame model, different agent\nBecause the harness decides what the model sees and may do, two agents with the same model can behave very differently. One gets a web search and the other does not; one reads a project’s instructions and the other starts blank; one asks before every command and the other just acts. Comparing agents therefore means comparing harnesses as much as models.",
     "crumbs": [
-      "Experiments",
-      "Be the Agent"
+      "Concepts",
+      "The Harness"
     ]
   },
   {
-    "objectID": "experiments/be-the-agent/be-the-agent.html#discussion",
-    "href": "experiments/be-the-agent/be-the-agent.html#discussion",
-    "title": "Be the Agent",
-    "section": "Discussion",
-    "text": "Discussion\nWrite down your own answers first, then discuss them in your group.\n\nIn which round would the Model have been stuck without the tools, and which tool was used most?\nWhat would have gone differently if the Model had had to give up its stack after ten cards?\nWho did the thinking, who did the acting, and which of it could the Model actually do?",
+    "objectID": "concepts/the-harness.html#slides",
+    "href": "concepts/the-harness.html#slides",
+    "title": "The Harness",
+    "section": "Slides",
+    "text": "Slides\nSlides for this concept will follow.",
     "crumbs": [
-      "Experiments",
-      "Be the Agent"
+      "Concepts",
+      "The Harness"
     ]
   },
   {
-    "objectID": "experiments/be-the-agent/be-the-agent.html#concepts",
-    "href": "experiments/be-the-agent/be-the-agent.html#concepts",
-    "title": "Be the Agent",
-    "section": "Concepts",
-    "text": "Concepts\n\nAI Agents: the loop of thinking, acting and observing that you just ran by hand.\nThe Harness: the program around the model, which you played as the Harness.",
+    "objectID": "concepts/the-harness.html#practice-questions",
+    "href": "concepts/the-harness.html#practice-questions",
+    "title": "The Harness",
+    "section": "Practice questions",
+    "text": "Practice questions\nPractice questions for this concept will follow.",
     "crumbs": [
-      "Experiments",
-      "Be the Agent"
+      "Concepts",
+      "The Harness"
     ]
   },
   {
-    "objectID": "experiments/be-the-agent/be-the-agent.html#material",
-    "href": "experiments/be-the-agent/be-the-agent.html#material",
-    "title": "Be the Agent",
-    "section": "Material",
-    "text": "Material\n\nA group of seven; with five or six, one person takes two roles.\nThe cards, seven A4 sheets to cut along the dashed lines; print the sheet with blank cards several times, because a game uses twenty or more.\nThe Observer’s sheet, one per group and task.\nA pen for everyone, a calculator and room for the tools to sit apart from the Model. All farm data and web pages are invented for this game and are not advice for real fertilisation.\n\nThese instructions are also available as a PDF, with a page for the discussion.\n\nCards\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nObserver’s sheet\nOne A4 sheet per group and task, with room for 22 rounds and the counts at the end.",
+    "objectID": "concepts/the-harness.html#further-reading",
+    "href": "concepts/the-harness.html#further-reading",
+    "title": "The Harness",
+    "section": "Further reading",
+    "text": "Further reading\n\nAnthropic: Building effective agents, December 2024.\nSimon Willison: I think “agent” may finally have a widely enough agreed upon definition to be useful jargon now, 18 September 2025.",
+    "crumbs": [
+      "Concepts",
+      "The Harness"
+    ]
+  },
+  {
+    "objectID": "experiments/index.html",
+    "href": "experiments/index.html",
+    "title": "Experiments",
+    "section": "",
+    "text": "Every session starts with a 30-minute experiment that leads into its topic. Each one comes with written instructions: the key takeaway, the steps with extensions to go further on your own, questions for the discussion and the material you need. You can read them here or download them as a PDF to print.\n\nBe the Agent: play an AI agent with cards and find out what the model does and what the tools do.\nAn AI on Your Laptop: run a language model without the internet and find out what it actually is.\n\nMore experiments are on their way.",
     "crumbs": [
       "Experiments",
-      "Be the Agent"
+      "Experiments"
     ]
   },
   {

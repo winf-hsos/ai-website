@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Open Models</title>
+  <link rel="stylesheet" href="theme.css?v=20261007b">
+  <link rel="stylesheet" href="../stagekit/stagekit.css?v=20261007b">
+  <style>
+    /* Zeilen, die nacheinander erscheinen: grosszuegiger Abstand */
+    .lines.spaced > div { margin-bottom: 36px; }
+    .mono { font-family: var(--mono); }
+    /* die drei Fragen an beide Modelle */
+    .fragen { font-size: var(--small); line-height: 1.4; max-width: 1500px; }
+    .fragen > div { margin-bottom: 30px; padding-left: 40px; border-left: 4px solid var(--blue); }
+    /* Vergleich 1b und 4b: feste Spalten, Werte erscheinen in Schritten */
+    .vergleich { display: grid; grid-template-columns: 280px 600px 600px; gap: 40px 40px; font-size: var(--normal); align-items: baseline; }
+    .vergleich .kopf { color: var(--blue); }
+    .vergleich .zeile { color: var(--gray-light); font-size: var(--small); }
+    .vergleich .frage { color: var(--gray); }
+    /* Rechnung zur Dateigroesse: Codeschrift, rechtsbuendig an einer Kante */
+    .rechnung { font-family: var(--mono); font-size: var(--normal); line-height: 1.9; }
+    .rechnung .ergebnis { color: var(--blue); }
+    /* Werte je Bitzahl: Codeschrift, Spalten fest */
+    .bits { display: grid; grid-template-columns: 260px 80px 420px; gap: 30px 30px; font-family: var(--mono); font-size: var(--normal); align-items: baseline; }
+    .bits .pfeil { color: var(--gray); font-family: var(--font); }
+    .bits .wert { color: var(--blue); }
+    /* vier Gewichte, gerundet: Spalten erscheinen in Schritten */
+    .gerundet { display: grid; grid-template-columns: 300px 300px 300px; gap: 28px 60px; font-family: var(--mono); font-size: var(--normal); text-align: right; }
+    .gerundet .kopf { font-family: var(--font); font-size: var(--small); color: var(--gray-light); text-align: right; }
+    /* offen und geschlossen: zwei gleich breite Spalten */
+    .zwei { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+    .zwei .header { margin-bottom: 20px; }
+    .zwei .beispiele { font-size: var(--small); color: var(--gray-light); margin-top: 24px; }
+  </style>
+</head>
+<body>
+<div class="deck"
+     data-title="open models"
+     data-subtitle="artificial intelligence · prof. dr. nicolas meseth"
+     data-parts='["what do you think?", "offline", "what a model is", "open or closed"]'
+     data-part-colors='{"what do you think?": "#ff96c4", "offline": "#ff62a7", "what a model is": "#ff2d8a", "open or closed": "#d92675"}'
+     data-live-url="https://lifi.uber.space"
+     data-live-series="open-models"
+     data-live-module="aai">
+
+  <section class="slide title"></section>
+  <section class="slide agenda"></section>
+
+  <!-- Eroeffnung -->
+  <section class="slide">
+    <img class="photo" src="img/opening.jpg" alt="">
+    <div class="photo-text"><div>no internet,<br>and it still<br>answers.</div></div>
+    <div class="footnote">image: ai-generated (gpt-image-2.5-flare)</div>
+    <aside class="notes">Bisher lief jedes Modell, das wir benutzt haben, irgendwo in einem Rechenzentrum. Jetzt holen wir eines auf den eigenen Rechner und sehen nach, was es eigentlich ist.</aside>
+  </section>
+
+  <!-- ==================== 1 · what do you think? ==================== -->
+  <section class="slide part" data-part="what do you think?"></section>
+
+  <section class="slide poll" data-poll="where-chatgpt-runs">
+    <div class="poll-q">when you chat with <span class="keep-case">ChatGPT</span>, where does the model run?</div>
+    <ol class="poll-opts">
+      <li>on my phone or laptop</li>
+      <li>in my browser</li>
+      <li data-correct>in a data centre</li>
+      <li>no idea</li>
+    </ol>
+    <aside class="notes">Kurz auflösen: Die App ist nur das Fenster, das Modell läuft beim Anbieter. Der Unterschied zwischen App und Modell kam bei „where does it run?“ im Deck „AI Agents“ vor.</aside>
+  </section>
+
+  <section class="slide poll" data-poll="model-size">
+    <div class="poll-q">how big is a language model that runs on a laptop?</div>
+    <ol class="poll-opts">
+      <li>a few megabytes</li>
+      <li data-correct>one to a few gigabytes</li>
+      <li>around 100 gigabytes</li>
+      <li>no idea</li>
+    </ol>
+    <aside class="notes">Abstimmen lassen, das Ergebnis zeigen, die richtige Antwort aber erst bei „find the file“ aufdecken, wenn alle die Datei auf dem eigenen Rechner gefunden haben.</aside>
+  </section>
+
+  <!-- ==================== 2 · offline ==================== -->
+  <section class="slide part" data-part="offline"></section>
+
+  <section class="slide">
+    <h2>step 1 · switch it off</h2>
+    <div class="content">
+      <div class="lines spaced">
+        <div>turn off wi-fi.</div>
+        <div data-step="1">load gemma 3 1b in <span class="keep-case">LM Studio</span>.</div>
+        <div data-step="2">ask it: “what does nitrogen fertiliser do for a wheat plant? two sentences.”</div>
+      </div>
+    </div>
+    <aside class="notes">Alle schalten das WLAN ab, das Modell antwortet trotzdem. Danach die Hand an das Gehäuse legen: Der Lüfter läuft an, der Rechner arbeitet sichtbar. Zu zweit arbeiten; wer kein Modell geladen hat, schaut beim Nachbarn mit.</aside>
+  </section>
+
+  <section class="slide">
+    <h2>step 2 · find the file</h2>
+    <div class="content">
+      <div class="lines spaced">
+        <div><span class="keep-case">LM Studio</span> → my models → show in folder.</div>
+        <div data-step="1">how big is the file, and what is it called?</div>
+      </div>
+    </div>
+    <aside class="notes">Jetzt die Abfrage zur Modellgröße auflösen: Gemma 3 1B hat rund 0,75 GB, Gemma 3 4B rund 2,4 GB, und das ist das ganze Modell. Den Dateinamen vorlesen lassen: Modell, Größe, Format und Quantisierung stehen darin; was das bedeutet, kommt bei „what a model is“.</aside>
+  </section>
+
+  <section class="slide">
+    <h2>step 3 · three questions, two models</h2>
+    <div class="content" style="top: 150px">
+      <div class="fragen">
+        <div>a field of 4.5 ha needs 140 kg of nitrogen per ha. how much is that in total?</div>
+        <div data-step="1">what is the capital of lower saxony, and what is it known for?</div>
+        <div data-step="2">translate into german: “the harvest was delayed by rain.”</div>
+      </div>
+      <div class="sidenote" data-step="3" style="margin-top: 30px">ask gemma 3 1b first, then gemma 3 4b, and note the tokens per second below each answer.</div>
+    </div>
+    <aside class="notes">Eine Rechnung (630 kg), eine Wissensfrage (Hannover) und eine Übersetzung. Das kleine Modell verrechnet sich oft oder erfindet bei der Wissensfrage, das größere seltener. Tokens pro Sekunde zeigt LM Studio unter jeder Antwort an; die Werte für die nächste Abfrage merken.</aside>
+  </section>
+
+  <section class="slide poll" data-poll="tokens-per-second">
+    <div class="poll-q">how many tokens per second did gemma 3 4b reach on your laptop?</div>
+    <ol class="poll-opts">
+      <li>fewer than 5</li>
+      <li>5 to 20</li>
+      <li>20 to 50</li>
+      <li>more than 50</li>
+    </ol>
+    <aside class="notes">Die Streuung zeigt, wie sehr das Erlebnis vom Rechner abhängt. Wer eine Grafikkarte oder einen Apple-Chip hat, liegt meist weit vorn; ohne beides rechnet der Prozessor allein.</aside>
+  </section>
+
+  <section class="slide">
+    <h2>1b or 4b?</h2>
+    <div class="content">
+      <div class="vergleich">
+        <div></div><div class="kopf">gemma 3 1b</div><div class="kopf">gemma 3 4b</div>
+        <div class="zeile">file</div><div data-step="1" class="mono">0.75 <span class="keep-case">GB</span></div><div data-step="1" class="mono">2.4 <span class="keep-case">GB</span></div>
+        <div class="zeile">speed</div><div data-step="2" class="frage">your tokens/s?</div><div data-step="2" class="frage">your tokens/s?</div>
+        <div class="zeile">quality</div><div data-step="3" class="frage">which answers held?</div><div data-step="3" class="frage">which answers held?</div>
+      </div>
+    </div>
+    <aside class="notes">Gemeinsam füllen: Wie viel schneller war das kleine Modell? Wo war es gut genug, wo hat es Unsinn mit Überzeugung gesagt? Meist rechnet das kleine falsch und erfindet bei der Wissensfrage, während die Übersetzung beiden gelingt.</aside>
+  </section>
+
+  <section class="slide poll" data-poll="frontier-model-size">
+    <div class="poll-q">if a model like <span class="keep-case">GPT-6.1 Sol</span> lay on your laptop, how big would the file be?</div>
+    <ol class="poll-opts">
+      <li>about 5 gigabytes</li>
+      <li>about 50 gigabytes</li>
+      <li>about 500 gigabytes</li>
+      <li>several terabytes</li>
+    </ol>
+    <aside class="notes">Umfrage ohne richtige Antwort, denn OpenAI veröffentlicht die Größe nicht. Schätzen lässt sie sich an offenen Modellen derselben Klasse: DeepSeek V4 Pro hat rund 1,6 Billionen Parameter, mit 4 Bit je Zahl wären das etwa 0,8 TB, mit 16 Bit gut 3 TB. Ein solches Modell passt also auf keinen Laptop, weder auf die Festplatte noch erst recht in den Arbeitsspeicher. Auflösen bei „how big is big?“.</aside>
+  </section>
+
+  <!-- ==================== 3 · what a model is ==================== -->
+  <section class="slide part" data-part="what a model is"></section>
+
+  <section class="slide" data-on-show="showFile" data-on-step="showFile">
+    <h2>a file full of numbers</h2>
+    <div class="figure" id="fig-file"></div>
+    <span data-step="1"></span><span data-step="2"></span>
+    <aside class="notes">Ein Modell ist kein Programm mit Regeln und keine Datenbank mit Texten, sondern eine sehr lange Liste von Zahlen, die Parameter oder Gewichte heißen. Wie diese Zahlen entstehen, ist Thema von „Neural Networks“ und „Training a Large Language Model“.</aside>
+  </section>
+
+  <section class="slide">
+    <h2>how many values fit into a few bits?</h2>
+    <div class="content">
+      <div class="bits">
+        <div>1 bit</div><div class="pfeil">→</div><div class="wert">2 values</div>
+        <div data-step="1">2 bits</div><div class="pfeil" data-step="1">→</div><div class="wert" data-step="1">4 values</div>
+        <div data-step="2">4 bits</div><div class="pfeil" data-step="2">→</div><div class="wert" data-step="2">16 values</div>
+        <div data-step="3">16 bits</div><div class="pfeil" data-step="3">→</div><div class="wert" data-step="3">65,536 values</div>
+      </div>
+      <div class="sidenote" data-step="4" style="margin-top: 50px">every extra bit doubles the number of values a weight can take.</div>
+    </div>
+    <aside class="notes">Ein Bit kennt zwei Zustände, zwei Bit vier, vier Bit sechzehn. Mit 16 Bit kann jedes Gewicht einen von über 65.000 Werten annehmen, also sehr fein abgestuft sein; mit 4 Bit nur einen von 16.</aside>
+  </section>
+
+  <section class="slide" data-on-show="showQuant" data-on-step="showQuant">
+    <h2>rounding one weight</h2>
+    <div class="figure" id="fig-quant"></div>
+    <span data-step="1"></span><span data-step="2"></span><span data-step="3"></span>
+    <div class="footnote">simplified: 16 evenly spaced values between −1 and +1</div>
+    <aside class="notes">Ein Gewicht von 0,8710, die rosa Marke. Mit 16 Bit liegt der nächste erlaubte Wert praktisch darauf. Mit 4 Bit gibt es nur 16 erlaubte Werte, das Gewicht wird zu 0,867. Mit drei Werten bleibt nur −1, 0 oder +1, es wird zu 1; solche Modelle gibt es wirklich (etwa BitNet b1.58), sie werden von Anfang an so trainiert. Mit einem Bit bleibt nur noch das Vorzeichen.</aside>
+  </section>
+
+  <section class="slide">
+    <h2>four weights, rounded</h2>
+    <div class="content">
+      <div class="gerundet">
+        <div class="kopf">original</div><div class="kopf" data-step="1">4 bits</div><div class="kopf" data-step="2">3 values</div>
+        <div>0.0213</div><div data-step="1">0.067</div><div data-step="2">0</div>
+        <div>−0.7745</div><div data-step="1">−0.733</div><div data-step="2">−1</div>
+        <div>0.3302</div><div data-step="1">0.333</div><div data-step="2">0</div>
+        <div>0.8710</div><div data-step="1">0.867</div><div data-step="2">1</div>
+      </div>
+      <div class="sidenote" data-step="3" style="margin-top: 50px">the coarser the rounding, the smaller the file, and the further the model drifts from what it learned.</div>
+    </div>
+    <aside class="notes">Mit 4 Bit bleiben die Gewichte nahe am Original, das Modell verhält sich fast wie vorher. Mit drei Werten werden zwei der vier Gewichte zu null; ein Modell, das nachträglich so grob gerundet wird, verliert viel. Deshalb ist 4 Bit für Modelle auf dem Laptop ein verbreiteter Kompromiss.</aside>
+  </section>
+
+  <section class="slide">
+    <h2>why 2.4 <span class="keep-case">GB</span>?</h2>
+    <div class="content">
+      <div class="rechnung">
+        <div>4 billion numbers × 16 bits <span class="ergebnis">= 8 <span class="keep-case">GB</span></span></div>
+        <div data-step="1">4 billion numbers × ~4.5 bits <span class="ergebnis">= 2.4 <span class="keep-case">GB</span></span></div>
+      </div>
+      <div class="sidenote" data-step="2" style="margin-top: 50px">fewer bits per number: quantization.</div>
+    </div>
+    <aside class="notes">Die Zahlen werden gerundet gespeichert, damit das Modell in den Arbeitsspeicher passt. Das kostet etwas Qualität und spart viel Platz. Im Dateinamen steht, wie stark gerundet wurde, etwa Q4 für rund vier Bit je Zahl.</aside>
+  </section>
+
+  <section class="slide has-punch" data-on-show="showInference" data-on-step="showInference">
+    <h2>what happens when you press enter</h2>
+    <div class="figure" id="fig-inference"></div>
+    <span data-step="1"></span><span data-step="2"></span>
+    <div class="punch" data-step="2">bigger models are slower, because every token passes through more numbers.</div>
+    <aside class="notes">Inferenz heißt: das Modell anwenden, nicht trainieren. Beim Laden wandert die Datei in den Arbeitsspeicher oder Grafikspeicher. Jedes neue Token kostet einen Durchgang durch alle Parameter; darum hängen die Tokens pro Sekunde an Speicher und Rechenleistung.</aside>
+  </section>
+
+  <section class="slide" data-on-show="showSizes" data-on-step="showSizes">
+    <h2>how big is big?</h2>
+    <div class="figure" id="fig-sizes"></div>
+    <span data-step="1"></span><span data-step="2"></span>
+    <div class="footnote">parameters as published by the providers; log scale</div>
+    <aside class="notes">Was auf dem Laptop läuft, ist mehrere hundertmal kleiner als die großen offenen Modelle. Die Größe der geschlossenen Spitzenmodelle hinter ChatGPT, Claude oder Gemini veröffentlichen die Anbieter nicht.</aside>
+  </section>
+
+  <section class="slide">
+    <h2>local and cloud</h2>
+    <div class="content">
+      <div class="statement">the same harness can talk to a model on your laptop.</div>
+    </div>
+    <div class="footnote">see also: the harness</div>
+    <aside class="notes">An die Zeichnung „where does it run?“ aus „AI Agents“ erinnern: Der gestrichelte Kasten „a local LLM“ ist das, was wir eben gestartet haben. Ein Agent kann statt des Cloud-Modells ein lokales benutzen, mit allen Folgen für Qualität und Tempo.</aside>
+  </section>
+
+  <!-- ==================== 4 · open or closed ==================== -->
+  <section class="slide part" data-part="open or closed"></section>
+
+  <section class="slide">
+    <h2>open weights, closed weights</h2>
+    <div class="content" style="top: 120px">
+      <div class="zwei">
+        <div>
+          <div class="header">open</div>
+          <div class="statement">download it, run it, change it.</div>
+          <div class="beispiele">gemma, qwen, llama, mistral, deepseek, gpt-oss</div>
+        </div>
+        <div data-step="1">
+          <div class="header">closed</div>
+          <div class="statement">use it as a service.</div>
+          <div class="beispiele">gpt, claude, gemini</div>
+        </div>
+      </div>
+      <div class="sidenote" data-step="2" style="margin-top: 70px">open weights is not the same as open source: the training data usually stays secret.</div>
+    </div>
+    <aside class="notes">Offen heißt meist nur, dass die Gewichte frei sind. Wie das Modell entstand und womit, bleibt oft verborgen; ganz offene Modelle wie Olmo legen auch Daten und Trainingscode offen. Die Lizenzen unterscheiden sich, manche schränken die kommerzielle Nutzung ein.</aside>
+  </section>
+
+  <section class="slide poll" data-poll="customer-list">
+    <div class="poll-q">would you paste a farm's customer list into a cloud chatbot?</div>
+    <ol class="poll-opts">
+      <li>yes</li>
+      <li>only with a contract</li>
+      <li>only into a local model</li>
+      <li>never</li>
+    </ol>
+    <aside class="notes">Kein richtig oder falsch. Die Verteilung ist der Einstieg ins Gespräch über personenbezogene Daten, Verträge zur Auftragsverarbeitung und darüber, wann sich ein lokales Modell lohnt.</aside>
+  </section>
+
+  <section class="slide">
+    <h2>when local makes sense</h2>
+    <div class="content">
+      <div class="lines spaced">
+        <div>your data must not leave the building.</div>
+        <div data-step="1">you need it offline, in a barn, on a tractor or on your phone.</div>
+        <div data-step="2">you use it so much that tokens get expensive.</div>
+        <div data-step="3">and you accept a smaller, slower model in return.</div>
+      </div>
+    </div>
+    <div class="footnote" data-step="1">on a phone: <a href="https://github.com/google-ai-edge/gallery" target="_blank" rel="noopener">google ai edge gallery</a>, an app that runs small gemma models offline on android and ios</div>
+    <aside class="notes">Zur zweiten Zeile: Googles App AI Edge Gallery (Android und iOS) lädt kleine Gemma-Modelle aufs Telefon und beantwortet Fragen ohne Netz. Die vierte Zeile ist der Preis für die ersten drei. Dazu kommen Hardware und Wartung: Wer ein Modell selbst betreibt, muss es auch aktuell halten.</aside>
+  </section>
+
+  <!-- Abschluss -->
+  <section class="slide">
+    <h2>key takeaway</h2>
+    <div class="content">
+      <div class="statement">a language model is <span class="b">a file full of numbers</span> that runs on your own laptop without the internet; its <span class="b">size</span> decides how good, how fast and how hungry it is.</div>
+    </div>
+    <aside class="notes">Das Modell, das eben offline geantwortet hat, ist nichts anderes als diese Datei. Alles, was es kann, steckt in den Zahlen darin.</aside>
+  </section>
+
+  <section class="slide">
+    <h2>discuss</h2>
+    <div class="content">
+      <div class="lines spaced">
+        <div>what surprised you about the size, speed or quality of the local model?</div>
+        <div data-step="1">which data would you trust a local model with, but not a cloud service?</div>
+        <div data-step="2">when should a farm or a food company run its own model instead of renting one?</div>
+      </div>
+    </div>
+    <aside class="notes">Erst jede und jeder für sich schriftlich, dann in der Gruppe.</aside>
+  </section>
+
+</div>
+<!-- Reihenfolge ist Pflicht: deck.js VOR stagekit.js -->
+<script src="../stagekit/draw.js?v=20261007b"></script>
+<script src="deck.js?v=20261007b"></script>
+<script src="../stagekit/stagekit.js?v=20261007b"></script>
+</body>
+</html>
