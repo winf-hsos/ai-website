@@ -243,7 +243,7 @@ function figSubagents(step) {
   wires.push(d.line(210, 470, 1470, 470, { color: on(2, c.gray), width: 3 }));
   wires.push(d.arrow(840, 470, 840, 536, { color: on(2, c.gray), width: 3 }));
   boxes.push(d.box(ox, 540, ow, 90, "milestones.md", { border: on(2, c.yellow), color: on(2, c.yellow), mono: true, keepCase: true }));
-  labels.push(d.label(840, 0, "4 agents in parallel · every source opened · 8 errors in last year's list found",
+  labels.push(d.label(840, 0, "4 agents in parallel · every source opened · 8 errors in the previous group's list found",
     { size: 32, color: on(2, c.light), anchor: "middle", centerY: 690 }));
   return d.svg(1680, 730, ...d.layers(wires, boxes, labels));
 }
