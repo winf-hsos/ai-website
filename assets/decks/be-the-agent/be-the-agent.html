@@ -83,13 +83,14 @@
       <div class="werkzeuge">
         <div class="aufruf keep-case">search("words")</div><div>finds web pages and returns their titles</div>
         <div class="aufruf keep-case">open("title")</div><div>returns the full text of one web page</div>
-        <div class="aufruf keep-case">read_file("name")</div><div>returns a farm file: <span class="mono keep-case">fields</span>, <span class="mono keep-case">soil_tests</span>, <span class="mono keep-case">stock</span>, <span class="mono keep-case">weather</span></div>
+        <div class="aufruf keep-case">list_files()</div><div>returns the names of all farm files</div>
+        <div class="aufruf keep-case">read_file("name")</div><div>returns the text of one farm file</div>
         <div class="aufruf keep-case">calculator("expression")</div><div>calculates, e.g. <span class="mono keep-case">calculator("4.5 * 100")</span></div>
         <div class="aufruf keep-case">write_file("name", "text")</div><div>saves a text as a new farm file</div>
       </div>
       <div class="sidenote" style="margin-top: 60px">this is everything the model knows about its tools.</div>
     </div>
-    <aside class="notes">Das ist alles, was das Model über seine Werkzeuge weiß. Steht etwas nicht auf dieser Karte, gibt es das für das Model nicht. Die Wetterdatei steht hier, aber keine Aufgabe sagt, dass man sie braucht.</aside>
+    <aside class="notes">Das ist alles, was das Model über seine Werkzeuge weiß. Steht etwas nicht auf dieser Karte, gibt es das für das Model nicht. Welche Dateien es gibt, steht nicht darauf: Das Model muss erst nachsehen, wie ein echter Agent, der einen Ordner auflistet. Die Wetterdatei taucht dann in der Liste auf, aber keine Aufgabe sagt, dass man sie braucht.</aside>
   </section>
 
   <!-- ==================== 2 · play ==================== -->
@@ -100,7 +101,7 @@
     <div class="content">
       <div class="aufgabe">how large is the field long acre, and what grows on it this year?</div>
     </div>
-    <aside class="notes">Aufwärmrunde, nur ein Werkzeugaufruf nötig. Danach fragen: Hat ein Model zuerst gesucht, statt die Datei zu lesen?</aside>
+    <aside class="notes">Aufwärmrunde mit zwei Werkzeugaufrufen: erst die Dateien auflisten, dann die richtige lesen. Danach fragen: Hat ein Model zuerst gesucht oder einen Dateinamen geraten, statt nachzusehen?</aside>
   </section>
 
   <section class="slide">
