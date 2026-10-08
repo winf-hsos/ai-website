@@ -111,7 +111,7 @@
     "href": "experiments/be-the-agent/be-the-agent.html#short-description",
     "title": "Be the Agent",
     "section": "Short description",
-    "text": "Short description\nYour group plays an AI agent with cards instead of a computer: one of you is the language model, one carries the messages, four of you are the tools, and one keeps the log. By the end you will have run by hand the loop that every AI agent runs on.\nThe slides lead through the game: the roles, the cards, the rules, the three tasks and what you just played.",
+    "text": "Short description\nYour group plays an AI agent with cards instead of a computer: one of you is the language model, one carries the messages, four of you are the tools, and one keeps the log. By the end you will have run by hand the loop that every AI agent runs on.\n\n\n\n\n\n\n\n\n\n\nThe photos show a group in the middle of Task 2: the cards the Model has written lie in pink next to the grey results the tools have sent back, and every card on the table is one step of the agent.\nThe slides lead through the game: the roles, the cards, the rules, the three tasks and what you just played.",
     "crumbs": [
       "Experiments",
       "Be the Agent"
