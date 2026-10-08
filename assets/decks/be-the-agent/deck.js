@@ -68,14 +68,21 @@ function karte(x, y, w, h, wort, zeilen, farbe, mono) {
 }
 
 function figCards(step) {
+  // Folge aus Aufgabe 1: erst nachsehen, welche Dateien es gibt (die Namen stehen nicht
+  // auf der Systemkarte), dann ... (read_file und sein Ergebnis), dann die Antwort.
+  // Breiten: 4 × 360 + 2 × 40 + 160 (Luecke mit "…") = 1680. Laengste Zeile
+  // "stock, weather": 14 × 32 × 0,6 = 269 < 360 - 2 × 24.
   const c = C();
-  const W = 1680, H = 330, w = 390, h = 300, gap = 40, y = 10;
+  const W = 1680, H = 330, w = 360, h = 300, gap = 40, luecke = 160, y = 10;
   const parts = [];
-  const xs = [0, 1, 2, 3].map((i) => i * (w + gap));
-  parts.push(...karte(xs[0], y, w, h, "THINK:", ["i need the size", "of the field first."], c.blue, false));
-  if (step >= 1) parts.push(...karte(xs[1], y, w, h, "TOOL:", ["read_file(", "  \"fields\")"], c.blue, true));
-  if (step >= 2) parts.push(...karte(xs[2], y, w, h, "RESULT:", ["long acre,", "4.5 ha,", "winter wheat"], c.gray, false));
-  if (step >= 3) parts.push(...karte(xs[3], y, w, h, "ANSWER:", ["4.5 ha,", "winter wheat"], c.blue, false));
+  const xs = [0, w + gap, 2 * (w + gap), 3 * w + 2 * gap + luecke];
+  parts.push(...karte(xs[0], y, w, h, "THINK:", ["which files", "are there?"], c.blue, false));
+  if (step >= 1) parts.push(...karte(xs[1], y, w, h, "TOOL:", ["list_files()"], c.blue, true));
+  if (step >= 2) parts.push(...karte(xs[2], y, w, h, "RESULT:", ["fields,", "soil_tests,", "stock, weather"], c.gray, false));
+  if (step >= 3) {
+    parts.push(d.label(xs[2] + w + luecke / 2, 0, "…", { size: 48, color: c.gray, anchor: "middle", centerY: y + h / 2 }));
+    parts.push(...karte(xs[3], y, w, h, "ANSWER:", ["4.5 ha,", "winter wheat"], c.blue, false));
+  }
   return d.svg(W, H, ...parts);
 }
 
