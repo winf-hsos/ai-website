@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.3">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Next-Token Prediction – Artificial Intelligence</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../links.html" rel="next">
+<link href="../concepts/open-models.html" rel="prev">
+<link href="../logo.svg" rel="icon" type="image/svg+xml">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-a2f5b924ffa09ff7c0990f6c2511833d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-e951dc3bc1a6daf317c9e89e1ceedb75.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../logo.svg" alt="Logo Artificial Intelligence" class="navbar-logo light-content">
+    <img src="../logo.svg" alt="Logo Artificial Intelligence" class="navbar-logo dark-content">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Artificial Intelligence</span>
+    </a>
+  </div>
+        <div class="quarto-navbar-tools tools-end">
+</div>
+          <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../concepts/index.html">Concepts</a></li><li class="breadcrumb-item"><a href="../concepts/next-token-prediction.html">Next-Token Prediction</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Artificial Intelligence</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+ <span class="menu-text">Experiments</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../experiments/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Experiments</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../experiments/be-the-agent/be-the-agent.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Be the Agent</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../experiments/open-models/open-models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">An AI on Your Laptop</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Concepts</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../concepts/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../concepts/a-brief-history-of-ai.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">A Brief History of AI</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../concepts/ai-agents.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">AI Agents</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../concepts/the-harness.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The Harness</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../concepts/open-models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Open Models</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../concepts/next-token-prediction.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Next-Token Prediction</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../links.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Links</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../about.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#summary" id="toc-summary" class="nav-link active" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#explanation" id="toc-explanation" class="nav-link" data-scroll-target="#explanation">Explanation</a>
+  <ul class="collapse">
+  <li><a href="#tokens" id="toc-tokens" class="nav-link" data-scroll-target="#tokens">Tokens</a></li>
+  <li><a href="#one-token-at-a-time" id="toc-one-token-at-a-time" class="nav-link" data-scroll-target="#one-token-at-a-time">One token at a time</a></li>
+  <li><a href="#choosing-the-next-token" id="toc-choosing-the-next-token" class="nav-link" data-scroll-target="#choosing-the-next-token">Choosing the next token</a></li>
+  <li><a href="#the-context" id="toc-the-context" class="nav-link" data-scroll-target="#the-context">The context</a></li>
+  <li><a href="#why-the-context-is-limited" id="toc-why-the-context-is-limited" class="nav-link" data-scroll-target="#why-the-context-is-limited">Why the context is limited</a></li>
+  <li><a href="#the-transformer-from-far-away" id="toc-the-transformer-from-far-away" class="nav-link" data-scroll-target="#the-transformer-from-far-away">The transformer, from far away</a></li>
+  <li><a href="#try-it-in-lm-studio" id="toc-try-it-in-lm-studio" class="nav-link" data-scroll-target="#try-it-in-lm-studio">Try it in LM Studio</a></li>
+  </ul></li>
+  <li><a href="#slides" id="toc-slides" class="nav-link" data-scroll-target="#slides">Slides</a></li>
+  <li><a href="#practice-questions" id="toc-practice-questions" class="nav-link" data-scroll-target="#practice-questions">Practice questions</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further reading</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../concepts/index.html">Concepts</a></li><li class="breadcrumb-item"><a href="../concepts/next-token-prediction.html">Next-Token Prediction</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Next-Token Prediction</h1>
+<p class="subtitle lead">A language model writes one token at a time, and every token it writes becomes part of what it reads next</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>However long and clever the answer of a chatbot is, the model behind it does only one thing over and over: it looks at the text so far and computes, for every possible next piece of text, how likely it is to come next. One piece is chosen and appended, and the whole process starts again with the slightly longer text. These pieces are called <strong>tokens</strong>, the text the model looks at is its <strong>context</strong>, and the architecture that lets it take the whole context into account is the <strong>transformer</strong>. This page answers:</p>
+<ul>
+<li>What is a token, and how many of them does a model know?</li>
+<li>How does a model turn probabilities for the next token into a whole answer?</li>
+<li>Why does the same question get different answers, and what do temperature, top k and top p change?</li>
+<li>What is the context, and why is it limited?</li>
+<li>What is the basic idea of a transformer?</li>
+</ul>
+<p>You meet this concept in the experiment <a href="../experiments/open-models/open-models.html">An AI on Your Laptop</a>, where you change the settings of a local model in LM Studio and watch how its answers change.</p>
+</section>
+<section id="explanation" class="level2">
+<h2 class="anchored" data-anchor-id="explanation">Explanation</h2>
+<section id="tokens" class="level3">
+<h3 class="anchored" data-anchor-id="tokens">Tokens</h3>
+<p>A language model does not read letters or words but <strong>tokens</strong>: frequent words, parts of words, single characters and punctuation. Short and common English words are usually one token, while a long or rare word is split into several pieces, so that a word like <em>unbelievable</em> may become <em>un</em>, <em>believ</em> and <em>able</em>. In English, a token is on average about three quarters of a word; German and most other languages need more tokens for the same content, because the token lists are dominated by English text.</p>
+<p>Every model has a fixed list of tokens, its <strong>vocabulary</strong>. The vocabulary of Gemma 4 E2B, the model used on the slides, has about 262,000 entries, and so does that of Gemma 3. Before the model sees a text, a program called the tokenizer cuts it into tokens and replaces each one by its number in the list, so that the model receives a sequence of numbers. How these numbers come to carry meaning is a concept of its own.</p>
+</section>
+<section id="one-token-at-a-time" class="level3">
+<h3 class="anchored" data-anchor-id="one-token-at-a-time">One token at a time</h3>
+<p>From the sequence of tokens, the model computes a probability for every token in its vocabulary: how likely it is that this token comes next. After <em>The farmer drove the tractor into the</em>, the token <em>field</em> might get 41 per cent, <em>barn</em> 22 per cent, <em>yard</em> 9 per cent, and each of the remaining hundreds of thousands of tokens a tiny share. The numbers in this example are made up, but every real model produces exactly such a list, and this list is all it produces.</p>
+<p>To write an answer, the program around the model picks one token from the list, appends it to the text and asks the model again. The model now sees its own token as part of the input and computes the next list. This is called <strong>autoregressive</strong> generation: every output is fed back as input. The loop ends when the model picks a special end token, or when the maximum number of tokens is reached. Each step is one pass through all parameters, which is why the speed of a model is measured in tokens per second.</p>
+<p>Two things follow from this. A token, once written, is never revised; the model can only continue, and if it took a wrong turn early, it builds on it. And the model is trained to write the most likely continuation, not the true one. As long as the true continuation is also the most likely, that does no harm, but where it is not, the model writes something fluent and wrong with the same confidence. This is where hallucinations come from.</p>
+</section>
+<section id="choosing-the-next-token" class="level3">
+<h3 class="anchored" data-anchor-id="choosing-the-next-token">Choosing the next token</h3>
+<p>Which token is taken from the list is not decided by the model but by a few settings, the <strong>sampling parameters</strong>:</p>
+<ul>
+<li><strong>Temperature</strong> sharpens or flattens the list. At 0, the most likely token is always chosen, and the same question gets the same answer every time. Around 1, the probabilities are used as the model computed them, so the answer varies. Far above 1, unlikely tokens get a real chance, and the text drifts into nonsense.</li>
+<li><strong>Top k</strong> keeps only the k most likely tokens and draws from them; with top k = 1, the model always takes the first one.</li>
+<li><strong>Top p</strong> keeps the most likely tokens until their probabilities add up to p, for example 0.95, so that the number of candidates adapts to how sure the model is.</li>
+<li><strong>Maximum length</strong> stops the loop after a set number of tokens, even in the middle of a sentence.</li>
+</ul>
+<p>This is why the same question gets a different answer each time: not because the model changes, but because the next token is drawn, and every drawn token changes everything that follows.</p>
+</section>
+<section id="the-context" class="level3">
+<h3 class="anchored" data-anchor-id="the-context">The context</h3>
+<p>The <strong>context</strong> is everything the model sees when it computes the next token: the system prompt, the whole conversation so far, any documents you added, and the part of its own answer it has already written. A chat looks like a conversation with a partner who remembers, but the model remembers nothing between two calls. With every new message, the program sends the entire conversation again, written into one long text with special tokens that mark who said what.</p>
+</section>
+<section id="why-the-context-is-limited" class="level3">
+<h3 class="anchored" data-anchor-id="why-the-context-is-limited">Why the context is limited</h3>
+<p>The context has a maximum length, the <strong>context window</strong>, counted in tokens: 128K for Gemma 4 E2B and Gemma 3 4B, and 32K for Gemma 3 1B. The K stands for 1,024 here, so 128K are exactly 131,072 tokens, the maximum LM Studio offers when it loads such a model. There are three reasons for the limit. The model has been trained on texts up to a certain length and handles longer ones poorly. Each new token is related to every token before it, so that n tokens make a grid of n × n pairs, and the computing effort grows with the square of the length: twice the context means four times the work. And the program keeps intermediate results for every token in memory, which is why LM Studio needs more RAM when you set a longer context. When a conversation grows beyond the window, the program around the model has to decide what goes: it can stop the answer (<em>Stop at Limit</em> in LM Studio), drop the oldest messages (<em>Rolling Window</em>), cut out the middle so that the beginning and the latest messages stay (<em>Truncate Middle</em>), or replace the old part by a short summary, as agents do. Whatever is dropped no longer exists for the model.</p>
+</section>
+<section id="the-transformer-from-far-away" class="level3">
+<h3 class="anchored" data-anchor-id="the-transformer-from-far-away">The transformer, from far away</h3>
+<p>Almost every language model today is a <strong>transformer</strong>, an architecture published by researchers at Google in 2017. Earlier models read a text word by word and carried along a summary that became blurred the further back a word was. A transformer, by contrast, looks at all tokens of the context at once when it computes the next one, and it learns how much each of them matters for the current step. This mechanism is called <strong>attention</strong>.</p>
+<p>An example shows why this matters. In <em>The tractor did not fit through the gate because it was too wide</em>, the word <em>it</em> means the tractor; if the sentence ends with <em>too narrow</em>, it means the gate. To continue such a text correctly, the model has to connect <em>it</em> with a word several tokens back, and which word that is depends on a third word. Attention makes such connections possible over thousands of tokens. How it works inside is a topic for later; for now it is enough to know that the whole context flows into the prediction of every single token.</p>
+</section>
+<section id="try-it-in-lm-studio" class="level3">
+<h3 class="anchored" data-anchor-id="try-it-in-lm-studio">Try it in LM Studio</h3>
+<p>All of this can be observed in LM Studio. Switch to the developer mode to see all settings, and then:</p>
+<ul>
+<li>ask the same question three times with temperature 0, and three times with temperature 1;</li>
+<li>set top k to 0, top p to 1 and min p to 0, so that nothing is cut off, and raise the temperature step by step until the answer falls apart;</li>
+<li>tick <em>Limit Response Length</em>, set it to 20 tokens and watch where the answer stops;</li>
+<li>load a model with a very short context, paste a long text, ask about its beginning, and repeat this with each strategy under <em>Context Overflow</em>: <em>Rolling Window</em>, <em>Truncate Middle</em> and <em>Stop at Limit</em>.</li>
+</ul>
+</section>
+</section>
+<section id="slides" class="level2">
+<h2 class="anchored" data-anchor-id="slides">Slides</h2>
+<div class="deck-embed">
+  <iframe src="../assets/decks/next-token-prediction/next-token-prediction.html?bar=1&amp;pdf=../next-token-prediction.pdf" title="Next-Token Prediction" allowfullscreen="" loading="lazy"></iframe>
+</div>
+</section>
+<section id="practice-questions" class="level2">
+<h2 class="anchored" data-anchor-id="practice-questions">Practice questions</h2>
+<p>Practice questions for this concept will follow.</p>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further reading</h2>
+<ul>
+<li>Ashish Vaswani et al.: <a href="https://arxiv.org/abs/1706.03762">Attention Is All You Need</a>, NeurIPS 2017, the paper that introduced the transformer.</li>
+<li><a href="https://poloclub.github.io/transformer-explainer/">Transformer Explainer</a>: a small language model in the browser that shows the probabilities for the next token and lets you change the temperature.</li>
+<li><a href="https://alonsosilva-nexttokenprediction.hf.space/">Next-Token Prediction demo</a>: type the beginning of a sentence and see the probabilities a small language model gives each possible next token.</li>
+<li><a href="https://tiktokenizer.vercel.app/?model=gpt-3.5-turbo">Tiktokenizer</a>: shows how the tokenizer of gpt-3.5-turbo cuts a text into tokens, with every token coloured and numbered.</li>
+<li>Google DeepMind: <a href="https://ai.google.dev/gemma/docs/core/model_card_4">Gemma 4 model card</a>, with the context length and the vocabulary of Gemma 4 E2B.</li>
+<li>Gemma Team, Google DeepMind: <a href="https://arxiv.org/abs/2503.19786">Gemma 3 Technical Report</a>, 2025, with the context lengths and the vocabulary of the models used in the experiment.</li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<!-- Übungsfragen: Seit Oktober 2026 ist die Übungsplattform classroom-live
+     die zentrale Stelle für die Übungsfragen (Nicolas, 2026-10-05). Die
+     Webseite zeigt kein eigenes Quiz mehr; das Skript ersetzt jeden Kasten
+     <div class="fragen-quiz" data-quelle="../assets/questions/<konzept>.json">
+     durch einen Link nach https://lifi.uber.space/practice/<pool>/<konzept>,
+     mit der Zahl der Fragen. Die Konzeptseiten bleiben unverändert.
+
+     Den Pool erkennt die Plattform an der site-url dieser Webseite; in der
+     lokalen Vorschau (localhost) erscheint deshalb kein Kasten, außer mit
+     data-pool am Skript. Fragen ändern sich weiter im Pool (Skill
+     multiple-choice-pruefung, pruefen.py exportiert wie bisher); der Agent
+     classroom-live spielt sie auf der Plattform ein.
+
+     Gemeinsame Datei des Skills lehrmaterial-webseite: nicht je Seite
+     ändern, sondern in der Urfassung; abgleich.py prüft sie. -->
+<script src="https://lifi.uber.space/practice/embed.js" defer=""></script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/ai\.hands-on-computer-science\.de\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../concepts/open-models.html" class="pagination-link" aria-label="Open Models">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Open Models</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../links.html" class="pagination-link" aria-label="Links">
+        <span class="nav-page-text">Links</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Prof.&nbsp;Dr.&nbsp;Nicolas Meseth · Hochschule Osnabrück · Artificial Intelligence</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Content CC BY-SA 4.0</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

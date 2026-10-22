@@ -191,6 +191,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Open Models</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../concepts/next-token-prediction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Next-Token Prediction</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item">
@@ -282,6 +288,7 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="extensions">Extensions</h3>
 <p>Each extension changes one thing, so that you can compare the result with the basic experiment.</p>
 <ol type="1">
+<li><strong>Turn the dials:</strong> load Gemma 4 E2B (<code>google/gemma-4-e2b</code>), switch LM Studio to developer mode to see all settings, then ask the same question three times at temperature 0 and three times at temperature 1, set top k to 0, top p to 1 and min p to 0 and raise the temperature step by step until the answer falls apart, limit the length of the answer to 20 tokens (Limit Response Length), and finally load the model with a very short context, paste a long text, ask about its beginning and repeat this with each strategy under Context Overflow (Rolling Window, Truncate Middle, Stop at Limit).</li>
 <li><strong>Rounding:</strong> download Gemma 3 4B in a second quantization (for example 8 bit instead of 4 bit) and compare size, speed and answers.</li>
 <li><strong>Another family:</strong> ask Qwen3 4B (<code>qwen/qwen3-4b-2507</code>, 2.3 GB) the same questions and compare it with Gemma 3 4B of the same size.</li>
 <li><strong>Cloud against laptop:</strong> ask a cloud chatbot the same questions and fill in a table with quality, speed, cost and where your data goes.</li>
@@ -305,6 +312,7 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="concepts">Concepts</h2>
 <ul>
 <li><a href="../../concepts/open-models.html">Open Models</a>: what a model is, why its size matters, and the difference between open and closed weights.</li>
+<li><a href="../../concepts/next-token-prediction.html">Next-Token Prediction</a>: how the model writes its answer one token at a time, and what the settings in LM Studio change.</li>
 <li><a href="../../concepts/ai-agents.html">AI Agents</a>: an agent can use a model on your laptop instead of one in the cloud.</li>
 </ul>
 <div style="page-break-after: always;"></div>

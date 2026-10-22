@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Next-Token Prediction</title>
+  <link rel="stylesheet" href="theme.css?v=20261022v">
+  <link rel="stylesheet" href="../stagekit/stagekit.css?v=20261022b">
+  <style>
+    /* Zeilen, die nacheinander erscheinen: grosszuegiger Abstand */
+    .lines.spaced > div { margin-bottom: 36px; }
+    .mono { font-family: var(--mono); }
+    /* eine grosse Zahl mit einer Zeile darunter */
+    .zahl { font-size: var(--large); color: var(--blue); }
+    .zahl-text { font-size: var(--normal); margin-top: 30px; }
+    /* Strategien bei vollem Kontext: Name links hervorgehoben, Beschreibung an einer gemeinsamen Kante.
+       "truncate middle" ≈ 15 × 48 × 0,5 ≈ 360, laengste Beschreibung ≈ 1030: 360 + 60 + 1030 < 1680 */
+    .strategien { display: grid; grid-template-columns: auto 1fr; gap: 36px 60px; font-size: var(--normal); align-items: baseline; }
+    .strategien .name { color: var(--blue); }
+    /* Mitmach-Folie: Drehregler-Symbol vor der Ueberschrift, so gross wie ihre Schrift, in Pink als Aufforderung */
+    h2.mitmachen { display: flex; align-items: center; gap: 16px; }
+    /* Schlussfoto: der Tisch beginnt bei etwa x 750, also Text auf 30 % Breite und in normaler Groesse */
+    .photo-text.schluss { width: 30%; font-size: var(--normal); line-height: 1.3; }
+  </style>
+</head>
+<body>
+<div class="deck"
+     data-title="next-token prediction"
+     data-subtitle="artificial intelligence · prof. dr. nicolas meseth"
+     data-parts='["tokens", "one at a time", "choosing", "the context", "the transformer"]'
+     data-part-colors='{"tokens": "#ff96c4", "one at a time": "#ff62a7", "choosing": "#ff2d8a", "the context": "#d92675", "the transformer": "#b01e60"}'
+     data-live-url="https://lifi.uber.space"
+     data-live-series="next-token-prediction"
+     data-live-module="aai">
+
+  <section class="slide title"></section>
+  <section class="slide agenda"></section>
+
+  <!-- Eroeffnung -->
+  <section class="slide">
+    <img class="photo" src="img/opening.jpg" alt="">
+    <div class="photo-text"><div>every answer<br>of a language<br>model is written<br>one token<br>at a time.</div></div>
+    <div class="footnote">image: ai-generated (gpt-image-2.5-flare)</div>
+    <aside class="notes">Im Experiment habt ihr gemessen, wie viele Tokens pro Sekunde euer Laptop schafft. Jetzt sehen wir nach, was ein Token ist und was in jedem dieser Schritte passiert.</aside>
+  </section>
+
+  <!-- ==================== 1 · tokens ==================== -->
+  <section class="slide part" data-part="tokens"></section>
+
+  <section class="slide" data-on-show="showTokens" data-on-step="showTokens">
+    <h2>a token is a piece of text</h2>
+    <div class="figure" id="fig-tokens"></div>
+    <span data-step="1"></span>
+    <div class="footnote">split and numbers for illustration</div>
+    <aside class="notes">Das Modell sieht keine Buchstaben, sondern Nummern aus einer festen Liste. Ein Programm, der Tokenizer, zerlegt den Text und ersetzt jedes Stück durch seine Nummer. Häufige Wörter sind ein einziges Token, oft samt Leerzeichen davor.</aside>
+  </section>
+
+  <section class="slide" data-on-show="showSplit" data-on-step="showSplit">
+    <h2>rare words fall apart</h2>
+    <div class="figure" id="fig-split"></div>
+    <span data-step="1"></span>
+    <div class="footnote">split for illustration · try it yourself: <a href="https://tiktokenizer.vercel.app/?model=gpt-3.5-turbo" target="_blank" rel="noopener">tiktokenizer.vercel.app</a></div>
+    <aside class="notes">Seltene Wörter werden in Stücke zerlegt, deutsche Fachbegriffe besonders. Im Englischen ist ein Token im Schnitt etwa drei Viertel eines Wortes; deutscher Text braucht für denselben Inhalt mehr Tokens, weil die Liste vor allem aus englischen Texten gebaut wurde. Live: Tiktokenizer (Link in der Fußnote, voreingestellt auf gpt-3.5-turbo) öffnen, denselben Satz englisch und deutsch einfügen und die Zahl der Tokens vergleichen; die Seite färbt jedes Token ein und zeigt seine Nummer.</aside>
+  </section>
+
+  <section class="slide">
+    <h2>the vocabulary</h2>
+    <div class="content">
+      <div class="zahl">262,000</div>
+      <div class="zahl-text">tokens in the vocabulary of <span class="keep-case">Gemma 4 E2B</span>, and everything the model writes is put together from them.</div>
+    </div>
+    <div class="footnote">source: <a href="https://ai.google.dev/gemma/docs/core/model_card_4" target="_blank" rel="noopener">gemma 4 model card</a></div>
+    <aside class="notes">Der Wortschatz ist fest. Wie aus den Nummern Bedeutung wird, ist ein eigenes Thema und gehört nicht hierher.</aside>
+  </section>
+
+  <!-- ==================== 2 · one at a time ==================== -->
+  <section class="slide part" data-part="one at a time"></section>
+
+  <section class="slide poll" data-poll="one-step">
+    <div class="poll-q">in one step, what does the model compute?</div>
+    <ol class="poll-opts">
+      <li>the next word</li>
+      <li>the whole answer</li>
+      <li data-correct>a probability per token</li>
+      <li>a search on the internet</li>
+    </ol>
+    <aside class="notes">Auflösen: eine Wahrscheinlichkeit für jedes Token im Wortschatz, also 262.000 Zahlen. Das nächste Wort ist erst das, was danach daraus gezogen wird.</aside>
+  </section>
+
+  <section class="slide" data-on-show="showProbs" data-on-step="showProbs">
+    <h2>the field, the barn or the yard?</h2>
+    <div class="figure" id="fig-probs"></div>
+    <span data-step="1"></span>
+    <div class="footnote">probabilities for illustration · try it with a real model: <a href="https://alonsosilva-nexttokenprediction.hf.space/" target="_blank" rel="noopener">alonsosilva-nexttokenprediction.hf.space</a></div>
+    <aside class="notes">Das ist alles, was ein Modell ausgibt: eine Liste mit einer Wahrscheinlichkeit je Token. Die Antwort entsteht erst danach, indem ein Programm daraus ein Token zieht. Live: die Seite aus der Fußnote öffnen, einen Satzanfang eingeben und die echten Wahrscheinlichkeiten eines kleinen Modells für das nächste Token ansehen.</aside>
+  </section>
+
+  <section class="slide" data-on-show="showLoop" data-on-step="showLoop">
+    <h2>the loop</h2>
+    <div class="figure" id="fig-loop"></div>
+    <span data-step="1"></span><span data-step="2"></span><span data-step="3"></span><span data-step="4"></span>
+    <aside class="notes">Autoregressiv heißt: Jede Ausgabe wird wieder Eingabe. Das gezogene Token wird angehängt, und das Modell rechnet mit dem etwas längeren Text die nächste Liste. Jeder Umlauf ist ein Durchgang durch alle Parameter, deshalb messen wir die Geschwindigkeit in Tokens pro Sekunde. Im letzten Schritt die Frage in den Raum geben und Vermutungen sammeln, bevor aufgelöst wird: Die Schleife endet, wenn das Modell ein besonderes End-Token zieht, oder wenn die eingestellte Höchstlänge erreicht ist; dann bricht die Antwort auch mitten im Satz ab.</aside>
+  </section>
+
+  <section class="slide">
+    <h2>fluent is not the same as true</h2>
+    <div class="content">
+      <div class="statement">the model writes the most likely continuation, which is not always the true one.</div>
+    </div>
+    <aside class="notes">Genau genommen nimmt es nur bei Temperatur 0 immer das wahrscheinlichste Token, sonst wird gezogen; das klärt der nächste Teil. Ein geschriebenes Token wird nie zurückgenommen; ist das Modell früh falsch abgebogen, baut es darauf auf. Solange das Wahre auch das Plausibelste ist, schadet das nicht. Wo nicht, schreibt das Modell etwas Flüssiges und Falsches mit derselben Sicherheit, und daher kommen Halluzinationen.</aside>
+  </section>
+
+  <!-- ==================== 3 · choosing ==================== -->
+  <section class="slide part" data-part="choosing"></section>
+
+  <section class="slide poll" data-poll="two-answers">
+    <div class="poll-q">ask the same question twice: why do you get two different answers?</div>
+    <ol class="poll-opts">
+      <li>the model learned</li>
+      <li data-correct>tokens are drawn at random</li>
+      <li>another model answered</li>
+      <li>it searched again</li>
+    </ol>
+    <aside class="notes">Auflösen: Das Modell ändert sich zwischen zwei Fragen nicht und lernt im Chat nichts dazu. Das nächste Token wird aus der Liste gezogen, und jedes gezogene Token verändert alles, was folgt.</aside>
+  </section>
+
+  <section class="slide" data-on-show="showTemp" data-on-step="showTemp">
+    <h2>temperature</h2>
+    <div class="figure" id="fig-temp"></div>
+    <span data-step="1"></span><span data-step="2"></span>
+    <div class="footnote">probabilities for illustration, temperature calculated · try it live: <a href="https://poloclub.github.io/transformer-explainer/" target="_blank" rel="noopener">poloclub.github.io/transformer-explainer</a></div>
+    <aside class="notes">Die Temperatur macht die Liste spitzer oder flacher. Bei 0 wird immer das wahrscheinlichste Token genommen, also immer dieselbe Antwort. Bei 1 gilt die Liste, wie das Modell sie berechnet hat. Bei 2 holen die vielen unwahrscheinlichen Tokens zusammen fast alles, und der Text kippt in Unsinn. Gerechnet ist das mit tausend Resttokens; bei 262.000 wäre der Effekt noch stärker. Live: den Transformer Explainer (Link in der Fußnote) öffnen; er zeigt für ein kleines echtes Modell die Wahrscheinlichkeiten des nächsten Tokens, und mit dem Temperaturregler sieht man die Liste spitzer und flacher werden.</aside>
+  </section>
+
+  <section class="slide" data-on-show="showCut" data-on-step="showCut">
+    <h2>top k and top p</h2>
+    <div class="figure" id="fig-cut"></div>
+    <span data-step="1"></span><span data-step="2"></span>
+    <div class="footnote">probabilities for illustration · try it live: <a href="https://poloclub.github.io/transformer-explainer/" target="_blank" rel="noopener">poloclub.github.io/transformer-explainer</a></div>
+    <aside class="notes">Beide schneiden den Schwanz der Liste ab, bevor gezogen wird. Top k behält immer die k besten. Top p behält so viele, bis ihre Wahrscheinlichkeiten zusammen p erreichen: Hier reichen field und barn mit 63 Prozent. Ist das Modell sicher, bleiben so wenige Kandidaten, ist es unsicher, viele. Live: Im Transformer Explainer (Link in der Fußnote) lassen sich Top k und Top p einstellen, und man sieht, welche Kandidaten übrig bleiben.</aside>
+  </section>
+
+  <section class="slide">
+    <h2 class="mitmachen"><!-- Bootstrap Icons "speedometer" 1.11.3 (MIT, (c) The Bootstrap Authors) --><svg class="icon" viewBox="0 0 16 16" width="1em" height="1em" fill="currentColor" style="color: var(--blue)" aria-hidden="true"><path d="M8 2a.5.5 0 0 1 .5.5V4a.5.5 0 0 1-1 0V2.5A.5.5 0 0 1 8 2M3.732 3.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707M2 8a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 8m9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5m.754-4.246a.39.39 0 0 0-.527-.02L7.547 7.31A.91.91 0 1 0 8.85 8.569l3.434-4.297a.39.39 0 0 0-.029-.518z"/><path fill-rule="evenodd" d="M6.664 15.889A8 8 0 1 1 9.336.11a8 8 0 0 1-2.672 15.78zm-4.665-4.283A11.95 11.95 0 0 1 8 10c2.186 0 4.236.585 6.001 1.606a7 7 0 1 0-12.002 0"/></svg><span>turn the dial</span></h2>
+    <div class="content">
+      <div class="lines spaced">
+        <div>ask the same question three times at temperature 0.</div>
+        <div data-step="1">ask it three times at temperature 1.</div>
+        <div data-step="2">switch off the filters: <span class="mono">top k = 0</span>, <span class="mono">top p = 1</span>, <span class="mono">min p = 0</span>.</div>
+        <div data-step="3">raise the temperature step by step until the answer falls apart.</div>
+      </div>
+      <div class="sidenote" style="margin-top: 40px">in <span class="keep-case">LM Studio</span>, switch to developer mode to see all settings.</div>
+    </div>
+    <aside class="notes">Live in LM Studio mit Gemma 4 E2B und einer kurzen Frage aus dem Experiment. Das Modell ändert sich dabei nicht; geändert wird nur, wie aus der Liste gezogen wird. Wichtig vor dem Hochdrehen: Top K, Top P und Min P schneiden in der Voreinstellung den Schwanz der Liste ab, sodass selbst bei hoher Temperatur nur vernünftige Kandidaten übrig bleiben und die Antwort nicht zerfällt. Erst mit Top K = 0, Top P = 1 und Min P = 0 (oder sehr klein) bekommen die vielen unwahrscheinlichen Tokens ihre Chance. Der Temperaturregler in LM Studio steht bei 1 schon am Anschlag; höhere Werte direkt ins Feld daneben tippen. Zum Schluss fragen: Bei welcher Temperatur kippte es?</aside>
+  </section>
+
+  <!-- ==================== 4 · the context ==================== -->
+  <section class="slide part" data-part="the context"></section>
+
+  <section class="slide" data-on-show="showStack" data-on-step="showStack">
+    <h2>everything it sees</h2>
+    <div class="figure" id="fig-stack"></div>
+    <span data-step="1"></span><span data-step="2"></span><span data-step="3"></span><span data-step="4"></span>
+    <aside class="notes">Der Kontext ist alles, was das Modell bei der Berechnung des nächsten Tokens sieht. Der Kartenstapel in „Be the Agent“ war genau das. Ein Chat wirkt wie ein Gegenüber mit Gedächtnis, aber das Modell erinnert sich zwischen zwei Aufrufen an nichts: Das Programm schickt mit jeder Nachricht das ganze Gespräch neu.</aside>
+  </section>
+
+  <section class="slide poll" data-poll="context-gemma-4-e2b">
+    <div class="poll-q">how many tokens fit into the context of <span class="keep-case">Gemma 4 E2B</span>?</div>
+    <ol class="poll-opts">
+      <li>4,096</li>
+      <li>32,768</li>
+      <li data-correct>131,072</li>
+      <li>no limit</li>
+    </ol>
+    <aside class="notes">Laut Model Card 128K Tokens; das K steht hier für 1.024, also 128 × 1.024 = 131.072, genau der Höchstwert, den LM Studio beim Laden anbietet. Ebenso viel hat Gemma 3 4B aus dem Experiment; Gemma 3 1B schafft 32K, also 32.768. Große Modelle in der Cloud kommen auf eine Million Tokens und mehr.</aside>
+  </section>
+
+  <section class="slide">
+    <h2>why there is a limit</h2>
+    <div class="content">
+      <div class="lines spaced">
+        <div>the model was trained on texts up to a certain length.</div>
+        <div data-step="1">every new token is related to every token before it.</div>
+        <div data-step="2">every token in the context needs memory.</div>
+        <div data-step="3" style="color: var(--blue)">when the context is full, something has to go.</div>
+      </div>
+    </div>
+    <aside class="notes">Mehr Kontext heißt mehr Rechenaufwand und mehr Arbeitsspeicher; in LM Studio sieht man das beim Laden. Was weg muss, wenn der Kontext voll ist, entscheidet nicht das Modell, sondern das Programm drumherum: nächste Folie.</aside>
+  </section>
+
+  <section class="slide">
+    <h2>when the context is full</h2>
+    <div class="content">
+      <div class="strategien">
+        <div class="name">stop at limit</div><div>the answer ends when the window is full.</div>
+        <div class="name" data-step="1">rolling window</div><div data-step="1">the oldest messages are dropped.</div>
+        <div class="name" data-step="2">truncate middle</div><div data-step="2">the beginning and the latest messages stay.</div>
+        <div class="name" data-step="3">summarise</div><div data-step="3">the old part is replaced by a short summary.</div>
+      </div>
+      <div class="sidenote" data-step="4" style="margin-top: 40px">whatever is dropped no longer exists for the model.</div>
+    </div>
+    <aside class="notes">Das Modell selbst kann nichts weglassen, es bekommt einfach weniger zu sehen; welche Strategie gilt, legt das Programm fest. In LM Studio heißt die Einstellung Context Overflow (in den Einstellungen rechts) und bietet die ersten drei an: Rolling Window, Truncate Middle und Stop at Limit; voreingestellt ist Truncate Middle. Zusammenfassen machen Agenten wie Claude Code, wenn ihr Kontext voll läuft. Live: Gemma 4 E2B mit einer sehr kurzen Kontextlänge neu laden, einen langen Text einfügen und nach dem ersten Absatz fragen, dann die Strategie wechseln und dieselbe Frage noch einmal stellen. Beim Abschneiden der Mitte kennt das Modell den Anfang noch, beim rollenden Fenster nicht mehr.</aside>
+  </section>
+
+  <!-- ==================== 5 · the transformer ==================== -->
+  <section class="slide part" data-part="the transformer"></section>
+
+  <section class="slide" data-on-show="showIt" data-on-step="showIt">
+    <h2>the tractor or the gate?</h2>
+    <div class="figure" id="fig-it"></div>
+    <span data-step="1"></span><span data-step="2"></span>
+    <div class="footnote">a. vaswani et al.: <a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener">attention is all you need</a>, 2017</div>
+    <aside class="notes">Was „it“ meint, hängt von einem Wort ganz am Ende ab: „too wide“ meint den Traktor, „too narrow“ das Tor. Frühere Modelle lasen Wort für Wort und trugen eine Zusammenfassung mit, die nach hinten verschwamm. Der Transformer betrachtet bei jedem Schritt alle Tokens des Kontexts zugleich und lernt, welche gerade wichtig sind; das heißt Attention. Wie das rechnet, ist ein eigenes Thema.</aside>
+  </section>
+
+  <section class="slide" data-on-show="showMatrix" data-on-step="showMatrix">
+    <h2>every token with every token</h2>
+    <div class="figure" id="fig-matrix"></div>
+    <span data-step="1"></span><span data-step="2"></span><span data-step="3"></span><span data-step="4"></span><span data-step="5"></span>
+    <div class="footnote">words instead of tokens and strengths for illustration</div>
+    <aside class="notes">Jede Zelle sagt, wie stark ein Wort bei der Berechnung auf ein anderes zurückgreift; wie die Verbindung aussieht, lassen wir offen. Wörter stehen hier vereinfachend für Tokens. Die Zeile „it“ greift am stärksten auf „tractor“ zurück, das ist der Bogen von der Folie davor. Die obere Hälfte bleibt leer, weil ein Token nur auf die Tokens davor schaut; die Matrix ist trotzdem n × n groß. Die Zahl der Zellen wächst mit dem Quadrat der Länge: doppelter Kontext, vierfache Arbeit, und bei 131.072 Tokens sind es 17 Milliarden Zellen, und das in jeder Schicht des Modells. Kubisch wäre es nur, wenn das Programm für jedes neue Token die ganze Matrix neu rechnen würde; das spart es sich mit einem Zwischenspeicher, dem KV-Cache, und genau der braucht den Arbeitsspeicher aus „why there is a limit“.</aside>
+  </section>
+
+  <section class="slide">
+    <img class="photo" src="img/closing.jpg" alt="">
+    <h2>key takeaway</h2>
+    <div class="photo-text schluss"><div>a language model writes <span style="color: var(--blue)">one token at a time</span>, and the whole context flows into the prediction of every single one.</div></div>
+    <div class="footnote">image: ai-generated (gpt-image-2.5-flare)</div>
+    <aside class="notes">Alles Weitere baut darauf auf: Werkzeuge, Agenten und Halluzinationen sind Folgen dieser einen Schleife.</aside>
+  </section>
+
+</div>
+<!-- Reihenfolge ist Pflicht: deck.js VOR stagekit.js -->
+<script src="../stagekit/draw.js?v=20261022b"></script>
+<script src="deck.js?v=20261022b"></script>
+<script src="../stagekit/stagekit.js?v=20261022b"></script>
+</body>
+</html>

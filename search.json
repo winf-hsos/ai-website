@@ -56,7 +56,7 @@
     "href": "experiments/open-models/open-models.html#steps",
     "title": "An AI on Your Laptop",
     "section": "Steps",
-    "text": "Steps\n\nBasic experiment\nWork in pairs and write your observations on the notes sheet.\n\nTurn off wi-fi, load Gemma 3 1B in LM Studio and ask it what nitrogen fertiliser does for a wheat plant, in two sentences.\nFind the model file (LM Studio → My Models → show in folder) and note its size and its name.\nAsk both models, Gemma 3 1B and then Gemma 3 4B, the same three questions and note the tokens per second shown below each answer:\n\nA field of 4.5 ha needs 140 kg of nitrogen per ha. How much is that in total?\nWhat is the capital of Lower Saxony, and what is it known for?\nTranslate into German: “The harvest was delayed by rain.”\n\nCompare: which model was faster, and which answers held?\n\n\n\nExtensions\nEach extension changes one thing, so that you can compare the result with the basic experiment.\n\nRounding: download Gemma 3 4B in a second quantization (for example 8 bit instead of 4 bit) and compare size, speed and answers.\nAnother family: ask Qwen3 4B (qwen/qwen3-4b-2507, 2.3 GB) the same questions and compare it with Gemma 3 4B of the same size.\nCloud against laptop: ask a cloud chatbot the same questions and fill in a table with quality, speed, cost and where your data goes.\nYour own document: give the local model a text that must not leave your laptop, such as a draft of your thesis, and ask it for a summary.\nWatch the machine: open the task manager while the model answers and watch memory, processor and graphics card.\nOn your phone: install Google’s app AI Edge Gallery (Android and iOS), load a small Gemma model and ask it the same questions in flight mode.",
+    "text": "Steps\n\nBasic experiment\nWork in pairs and write your observations on the notes sheet.\n\nTurn off wi-fi, load Gemma 3 1B in LM Studio and ask it what nitrogen fertiliser does for a wheat plant, in two sentences.\nFind the model file (LM Studio → My Models → show in folder) and note its size and its name.\nAsk both models, Gemma 3 1B and then Gemma 3 4B, the same three questions and note the tokens per second shown below each answer:\n\nA field of 4.5 ha needs 140 kg of nitrogen per ha. How much is that in total?\nWhat is the capital of Lower Saxony, and what is it known for?\nTranslate into German: “The harvest was delayed by rain.”\n\nCompare: which model was faster, and which answers held?\n\n\n\nExtensions\nEach extension changes one thing, so that you can compare the result with the basic experiment.\n\nTurn the dials: load Gemma 4 E2B (google/gemma-4-e2b), switch LM Studio to developer mode to see all settings, then ask the same question three times at temperature 0 and three times at temperature 1, set top k to 0, top p to 1 and min p to 0 and raise the temperature step by step until the answer falls apart, limit the length of the answer to 20 tokens (Limit Response Length), and finally load the model with a very short context, paste a long text, ask about its beginning and repeat this with each strategy under Context Overflow (Rolling Window, Truncate Middle, Stop at Limit).\nRounding: download Gemma 3 4B in a second quantization (for example 8 bit instead of 4 bit) and compare size, speed and answers.\nAnother family: ask Qwen3 4B (qwen/qwen3-4b-2507, 2.3 GB) the same questions and compare it with Gemma 3 4B of the same size.\nCloud against laptop: ask a cloud chatbot the same questions and fill in a table with quality, speed, cost and where your data goes.\nYour own document: give the local model a text that must not leave your laptop, such as a draft of your thesis, and ask it for a summary.\nWatch the machine: open the task manager while the model answers and watch memory, processor and graphics card.\nOn your phone: install Google’s app AI Edge Gallery (Android and iOS), load a small Gemma model and ask it the same questions in flight mode.",
     "crumbs": [
       "Experiments",
       "An AI on Your Laptop"
@@ -78,7 +78,7 @@
     "href": "experiments/open-models/open-models.html#concepts",
     "title": "An AI on Your Laptop",
     "section": "Concepts",
-    "text": "Concepts\n\nOpen Models: what a model is, why its size matters, and the difference between open and closed weights.\nAI Agents: an agent can use a model on your laptop instead of one in the cloud.",
+    "text": "Concepts\n\nOpen Models: what a model is, why its size matters, and the difference between open and closed weights.\nNext-Token Prediction: how the model writes its answer one token at a time, and what the settings in LM Studio change.\nAI Agents: an agent can use a model on your laptop instead of one in the cloud.",
     "crumbs": [
       "Experiments",
       "An AI on Your Laptop"
@@ -188,7 +188,7 @@
     "href": "concepts/open-models.html#explanation",
     "title": "Open Models",
     "section": "Explanation",
-    "text": "Explanation\n\nA file full of numbers\nA language model consists of a very long list of numbers called parameters or weights. Gemma 3 4B has about four billion of them, and the largest open models have well over a thousand billion. The numbers are the result of training: they encode, in a form no human can read directly, what the model has picked up about language and the world. Everything the model can do lies in these numbers, and nothing else is needed to run it.\n\n\nWhy the file has the size it has\nEach number needs some bits of storage, and the number of bits decides how many different values a number can take: one bit allows two values, four bits sixteen, sixteen bits 65,536. With 16 bits per number, four billion parameters take 8 GB. To make models fit into the memory of a laptop, the numbers are rounded to fewer allowed values and stored with fewer bits, often around four. This is called quantization.\nTake a weight of 0.8710. With 16 bits it is stored almost exactly. With 4 bits, and in a simplified picture with 16 evenly spaced values between −1 and +1, it becomes 0.867, close enough that the model behaves almost as before. With only three values, −1, 0 and +1, it becomes 1, and a weight of 0.3302 becomes 0. The coarser the rounding, the smaller the file and the further the model drifts from what it learned. Gemma 3 4B with about four bits per number shrinks from 8 GB to about 2.4 GB. The name of a model file usually says how strongly it was rounded, for example Q4 for about four bits per number.\nSurprisingly, rounding costs much less than shrinking. Measurements with LLaMA show that going from 16 to 8 bits changes practically nothing, and that a 13-billion-parameter model rounded to 4 bits (7.6 GB) is better than a 7-billion-parameter model stored with 16 bits (13 GB). For the same amount of memory, a larger model with 4 bits is almost always the better choice.\n\n\nWhat happens when you press enter\nRunning a model is called inference, as opposed to training it. The program loads the file once into memory, into the RAM or into the memory of the graphics card. Then it produces the answer token by token, and every new token requires one pass through all the parameters. That is why a bigger model is slower: every token passes through more numbers. How many tokens per second you get depends on the size of the model and on your hardware, and a graphics card or a recent Apple chip makes a large difference.\n\n\nOpen and closed\nAn open model is one whose weights you can download, run and change, such as Gemma, Qwen, Llama, Mistral, DeepSeek or gpt-oss. A closed model such as GPT, Claude or Gemini can only be used as a service over the internet; its weights stay with the provider, and so does its size. Open weights are not the same as open source: the training data and the code used for training usually stay secret, and only a few fully open models, such as Olmo, publish them as well. Open models also come with licences that differ in what they allow, for example for commercial use.\n\n\nWhen local makes sense\nA model on your own computer keeps your data with you, works offline and costs nothing per token. In return, it is much smaller than the top models in the cloud, it is slower on ordinary hardware, and you have to keep hardware and model up to date yourself. Running a model locally is therefore worth it when the data must not leave the building, when there is no reliable connection, or when a model is used so often that the cost of a service adds up. Small models even run on a phone: Google’s app AI Edge Gallery runs small Gemma models offline on Android and iOS. The same agent can work with either: the harness sends its context to whichever model it is connected to.",
+    "text": "Explanation\n\nA file full of numbers\nA language model consists of a very long list of numbers called parameters or weights. Gemma 3 4B has about four billion of them, and the largest open models have well over a thousand billion. The numbers are the result of training: they encode, in a form no human can read directly, what the model has picked up about language and the world. Everything the model can do lies in these numbers, and nothing else is needed to run it.\n\n\nWhy the file has the size it has\nEach number needs some bits of storage, and the number of bits decides how many different values a number can take: one bit allows two values, four bits sixteen, sixteen bits 65,536. With 16 bits per number, four billion parameters take 8 GB. To make models fit into the memory of a laptop, the numbers are rounded to fewer allowed values and stored with fewer bits, often around four. This is called quantization.\nTake a weight of 0.8710. With 16 bits it is stored almost exactly. With 4 bits, and in a simplified picture with 16 evenly spaced values between −1 and +1, it becomes 0.867, close enough that the model behaves almost as before. With only three values, −1, 0 and +1, it becomes 1, and a weight of 0.3302 becomes 0. The coarser the rounding, the smaller the file and the further the model drifts from what it learned. Gemma 3 4B with about four bits per number shrinks from 8 GB to about 2.4 GB. The name of a model file usually says how strongly it was rounded, for example Q4 for about four bits per number.\nSurprisingly, rounding costs much less than shrinking. Measurements with LLaMA show that going from 16 to 8 bits changes practically nothing, and that a 13-billion-parameter model rounded to 4 bits (7.6 GB) is better than a 7-billion-parameter model stored with 16 bits (13 GB). For the same amount of memory, a larger model with 4 bits is almost always the better choice.\n\n\nWhat happens when you press enter\nRunning a model is called inference, as opposed to training it, and how the model produces an answer token by token is explained in Next-Token Prediction. The program loads the file once into memory, into the RAM or into the memory of the graphics card. Then it produces the answer token by token, and every new token requires one pass through all the parameters. That is why a bigger model is slower: every token passes through more numbers. How many tokens per second you get depends on the size of the model and on your hardware, and a graphics card or a recent Apple chip makes a large difference.\n\n\nOpen and closed\nAn open model is one whose weights you can download, run and change, such as Gemma, Qwen, Llama, Mistral, DeepSeek or gpt-oss. A closed model such as GPT, Claude or Gemini can only be used as a service over the internet; its weights stay with the provider, and so does its size. Open weights are not the same as open source: the training data and the code used for training usually stay secret, and only a few fully open models, such as Olmo, publish them as well. Open models also come with licences that differ in what they allow, for example for commercial use.\n\n\nWhen local makes sense\nA model on your own computer keeps your data with you, works offline and costs nothing per token. In return, it is much smaller than the top models in the cloud, it is slower on ordinary hardware, and you have to keep hardware and model up to date yourself. Running a model locally is therefore worth it when the data must not leave the building, when there is no reliable connection, or when a model is used so often that the cost of a service adds up. Small models even run on a phone: Google’s app AI Edge Gallery runs small Gemma models offline on Android and iOS. The same agent can work with either: the harness sends its context to whichever model it is connected to.",
     "crumbs": [
       "Concepts",
       "Open Models"
@@ -228,109 +228,14 @@
     ]
   },
   {
-    "objectID": "concepts/ai-agents.html",
-    "href": "concepts/ai-agents.html",
-    "title": "AI Agents",
+    "objectID": "concepts/index.html",
+    "href": "concepts/index.html",
+    "title": "Overview",
     "section": "",
-    "text": "A chatbot answers, and you take the next step yourself: you copy the code, run it, paste back the error. An agent takes those steps on its own. Under the hood it is the same language model; the difference is what is built around it. A working definition: an LLM agent runs tools in a loop to achieve a goal.\nEverything else, the plan, the instructions it loads, the sub-agents, the context it keeps in mind, is built around that loop. This page answers:\n\nWhat is the difference between a chatbot and an agent?\nWhat are the parts of an agent, and what does each one do?\nWhen is an agent the right choice, and when is a fixed workflow better?\nWhy are agents suddenly everywhere?\nWhat can go wrong when an agent acts with your permissions?\n\nYou play an agent yourself in the experiment Be the Agent, and the program around the model has a page of its own: The Harness.",
+    "text": "This page will show the map of topics for this course: which concepts there are, how they build on each other, and where each one appears in the experiments. Until the map is ready, here are the concepts that already have a page of their own:\n\nA Brief History of AI: seventy-five years of artificial intelligence, compiled live by an AI agent.\nAI Agents: a language model that uses tools in a loop to reach a goal.\nThe Harness: the program around a language model that turns it into an agent.\nOpen Models: a language model is a file full of numbers, and some of these files you can download.\nNext-Token Prediction: a language model writes one token at a time, and every token it writes becomes part of what it reads next.",
     "crumbs": [
       "Concepts",
-      "AI Agents"
-    ]
-  },
-  {
-    "objectID": "concepts/ai-agents.html#summary",
-    "href": "concepts/ai-agents.html#summary",
-    "title": "AI Agents",
-    "section": "",
-    "text": "A chatbot answers, and you take the next step yourself: you copy the code, run it, paste back the error. An agent takes those steps on its own. Under the hood it is the same language model; the difference is what is built around it. A working definition: an LLM agent runs tools in a loop to achieve a goal.\nEverything else, the plan, the instructions it loads, the sub-agents, the context it keeps in mind, is built around that loop. This page answers:\n\nWhat is the difference between a chatbot and an agent?\nWhat are the parts of an agent, and what does each one do?\nWhen is an agent the right choice, and when is a fixed workflow better?\nWhy are agents suddenly everywhere?\nWhat can go wrong when an agent acts with your permissions?\n\nYou play an agent yourself in the experiment Be the Agent, and the program around the model has a page of its own: The Harness.",
-    "crumbs": [
-      "Concepts",
-      "AI Agents"
-    ]
-  },
-  {
-    "objectID": "concepts/ai-agents.html#explanation",
-    "href": "concepts/ai-agents.html#explanation",
-    "title": "AI Agents",
-    "section": "Explanation",
-    "text": "Explanation\n\nThe model, the tools, the loop\nThe language model can only produce text. It cannot open a file or load a web page. What it can do is write down which tool it wants to call, and with which arguments: read a file, write a file, run a command, search the web. A program on your computer, the harness, executes the call and hands the result back to the model. Then the model decides what to do next. This loop, think, act, observe, repeats until the goal is reached. In research the pattern is known as ReAct (Yao et al., 2022).\n\n\nContext, plans and sub-agents\nEverything the agent “knows” during a task sits in its context window: the goal, every tool result, every intermediate thought. When it fills up, the agent has to summarise or forget. To stay on track, agents write themselves a plan, a to-do list they tick off, and read instructions stored in text files when they need them. For big tasks they can start sub-agents: copies of themselves, each with a fresh context window, working in parallel.\n\n\nWorkflow or agent?\nNot everything with AI inside is an agent. A workflow follows predefined steps; an agent decides the next step itself. The advice from Anthropic: keep it as simple as possible, and use agents only where the task needs that freedom.\n\n\nHandle with care\nAn agent acts with your permissions. It can read every file you can read, run every command you can run, and publish to the internet. Whoever gives an agent access hands over their own keys. Asking it to show its plan before it acts is where you stay in control.",
-    "crumbs": [
-      "Concepts",
-      "AI Agents"
-    ]
-  },
-  {
-    "objectID": "concepts/ai-agents.html#slides",
-    "href": "concepts/ai-agents.html#slides",
-    "title": "AI Agents",
-    "section": "Slides",
-    "text": "Slides",
-    "crumbs": [
-      "Concepts",
-      "AI Agents"
-    ]
-  },
-  {
-    "objectID": "concepts/ai-agents.html#practice-questions",
-    "href": "concepts/ai-agents.html#practice-questions",
-    "title": "AI Agents",
-    "section": "Practice questions",
-    "text": "Practice questions\nThe practice questions for this concept are on the course’s practice platform, in the same format as the exam and with the reasoning behind every answer.",
-    "crumbs": [
-      "Concepts",
-      "AI Agents"
-    ]
-  },
-  {
-    "objectID": "concepts/ai-agents.html#further-reading",
-    "href": "concepts/ai-agents.html#further-reading",
-    "title": "AI Agents",
-    "section": "Further reading",
-    "text": "Further reading\n\nSimon Willison: I think “agent” may finally have a widely enough agreed upon definition to be useful jargon now, 18 September 2025.\nAnthropic: Building effective agents, December 2024.\nShunyu Yao et al.: ReAct: Synergizing Reasoning and Acting in Language Models, 2022.\nMETR: Measuring AI Ability to Complete Long Tasks, 2025.",
-    "crumbs": [
-      "Concepts",
-      "AI Agents"
-    ]
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "This website accompanies the AI modules Applications of Artificial Intelligence and Problem Solving with AI at Hochschule Osnabrück (Osnabrück University of Applied Sciences). Here you find everything for these modules in one place: the slides, the experiments you run in class and at home, and the questions to practise with.",
-    "crumbs": [
-      "About"
-    ]
-  },
-  {
-    "objectID": "about.html#contact",
-    "href": "about.html#contact",
-    "title": "About",
-    "section": "Contact",
-    "text": "Contact\nThe module and this website are run by Nicolas Meseth. Mistakes on the site, broken links or explanations that do not make sense: please send a mail. Telling us which explanation you were missing helps just as much.",
-    "crumbs": [
-      "About"
-    ]
-  },
-  {
-    "objectID": "about.html#source-code-and-material",
-    "href": "about.html#source-code-and-material",
-    "title": "About",
-    "section": "Source code and material",
-    "text": "Source code and material\nThe website lives on GitHub: github.com/winf-hsos/ai-website. Links to code and tools are collected under Links.",
-    "crumbs": [
-      "About"
-    ]
-  },
-  {
-    "objectID": "about.html#licence-and-transparency",
-    "href": "about.html#licence-and-transparency",
-    "title": "About",
-    "section": "Licence and transparency",
-    "text": "Licence and transparency\nThe content of this website is licensed under CC BY-SA 4.0: you may share and reuse it, with attribution and under the same terms.\nPictures on the slides that were generated with AI models are marked as such in a footnote on each slide. AI assistants are also used in creating the material for this course, in the same way you use them in the course yourselves; the content is checked and answered for by the lecturer.",
-    "crumbs": [
-      "About"
+      "Overview"
     ]
   },
   {
@@ -400,14 +305,175 @@
     ]
   },
   {
-    "objectID": "concepts/index.html",
-    "href": "concepts/index.html",
-    "title": "Overview",
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
     "section": "",
-    "text": "This page will show the map of topics for this course: which concepts there are, how they build on each other, and where each one appears in the experiments. Until the map is ready, here are the concepts that already have a page of their own:\n\nA Brief History of AI: seventy-five years of artificial intelligence, compiled live by an AI agent.\nAI Agents: a language model that uses tools in a loop to reach a goal.\nThe Harness: the program around a language model that turns it into an agent.\nOpen Models: a language model is a file full of numbers, and some of these files you can download.",
+    "text": "This website accompanies the AI modules Applications of Artificial Intelligence and Problem Solving with AI at Hochschule Osnabrück (Osnabrück University of Applied Sciences). Here you find everything for these modules in one place: the slides, the experiments you run in class and at home, and the questions to practise with.",
+    "crumbs": [
+      "About"
+    ]
+  },
+  {
+    "objectID": "about.html#contact",
+    "href": "about.html#contact",
+    "title": "About",
+    "section": "Contact",
+    "text": "Contact\nThe module and this website are run by Nicolas Meseth. Mistakes on the site, broken links or explanations that do not make sense: please send a mail. Telling us which explanation you were missing helps just as much.",
+    "crumbs": [
+      "About"
+    ]
+  },
+  {
+    "objectID": "about.html#source-code-and-material",
+    "href": "about.html#source-code-and-material",
+    "title": "About",
+    "section": "Source code and material",
+    "text": "Source code and material\nThe website lives on GitHub: github.com/winf-hsos/ai-website. Links to code and tools are collected under Links.",
+    "crumbs": [
+      "About"
+    ]
+  },
+  {
+    "objectID": "about.html#licence-and-transparency",
+    "href": "about.html#licence-and-transparency",
+    "title": "About",
+    "section": "Licence and transparency",
+    "text": "Licence and transparency\nThe content of this website is licensed under CC BY-SA 4.0: you may share and reuse it, with attribution and under the same terms.\nPictures on the slides that were generated with AI models are marked as such in a footnote on each slide. AI assistants are also used in creating the material for this course, in the same way you use them in the course yourselves; the content is checked and answered for by the lecturer.",
+    "crumbs": [
+      "About"
+    ]
+  },
+  {
+    "objectID": "concepts/ai-agents.html",
+    "href": "concepts/ai-agents.html",
+    "title": "AI Agents",
+    "section": "",
+    "text": "A chatbot answers, and you take the next step yourself: you copy the code, run it, paste back the error. An agent takes those steps on its own. Under the hood it is the same language model; the difference is what is built around it. A working definition: an LLM agent runs tools in a loop to achieve a goal.\nEverything else, the plan, the instructions it loads, the sub-agents, the context it keeps in mind, is built around that loop. This page answers:\n\nWhat is the difference between a chatbot and an agent?\nWhat are the parts of an agent, and what does each one do?\nWhen is an agent the right choice, and when is a fixed workflow better?\nWhy are agents suddenly everywhere?\nWhat can go wrong when an agent acts with your permissions?\n\nYou play an agent yourself in the experiment Be the Agent, and the program around the model has a page of its own: The Harness.",
     "crumbs": [
       "Concepts",
-      "Overview"
+      "AI Agents"
+    ]
+  },
+  {
+    "objectID": "concepts/ai-agents.html#summary",
+    "href": "concepts/ai-agents.html#summary",
+    "title": "AI Agents",
+    "section": "",
+    "text": "A chatbot answers, and you take the next step yourself: you copy the code, run it, paste back the error. An agent takes those steps on its own. Under the hood it is the same language model; the difference is what is built around it. A working definition: an LLM agent runs tools in a loop to achieve a goal.\nEverything else, the plan, the instructions it loads, the sub-agents, the context it keeps in mind, is built around that loop. This page answers:\n\nWhat is the difference between a chatbot and an agent?\nWhat are the parts of an agent, and what does each one do?\nWhen is an agent the right choice, and when is a fixed workflow better?\nWhy are agents suddenly everywhere?\nWhat can go wrong when an agent acts with your permissions?\n\nYou play an agent yourself in the experiment Be the Agent, and the program around the model has a page of its own: The Harness.",
+    "crumbs": [
+      "Concepts",
+      "AI Agents"
+    ]
+  },
+  {
+    "objectID": "concepts/ai-agents.html#explanation",
+    "href": "concepts/ai-agents.html#explanation",
+    "title": "AI Agents",
+    "section": "Explanation",
+    "text": "Explanation\n\nThe model, the tools, the loop\nThe language model can only produce text. It cannot open a file or load a web page. What it can do is write down which tool it wants to call, and with which arguments: read a file, write a file, run a command, search the web. A program on your computer, the harness, executes the call and hands the result back to the model. Then the model decides what to do next. This loop, think, act, observe, repeats until the goal is reached. In research the pattern is known as ReAct (Yao et al., 2022).\n\n\nContext, plans and sub-agents\nEverything the agent “knows” during a task sits in its context window: the goal, every tool result, every intermediate thought. When it fills up, the agent has to summarise or forget. To stay on track, agents write themselves a plan, a to-do list they tick off, and read instructions stored in text files when they need them. For big tasks they can start sub-agents: copies of themselves, each with a fresh context window, working in parallel.\n\n\nWorkflow or agent?\nNot everything with AI inside is an agent. A workflow follows predefined steps; an agent decides the next step itself. The advice from Anthropic: keep it as simple as possible, and use agents only where the task needs that freedom.\n\n\nHandle with care\nAn agent acts with your permissions. It can read every file you can read, run every command you can run, and publish to the internet. Whoever gives an agent access hands over their own keys. Asking it to show its plan before it acts is where you stay in control.",
+    "crumbs": [
+      "Concepts",
+      "AI Agents"
+    ]
+  },
+  {
+    "objectID": "concepts/ai-agents.html#slides",
+    "href": "concepts/ai-agents.html#slides",
+    "title": "AI Agents",
+    "section": "Slides",
+    "text": "Slides",
+    "crumbs": [
+      "Concepts",
+      "AI Agents"
+    ]
+  },
+  {
+    "objectID": "concepts/ai-agents.html#practice-questions",
+    "href": "concepts/ai-agents.html#practice-questions",
+    "title": "AI Agents",
+    "section": "Practice questions",
+    "text": "Practice questions\nThe practice questions for this concept are on the course’s practice platform, in the same format as the exam and with the reasoning behind every answer.",
+    "crumbs": [
+      "Concepts",
+      "AI Agents"
+    ]
+  },
+  {
+    "objectID": "concepts/ai-agents.html#further-reading",
+    "href": "concepts/ai-agents.html#further-reading",
+    "title": "AI Agents",
+    "section": "Further reading",
+    "text": "Further reading\n\nSimon Willison: I think “agent” may finally have a widely enough agreed upon definition to be useful jargon now, 18 September 2025.\nAnthropic: Building effective agents, December 2024.\nShunyu Yao et al.: ReAct: Synergizing Reasoning and Acting in Language Models, 2022.\nMETR: Measuring AI Ability to Complete Long Tasks, 2025.",
+    "crumbs": [
+      "Concepts",
+      "AI Agents"
+    ]
+  },
+  {
+    "objectID": "concepts/next-token-prediction.html",
+    "href": "concepts/next-token-prediction.html",
+    "title": "Next-Token Prediction",
+    "section": "",
+    "text": "However long and clever the answer of a chatbot is, the model behind it does only one thing over and over: it looks at the text so far and computes, for every possible next piece of text, how likely it is to come next. One piece is chosen and appended, and the whole process starts again with the slightly longer text. These pieces are called tokens, the text the model looks at is its context, and the architecture that lets it take the whole context into account is the transformer. This page answers:\n\nWhat is a token, and how many of them does a model know?\nHow does a model turn probabilities for the next token into a whole answer?\nWhy does the same question get different answers, and what do temperature, top k and top p change?\nWhat is the context, and why is it limited?\nWhat is the basic idea of a transformer?\n\nYou meet this concept in the experiment An AI on Your Laptop, where you change the settings of a local model in LM Studio and watch how its answers change.",
+    "crumbs": [
+      "Concepts",
+      "Next-Token Prediction"
+    ]
+  },
+  {
+    "objectID": "concepts/next-token-prediction.html#summary",
+    "href": "concepts/next-token-prediction.html#summary",
+    "title": "Next-Token Prediction",
+    "section": "",
+    "text": "However long and clever the answer of a chatbot is, the model behind it does only one thing over and over: it looks at the text so far and computes, for every possible next piece of text, how likely it is to come next. One piece is chosen and appended, and the whole process starts again with the slightly longer text. These pieces are called tokens, the text the model looks at is its context, and the architecture that lets it take the whole context into account is the transformer. This page answers:\n\nWhat is a token, and how many of them does a model know?\nHow does a model turn probabilities for the next token into a whole answer?\nWhy does the same question get different answers, and what do temperature, top k and top p change?\nWhat is the context, and why is it limited?\nWhat is the basic idea of a transformer?\n\nYou meet this concept in the experiment An AI on Your Laptop, where you change the settings of a local model in LM Studio and watch how its answers change.",
+    "crumbs": [
+      "Concepts",
+      "Next-Token Prediction"
+    ]
+  },
+  {
+    "objectID": "concepts/next-token-prediction.html#explanation",
+    "href": "concepts/next-token-prediction.html#explanation",
+    "title": "Next-Token Prediction",
+    "section": "Explanation",
+    "text": "Explanation\n\nTokens\nA language model does not read letters or words but tokens: frequent words, parts of words, single characters and punctuation. Short and common English words are usually one token, while a long or rare word is split into several pieces, so that a word like unbelievable may become un, believ and able. In English, a token is on average about three quarters of a word; German and most other languages need more tokens for the same content, because the token lists are dominated by English text.\nEvery model has a fixed list of tokens, its vocabulary. The vocabulary of Gemma 4 E2B, the model used on the slides, has about 262,000 entries, and so does that of Gemma 3. Before the model sees a text, a program called the tokenizer cuts it into tokens and replaces each one by its number in the list, so that the model receives a sequence of numbers. How these numbers come to carry meaning is a concept of its own.\n\n\nOne token at a time\nFrom the sequence of tokens, the model computes a probability for every token in its vocabulary: how likely it is that this token comes next. After The farmer drove the tractor into the, the token field might get 41 per cent, barn 22 per cent, yard 9 per cent, and each of the remaining hundreds of thousands of tokens a tiny share. The numbers in this example are made up, but every real model produces exactly such a list, and this list is all it produces.\nTo write an answer, the program around the model picks one token from the list, appends it to the text and asks the model again. The model now sees its own token as part of the input and computes the next list. This is called autoregressive generation: every output is fed back as input. The loop ends when the model picks a special end token, or when the maximum number of tokens is reached. Each step is one pass through all parameters, which is why the speed of a model is measured in tokens per second.\nTwo things follow from this. A token, once written, is never revised; the model can only continue, and if it took a wrong turn early, it builds on it. And the model is trained to write the most likely continuation, not the true one. As long as the true continuation is also the most likely, that does no harm, but where it is not, the model writes something fluent and wrong with the same confidence. This is where hallucinations come from.\n\n\nChoosing the next token\nWhich token is taken from the list is not decided by the model but by a few settings, the sampling parameters:\n\nTemperature sharpens or flattens the list. At 0, the most likely token is always chosen, and the same question gets the same answer every time. Around 1, the probabilities are used as the model computed them, so the answer varies. Far above 1, unlikely tokens get a real chance, and the text drifts into nonsense.\nTop k keeps only the k most likely tokens and draws from them; with top k = 1, the model always takes the first one.\nTop p keeps the most likely tokens until their probabilities add up to p, for example 0.95, so that the number of candidates adapts to how sure the model is.\nMaximum length stops the loop after a set number of tokens, even in the middle of a sentence.\n\nThis is why the same question gets a different answer each time: not because the model changes, but because the next token is drawn, and every drawn token changes everything that follows.\n\n\nThe context\nThe context is everything the model sees when it computes the next token: the system prompt, the whole conversation so far, any documents you added, and the part of its own answer it has already written. A chat looks like a conversation with a partner who remembers, but the model remembers nothing between two calls. With every new message, the program sends the entire conversation again, written into one long text with special tokens that mark who said what.\n\n\nWhy the context is limited\nThe context has a maximum length, the context window, counted in tokens: 128K for Gemma 4 E2B and Gemma 3 4B, and 32K for Gemma 3 1B. The K stands for 1,024 here, so 128K are exactly 131,072 tokens, the maximum LM Studio offers when it loads such a model. There are three reasons for the limit. The model has been trained on texts up to a certain length and handles longer ones poorly. Each new token is related to every token before it, so that n tokens make a grid of n × n pairs, and the computing effort grows with the square of the length: twice the context means four times the work. And the program keeps intermediate results for every token in memory, which is why LM Studio needs more RAM when you set a longer context. When a conversation grows beyond the window, the program around the model has to decide what goes: it can stop the answer (Stop at Limit in LM Studio), drop the oldest messages (Rolling Window), cut out the middle so that the beginning and the latest messages stay (Truncate Middle), or replace the old part by a short summary, as agents do. Whatever is dropped no longer exists for the model.\n\n\nThe transformer, from far away\nAlmost every language model today is a transformer, an architecture published by researchers at Google in 2017. Earlier models read a text word by word and carried along a summary that became blurred the further back a word was. A transformer, by contrast, looks at all tokens of the context at once when it computes the next one, and it learns how much each of them matters for the current step. This mechanism is called attention.\nAn example shows why this matters. In The tractor did not fit through the gate because it was too wide, the word it means the tractor; if the sentence ends with too narrow, it means the gate. To continue such a text correctly, the model has to connect it with a word several tokens back, and which word that is depends on a third word. Attention makes such connections possible over thousands of tokens. How it works inside is a topic for later; for now it is enough to know that the whole context flows into the prediction of every single token.\n\n\nTry it in LM Studio\nAll of this can be observed in LM Studio. Switch to the developer mode to see all settings, and then:\n\nask the same question three times with temperature 0, and three times with temperature 1;\nset top k to 0, top p to 1 and min p to 0, so that nothing is cut off, and raise the temperature step by step until the answer falls apart;\ntick Limit Response Length, set it to 20 tokens and watch where the answer stops;\nload a model with a very short context, paste a long text, ask about its beginning, and repeat this with each strategy under Context Overflow: Rolling Window, Truncate Middle and Stop at Limit.",
+    "crumbs": [
+      "Concepts",
+      "Next-Token Prediction"
+    ]
+  },
+  {
+    "objectID": "concepts/next-token-prediction.html#slides",
+    "href": "concepts/next-token-prediction.html#slides",
+    "title": "Next-Token Prediction",
+    "section": "Slides",
+    "text": "Slides",
+    "crumbs": [
+      "Concepts",
+      "Next-Token Prediction"
+    ]
+  },
+  {
+    "objectID": "concepts/next-token-prediction.html#practice-questions",
+    "href": "concepts/next-token-prediction.html#practice-questions",
+    "title": "Next-Token Prediction",
+    "section": "Practice questions",
+    "text": "Practice questions\nPractice questions for this concept will follow.",
+    "crumbs": [
+      "Concepts",
+      "Next-Token Prediction"
+    ]
+  },
+  {
+    "objectID": "concepts/next-token-prediction.html#further-reading",
+    "href": "concepts/next-token-prediction.html#further-reading",
+    "title": "Next-Token Prediction",
+    "section": "Further reading",
+    "text": "Further reading\n\nAshish Vaswani et al.: Attention Is All You Need, NeurIPS 2017, the paper that introduced the transformer.\nTransformer Explainer: a small language model in the browser that shows the probabilities for the next token and lets you change the temperature.\nNext-Token Prediction demo: type the beginning of a sentence and see the probabilities a small language model gives each possible next token.\nTiktokenizer: shows how the tokenizer of gpt-3.5-turbo cuts a text into tokens, with every token coloured and numbered.\nGoogle DeepMind: Gemma 4 model card, with the context length and the vocabulary of Gemma 4 E2B.\nGemma Team, Google DeepMind: Gemma 3 Technical Report, 2025, with the context lengths and the vocabulary of the models used in the experiment.",
+    "crumbs": [
+      "Concepts",
+      "Next-Token Prediction"
     ]
   },
   {
