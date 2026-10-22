@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <title>Open Models</title>
-  <link rel="stylesheet" href="theme.css?v=20261007b">
-  <link rel="stylesheet" href="../stagekit/stagekit.css?v=20261007b">
+  <link rel="stylesheet" href="theme.css?v=20261022c">
+  <link rel="stylesheet" href="../stagekit/stagekit.css?v=20261022c">
   <style>
     /* Zeilen, die nacheinander erscheinen: grosszuegiger Abstand */
     .lines.spaced > div { margin-bottom: 36px; }
@@ -27,6 +27,11 @@
     /* vier Gewichte, gerundet: Spalten erscheinen in Schritten */
     .gerundet { display: grid; grid-template-columns: 300px 300px 300px 300px; gap: 28px 60px; font-family: var(--mono); font-size: var(--normal); text-align: right; }
     .gerundet .kopf { font-family: var(--font); font-size: var(--small); color: var(--gray-light); text-align: right; }
+    /* der gespeicherte 4-Bit-Code neben dem gerundeten Wert: "−0.733" 6 × 48 × 0,6 = 173, Code 4 × 32 × 0,6 = 77, zusammen < 300 */
+    .gerundet .code4 { font-size: var(--small); color: var(--gray); }
+    /* Zahlenstrahl mit den 16 erlaubten Werten ueber der Tabelle, feste Hoehe, damit nichts springt */
+    .raster { width: 1680px; height: 160px; margin-bottom: 30px; }
+    .raster svg { width: 100%; height: 100%; }
     /* offen und geschlossen: zwei gleich breite Spalten */
     .zwei { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
     .zwei .header { margin-bottom: 20px; }
@@ -185,19 +190,20 @@
     <aside class="notes">Ein Gewicht von 0,8710, die rosa Marke. Mit 16 Bit liegt der nächste erlaubte Wert praktisch darauf. Mit 4 Bit gibt es nur 16 erlaubte Werte, das Gewicht wird zu 0,867. Mit drei Werten bleibt nur −1, 0 oder +1, es wird zu 1; solche Modelle gibt es wirklich (etwa BitNet b1.58), sie werden von Anfang an so trainiert. Mit einem Bit bleibt nur noch das Vorzeichen.</aside>
   </section>
 
-  <section class="slide">
+  <section class="slide" data-on-show="showGrid" data-on-step="showGrid">
     <h2>four weights, rounded</h2>
-    <div class="content">
+    <div class="content" style="top: 150px">
+      <div class="raster" id="fig-grid"></div>
       <div class="gerundet">
         <div class="kopf">16 bits</div><div class="kopf" data-step="1">4 bits</div><div class="kopf" data-step="2">3 values</div><div class="kopf" data-step="3">binary</div>
-        <div>0.0213</div><div data-step="1">0.067</div><div data-step="2">0</div><div data-step="3">1</div>
-        <div>−0.7744</div><div data-step="1">−0.733</div><div data-step="2">−1</div><div data-step="3">−1</div>
-        <div>0.3301</div><div data-step="1">0.333</div><div data-step="2">0</div><div data-step="3">1</div>
-        <div>0.8711</div><div data-step="1">0.867</div><div data-step="2">1</div><div data-step="3">1</div>
+        <div>0.0213</div><div data-step="1">0.067 <span class="code4">1000</span></div><div data-step="2">0</div><div data-step="3">1</div>
+        <div>−0.7744</div><div data-step="1">−0.733 <span class="code4">0010</span></div><div data-step="2">−1</div><div data-step="3">−1</div>
+        <div>0.3301</div><div data-step="1">0.333 <span class="code4">1010</span></div><div data-step="2">0</div><div data-step="3">1</div>
+        <div>0.8711</div><div data-step="1">0.867 <span class="code4">1110</span></div><div data-step="2">1</div><div data-step="3">1</div>
       </div>
-      <div class="sidenote" data-step="4" style="margin-top: 50px">the coarser the rounding, the smaller the file, and the further the model drifts from what it learned.</div>
+      <div class="sidenote" data-step="4" style="margin-top: 30px">the coarser the rounding, the smaller the file, and the further the model drifts from what it learned.</div>
     </div>
-    <aside class="notes">Die linke Spalte zeigt, was 16 Bit von den gelernten Gewichten speichern, auf vier Stellen gerundet. Die 4-Bit-Spalte folgt dem vereinfachten Schema von der Folie davor: 16 gleichmäßig verteilte Werte von −1 bis +1 im Abstand 2/15, also ±0,067, ±0,2, ±0,333 und so weiter; eine genaue Null gibt es darin nicht. Echte Verfahren wie Q4 skalieren die Werte je Block von 32 Gewichten, das Prinzip ist dasselbe. Mit 4 Bit bleiben die Gewichte nahe am Original, das Modell verhält sich fast wie vorher. Mit drei Werten werden zwei der vier Gewichte zu null. Binär, mit einem Bit, bleibt nur das Vorzeichen: Aus 0,0213 und 0,8710 wird dieselbe 1, der Unterschied zwischen fast nichts und viel ist weg. Ein Modell, das nachträglich so grob gerundet wird, verliert viel. Deshalb ist 4 Bit für Modelle auf dem Laptop ein verbreiteter Kompromiss.</aside>
+    <aside class="notes">Die linke Spalte zeigt, was 16 Bit von den gelernten Gewichten speichern, auf vier Stellen gerundet. Die 4-Bit-Spalte folgt dem vereinfachten Schema von der Folie davor: 16 gleichmäßig verteilte Werte von −1 bis +1 im Abstand 2/15, also ±0,067, ±0,2, ±0,333 und so weiter; eine genaue Null gibt es darin nicht. Echte Verfahren wie Q4 skalieren die Werte je Block von 32 Gewichten, das Prinzip ist dasselbe. Mit 4 Bit bleiben die Gewichte nahe am Original, das Modell verhält sich fast wie vorher. Mit drei Werten werden zwei der vier Gewichte zu null. Binär, mit einem Bit, bleibt nur das Vorzeichen: Aus 0,0213 und 0,8710 wird dieselbe 1, der Unterschied zwischen fast nichts und viel ist weg. Ein Modell, das nachträglich so grob gerundet wird, verliert viel. Deshalb ist 4 Bit für Modelle auf dem Laptop ein verbreiteter Kompromiss. Die 4-Bit-Werte sehen genau aus, sind aber nur die 16 Punkte des Rasters oben, im Abstand 2/15. Gespeichert wird nicht 0,067, sondern nur die Nummer des Punkts, hier 1000; die Dezimalzahl ist, wofür sie steht. In echten Dateien kommt je Block von etwa 32 Gewichten ein Skalierungsfaktor dazu, der das Raster auf den Block streckt; deshalb sind es im Schnitt eher 4,5 als 4 Bit je Gewicht (nächste Folie).</aside>
   </section>
 
   <section class="slide">
@@ -316,8 +322,8 @@
 
 </div>
 <!-- Reihenfolge ist Pflicht: deck.js VOR stagekit.js -->
-<script src="../stagekit/draw.js?v=20261007b"></script>
-<script src="deck.js?v=20261007b"></script>
-<script src="../stagekit/stagekit.js?v=20261007b"></script>
+<script src="../stagekit/draw.js?v=20261022c"></script>
+<script src="deck.js?v=20261022c"></script>
+<script src="../stagekit/stagekit.js?v=20261022c"></script>
 </body>
 </html>

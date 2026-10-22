@@ -96,6 +96,35 @@ function figQuant(step) {
 function showQuant(slide, step) { if ($("fig-quant")) $("fig-quant").innerHTML = figQuant(step || 0); }
 
 /* ------------------------------------------------------------------ */
+/* four weights, rounded: die 16 erlaubten Werte mit ihrem 4-Bit-Code   */
+/* (Nicolas, 22.10.2026: "bei 4 Bits doch nur 16 Werte?")               */
+/* ------------------------------------------------------------------ */
+// Stufe k steht fuer -1 + 2k/15; gespeichert wird nur k, also vier Bits.
+// Die vier Gewichte der Tabelle landen auf k = 8, 2, 10, 14.
+const VIER_GEWICHTE = [8, 2, 10, 14];
+function figGrid(step) {
+  const c = C();
+  // Beschriftung "stored" links ab x 0 (≈ 60 breit), erster Wert "−1" mittig auf 170: Platz genug; Abstand (1630 − 170) / 15 ≈ 97 > 72
+  const W = 1680, H = 160, xa = 170, xb = 1630, y = 80;   // Werte oben bei 36, Codes unten bei 124, Rand je ≥ 26
+  const parts = [];
+  if (step < 1) return d.svg(W, H);
+  parts.push(d.line(xa, y, xb, y, { color: c.gray, width: 2 }));
+  for (let k = 0; k < 16; k++) {
+    const x = xa + k * (xb - xa) / 15, v = -1 + 2 * k / 15;
+    const an = VIER_GEWICHTE.includes(k);
+    parts.push(d.line(x, y - 16, x, y + 16, { color: an ? c.blue : c.light, width: an ? 5 : 3 }));
+    // Wert oben, Code unten; Abstand der Stufen 104, "−0.867" 6 × 20 × 0,6 = 72 < 104
+    const s = (v < 0 ? "−" : "") + Math.abs(v).toFixed(3).replace(/^1\.000$/, "1").replace(/^0\.000$/, "0");
+    parts.push(d.label(x, 0, s, { size: 20, mono: true, color: an ? c.blue : c.gray, anchor: "middle", centerY: y - 44 }));
+    parts.push(d.label(x, 0, k.toString(2).padStart(4, "0"), { size: 20, mono: true, color: an ? c.white : c.gray, anchor: "middle", centerY: y + 44 }));
+  }
+  parts.push(d.label(0, 0, "value", { size: 20, color: c.gray, centerY: y - 44 }));
+  parts.push(d.label(0, 0, "stored", { size: 20, color: c.gray, centerY: y + 44 }));
+  return d.svg(W, H, ...parts);
+}
+function showGrid(slide, step) { if ($("fig-grid")) $("fig-grid").innerHTML = figGrid(step || 0); }
+
+/* ------------------------------------------------------------------ */
 /* rounding costs less than shrinking: Perplexitaet gegen Dateigroesse  */
 /* Messwerte aus dem README von llama.cpp, Stand Mai 2023 (Commit       */
 /* cdd5350), LLaMA 7B und 13B, Perplexitaet auf wikitext-2.             */
